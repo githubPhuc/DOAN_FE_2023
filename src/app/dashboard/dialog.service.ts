@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {MatDialog, MatDialogConfig, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig, MatDialogModule, MatDialogRef, _closeDialogVia} from '@angular/material/dialog';
 import { ConfirmComponent } from './dialog/confirm/confirm.component';
 import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/invoice-detail-dialog.component';
 
@@ -15,17 +15,23 @@ export class DialogService {
 
   opentDialog(id:number)
   {
-    console.log(id);
+
    this.dialog1.open(InvoiceDetailDialogComponent,{
     height: '500px',
     width: '800px',
     data: {
-      id: id
+      'id': id
     }
   }
   );
+}
+
+closeDialog(id:number)
+{
+
+ this.dialog1.closeAll();
 
 }
 
-
 }
+

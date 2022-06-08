@@ -8,6 +8,7 @@ import { ProductComponent } from './product/product.component';
 import { ProCreateComponent } from './product/pro-create/pro-create.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/invoice-detail-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,7 +24,9 @@ import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/inv
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }

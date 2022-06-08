@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { CategoryRoutingModule } from './category-routing.module';
 import { CreateComponent } from './create/create.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -12,7 +15,11 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     CategoryRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserModule,
+    AppRoutingModule,
+
   ]
 })
 export class CategoryModule { }

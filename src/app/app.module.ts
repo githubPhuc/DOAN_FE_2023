@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -28,7 +28,9 @@ import { ConfirmComponent } from './dashboard/dialog/confirm/confirm.component';
     HttpClientModule,
     FormsModule,
     NoopAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

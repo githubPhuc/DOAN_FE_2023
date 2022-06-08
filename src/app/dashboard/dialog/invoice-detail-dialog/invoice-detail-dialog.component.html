@@ -1,31 +1,50 @@
-<div class="col-md-12">
-    <div class="card">
-        <div class="card-header card-default">
-          Chi tiết hoá đơn
-        </div>
-        <div class="card-body">
-            <table id="datatable" class="table table-striped dt-responsive nowrap">
-                            <thead>
-                                <tr>
-                                    <th>Sản phẩm</th>
-                                    <th>Số lượng </th>
-                                    <th>Thành tiền</th>
+<div class="container">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-default">
+              Chi tiết hoá đơn
+            </div>
+            <div class="card-body">
+                <table id="datatable" class="table table-striped dt-responsive nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>Sản phẩm</th>
+                                        <th>Số lượng </th>
+                                        <th>Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let inv of data1">
+                                        <td>{{inv.sanPham}}</td>
+                                        <td>{{inv.soluong}}</td>
+                                        <td>{{inv.donGia}}</td>
+                                    </tr>
+                                </tbody>
+                </table>
+                
     
-                                 
-                                </tr>
-                            </thead>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" id="btn">
+        <div>
+            <button (click)="closeDialog()" type="button" class="btn btn-sm btn-danger"><i class="fa fa-check"></i></button>
+        </div>
+    </div>
+  
+</div>
 
-                            <tbody>
-                                <tr *ngFor="let inv of data1">
-                                    <td>{{inv.sanPham}}</td>
-                                    <td>{{inv.soluong}}</td>
-                                    <td>{{inv.donGia}}</td>
-                                  
-                                    
+
+
+                        <style>
+                            #btn {
                                
-                                </tr>
-                                
-           
-                            </tbody>
-                        </table>
-                        <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-check"></i></button>
+                              
+                                display: flex;
+                                justify-content: flex-end;
+                            }
+                            button {
+                                margin-right: 20px;
+                            }
+                        </style> 
+

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { InvoiceService } from '../../invoice/invoice.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogService } from '../../dialog.service';
 
 @Component({
   selector: 'app-invoice-detail-dialog',
@@ -9,14 +10,22 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class InvoiceDetailDialogComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) private data:any,private invser:InvoiceService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) private data:any,
+                                        private invser:InvoiceService,
+                                        private dialogR:DialogService,
+                                        ) { }
 
   data1:any;
   ngOnInit(): void {
-    console.log(this.data.id);
-    this.invser.getInvoiceDetail(2).subscribe(data=>{
+
+    this.invser.getInvoiceDetail(this.data.id).subscribe(data=>{
       this.data1=data;
     });
   }
 
+  closeDialog()
+  {
+ 
+   this.dialogR.closeDialog(this.data.id);
+  }
 }

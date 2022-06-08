@@ -6,6 +6,8 @@ import { CategoryService } from '../category.service';
 import { DialogService } from '../dialog.service';
 import { InvoiceService } from './invoice.service';
 
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-invoice',
@@ -15,21 +17,29 @@ import { InvoiceService } from './invoice.service';
 export class InvoiceComponent implements OnInit {
 
   public invoice:any
-  constructor(private dialogSer:DialogService, private responseIn:InvoiceService) { }
+  constructor(private dialogSer:DialogService, private responseIn:InvoiceService,private router : Router) { }
 
   ngOnInit(): void {
     this.responseIn.getAllInvoice().subscribe(data=>{
       this.invoice=data;
       console.log(data);
+      
     });
   }
 
   openDialog(id:any)
   {
-    this.responseIn.getInvoiceDetail(id).subscribe(data=>{
-      console.log(data);
-      this.dialogSer.opentDialog(data);
-    });
+
+      this.dialogSer.opentDialog(id);
+    
     
   }
+
+  reloadCurrentPage() {
+    window.location.reload();
+   }
+
+   goTo(location:string) { 
+    this.router.navigate(['/'+location]); 
+ } 
 }

@@ -8,16 +8,16 @@
                         </div>
                         <div class="card-body">
 							
-                            <form method="get" action="#" class="form-horizontal">
+                            <form [formGroup]="categoryForm" (ngSubmit)="onSubmit(categoryForm)">
 							
 									<div class="form-group">
 										<label>Tên sản phẩm</label>
-										<input type="text" placeholder="Nhập tên sản phẩm" class="form-control form-control-rounded">
+										<input type="text" placeholder="Nhập tên sản phẩm" class="form-control form-control-rounded" formControlName="name">
 									</div>
 								
                                     <div class="form-group">
                                         <label>Loại sản phẩm</label>
-                                        <select name="account" class="form-control m-b">
+                                        <select name="account" class="form-control m-b" formControlName="category">
                                             <option *ngFor="let cate of category" value="{{cate.id}}">{{cate.name}}</option>
                                     
                                         </select>
@@ -27,7 +27,7 @@
                                         <label>Giá</label>
                                         <div class="input-group col-md-4">
                                             <span class="input-group-addon">VNĐ</span>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" formControlName="price">
                                           
                                         </div>     	
                                     </div>
@@ -36,12 +36,16 @@
 									
                                     <div class="form-group">
                                         <label>Số lượng</label>
-										<input type="text" class="form-control form-control-rounded col-md-4">
+										<input type="text" class="form-control form-control-rounded col-md-4" formControlName="quantity">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Mô tả</label>
-                                        <input type="text" class="form-control form-control-rounded col-md-4">
+                                        <input type="text" class="form-control form-control-rounded col-md-4" formControlName="description">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Thương hiệu</label>
+                                        <input type="text" class="form-control form-control-rounded col-md-4" formControlName="tradeMark">
                                     </div>
 
                                     <div class="form-group">
@@ -51,18 +55,13 @@
 											<span class="btn btn-primary  btn-file">
 												<span class="fileinput-new">Select</span>
 												<span class="fileinput-exists">Change</span>
-												<input type="file" id="image" name="image">
+												<input type="file" id="image" name="image" formControlName="image">
 											</span>
 											<a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remove</a>
 										</div>
 									</div>
 
-									
-                                   
-
-                
-                          
-									<a href="#" class="btn btn-success btn-icon"><i class="fa fa-floppy-o "></i>Save</a>
+									<button type="submit" class="btn btn-success btn-icon"><i class="fa fa-floppy-o "></i>Save</button>
 									<a href="#" class="btn btn-warning btn-icon"><i class="fa fa-reply"></i>Back</a>
 									<a href="#" class="btn btn-danger btn-icon"><i class="fa fa-times"></i>Cancel</a>		
 														
