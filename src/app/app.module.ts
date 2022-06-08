@@ -9,20 +9,30 @@ import { FormsModule } from '@angular/forms';
 
 
 import { HttpClientModule } from '@angular/common/http';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmComponent } from './dashboard/dialog/confirm/confirm.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthLayoutComponent,
-    DashboardLayoutComponent
+    DashboardLayoutComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ConfirmComponent]
+  
 })
 export class AppModule { }

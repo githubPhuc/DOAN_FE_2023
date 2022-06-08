@@ -1,4 +1,11 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { CategoryService } from '../category.service';
+import { DialogService } from '../dialog.service';
+import { InvoiceService } from './invoice.service';
+
 
 @Component({
   selector: 'app-invoice',
@@ -7,9 +14,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvoiceComponent implements OnInit {
 
-  constructor() { }
+  public invoice:any
+  constructor(private dialogSer:DialogService, private responseIn:InvoiceService) { }
 
   ngOnInit(): void {
+    this.responseIn.getAllInvoice().subscribe(data=>{
+      this.invoice=data;
+      console.log(data);
+    });
   }
 
+  openDialog(id:any)
+  {
+    this.responseIn.getInvoiceDetail(id).subscribe(data=>{
+      console.log(data);
+      this.dialogSer.opentDialog(data);
+    });
+    
+  }
 }

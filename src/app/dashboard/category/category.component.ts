@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryModel } from 'src/app/category-model';
 import { CategoryService } from '../category.service';
+import { DialogService } from '../dialog.service';
 
 @Component({
   selector: 'app-category',
@@ -11,7 +12,8 @@ import { CategoryService } from '../category.service';
 
 export class CategoryComponent implements OnInit {
 
-  constructor(private responseCate:CategoryService) { }
+  constructor(private responseCate:CategoryService,
+              private ress:DialogService) { }
 
 
 

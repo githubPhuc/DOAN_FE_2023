@@ -43,10 +43,6 @@ const routes: Routes = [
   {
     path: 'invoice',
     component: InvoiceComponent
-  },
-  {
-    path: 'invoice/create',
-    component: ProCreateComponent
   }
 ];
 

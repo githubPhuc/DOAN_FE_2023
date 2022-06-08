@@ -7,6 +7,8 @@ import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 import { ProCreateComponent } from './product/pro-create/pro-create.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/invoice-detail-dialog.component';
+
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { InvoiceComponent } from './invoice/invoice.component';
     CategoryComponent,
     ProductComponent,
     ProCreateComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    InvoiceDetailDialogComponent,
+
   ],
   imports: [
     CommonModule,
