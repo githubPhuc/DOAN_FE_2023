@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DialogService } from 'src/app/dashboard/dialog.service';
 
 
 
@@ -10,10 +12,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private dialog:DialogService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('role')=='')
+    {
+      this.router.navigate(['/'+'shop']); 
+    }
+  }
+
+ public logOut()
+  {
+    this.dialog.openDialogConfirm('Bạn có muốn đăng xuất ?');
     
+
   }
   
 }

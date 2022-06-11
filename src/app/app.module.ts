@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { ShopLayoutComponent } from './layouts/shop-layout/shop-layout.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmComponent } from './dashboard/dialog/confirm/confirm.component';
+import { CommonModule } from '@angular/common';
+
 
 
 
@@ -20,7 +22,9 @@ import { ConfirmComponent } from './dashboard/dialog/confirm/confirm.component';
     AppComponent,
     AuthLayoutComponent,
     DashboardLayoutComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    ShopLayoutComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,6 +34,8 @@ import { ConfirmComponent } from './dashboard/dialog/confirm/confirm.component';
     NoopAnimationsModule,
     MatDialogModule,
     ReactiveFormsModule,
+    CommonModule,
+    BrowserModule,
     
   ],
   providers: [],

@@ -1,15 +1,28 @@
-<h2 mat-dialog-title>Delete all elements?</h2>
-<mat-dialog-content class="abc">This will delete all elements that are currently on this page and cannot be undone.</mat-dialog-content>
-<mat-dialog-actions>
-    <div class="action-container ">
-        <button mat-button mat-dialog-close>Cancel</button>
-        <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-        <button mat-button [mat-dialog-close]="true">Delete</button>
-    </div>
-
-</mat-dialog-actions>
+<header>
+    <h2>{{msg}}</h2>
+</header>
+<footer>
+    <button class="btn btn-sm btn-success" style="border-radius: 5px;" (click)="accept()">Đồng ý</button>&nbsp;&nbsp;
+    <button  class="btn btn-sm btn-danger" style="border-radius: 5px;" (click)="cancel()">Huỷ</button>
+</footer>
 
 <style>
+    header {
+        display: flex;
+        justify-content: center;
+        color: dodgerblue;
+    }
 
-
+    footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 60px;
+        
+        
+    }
+    button {
+        
+    }
+  
+  
 </style>

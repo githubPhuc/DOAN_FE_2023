@@ -71,7 +71,7 @@
 										
 										<div class="scrollDiv">
 											<div class="notification-list">
-												<a class="clearfix" href="javascript:%20void(0);">
+												<button (click)="logOut()">
 													<span class="notification-icon">
 														<img alt="" class="rounded-circle" src="../../../assets/img/avtar-2.png" width="50">
 													</span> 
@@ -81,9 +81,9 @@
 													</span> 
 													<span class="notification-description">Lorem Ipsum is simply dummy text of the printing.</span> 
 													<span class="notification-time">15 minutes ago</span>
-												</a>
+												</button>
 												
-												<a class="clearfix" href="javascript:%20void(0);">
+												<a class="clearfix" >
 													<span class="notification-icon">
 													<img alt="" class="rounded-circle" src="../../../assets/img/avtar-3.png" width="50">
 													</span> 
@@ -95,7 +95,7 @@
 													<span class="notification-time">15 minutes ago</span>
 												</a> 
 												
-												<a class="clearfix" href="javascript:%20void(0);">
+												<a class="clearfix">
 													<span class="notification-icon">
 													<img alt="" class="rounded-circle" src="../../../assets/img/avtar-4.png" width="50">
 													</span> 
@@ -129,7 +129,7 @@
 								<a class="right-sidebar-toggle d-none-m" href="javascript:%20void(0);"><i class="fa fa-align-right"></i></a>
 							</li>
 							<li class="dropdown avtar-dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+								<a class="dropdown-toggle" data-toggle="dropdown"(click)="logOut()">
 									<img alt="" class="rounded-circle" src="../../../assets/img/avtar-2.png" width="30">
 									John Doe
 								</a>
@@ -265,7 +265,7 @@
                         
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-envelope-open"></i> <span class="toggle-none">Quản lý hoá đơn<span class="fa arrow"></span></span></a>
+                            <a class="nav-link" [routerLink]="['/admin/invoice']" aria-expanded="false"><i class="fa fa-envelope-open"></i> <span class="toggle-none">Quản lý hoá đơn<span class="fa arrow"></span></span></a>
                             <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
                                 <li class="nav-item"><a class="nav-link" href="mail-index.html">Danh sách hoá đơn</a></li>
                                 <li class="nav-item"><a class="nav-link" href="mail-view.html">Thống kê</a></li>
@@ -304,6 +304,14 @@
 	
 						<li class="nav-item">
                             <a class="nav-link"  href="javascript: void(0);" aria-expanded="false"><i class="fa fa-shopping-cart"></i> <span class="toggle-none">Khuyến mãi <span class="fa arrow"></span></span></a>
+                            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
+								<li class="nav-item"><a class="nav-link" href="ecommerce-add.html">Add Product</a></li>
+                                <li class="nav-item"><a class="nav-link" href="ecommerce-products.html">All Products</a></li>
+                                <li class="nav-item"><a class="nav-link" href="ecommerce-orders.html">Orders</a></li>
+                            </ul>
+                        </li>
+						<li class="nav-item">
+                            <a class="nav-link"  href="javascript: void(0);" aria-expanded="false"><i class="fa fa-lock"></i> <span class="toggle-none">Khuyến mãi <span class="fa arrow"></span></span></a>
                             <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
 								<li class="nav-item"><a class="nav-link" href="ecommerce-add.html">Add Product</a></li>
                                 <li class="nav-item"><a class="nav-link" href="ecommerce-products.html">All Products</a></li>

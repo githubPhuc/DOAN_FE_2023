@@ -1,72 +1,73 @@
-<div class="alert bg-success alert-dismissible " hidden="true" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Success!</strong> Product successfully added. </div>
+<div class="alert bg-success alert-dismissible " hidden="true" role="alert"> <button type="button" class="close"
+        data-dismiss="alert" aria-label="Close"><span>×</span></button> <strong>Success!</strong>
+    Product successfully added. </div>
 
-            <div class="row">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header card-default">
-							Thêm sản phẩm
-                        </div>
-                        <div class="card-body">
-							
-                            <form [formGroup]="categoryForm" (ngSubmit)="onSubmit(categoryForm)">
-							
-									<div class="form-group">
-										<label>Tên sản phẩm</label>
-										<input type="text" placeholder="Nhập tên sản phẩm" class="form-control form-control-rounded" formControlName="name">
-									</div>
-								
-                                    <div class="form-group">
-                                        <label>Loại sản phẩm</label>
-                                        <select name="account" class="form-control m-b" formControlName="category">
-                                            <option *ngFor="let cate of category" value="{{cate.id}}">{{cate.name}}</option>
-                                    
-                                        </select>
-								
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Giá</label>
-                                        <div class="input-group col-md-4">
-                                            <span class="input-group-addon">VNĐ</span>
-                                            <input type="text" class="form-control" formControlName="price">
-                                          
-                                        </div>     	
-                                    </div>
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header card-default">
+                Thêm sản phẩm
+            </div>
+            <div class="card-body">
 
-                            
-									
-                                    <div class="form-group">
-                                        <label>Số lượng</label>
-										<input type="text" class="form-control form-control-rounded col-md-4" formControlName="quantity">
-                                    </div>
+                <form [formGroup]="categoryForm" (ngSubmit)="onSubmit(categoryForm)">
 
-                                    <div class="form-group">
-                                        <label>Mô tả</label>
-                                        <input type="text" class="form-control form-control-rounded col-md-4" formControlName="description">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Thương hiệu</label>
-                                        <input type="text" class="form-control form-control-rounded col-md-4" formControlName="tradeMark">
-                                    </div>
+                    <div class="form-group">
+                        <label>Tên sản phẩm</label>
+                        <input type="text" placeholder="Nhập tên sản phẩm" class="form-control form-control-rounded"
+                            formControlName="name">
+                    </div>
 
-                                    <div class="form-group">
-										<label>Hình ảnh</label>
-										<div class="fileinput-new" data-provides="fileinput">
-										  <div class="fileinput-preview" data-trigger="fileinput" style="width: 200px; height:150px;"></div>
-											<span class="btn btn-primary  btn-file">
-												<span class="fileinput-new">Select</span>
-												<span class="fileinput-exists">Change</span>
-												<input type="file" id="image" name="image" formControlName="image">
-											</span>
-											<a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remove</a>
-										</div>
-									</div>
+                    <div class="form-group">
+                        <label>Loại sản phẩm</label>
+                        <select name="account" class="form-control m-b" formControlName="category"  >
+                            <option *ngFor="let cate of category"><button (click)="call(cate.id)">{{cate.name}}</button>  </option>
+                        </select>
 
-									<button type="submit" class="btn btn-success btn-icon"><i class="fa fa-floppy-o "></i>Save</button>
-									<a href="#" class="btn btn-warning btn-icon"><i class="fa fa-reply"></i>Back</a>
-									<a href="#" class="btn btn-danger btn-icon"><i class="fa fa-times"></i>Cancel</a>		
-														
-                            </form>
+                    </div>
+                    <div class="form-group">
+                        <label>Giá</label>
+                        <div class="input-group col-md-4">
+                            <span class="input-group-addon">VNĐ</span>
+                            <input type="text" class="form-control" formControlName="price">
+
                         </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label>Số lượng</label>
+                        <input type="text" class="form-control form-control-rounded col-md-4"
+                            formControlName="quantity">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        <textarea formControlName="description">
+                   
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Thương hiệu</label>
+                        <input type="text" class="form-control form-control-rounded col-md-4"
+                            formControlName="trademark">
+                    </div>
+                    <div class="form-group">
+                        <label>Hình ảnh</label>
+                        <div class="fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-preview" data-trigger="fileinput" style="width: 200px; height:150px;">
+                            </div>
+                            <span class="btn btn-primary  btn-file">
+                                <span class="fileinput-new">Select</span>
+                                <span class="fileinput-exists">Change</span>
+                                <input type="file" id="image" name="image" formControlName="image">
+                            </span>
+                            <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remove</a>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-icon"><i class="fa fa-floppy-o "></i>Save</button>
+                    <a href="#" class="btn btn-warning btn-icon"><i class="fa fa-reply"></i>Back</a>
+                    <a href="#" class="btn btn-danger btn-icon"><i class="fa fa-times"></i>Cancel</a>
+                </form>
             </div>
+        </div>
+    </div>
+</div>

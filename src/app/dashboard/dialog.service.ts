@@ -25,6 +25,18 @@ export class DialogService {
   }
   );
 }
+openDialogConfirm(content:string)
+  {
+
+   this.dialog1.open(ConfirmComponent,{
+    height: '200px',
+    width: '400px',
+    data: {
+      'content': content
+    }
+  }
+  );
+}
 
 closeDialog(id:number)
 {

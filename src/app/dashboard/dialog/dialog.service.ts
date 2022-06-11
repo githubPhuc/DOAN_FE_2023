@@ -8,11 +8,8 @@ import { ConfirmComponent } from './confirm/confirm.component';
 })
 export class DialogService {
 
+
   constructor(private dialog:MatDialog) { }
 
-  openDialog(): void {
-    let dialogRef = this.dialog.open(ConfirmComponent, {
-      width: '250px'
-    });
-  }
+
 }

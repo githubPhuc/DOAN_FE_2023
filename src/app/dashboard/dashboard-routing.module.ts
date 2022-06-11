@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../auth/login/login.component';
+import { AccountComponent } from './account/account.component';
 import { CategoryComponent } from './category/category.component';
 import { CreateComponent } from './category/create/create.component';
 import { DashboardComponent } from './dashboard.component';
@@ -43,6 +44,11 @@ const routes: Routes = [
   {
     path: 'invoice',
     component: InvoiceComponent
+  },
+  //account
+  {
+    path: 'account',
+    component: AccountComponent
   }
 ];
 

@@ -23,11 +23,7 @@ export class CategoryService {
 		
   }
 
-  test={
-    name: 'gaming5',
-    totalProduct: 1,
-    status: true
-  }
+
   public postCategory(cate:CategoryModel){
  
     console.log(cate);

@@ -3,9 +3,26 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
+import { ShopLayoutComponent } from './layouts/shop-layout/shop-layout.component';
 
 const routes: Routes = [
   {
+    
+      path: '',
+      component: ShopLayoutComponent,
+      children: [
+        {
+          path: '',
+          redirectTo: '/shop',
+          pathMatch: 'full'
+        },
+        {
+          path: 'shop',
+          loadChildren: ()=>import('./shop/shop.module').then(m=>m.ShopModule)
+        }
+      ]
+    },
+    {
     path: '',
     component: DashboardLayoutComponent,
     children: [
@@ -35,7 +52,8 @@ const routes: Routes = [
         loadChildren: ()=>import('./auth/auth.module').then(m=>m.AuthModule)
       }
     ]
-  }
+  },
+
 ];
 
 @NgModule({

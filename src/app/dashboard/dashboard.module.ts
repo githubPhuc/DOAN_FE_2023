@@ -9,6 +9,7 @@ import { ProCreateComponent } from './product/pro-create/pro-create.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/invoice-detail-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AccountComponent } from './account/account.component';
 
 
 
@@ -20,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProCreateComponent,
     InvoiceComponent,
     InvoiceDetailDialogComponent,
+    AccountComponent,
 
   ],
   imports: [

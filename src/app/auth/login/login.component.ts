@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Login } from '../login';
 import { LoginService } from '../login.service';
 
 
@@ -10,14 +13,44 @@ import { LoginService } from '../login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private httpService: LoginService) { }
+  constructor(private httpService: LoginService,private router:Router) { }
 
   ngOnInit(): void {
-    const payload={b:'ábc'};
-   this.httpService.getApi();
+ 
   }
-  testApi(){
+
+
+  loginForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+
+
+  });
+  data=new Login("","");
+  onSubmit(form:FormGroup) {
+   this.data.username=form.value.username;
+   this.data.password=form.value.password;
+   console.log(this.data);
+    this.httpService.login(this.data).subscribe(data1=>{
+      console.log(data1.role);
+      window.localStorage.setItem('token',data1.token);
+      window.localStorage.setItem('userid',data1.id);
+      window.localStorage.setItem('phone',data1.phone);
+      window.localStorage.setItem('role',data1.role);
+      window.localStorage.setItem('username',data1.username);
+      if(data1.role=='Admin')
+      {
+      this.router.navigate(['/'+'admin']);
+      }else
+      {
+      this.router.navigate(['/'+'shop']);
+      }
+    });
     
-    this.httpService.getApi();
+  }
+
+  register()
+  {
+    this.router.navigate(['/'+'auth/register']);
   }
 }
