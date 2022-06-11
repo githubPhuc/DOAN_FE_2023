@@ -23,7 +23,7 @@
                                     <td>{{inv.username}}</td>
                                     <td>{{inv.shippingAddress}}</td>
                                     <td>{{inv.phone}}</td>
-                                    <td>{{inv.date}}</td>
+                                    <td>{{inv.date | date:'dd/MM/yyyy'}}</td>
                                     <td>{{inv.total}}</td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-sm btn-success" (click)="openDialog(inv.id)"><i class="fa fa-eye"></i></button>

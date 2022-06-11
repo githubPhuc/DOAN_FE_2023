@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
 
     this.shopService.getCart(localStorage.getItem('userid')!).subscribe(data=>{
       console.log('cart',data);
+ 
     this.cart=data;
     })
   }
