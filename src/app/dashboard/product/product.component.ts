@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductService } from './product.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ProductService } from './product.service';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private responseProduct:ProductService) { }
+  constructor(private responseProduct:ProductService,private router:Router) { }
 
   product:any;
   ngOnInit(): void {
@@ -18,4 +19,14 @@ export class ProductComponent implements OnInit {
     })
   }
 
+  goToProductDetails(id:number) {
+    this.router.navigate(['admin/product/pro-detail', id]);
+  }
+
+
+
+  goToProductEdit(id:number) {
+    alert("ok");
+    this.router.navigate(['admin/product/pro-edit', id]);
+  }
 }

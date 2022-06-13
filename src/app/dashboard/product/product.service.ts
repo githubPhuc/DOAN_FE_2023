@@ -22,29 +22,38 @@ export class ProductService {
        })});
       
     }
+
+    public getProduct(id:number)
+    {
+      return this.httpClient
+        .get<any>('https://localhost:7043/api/product/detail?id='+id.toString(),{headers: new HttpHeaders({ 
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4wMSIsImp0aSI6ImRhMGE5MzI3LWYxN2QtNDE0MC05NTE0LWExYjMyZTg2YmU4YyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNjU0NjEyODUwLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDQzIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA0MyJ9.n4s7oCH105xo8Zz-6tGwCjgNknunOVvST3o3X7s7Q3o'
+       })});
+      
+    }
     //
     dt={
         name: 'Abc',
         description: 'Acb',
-        price: 1111,
-        quantity: 1111,
-        categoryId: 2,
-        tradeMark: 'Sony',
-        star: 5,
-        status: true,
-        saleprice:0,
-        imagefile:null
+        price: 10000000,
+        trademark:'Sony',
+        categoryid:1
+  
+    
 
    
 
     }
-    public postProduct()
+    url='?name='+this.dt.name+'&description='+this.dt.description+'&price='+this.dt.price.toString()+'&trademark='+this.dt.trademark+'&categoryid='+this.dt.categoryid.toString()+'&quantily=1&status=true';
+    public postProduct(data:ProductModel,img:FormData)
     {
-      console.log(this.dt)
+     
+      console.log('áaaaaaaaaa',data);
       return this.httpClient
-        .post<any>('https://localhost:7043/api/product/create',this.dt,{headers: new HttpHeaders({ 
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4wMSIsImp0aSI6ImRhMGE5MzI3LWYxN2QtNDE0MC05NTE0LWExYjMyZTg2YmU4YyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNjU0NjEyODUwLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDQzIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA0MyJ9.n4s7oCH105xo8Zz-6tGwCjgNknunOVvST3o3X7s7Q3o'
+        .post<any>('https://localhost:7043/api/product/postproduct1',data,{headers: new HttpHeaders({ 
+          'Content-Type': 'application/json'
+         
        })});
       
     }

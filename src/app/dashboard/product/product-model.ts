@@ -1,13 +1,18 @@
 export class ProductModel {
     constructor(
-        public name:string,
-        public description:string,
-        public price:number,
-        public categoryid:number,
-        public quantity:number,
-        public trademark:string,
-        public star:number,
-        public image:File,
-        public status:boolean
+        public Name:string,
+        public Description:string,
+        public Price:number,
+        public Quantily: number,
+        public CategoryId: number,
+        public TradeMark: string,
+        public Star:number,
+        public CPU:string,
+        public DesignStyle:string,
+        public Monitor:string,
+        public Ram:string,
+        public SizeWeight:string,
+        public VGA:string
+
     ){}
 }

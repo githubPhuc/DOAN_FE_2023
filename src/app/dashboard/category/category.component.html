@@ -3,9 +3,9 @@
   <form [formGroup]="categoryForm" (ngSubmit)="onSubmit(categoryForm)">
 						
     <div class="form-group">
-        <label>Tên sản phẩm</label>
+        <label>Tên danh mục</label>
         <div class="sr1">	
-        <input type="text" placeholder="Nhập tên sản phẩm" class="form-control form-control-rounded"  id="name"  formControlName="name">
+        <input type="text" placeholder="Nhập tên danh mục" class="form-control form-control-rounded"  id="name"  formControlName="name">
         <button class="btn btn-success btn-icon" type="submit" [disabled]="!categoryForm.valid"><i class="fa fa-floppy-o "></i>Save</button>
     </div>
 
@@ -61,8 +61,8 @@
            
             <td class="text-center">
                 <button type="button" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></button>&nbsp;
-                <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>&nbsp;
-                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                <button (click)="edit(cate.id)" type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>&nbsp;
+                <button (click)="deleteCategory(cate.id)" type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
     

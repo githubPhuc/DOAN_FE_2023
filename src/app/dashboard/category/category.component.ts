@@ -38,14 +38,14 @@ export class CategoryComponent implements OnInit {
   }
 
   //them danh muc
-  cate=new CategoryModel("Gaming7",1,true);
+  cate=new CategoryModel(0,"Gaming7",1,true);
 
 
 
 
-  deleteCategory()
+  deleteCategory(id:number)
   {
-    this.responseCate.deleteCategory(3)
+    this.responseCate.deleteCategory(id)
       .subscribe(data => {
         console.log(data)
       }); 
@@ -70,7 +70,7 @@ export class CategoryComponent implements OnInit {
        
       }); 
 
-      window.location.reload();
+      //window.location.reload();
   }
 
 
@@ -80,5 +80,15 @@ export class CategoryComponent implements OnInit {
     window.localStorage.clear();
     this.router.navigate(['/'+'auth/login']); 
 
+  }
+
+  public edit(id:number)
+  {
+    this.ress.openDialogEditCate(id);
+  }
+
+  public delete(id:number)
+  {
+    this.ress.openDialogEditCate(id);
   }
 }

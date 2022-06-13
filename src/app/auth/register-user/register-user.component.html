@@ -28,6 +28,13 @@
                             <div class="misc-box">   
                                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
                                     <div class="form-group">                                      
+                                        <label  for="exampleuser1">Tên đầy đủ</label>
+                                        <div class="group-icon">
+                                        <input id="txtUsername" class="form-control" type="text" name="" id="username"  formControlName="fullName">
+                                        <span class="icon-user text-muted icon-input"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">                                      
                                         <label  for="exampleuser1">Username</label>
                                         <div class="group-icon">
                                         <input id="txtUsername" class="form-control" type="text" name="" id="username"  formControlName="username">
@@ -52,6 +59,13 @@
                                         <label for="exampleInputPassword1">Phone</label>
                                         <div class="group-icon">
                                         <input id="txtPassword" class="form-control" type="text" name="" id="phone"  formControlName="phone">
+                                        <span class="icon-lock text-muted icon-input"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Địa chỉ</label>
+                                        <div class="group-icon">
+                                        <input id="txtPassword" class="form-control" type="text" name="" id="phone"  formControlName="address">
                                         <span class="icon-lock text-muted icon-input"></span>
                                         </div>
                                     </div>

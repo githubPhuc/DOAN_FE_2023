@@ -22,7 +22,7 @@
                 <!-- Start Cart Table -->
                 <div class="table-content table-responsive cart-table-content m-t-30">
                     <table>
-                        <thead class="gray-bg" >
+                        <thead class="gray-bg">
                             <tr>
                                 <th>Image</th>
                                 <th>Product Name</th>
@@ -35,10 +35,12 @@
                         <tbody>
                             <tr *ngFor="let c of cart">
                                 <td class="product-thumbnail">
-                                    <a href="#"><img class="img-fluid" src="../../../assets/img/product/{{c.image}}" alt=""></a>
+                                    <a (click)="goToProductDetails(c.idSanPham)"><img class="img-fluid" src="../../../assets/img/product/{{c.image}}"
+                                            alt=""></a>
                                 </td>
-                                <td class="product-name"><a href="#">{{c.tenSanPham}}</a></td>
-                                <td class="product-price-cart"><span class="amount">{{c.giaSanPham | currency:'VND'}}</span></td>
+                                <td class="product-name"><a (click)="goToProductDetails(c.idSanPham)">{{c.tenSanPham}}</a></td>
+                                <td class="product-price-cart"><span class="amount">{{c.giaSanPham |
+                                        currency:'VND'}}</span></td>
                                 <td class="product-quantities">
                                     <div class="quantity d-inline-block">
                                         <input type="number" min="1" step="1" value="{{c.soLuong}}">
@@ -46,109 +48,57 @@
                                 </td>
                                 <td class="product-subtotal">{{c.gia | currency:'VND'}}</td>
                                 <td class="product-remove">
-                                    <a href="#"><i class="fa fa-pencil-alt"></i></a>
-                                    <a href="#"><i class="fa fa-times"></i></a>
+                                    <a (click)="removeCart(c.id)"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
-                       
+
                         </tbody>
                     </table>
-                </div>  <!-- End Cart Table -->
-                 <!-- Start Cart Table Button -->
-                <div class="cart-table-button m-t-10">
+                </div> <!-- End Cart Table -->
+                <!-- Start Cart Table Button -->
+                <div *ngIf="!isempty" class="cart-table-button m-t-10">
                     <div class="cart-table-button--left">
-                        <a href="#" class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">CONTINUE SHOPPING</a>
+                        <a href="#" class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">CONTINUE
+                            SHOPPING</a>
                     </div>
                     <div class="cart-table-button--right">
-                        <a href="#" class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20 m-r-20">UPDATE SHOPPING CART</a>
-                        <a href="#" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20">Clear Shopping Cart</a>
+                        <a (click)="removeAllCart()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20">XOÁ TOÀN BỘ GIỎ HÀNG</a>
+                        <a href="#"
+                            class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20 m-r-20">CẬP NHẬT GIỎ HÀNG</a>
+                        <a (click)="order()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20">ĐẶT HÀNG</a>
                     </div>
-                </div>  <!-- End Cart Table Button -->
+                </div>
+                <div *ngIf="isempty" class="content">
+                    <div class="row" id="cart-content-text">
+                        <h1>Không có gì trong giỏ hàng</h1>
+
+                    </div>
+                    <div class="row" id="cart-content">
+                        <div><i class="fa fa-ban fa-10x" aria-hidden="true"></i></div>
+                    </div> <!-- End Cart Table Button -->
+                </div>
             </div>
-            
+
         </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="sidebar__widget gray-bg m-t-40">
-                    <div class="sidebar__box">
-                        <h5 class="sidebar__title">Estimate Shipping And Tax</h5>
-                    </div>
-                    <span>Enter your destination to get a shipping estimate.</span>
-                    <form action="#" method="post" class="form-box">
-                        <div class="form-box__single-group">
-                            <label for="form-country">* Country</label>
-                            <select id="form-country">
-                                <option value="BD" selected>Bangladesh</option>
-                                <option value="US">USA</option>
-                                <option value="UK">UK</option>
-                                <option value="TR">Turkey</option>
-                                <option value="CA">Canada</option>
-                            </select>
-                        </div>
-                        <div class="form-box__single-group">
-                            <label for="form-state">* Region / State</label>
-                            <select id="form-state">
-                                <option value="Dha" selected>Dhaka</option>
-                                <option value="Kha">Khulna</option>
-                                <option value="Raj">Rajshahi</option>
-                                <option value="Syl">Sylet</option>
-                                <option value="Chi">Chittagong</option>
-                            </select>
-                        </div>
-                        <div class="form-box__single-group">
-                            <label for="form-zipcode">* Zip/Postal Code</label>
-                            <input type="text" id="form-zipcode">
-                        </div>
-                        <div class="from-box__buttons m-t-25">
-                            <button class="btn btn--box btn--small btn--blue btn--uppercase btn--weight" type="submit">GET A QUOTE</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="sidebar__widget gray-bg m-t-40">
-                    <div class="sidebar__box">
-                        <h5 class="sidebar__title">Use Coupon Code</h5>
-                    </div>
-                    <span>Enter your coupon code if you have one.</span>
-                    <form action="#" method="post" class="form-box">
-                        <div class="form-box__single-group">
-                            <label for="form-coupon">*Enter Coupon Code</label>
-                            <input type="text" id="form-coupon">
-                        </div>
-                        <div class="from-box__buttons m-t-25">
-                            <button class="btn btn--box btn--small btn--blue btn--uppercase btn--weight" type="submit">Apply Coupon</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="sidebar__widget gray-bg m-t-40">
-                    <div class="sidebar__box">
-                        <h5 class="sidebar__title">Cart Total</h5>
-                    </div>
-                    <h6 class="total-cost">Total products Price<span>$260.00</span></h6>
-                    <div class="total-shipping">
-                        <span>Total shipping</span>
-                        <ul class="shipping-cost m-t-10">
-                            <li>
-                                <label for="ship-standard">
-                                    <input type="radio" class="shipping-select" name="shipping-cost" value="Standard" id="ship-standard" checked><span>Standard</span>
-                                </label>
-                                <span class="ship-price">$20.00</span>
-                            </li>
-                            <li>
-                                <label for="ship-express">
-                                    <input type="radio" class="shipping-select" name="shipping-cost" value="Express" id="ship-express"><span>Express</span>
-                                </label>
-                                <span class="ship-price">$30.00</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <h4 class="grand-total m-tb-25">Grand Total <span>$260.00</span></h4>
-                    <button class="btn btn--box btn--small btn--blue btn--uppercase btn--weight" type="submit">PROCEED TO CHECKOUT</button>
-                </div>
-            </div>
-        </div>
+
     </div>
 </main>
+
+<style>
+    #cart-content-text {
+        opacity: 50%;
+        padding-top: 30px;
+        font-size: large;
+        color: grey;
+        justify-content: center;
+    }
+
+    #cart-content {
+        opacity: 50%;
+        padding-top: 30px;
+        font-size: large;
+        height: 300px;
+        color: grey;
+        justify-content: center;
+    }
+</style>

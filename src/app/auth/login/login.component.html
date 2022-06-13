@@ -41,6 +41,7 @@
                                         <span class="icon-lock text-muted icon-input"></span>
                                         </div>
                                     </div>
+                                    <small *ngIf="!loginSus" style="color: red;">Tên tài khoản hoặc mật khẩu không đúng</small>
                                     <div class="clearfix">
                                         <div class="float-left">
                                            <div class="checkbox checkbox-primary margin-r-5">
@@ -57,9 +58,7 @@
                                     <button (click)="register()" class="btn btn-block btn-success btn-rounded box-shadow">Register Now</button>
                                 </form>
                             </div>
-                            <div class="text-center misc-footer">
-                               <p>Copyright &copy; 2018 FixedPlus</p>
-                            </div>
+                      
                         </div>
                     </div>
                 </div>

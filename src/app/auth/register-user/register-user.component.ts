@@ -18,15 +18,17 @@ export class RegisterUserComponent implements OnInit {
   }
 
   registerForm = new FormGroup({
+    fullName: new FormControl(''),
     username: new FormControl(''),
     password: new FormControl(''),
     email:new FormControl(''),
     phone:new FormControl(''),
+    address:new FormControl(''),
 
 
   });
 
-  regis=new RegisterModel("","","","");
+  regis=new RegisterModel("","","","","","");
   onSubmit(form:FormGroup)
   {
     console.log('data',form.value);
@@ -35,6 +37,8 @@ export class RegisterUserComponent implements OnInit {
     this.regis.password=form.value.password;
     this.regis.email=form.value.email;
     this.regis.phone=form.value.phone;
+    this.regis.fullName=form.value.fullName;
+    this.regis.shippingAddress=form.value.address;
     console.log(this.regis);
     this.loginservice.register(this.regis).subscribe(data=>{
       if(data.status=='Success')

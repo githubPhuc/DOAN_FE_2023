@@ -24,4 +24,14 @@ export class AccountComponent implements OnInit {
     });
   }
 
+  lockAccount(id:string)
+  {
+    this.accountService.lockAccount(id).subscribe(data=>{
+      if(data.status==200)
+      {
+        alert(data.msg);
+      }
+    })
+  }
+
 }

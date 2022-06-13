@@ -24,6 +24,9 @@
                 <strong>Loại tài khoản</strong>
             </th>
             <th>
+                <strong>Trạng thái</strong>
+            </th>
+            <th>
                 <strong>Action</strong>
             </th>
         </tr>
@@ -39,8 +42,11 @@
             <td>{{acc.email}}</td>
             <td>{{acc.phone}}</td>
             <td>{{acc.accoutType}}</td>
+            <td *ngIf="acc.isLocked">Đã khoá</td>
+            <td *ngIf="!acc.isLocked">Hoạt động</td>
             <td class="text-center">
-                <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-lock"></i></button>&nbsp;
+                <button *ngIf="!acc.isLocked" (click)="lockAccount(acc.id)" type="button" class="btn btn-sm btn-warning"><i  class="fa fa-lock"></i></button>
+                <button *ngIf="acc.isLocked" (click)="lockAccount(acc.id)" type="button" class="btn btn-sm btn-success"><i  class="fa fa-unlock-alt" aria-hidden="true"></i></button>&nbsp;
                 <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
             </td>
         </tr>

@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import {MatDialog, MatDialogConfig, MatDialogModule, MatDialogRef, _closeDialogVia} from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { AddCommentComponent } from './dialog/add-comment/add-comment.component';
 import { ConfirmComponent } from './dialog/confirm/confirm.component';
+import { EditCategoryComponent } from './dialog/edit-category/edit-category.component';
 import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/invoice-detail-dialog.component';
+import { RepCommentComponent } from './dialog/rep-comment/rep-comment.component';
 
 
 
@@ -10,7 +14,7 @@ import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/inv
 })
 export class DialogService {
 
-  constructor(private dialog1:MatDialog) { }
+  constructor(private dialog1:MatDialog,private router:Router) { }
 
 
   opentDialog(id:number)
@@ -37,13 +41,54 @@ openDialogConfirm(content:string)
   }
   );
 }
+openDialogEditCate(id:number)
+  {
 
-closeDialog(id:number)
+   this.dialog1.open(EditCategoryComponent,{
+    height: '150px',
+    width: '400px',
+    data: {
+      'id': id
+    }
+  }
+  );
+}
+
+openDialogAddComment(id:number)
+  {
+
+   this.dialog1.open(AddCommentComponent,{
+    height: '400px',
+    width: '800px',
+    data: {
+      'id': id
+    }
+  }
+  );
+}
+
+openDialogRepComment(id:number,cmt:number)
+  {
+    alert(cmt);
+   this.dialog1.open(RepCommentComponent,{
+    height: '400px',
+    width: '800px',
+    data: {
+      'id': id,
+      'cmt':cmt
+    }
+  }
+  );
+}
+
+closeDialog()
 {
 
  this.dialog1.closeAll();
 
 }
+
+
 
 }
 

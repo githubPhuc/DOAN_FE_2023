@@ -3,10 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../auth/login/login.component';
 import { AccountComponent } from './account/account.component';
 import { CategoryComponent } from './category/category.component';
-import { CreateComponent } from './category/create/create.component';
+import { CommentComponent } from './comment/comment.component';
 import { DashboardComponent } from './dashboard.component';
+import { InvoiceConfirmComponent } from './invoice/invoice-confirm/invoice-confirm.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { ProCreateComponent } from './product/pro-create/pro-create.component';
+import { ProDetailComponent } from './product/pro-detail/pro-detail.component';
+import { ProEditComponent } from './product/pro-edit/pro-edit.component';
 import { ProductComponent } from './product/product.component';
 
 const routes: Routes = [
@@ -27,14 +30,17 @@ const routes: Routes = [
       component: CategoryComponent
    
   },
-  {
-    path: 'category/create',
-    component: CreateComponent
-  },
   //product
   {
     path: 'product',
     component: ProductComponent
+  },{
+    path: 'product/pro-detail/:id',
+    component: ProDetailComponent
+  },
+  {
+    path: 'product/pro-edit/:id',
+    component: ProEditComponent
   },
   {
     path: 'product/create',
@@ -44,11 +50,19 @@ const routes: Routes = [
   {
     path: 'invoice',
     component: InvoiceComponent
+  },{
+    path: 'invoice/confirm',
+    component: InvoiceConfirmComponent
   },
   //account
   {
     path: 'account',
     component: AccountComponent
+  },
+  //comment
+  {
+    path: 'comment',
+    component: CommentComponent
   }
 ];
 

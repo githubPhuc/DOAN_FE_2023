@@ -20,8 +20,8 @@
 
                     <div class="form-group">
                         <label>Loại sản phẩm</label>
-                        <select name="account" class="form-control m-b" formControlName="category"  >
-                            <option *ngFor="let cate of category"><button (click)="call(cate.id)">{{cate.name}}</button>  </option>
+                        <select name="account" class="form-control m-b" formControlName="categoryId"  >
+                            <option *ngFor="let cate of category" id="{{cate.id}}" >{{cate.name}} </option>
                         </select>
 
                     </div>
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <label>Số lượng</label>
                         <input type="text" class="form-control form-control-rounded col-md-4"
-                            formControlName="quantity">
+                            formControlName="quantily">
                     </div>
 
                     <div class="form-group">
@@ -48,7 +48,37 @@
                     <div class="form-group">
                         <label>Thương hiệu</label>
                         <input type="text" class="form-control form-control-rounded col-md-4"
-                            formControlName="trademark">
+                            formControlName="tradeMark">
+                    </div>
+                    <div class="form-group">
+                        <label>CPU</label>
+                        <input type="text" class="form-control form-control-rounded col-md-4"
+                            formControlName="cpu" >
+                    </div>
+                    <div class="form-group">
+                        <label>Kiểu thiết kế</label>
+                        <input type="text" class="form-control form-control-rounded col-md-4"
+                            formControlName="designStyle" >
+                    </div>
+                    <div class="form-group">
+                        <label>Màn hình</label>
+                        <input type="text" class="form-control form-control-rounded col-md-4"
+                            formControlName="monitor" >
+                    </div>
+                    <div class="form-group">
+                        <label>RAM</label>
+                        <input type="text" class="form-control form-control-rounded col-md-4"
+                            formControlName="ram" >
+                    </div>
+                    <div class="form-group">
+                        <label>Kích thước - cân nặng</label>
+                        <input type="text" class="form-control form-control-rounded col-md-4"
+                            formControlName="sizeWeight" >
+                    </div>
+                    <div class="form-group">
+                        <label>Card đồ hoạ (VGA)</label>
+                        <input type="text" class="form-control form-control-rounded col-md-4"
+                            formControlName="vga" >
                     </div>
                     <div class="form-group">
                         <label>Hình ảnh</label>
@@ -56,9 +86,9 @@
                             <div class="fileinput-preview" data-trigger="fileinput" style="width: 200px; height:150px;">
                             </div>
                             <span class="btn btn-primary  btn-file">
-                                <span class="fileinput-new">Select</span>
-                                <span class="fileinput-exists">Change</span>
-                                <input type="file" id="image" name="image" formControlName="image">
+                        
+                                <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+                                <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
                             </span>
                             <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remove</a>
                         </div>

@@ -10,6 +10,14 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/invoice-detail-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountComponent } from './account/account.component';
+import { ProDetailComponent } from './product/pro-detail/pro-detail.component';
+import { ProEditComponent } from './product/pro-edit/pro-edit.component';
+import { EditCategoryComponent } from './dialog/edit-category/edit-category.component';
+import { InvoiceConfirmComponent } from './invoice/invoice-confirm/invoice-confirm.component';
+import { AddressInfoComponent } from './dialog/address-info/address-info.component';
+import { CommentComponent } from './comment/comment.component';
+import { AddCommentComponent } from './dialog/add-comment/add-comment.component';
+import { RepCommentComponent } from './dialog/rep-comment/rep-comment.component';
 
 
 
@@ -22,6 +30,14 @@ import { AccountComponent } from './account/account.component';
     InvoiceComponent,
     InvoiceDetailDialogComponent,
     AccountComponent,
+    ProDetailComponent,
+    ProEditComponent,
+    EditCategoryComponent,
+    InvoiceConfirmComponent,
+    AddressInfoComponent,
+    CommentComponent,
+    AddCommentComponent,
+    RepCommentComponent,
 
   ],
   imports: [
