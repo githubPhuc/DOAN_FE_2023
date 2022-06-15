@@ -27,7 +27,8 @@
     </thead>
     <tbody>
         <tr *ngFor="let pro of product">
-            <td><img src="../../../assets/img/product/{{pro.image}}" style="width: 150px" alt=""></td>
+            <td *ngIf="pro.image!=null"><img src="../../../assets/img/product/{{pro.image}}" style="width: 150px" alt=""></td>
+            <td *ngIf="pro.image==null"><img src="../../../assets/img/product/noimage.png" style="width: 150px" alt=""></td>
             <td>
                 {{pro.name}}
             </td>
@@ -37,7 +38,7 @@
             <td class="text-center">
                 <button (click)="goToProductDetails(pro.id)"  type="button" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></button>&nbsp;
                 <button (click)="goToProductEdit(pro.id)" type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>&nbsp;
-                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                <button (click)="removeProduct(pro.id)" type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
       

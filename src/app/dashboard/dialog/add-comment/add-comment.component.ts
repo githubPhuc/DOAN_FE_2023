@@ -45,4 +45,9 @@ export class AddCommentComponent implements OnInit {
     });
     console.log('data',this.data1);
   }
+
+  cancel()
+  {
+    this.dialog.closeDialog();
+  }
 }

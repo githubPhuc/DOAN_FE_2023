@@ -31,4 +31,13 @@ export class LoginService {
      
    })});
    }
+
+   public registerAdmin(data:RegisterModel)
+   {
+    return this.httpClient
+    .post<any>('https://localhost:7043/api/authenticate/register-admin',data,{headers: new HttpHeaders({ 
+      'Content-Type': 'application/json'
+     
+   })});
+   }
 }

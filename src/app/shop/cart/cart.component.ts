@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ShopService } from '../shop.service';
 
@@ -10,9 +11,12 @@ import { ShopService } from '../shop.service';
 export class CartComponent implements OnInit {
 
   constructor(private shopService:ShopService,private router:Router) { }
-
+  txt!:string;
   cart:any;
   isempty!:boolean;
+  productForm=new FormGroup({
+    txtSearch: new FormControl(''),
+  });
   ngOnInit(): void {
 
     this.shopService.getCart(localStorage.getItem('userid')!).subscribe(data=>{
@@ -53,10 +57,16 @@ export class CartComponent implements OnInit {
   removeAllCart()
   {
     this.shopService.removeAllCart(localStorage.getItem('userid')!).subscribe(data=>{
-
+      location.reload();
     });
   }
   goToProductDetails(id:number) {
     this.router.navigate(['shop/product-detail', id]);
+  }
+
+  onSubmit(form:FormGroup)
+  {
+    this.txt=form.value.txtSearch;
+    this.router.navigate(['/shop/search',this.txt],);
   }
 }

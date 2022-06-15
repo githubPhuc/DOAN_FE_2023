@@ -1,4 +1,6 @@
+import { SelectorMatcher } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DialogService } from 'src/app/dashboard/dialog.service';
 import { ShopService } from 'src/app/shop/shop.service';
@@ -16,7 +18,17 @@ export class ShopLayoutComponent implements OnInit {
   count2=0;
   username:any;
   islogin!:boolean;
+
+  lstProduct:any;
+  productForm=new FormGroup({
+    txtSearch: new FormControl(''),
+  });
   ngOnInit(): void {
+
+    if(localStorage.getItem('role')=='Admin')
+    {
+      this.router.navigate(['/admin']);
+    }
     localStorage.getItem('token')!=null?this.islogin=true:this.islogin=false;
     this.username=window.localStorage.getItem('username');
     this.shopservice.getCart(localStorage.getItem('userid')!).subscribe(data=>{
@@ -49,11 +61,15 @@ export class ShopLayoutComponent implements OnInit {
      });
 
    
-
+   
    
     
   }
-
+  search(txt:string)
+     {
+      
+      
+     }
   routing(index:string)
   {
     this.router.navigate(['/'+'auth/login']);
@@ -62,5 +78,15 @@ export class ShopLayoutComponent implements OnInit {
   {
     this.dialog.openDialogConfirm("Bạn có muốn đăng xuất");
   }
+
+
+  onSubmit(form:FormGroup)
+  {
+
+    this.shopservice.searchProduct(form.value.txtSearch).subscribe(data=>{
+      this.lstProduct=data;
+    });
+  }
+
 
 }

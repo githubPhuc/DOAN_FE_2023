@@ -78,7 +78,7 @@ onSubmit(form:FormGroup) {
   this.pro.Quantily=form.value.quantily;
   this.pro.CategoryId=1;
   this.pro.TradeMark=form.value.tradeMark;
-  this.pro.Star=form.value.description;
+  this.pro.Star=5;
   this.pro.CPU=form.value.cpu;
   this.pro.DesignStyle=form.value.designStyle;
   this.pro.Monitor=form.value.monitor;
@@ -91,12 +91,16 @@ onSubmit(form:FormGroup) {
 
   console.log('xxxxxxxxxxxxxxxxx',this.pro);
   this.responsePro.postProduct(this.pro,this.formData).subscribe(data=>{
-
+      if(data.status==200)
+      {
+        alert("Thêm thành công");
+        this.router.navigate(['/admin/product']);
+      }else{
+        alert("Vui lòng kiểm tra lại thông tin !")
+      }
   });
 
-  this.responsePro.getProduct(1).subscribe(data=>{
-    console.log(data);
-  })
+
 
 }
 

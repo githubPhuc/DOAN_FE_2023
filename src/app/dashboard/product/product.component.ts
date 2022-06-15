@@ -26,7 +26,17 @@ export class ProductComponent implements OnInit {
 
 
   goToProductEdit(id:number) {
-    alert("ok");
     this.router.navigate(['admin/product/pro-edit', id]);
+  }
+
+  removeProduct(id:number)
+  {
+    this.responseProduct.removeProduct(id).subscribe(data=>{
+      if(data.status==200)
+      {
+        alert("Xoá thành công");
+        location.replace(location.href);
+      }
+    })
   }
 }

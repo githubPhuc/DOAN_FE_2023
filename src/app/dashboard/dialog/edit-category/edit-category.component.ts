@@ -34,6 +34,7 @@ catedata=new CategoryModel(0,"",0,true);
  
     });
     this.closeDialog();
+    location.reload();
   }
 
   closeDialog()

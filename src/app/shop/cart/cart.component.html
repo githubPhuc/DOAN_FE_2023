@@ -1,3 +1,29 @@
+<div class="header__middle header__middle--style-2 p-tb-30">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-2">
+                <div class="header__logo">
+                    <a href="index.html" class="header__logo-link">
+                        <img src="../../../assets/assets/img/logo/logo-invert.jpg" alt="" class="header__logo-img">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-9 offset-lg-1">
+             
+                    <div class="col-lg-9">
+                        <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">
+                            <div class="header__search-input">
+                                <input type="search" placeholder="Enter your search key" formControlName="txtSearch">
+                                <button class=" btn--blue btn--uppercase btn--weight yellow-bg" type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+          
+             
+            </div>
+        </div>
+    </div>
+  </div> 
 <div class="page-breadcrumb">
     <div class="container">
         <div class="row">

@@ -41,7 +41,9 @@ export class WishlistComponent implements OnInit {
       if(data1.status==200)
       {
         alert("Đã thêm sản phẩm vào giỏ hàng");
+        window.location.reload();
       }
+      
     });
 
   }

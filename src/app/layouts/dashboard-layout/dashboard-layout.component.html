@@ -71,7 +71,7 @@
 											<div class="notification-list">
 												<button (click)="logOut()">
 													<span class="notification-icon">
-														<img alt="" class="rounded-circle" src="../../../assets/img/avtar-2.png" width="50">
+														<img alt="" class="rounded-circle" src="../../../assets/img/avtar-22.png" width="50">
 													</span> 
 													<span class="notification-title">
 													{{username}}
@@ -80,7 +80,8 @@
 													<span class="notification-description">Lorem Ipsum is simply dummy text of the printing.</span> 
 													<span class="notification-time">15 minutes ago</span>
 												</button>
-												
+											
+										
 												<a class="clearfix" >
 													<span class="notification-icon">
 													<img alt="" class="rounded-circle" src="../../../assets/img/avtar-3.png" width="50">
@@ -127,11 +128,14 @@
 								<a class="right-sidebar-toggle d-none-m" href="javascript:%20void(0);"><i class="fa fa-align-right"></i></a>
 							</li>
 							<li class="dropdown avtar-dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown"(click)="logOut()">
-									<img alt="" class="rounded-circle" src="../../../assets/img/avtar-2.png" width="30">
-									{{username}}
-								</a>
-						
+								<img alt="" class="rounded-circle" src="assets/img/avtar-2.png" width="30">
+								<div class="dropdown">
+									<a class="dropbtn" >{{username}}</a>
+									<div class="dropdown-content">
+									  <a href="#">Cài đặt tài khoản</a>
+									  <a (click)="logOut()">Đăng xuất</a>
+									</div>
+								  </div>
 							</li>
 						</ul>
 					</div>
@@ -250,7 +254,7 @@
                         
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" [routerLink]="['/admin/invoice']" aria-expanded="false"><i class="fa fa-envelope-open"></i> <span class="toggle-none">Quản lý hoá đơn<span class="fa arrow"></span></span></a>
+                            <a class="nav-link" [routerLink]="['/admin/invoice']" aria-expanded="false"><i class="fa fa-envelope-open"></i> <span class="toggle-none">Quản lý hoá đơn</span></a>
                             <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
                                 <li class="nav-item"><a class="nav-link" href="mail-index.html">Danh sách hoá đơn</a></li>
                                 <li class="nav-item"><a class="nav-link" href="mail-view.html">Thống kê</a></li>
@@ -259,18 +263,12 @@
                         </li>
 
                         <li class="nav-item">
-                            <a  class="nav-link" [routerLink]="['/admin/commnet']" aria-expanded="false"><i class="fa fa-cogs"></i> <span class="toggle-none">Quản lý bình luận <span class="fa arrow"></span></span></a>
+                            <a  class="nav-link" [routerLink]="['/admin/comment']" aria-expanded="false"><i class="fa fa-cogs"></i> <span class="toggle-none">Quản lý bình luận </span></a>
                             
                         </li>
                        
                         <li class="nav-item">
-                            <a class="nav-link" [routerLink]="['/admin/notification']" aria-expanded="false"><i class="fa fa-table"></i> <span class="toggle-none">Quản lý thông báo <span class="fa arrow"></span></span></a>
-                            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-                                <li class="nav-item"><a class="nav-link" href="table-basic.html">Basic Tables</a></li>
-                                <li class="nav-item"><a class="nav-link" href="table-data.html">Data Tables</a></li>
-								<li class="nav-item"><a class="nav-link" href="table-js-grid.html">JsGrid Tables</a></li>
-                                <li class="nav-item"><a class="nav-link" href="table-foo.html">Foo Tables</a></li>
-                            </ul>
+                            <a class="nav-link" [routerLink]="['/admin/import']" aria-expanded="false"><i class="fa fa-table"></i> <span class="toggle-none">Nhập hàng <span class="fa arrow"></span></span></a>
                         </li>
 						
 						<li class="nav-item">
@@ -280,28 +278,16 @@
 						
                         <li class="nav-item">
                             <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-map-marker"></i> <span class="toggle-none">Quản lý slideshow <span class="fa arrow"></span></span></a>
-                            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-                                <li class="nav-item"><a class="nav-link" href="map-vector.html">Vector map</a></li>
-                                <li class="nav-item"><a class="nav-link" href="map-google.html">Google map</a></li>
-                            </ul>
+        
                         </li>
 						
 	
 						<li class="nav-item">
                             <a class="nav-link"  href="javascript: void(0);" aria-expanded="false"><i class="fa fa-shopping-cart"></i> <span class="toggle-none">Khuyến mãi <span class="fa arrow"></span></span></a>
-                            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-								<li class="nav-item"><a class="nav-link" href="ecommerce-add.html">Add Product</a></li>
-                                <li class="nav-item"><a class="nav-link" href="ecommerce-products.html">All Products</a></li>
-                                <li class="nav-item"><a class="nav-link" href="ecommerce-orders.html">Orders</a></li>
-                            </ul>
                         </li>
 												
 						<li class="nav-item">
-                            <a class="nav-link"  href="javascript: void(0);" aria-expanded="false"><i class="fa fa-briefcase"></i> <span class="toggle-none">Corporate <span class="fa arrow"></span></span></a>
-                            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-								<li class="nav-item"><a class="nav-link" href="corporate-add.html">Add Pages</a></li>
-                                <li class="nav-item"><a class="nav-link" href="corporate-pages.html">All Pages</a></li>
-                            </ul>
+                            <a class="nav-link" [routerLink]="['/admin/supplier']" aria-expanded="false"><i class="fa fa-briefcase"></i> <span class="toggle-none">Quản lý nhà cung cấp </span></a>
                         </li>
 	
                     </ul>
@@ -371,3 +357,49 @@
 <!-- Mirrored from www.aksisweb.com/theme/fixed/layouts-1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Jul 2021 09:00:11 GMT -->
 </html>
 
+<style>
+	.dropbtn {
+  
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  padding-top: 18px;
+  margin-right: 15px;
+  border-radius: 10px;
+  color: white;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: rgb(189, 157, 228);}
+</style>

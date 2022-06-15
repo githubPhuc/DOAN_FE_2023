@@ -10,6 +10,7 @@ import { DetailProComponent } from './detail-pro/detail-pro.component';
 import {NgPipesModule} from 'ngx-pipes';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -20,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     WishlistComponent,
     ProfileComponent,
     DetailProComponent,
+    SearchComponent,
     
   ],
   imports: [

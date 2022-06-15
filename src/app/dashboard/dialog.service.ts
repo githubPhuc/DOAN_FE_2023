@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {MatDialog, MatDialogConfig, MatDialogModule, MatDialogRef, _closeDialogVia} from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddCommentComponent } from './dialog/add-comment/add-comment.component';
+import { AddImportComponent } from './dialog/add-import/add-import.component';
 import { ConfirmComponent } from './dialog/confirm/confirm.component';
 import { EditCategoryComponent } from './dialog/edit-category/edit-category.component';
 import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/invoice-detail-dialog.component';
@@ -67,9 +68,18 @@ openDialogAddComment(id:number)
   );
 }
 
+openDialogAddItem()
+  {
+
+   this.dialog1.open(AddImportComponent,{
+    height: '420px',
+    width: '600px',
+  }
+  );
+}
+
 openDialogRepComment(id:number,cmt:number)
   {
-    alert(cmt);
    this.dialog1.open(RepCommentComponent,{
     height: '400px',
     width: '800px',

@@ -55,7 +55,7 @@ export class RegisterUserComponent implements OnInit {
           this.router.navigate(['/'+'admin']);
           }else
           {
-          this.router.navigate(['/'+'shop']);
+          this.router.navigate(['/'+'shop/home']);
           }
         });;
       }

@@ -46,7 +46,32 @@
                                     .carousel-item {
                                         height: 500px;
                                     }
+                                    .carousel-inner {
+                                        height: 600px;
+                                    }
 
+                                    .product__price {
+                                        display: flex;
+                                        justify-content: space-between;
+                                    }
+                                    .product__price button i{
+                                        color: royalblue;
+                                    }
+                                    .product__price button{
+                                        padding: 10px;
+                                        border: 1px solid royalblue;
+                                        border-radius: 10px;
+                                        color: royalblue;
+                                    }
+                                    .product__price button:hover{
+                                       background-color: royalblue;
+                                       color: white;
+                                    }
+                                    .product__price button:hover #icon{
+                                       background-color: royalblue;
+                                       color: white;
+                                    }
+                                  
                                     .item img {
                                         position: absolute;
                                         top: 0;
@@ -56,6 +81,9 @@
 
                                     #btn-slideshow {
                                         width: 200px;
+                                    }
+                                    .product__price-reg {
+                                       padding-top: 5px;
                                     }
 
                                     #ctn {
@@ -86,7 +114,9 @@
                                     </div>
                                     <div class="product__price">
 
-                                        <span class="product__price-reg">Giá :{{product.price | currency:'VND'}}</span>
+                                        <span class="product__price-reg" style="font-size: 20px;">Giá :{{product.price | currency:'VND'}}</span>
+
+                                        <button (click)="addCart(product.id)"><i id="icon" class="fa fa-cart-plus" ></i> Thêm vào giỏ hàng </button>
                                     </div>
                                     <div class="info">
                                         <div class="product__desc m-t-25 m-b-30">
@@ -126,11 +156,12 @@
                                                 <ul
                                                     class="tablist tablist--style-black tablist--style-title tablist--style-gap-70 nav">
                                                     <li><a class="nav-link active" data-toggle="tab"
+                                                        href="#product-review">Reviews</a></li>
+                                                    <li><a class="nav-link" data-toggle="tab"
                                                             href="#product-desc">Description</a></li>
                                                     <li><a class="nav-link" data-toggle="tab"
                                                             href="#product-dis">Product Details</a></li>
-                                                    <li><a class="nav-link" data-toggle="tab"
-                                                            href="#product-review">Reviews</a></li>
+                                                   
                                                 </ul>
                                             </div>
                                         </div>
@@ -138,7 +169,7 @@
                                             <div class="product-details-tab-box m-t-50">
                                                 <div class="tab-content">
                                                     <!-- Start Tab - Product Description -->
-                                                    <div class="tab-pane show active" id="product-desc">
+                                                    <div class="tab-pane show " id="product-desc">
                                                         <div class="para__content">
                                                             <p class="para__text">Use the Canon VIXIA GX10 Camcorder to
                                                                 capture UHD 4K video at 60 fps, recording in MP4 to dual
@@ -218,7 +249,7 @@
                                                                         <tr>
                                                                             <td class="product-dis__title">Kích thước - cân nặng
                                                                             </td>
-                                                                            <td class="product-dis__text">{{product.designStyle}}</td>
+                                                                            <td class="product-dis__text">{{product.sizeWeight}}</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
@@ -226,7 +257,7 @@
                                                         </div>
                                                     </div> <!-- End Tab - Product Details -->
                                                     <!-- Start Tab - Product Review -->
-                                                    <div class="tab-pane product-review" id="product-review">
+                                                    <div class="tab-pane show active product-review" id="product-review">
                                                         <!-- Start - Review Comment -->
                                                         <ul class="comment">
                                                             <!-- Start - Review Comment list-->
@@ -241,23 +272,14 @@
                                                                             <div class="comment__content-left">
                                                                                 <h6 class="comment__name">
                                                                                     {{cmt.tenNguoiDung}}</h6>
-                                                                                <ul class="product__review">
-                                                                                    <li class="product__review--fill"><i
-                                                                                            class="icon-star"></i></li>
-                                                                                    <li class="product__review--fill"><i
-                                                                                            class="icon-star"></i></li>
-                                                                                    <li class="product__review--fill"><i
-                                                                                            class="icon-star"></i></li>
-                                                                                    <li class="product__review--fill"><i
-                                                                                            class="icon-star"></i></li>
-                                                                                    <li class="product__review--blank">
-                                                                                        <i class="icon-star"></i></li>
-                                                                                </ul>
+                                                                                
                                                                             </div>
                                                                             <div class="comment__content-right">
                                                                                 <a (click)="openRepComment(cmt.id)"
                                                                                     class="link--gray link--icon-left m-b-5"><i
-                                                                                        class="fas fa-reply"></i>Reply</a>
+                                                                                        class="fas fa-reply"></i>Reply</a>&nbsp;
+
+                                                                                       <a (click)="removeComment(cmt.id)"> <span *ngIf="userid==cmt.userId">x</span></a>
                                                                             </div>
                                                                         </div>
 
@@ -279,6 +301,11 @@
                                                                                     <div class="comment__content-left">
                                                                                         <h6 class="comment__name">
                                                                                             {{cmt.tenNguoiDung}}</h6>
+                                                                                    </div>
+                                                                                    <div class="comment__content-right">
+                                                                                       &nbsp;
+        
+                                                                                               <a (click)="removeComment(cmt.id)"> <span *ngIf="userid==cmt.userId">x</span></a>
                                                                                     </div>
                                                                                 </div>
 

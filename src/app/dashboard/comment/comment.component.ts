@@ -18,7 +18,9 @@ export class CommentComponent implements OnInit {
 
   deleteComment(id:number)
   {
-
+    this.commentService.removeComment(id).subscribe(data=>{
+      location.reload();
+    })
   }
 
 }

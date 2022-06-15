@@ -30,7 +30,7 @@ export class RepCommentComponent implements OnInit {
     this.data1={
       userId: localStorage.getItem('userid'),
       content: form.value.content,
-      star: form.value.star,
+      star: 5,
       productId: this.data.id,
       replyId:this.data.cmt
     }
@@ -46,5 +46,9 @@ export class RepCommentComponent implements OnInit {
       
     });
     console.log('data',this.data1);
+  }
+  cancel()
+  {
+    this.dialog.closeDialog();
   }
 }

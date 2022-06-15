@@ -1,0 +1,40 @@
+<div class="row page-header">
+    <div class="col-lg-6 align-self-center ">
+    </div>
+    <div class="col-lg-6 align-self-center text-right">
+        <a [routerLink]="['/admin/import/create']" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-plus"></i> Create New</a>
+    </div>
+</div>
+<div class="row">
+
+    <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    <strong>Ngày lập</strong>
+                </th>
+                <th>
+                    <strong>Tổng tiền</strong>
+                </th>
+               
+                <th>
+                    <strong>Action</strong>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let acc of invoice">
+         
+                <td>{{acc.thoiGian}}</td>
+                <td>{{acc.total}}</td>
+         
+            
+                <td class="text-center">
+                    <button *ngIf="!acc.isLocked"  type="button" class="btn btn-sm btn-warning"><i  class="fa fa-lock"></i></button>
+                    <button *ngIf="acc.isLocked"  type="button" class="btn btn-sm btn-success"><i  class="fa fa-unlock-alt" aria-hidden="true"></i></button>&nbsp;
+                    <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+          
+        </tbody>
+    </table>

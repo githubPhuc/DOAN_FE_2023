@@ -45,7 +45,7 @@ export class ProductService {
    
 
     }
-    url='?name='+this.dt.name+'&description='+this.dt.description+'&price='+this.dt.price.toString()+'&trademark='+this.dt.trademark+'&categoryid='+this.dt.categoryid.toString()+'&quantily=1&status=true';
+
     public postProduct(data:ProductModel,img:FormData)
     {
      
@@ -58,5 +58,17 @@ export class ProductService {
       
     }
 
+    
+    public removeProduct(id:number)
+    {
+     
+   
+      return this.httpClient
+        .post<any>('https://localhost:7043/api/product/delete?id='+id.toString(),{headers: new HttpHeaders({ 
+          'Content-Type': 'application/json'
+         
+       })});
+      
+    }
    
 }

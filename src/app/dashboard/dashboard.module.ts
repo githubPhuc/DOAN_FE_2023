@@ -18,6 +18,12 @@ import { AddressInfoComponent } from './dialog/address-info/address-info.compone
 import { CommentComponent } from './comment/comment.component';
 import { AddCommentComponent } from './dialog/add-comment/add-comment.component';
 import { RepCommentComponent } from './dialog/rep-comment/rep-comment.component';
+import { AdminCreateComponent } from './account/admin-create/admin-create.component';
+import { ImportComponent } from './import/import.component';
+import { ImportCreComponent } from './import/import-cre/import-cre.component';
+import { AddImportComponent } from './dialog/add-import/add-import.component';
+import { SupplierComponent } from './supplier/supplier.component';
+import { SupplierCreateComponent } from './supplier/supplier-create/supplier-create.component';
 
 
 
@@ -38,6 +44,12 @@ import { RepCommentComponent } from './dialog/rep-comment/rep-comment.component'
     CommentComponent,
     AddCommentComponent,
     RepCommentComponent,
+    AdminCreateComponent,
+    ImportComponent,
+    ImportCreComponent,
+    AddImportComponent,
+    SupplierComponent,
+    SupplierCreateComponent,
 
   ],
   imports: [

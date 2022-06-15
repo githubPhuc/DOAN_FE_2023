@@ -29,7 +29,12 @@ export class InvoiceConfirmComponent implements OnInit {
   confirm(id:number)
   {
     this.invService.confirm(id).subscribe(data=>{
-      location.reload();
+      if(data.status=200)
+      {
+        alert(data.msg);
+        location.reload();
+      }
+
     })
   }
 }

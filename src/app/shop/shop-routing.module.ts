@@ -4,6 +4,7 @@ import { CartComponent } from './cart/cart.component';
 import { DetailProComponent } from './detail-pro/detail-pro.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SearchComponent } from './search/search.component';
 import { ShopComponent } from './shop.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 
@@ -45,6 +46,11 @@ const routes: Routes = [
 {
   path: 'product-detail/:id',
   component: DetailProComponent
+
+},
+{
+  path: 'search/:txt',
+  component: SearchComponent
 
 },
 

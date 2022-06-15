@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { CommentService } from 'src/app/dashboard/comment/comment.service';
 import { DialogService } from 'src/app/dashboard/dialog.service';
 import { ProductService } from 'src/app/dashboard/product/product.service';
+import { Cart } from '../cart';
+import { ShopService } from '../shop.service';
 
 @Component({
   selector: 'app-detail-pro',
@@ -16,7 +18,9 @@ export class DetailProComponent implements OnInit {
 
   product:any;
   comment:any;
-  constructor(private proservice:ProductService,private route: ActivatedRoute,private dialog:DialogService,private commentService:CommentService) { }
+
+  userid=localStorage.getItem('userid');
+  constructor(private proservice:ProductService,private route: ActivatedRoute,private dialog:DialogService,private commentService:CommentService,private shopService:ShopService) { }
   
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
@@ -32,19 +36,41 @@ export class DetailProComponent implements OnInit {
    });
    this.commentService.getAllCommentInProduct(this.id).subscribe(data=>{
     this.comment=data;
+    console.log('cmt',data);
    });
    
   }
 
   openAddComment(id:number)
   {
-
     this.dialog.openDialogAddComment(id);
   }
 
   openRepComment(cmt:number)
   {
-    alert(cmt);
+   
     this.dialog.openDialogRepComment(this.id,cmt);
+  }
+
+  removeComment(id:number)
+  {
+      this.commentService.removeComment(id).subscribe(data=>{
+
+      })
+  }
+
+  cart=new Cart(0,1,'');
+  addCart(data:number)
+  {
+    this.cart.sanpham=data;
+    this.cart.userid=localStorage.getItem('userid')!;
+    console.log(this.cart);
+    this.shopService.addCart(this.cart).subscribe(data1=>{
+      if(data1.status=200)
+      {
+        alert(data1.msg);
+      }
+
+    });
   }
 }

@@ -30,6 +30,7 @@ export class AccountComponent implements OnInit {
       if(data.status==200)
       {
         alert(data.msg);
+        location.replace(location.href);
       }
     })
   }
