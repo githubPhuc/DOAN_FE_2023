@@ -20,7 +20,9 @@ export class ProCreateComponent implements OnInit {
   selectId="";
   progress!: number;
   message!: string;
-  formData:any;
+ 
+
+  formData=new FormData();
   @Output() public onUploadFinished = new EventEmitter();
   ngOnInit(): void {
 
@@ -54,7 +56,7 @@ export class ProCreateComponent implements OnInit {
 
 
 });
-pro=new ProductModel('1f22','1',1,1,1,'1',5,'1','1','1','1','1','1');
+pro=new ProductModel('','1',1,1,1,'1',5,'1','1','1','1','1','1');
 
 dta={
   Name: 'á',
@@ -72,11 +74,12 @@ dta={
   VGA: 'á'
 }
 onSubmit(form:FormGroup) {
+
   this.pro.Name=form.value.name;
   this.pro.Description=form.value.description;
   this.pro.Price=form.value.price;
   this.pro.Quantily=form.value.quantily;
-  this.pro.CategoryId=1;
+  this.pro.CategoryId=form.value.categoryId;
   this.pro.TradeMark=form.value.tradeMark;
   this.pro.Star=5;
   this.pro.CPU=form.value.cpu;
@@ -86,11 +89,25 @@ onSubmit(form:FormGroup) {
   this.pro.SizeWeight=form.value.sizeWeight;
   this.pro.VGA=form.value.vga;
 
+  console.log('qqqq',this.pro);
+/*  this.formData.append('Name',form.value.name);
+  this.formData.append('Description',form.value.description);
+  this.formData.append('Price',form.value.price);
+  this.formData.append('Quantily',form.value.quantily);
+  this.formData.append('CategoryId','1');
+  this.formData.append('TradeMark',form.value.tradeMark);
+  this.formData.append('Star','1');
+  this.formData.append('CPU',form.value.cpu);
+  this.formData.append('DesignStyle',form.value.designStyle);
+  this.formData.append('Monitor',form.value.monitor);
+  this.formData.append('Ram',form.value.ram);
+  this.formData.append('SizeWeight',form.value.sizeWeight);
+  this.formData.append('VGA',form.value.vga);*/
 
 
-
-  console.log('xxxxxxxxxxxxxxxxx',this.pro);
-  this.responsePro.postProduct(this.pro,this.formData).subscribe(data=>{
+  
+  this.responsePro.postProduct(this.pro).subscribe(data=>{
+    console.log(this.formData);
       if(data.status==200)
       {
         alert("Thêm thành công");
@@ -107,22 +124,21 @@ onSubmit(form:FormGroup) {
 
 
 
-fileName='';
-nFileSelected(event:any) {
+fileName:any;
+onFileSelected(event:any) {
+
 
   const file:File = event.target.files[0];
 
   if (file) {
 
-      this.fileName = file.name;
+      this.fileName = event.target.files[0];
+      this.formData.append('ImageFile',file);
+      console.log('file',this.fileName);
 
-      const formData = new FormData();
+   
 
-      
-
-      const upload$ = this.httpClient.post("/api/thumbnail-upload", formData);
-
-      upload$.subscribe();
+   
   }}
 
 

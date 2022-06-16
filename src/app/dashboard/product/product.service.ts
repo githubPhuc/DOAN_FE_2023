@@ -46,7 +46,7 @@ export class ProductService {
 
     }
 
-    public postProduct(data:ProductModel,img:FormData)
+    public postProduct(data:ProductModel)
     {
      
       console.log('áaaaaaaaaa',data);

@@ -25,6 +25,7 @@ import { CommonModule } from '@angular/common';
     ConfirmComponent,
     ShopLayoutComponent,
 
+
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,7 @@ import { ImportCreComponent } from './import/import-cre/import-cre.component';
 import { AddImportComponent } from './dialog/add-import/add-import.component';
 import { SupplierComponent } from './supplier/supplier.component';
 import { SupplierCreateComponent } from './supplier/supplier-create/supplier-create.component';
+import { ImportDetailComponent } from './dialog/import-detail/import-detail.component';
 
 
 
@@ -50,6 +51,7 @@ import { SupplierCreateComponent } from './supplier/supplier-create/supplier-cre
     AddImportComponent,
     SupplierComponent,
     SupplierCreateComponent,
+    ImportDetailComponent,
 
   ],
   imports: [

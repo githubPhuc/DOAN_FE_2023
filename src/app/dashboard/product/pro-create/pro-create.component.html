@@ -20,8 +20,9 @@
 
                     <div class="form-group">
                         <label>Loại sản phẩm</label>
-                        <select name="account" class="form-control m-b" formControlName="categoryId"  >
-                            <option *ngFor="let cate of category" id="{{cate.id}}" >{{cate.name}} </option>
+                  
+                        <select class="form-control m-b" formControlName="categoryId">
+                            <Option *ngFor="let p of category" value="{{p.id}}">{{p.name}}</Option>
                         </select>
 
                     </div>
@@ -87,7 +88,7 @@
                             </div>
                             <span class="btn btn-primary  btn-file">
                         
-                                <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+                                <input type="file" #file placeholder="Choose file" (change)="onFileSelected($event)" style="display:none;">
                                 <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
                             </span>
                             <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remove</a>
