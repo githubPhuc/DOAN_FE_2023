@@ -7,13 +7,16 @@ import { CommentService } from './comment.service';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit {
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 10;
+  tableSizes: any = [3, 6, 9, 12];
 
   constructor(private commentService:CommentService) { }
   comment:any;
   ngOnInit(): void {
-    this.commentService.getAllComment().subscribe(data=>{
-    this.comment=data;
-    });
+  this.fetchPosts();
   }
 
   deleteComment(id:number)
@@ -23,4 +26,24 @@ export class CommentComponent implements OnInit {
     })
   }
 
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.fetchPosts();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchPosts();
+  }
+  fetchPosts(): void {
+    this.commentService.getAllComment().subscribe(
+      data => {
+        this.POSTS = data;
+        console.log(data);
+
+   
+      }
+      
+    );
+  }
 }

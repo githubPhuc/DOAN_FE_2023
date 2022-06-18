@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from '../../category.service';
+import { ProductModel } from '../product-model';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -13,28 +14,28 @@ export class ProEditComponent implements OnInit {
 
   constructor(private cateService:CategoryService,private proService:ProductService,private route: ActivatedRoute) { }
 
-  txt='style="color: red;"';
+
   category:any;
   product:any;
   id!: number;
   private sub: any;
+  pro=new ProductModel('','1',1,1,1,'1',5,'1','1','1','1','1','1','');
 
   categoryForm = new FormGroup({
     name: new FormControl(''),
     description: new FormControl(''),
     price: new FormControl(''),
     stock: new FormControl(''),
-    category: new FormControl(''),
+    categoryId: new FormControl(),
     tradeMark: new FormControl(''),
-    image: new FormControl(File),
-    categoryid: new FormControl(''),
     cpu: new FormControl(''),
     designStyle: new FormControl(''),
     monitor: new FormControl(''),
     ram: new FormControl(''),
     sizeWeight: new FormControl(''),
     vga: new FormControl(''),
-    
+  
+  
   
   });
 
@@ -49,6 +50,7 @@ export class ProEditComponent implements OnInit {
       this.proService.getProduct(this.id).subscribe(data=>{
         this.product=data;
         this.categoryForm.patchValue(data);
+        this.pro.CategoryId=data.categoryId;
   
         console.log(data);
       })
@@ -61,6 +63,24 @@ export class ProEditComponent implements OnInit {
 
   onSubmit(form:FormGroup)
   {
-    alert(form.value.category);
+    this.pro.Name=form.value.name;
+    this.pro.Description=form.value.description;
+    this.pro.Price=form.value.price;
+    this.pro.Quantily=form.value.stock;
+    this.pro.CategoryId=form.value.categoryId;
+    this.pro.TradeMark=form.value.tradeMark;
+    this.pro.Star=5;
+    this.pro.CPU=form.value.cpu;
+    this.pro.DesignStyle=form.value.designStyle;
+    this.pro.Monitor=form.value.monitor;
+    this.pro.Ram=form.value.ram;
+    this.pro.SizeWeight=form.value.sizeWeight;
+    this.pro.VGA=form.value.vga;
+
+  console.log(this.pro);
+  this.proService.editProduct(this.pro,this.id).subscribe(data=>{
+
+  })
+
   }
 }

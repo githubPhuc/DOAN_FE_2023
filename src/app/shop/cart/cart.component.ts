@@ -14,6 +14,12 @@ export class CartComponent implements OnInit {
   txt!:string;
   cart:any;
   isempty!:boolean;
+
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 5;
+
   productForm=new FormGroup({
     txtSearch: new FormControl(''),
   });
@@ -29,7 +35,7 @@ export class CartComponent implements OnInit {
         this.isempty=true;
       }
  
-    this.cart=data;
+    this.POSTS=data;
     })
   }
 
@@ -68,5 +74,39 @@ export class CartComponent implements OnInit {
   {
     this.txt=form.value.txtSearch;
     this.router.navigate(['/shop/search',this.txt],);
+  }
+
+  pay()
+  {
+    this.shopService.payment().subscribe(data=>{
+
+    })
+  }
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.fetchPosts();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchPosts();
+  }
+  fetchPosts(): void {
+    this.shopService.getCart(localStorage.getItem('userid')!).subscribe(
+      data => {
+        this.POSTS = data;
+        console.log(data);
+
+        if(data[0]!=null)
+        {
+          this.isempty=false;
+        }else
+        {
+          this.isempty=true;
+        }
+      }
+      
+    );
   }
 }

@@ -12,6 +12,8 @@ import {NgPipesModule} from 'ngx-pipes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { SearchComponent } from './search/search.component';
     ShopRoutingModule,
     NgPipesModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
 
   ]
 })

@@ -58,6 +58,27 @@ export class ProductService {
       
     }
 
+    public upload(data:FormData)
+    {
+     
+      console.log('áaaaaaaaaa',data);
+      return this.httpClient
+        .post<any>('https://localhost:7043/api/product/testimg',data,{reportProgress: true, observe: 'events'});
+      
+    }
+
+    public editProduct(data:ProductModel,id:number)
+    {
+     
+      console.log('áaaaaaaaaa',data);
+      return this.httpClient
+        .post<any>('https://localhost:7043/api/product/update'+'?id='+id.toString(),data,{headers: new HttpHeaders({ 
+          'Content-Type': 'application/json'
+         
+       })});
+      
+    }
+
     
     public removeProduct(id:number)
     {

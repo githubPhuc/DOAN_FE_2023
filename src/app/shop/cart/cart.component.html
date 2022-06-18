@@ -59,7 +59,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let c of cart">
+                            <tr *ngFor="let c of POSTS | paginate
+                            : {
+                                itemsPerPage: tableSize,
+                                currentPage: page,
+                                totalItems: count
+                              };
+                        let i = index">
                                 <td class="product-thumbnail">
                                     <a (click)="goToProductDetails(c.idSanPham)"><img class="img-fluid" src="../../../assets/img/product/{{c.image}}"
                                             alt=""></a>
@@ -92,6 +98,7 @@
                         <a href="#"
                             class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20 m-r-20">CẬP NHẬT GIỎ HÀNG</a>
                         <a (click)="order()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20">ĐẶT HÀNG</a>
+                        <a (click)="pay()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20">THANH TOÁN</a>
                     </div>
                 </div>
                 <div *ngIf="isempty" class="content">
@@ -108,7 +115,18 @@
         </div>
 
     </div>
+   
 </main>
+<footer>
+    <div class="d-flex justify-content-center">
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
+</footer>
 
 <style>
     #cart-content-text {
@@ -127,4 +145,6 @@
         color: grey;
         justify-content: center;
     }
+
+
 </style>

@@ -21,8 +21,8 @@ Product successfully added. </div>
 
                 <div class="form-group">
                     <label>Loại sản phẩm</label>
-                    <select name="account" class="form-control m-b" formControlName="category"  >
-                        <option *ngFor="let cate of category">{{cate.name}} </option>
+                    <select class="form-control m-b" formControlName="categoryId">
+                        <Option *ngFor="let p of category" value="{{p.id}}">{{p.name}}</Option>
                     </select>
 
                 </div>
@@ -83,10 +83,11 @@ Product successfully added. </div>
                 </div>
                 <div class="form-group">
                     <label>Hình ảnh</label>
-                    <div class="fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-new" data-provides="fileinput" >
                         <div class="fileinput-preview" data-trigger="fileinput" style="width: 200px; height:150px;">
+                            <img src="../../../../assets/img/product/{{product.image}}" width="200" alt="">
                         </div>
-                        <span class="btn btn-primary  btn-file">
+                        <span class="btn btn-primary  btn-file" >
                             <span class="fileinput-new">Select</span>
                             <span class="fileinput-exists">Change</span>
                             <input type="file" id="image" name="image" formControlName="image">

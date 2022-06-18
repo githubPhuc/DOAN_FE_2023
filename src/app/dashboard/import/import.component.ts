@@ -17,6 +17,10 @@ export class ImportComponent implements OnInit {
       this.invoice=data;
     })
   }
+  view()
+  {
+    
+  }
 
 
 }

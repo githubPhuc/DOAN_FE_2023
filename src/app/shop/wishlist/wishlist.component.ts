@@ -53,6 +53,7 @@ export class WishlistComponent implements OnInit {
     this.shopService.removeWishList(id).subscribe(data=>{
       
     });
+    location.replace(location.href);
   }
   goToProductDetails(id:number) {
     this.router.navigate(['shop/product-detail', id]);

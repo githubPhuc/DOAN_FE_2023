@@ -20,7 +20,9 @@ export class ProCreateComponent implements OnInit {
   selectId="";
   progress!: number;
   message!: string;
- 
+  fileToUpload:any
+  fileName:any;
+  name!:string;
 
   formData=new FormData();
   @Output() public onUploadFinished = new EventEmitter();
@@ -56,7 +58,7 @@ export class ProCreateComponent implements OnInit {
 
 
 });
-pro=new ProductModel('','1',1,1,1,'1',5,'1','1','1','1','1','1');
+pro=new ProductModel('','',0,0,0,'',5,'','','','','','','',);
 
 dta={
   Name: 'á',
@@ -88,6 +90,7 @@ onSubmit(form:FormGroup) {
   this.pro.Ram=form.value.ram;
   this.pro.SizeWeight=form.value.sizeWeight;
   this.pro.VGA=form.value.vga;
+  this.pro.Image='';
 
   console.log('qqqq',this.pro);
 /*  this.formData.append('Name',form.value.name);
@@ -110,6 +113,19 @@ onSubmit(form:FormGroup) {
     console.log(this.formData);
       if(data.status==200)
       {
+        
+        this.name=this.fileToUpload.name;
+        let filename=this.name.split('.');
+        this.name=filename[1];
+        this.fileName=data.id+'.'+this.name;
+        alert(this.fileName)
+        this.formData = new FormData();
+
+        this.formData.append('ImageFile', this.fileToUpload, this.fileName);
+
+        this.responsePro.upload(this.formData).subscribe(data=>{
+
+        })
         alert("Thêm thành công");
         this.router.navigate(['/admin/product']);
       }else{
@@ -124,22 +140,7 @@ onSubmit(form:FormGroup) {
 
 
 
-fileName:any;
-onFileSelected(event:any) {
 
-
-  const file:File = event.target.files[0];
-
-  if (file) {
-
-      this.fileName = event.target.files[0];
-      this.formData.append('ImageFile',file);
-      console.log('file',this.fileName);
-
-   
-
-   
-  }}
 
 
 
@@ -147,10 +148,9 @@ onFileSelected(event:any) {
 
   uploadFile(files:any){
   
-    let fileToUpload = <File>files[0];
-   this.formData = new FormData();
-    this.formData.append('ImageFile', fileToUpload, fileToUpload.name);
+    this.fileToUpload = <File>files[0];
 
+ 
     console.log('ímg',this.formData);
   }
 }

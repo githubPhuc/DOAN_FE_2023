@@ -26,7 +26,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let pro of product">
+        <tr *ngFor="let pro of POSTS | paginate
+        : {
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+          };
+    let i = index">
             <td *ngIf="pro.image!=null"><img src="../../../assets/img/product/{{pro.image}}" style="width: 150px" alt=""></td>
             <td *ngIf="pro.image==null"><img src="../../../assets/img/product/noimage.png" style="width: 150px" alt=""></td>
             <td>
@@ -43,4 +49,12 @@
         </tr>
       
     </tbody>
+    <div class="d-flex justify-content-center">
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
 </table>

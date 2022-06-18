@@ -26,6 +26,8 @@ import { SupplierComponent } from './supplier/supplier.component';
 import { SupplierCreateComponent } from './supplier/supplier-create/supplier-create.component';
 import { ImportDetailComponent } from './dialog/import-detail/import-detail.component';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 @NgModule({
@@ -58,7 +60,8 @@ import { ImportDetailComponent } from './dialog/import-detail/import-detail.comp
     CommonModule,
     DashboardRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class DashboardModule { }

@@ -17,16 +17,26 @@ export class HomeComponent implements OnInit {
   product:any;
   lstProduct:any;
   txt!:string;
+  newProduct:any;
+  hotProduct:any
+
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 12;
   productForm=new FormGroup({
     txtSearch: new FormControl(''),
   });
 
   ngOnInit(): void {
-    this.shopservice.loadProduct().subscribe(data=>
-      {
-        console.log(data);
-        this.product=data;
-      });
+
+    this.shopservice.loadNewProduct().subscribe(data=>{
+      this.newProduct=data;
+    });
+    this.shopservice.loadHotProduct().subscribe(data=>{
+      this.hotProduct=data;
+    })
+   this.fetchPosts();
   }
   cart=new Cart(0,1,'');
   addCart(data:number)
@@ -52,10 +62,31 @@ export class HomeComponent implements OnInit {
     this.shopservice.addWishList({productid:id,appuserid:localStorage.getItem('userid')}).subscribe(data=>{
     
     });
+    location.replace(location.href);
   }
 
   goToProductDetails(id:number) {
     this.router.navigate(['shop/product-detail', id]);
+  }
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.fetchPosts();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchPosts();
+  }
+  fetchPosts(): void {
+    this.shopservice.loadProduct().subscribe(
+      data => {
+        this.POSTS = data;
+        console.log(data);
+
+      }
+      
+    );
   }
 
 }

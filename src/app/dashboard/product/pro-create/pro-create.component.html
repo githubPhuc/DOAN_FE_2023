@@ -10,7 +10,7 @@
             </div>
             <div class="card-body">
 
-                <form [formGroup]="categoryForm" (ngSubmit)="onSubmit(categoryForm)">
+                <form [formGroup]="categoryForm" (ngSubmit)="onSubmit(categoryForm)" enctype="multipart/form-data">
 
                     <div class="form-group">
                         <label>Tên sản phẩm</label>
@@ -88,7 +88,7 @@
                             </div>
                             <span class="btn btn-primary  btn-file">
                         
-                                <input type="file" #file placeholder="Choose file" (change)="onFileSelected($event)" style="display:none;">
+                                <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
                                 <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
                             </span>
                             <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remove</a>

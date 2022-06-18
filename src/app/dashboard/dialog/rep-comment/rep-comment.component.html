@@ -1,15 +1,5 @@
 <div class="col-md-6">
     <h6>Viết bình luận của bạn</h6>
-    <div class="review-box">
-        <span>Quality</span>
-        <ul class="product__review">
-            <li class="product__review--fill"><i class="icon-star"></i></li>
-            <li class="product__review--fill"><i class="icon-star"></i></li>
-            <li class="product__review--fill"><i class="icon-star"></i></li>
-            <li class="product__review--fill"><i class="icon-star"></i></li>
-            <li class="product__review--blank"><i class="icon-star"></i></li>
-        </ul>
-    </div>
     <form [formGroup]="commentForm" (ngSubmit)="onSubmit(commentForm)" class="form-box">
         <div class="form-box__single-group">
             <label for="form-review">Nội dung*</label>

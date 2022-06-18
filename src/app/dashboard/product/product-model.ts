@@ -12,7 +12,8 @@ export class ProductModel {
         public Monitor:string,
         public Ram:string,
         public SizeWeight:string,
-        public VGA:string
+        public VGA:string,
+        public Image:string
 
     ){}
 }

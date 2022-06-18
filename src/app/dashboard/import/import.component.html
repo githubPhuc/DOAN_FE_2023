@@ -25,8 +25,8 @@
         <tbody>
             <tr *ngFor="let acc of invoice">
          
-                <td>{{acc.thoiGian}}</td>
-                <td>{{acc.total}}</td>
+                <td>{{acc.thoiGian | date:'dd/MM/yyyy'}}</td>
+                <td>{{acc.total | currency:'VND'}}</td>
          
             
                 <td class="text-center">

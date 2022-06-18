@@ -19,7 +19,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let cate of comment">
+        <tr *ngFor="let cate of POSTS | paginate
+        : {
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+          };
+    let i = index">
             <td>{{cate.noiDung}}</td>
             <td>
                 {{cate.tenSanPham}}
@@ -35,4 +41,12 @@
     
       
     </tbody>
+    <div class="d-flex justify-content-center">
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
 </table>

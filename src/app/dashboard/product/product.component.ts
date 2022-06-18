@@ -8,15 +8,17 @@ import { ProductService } from './product.service';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 10;
+  tableSizes: any = [3, 6, 9, 12];
 
   constructor(private responseProduct:ProductService,private router:Router) { }
 
   product:any;
   ngOnInit(): void {
-    this.responseProduct.getAllProduct().subscribe(data=>{
-      this.product=data
-      console.log(data);
-    })
+    this.fetchPosts();
   }
 
   goToProductDetails(id:number) {
@@ -38,5 +40,26 @@ export class ProductComponent implements OnInit {
         location.replace(location.href);
       }
     })
+  }
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.fetchPosts();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchPosts();
+  }
+  fetchPosts(): void {
+    this.responseProduct.getAllProduct().subscribe(
+      data => {
+        this.POSTS = data;
+        console.log(data);
+
+   
+      }
+      
+    );
   }
 }
