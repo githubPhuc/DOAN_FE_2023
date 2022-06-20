@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../product.service';
 
@@ -12,7 +13,13 @@ export class ProDetailComponent implements OnInit {
   private sub: any;
 
   product:any;
-  constructor(private proservice:ProductService,private route: ActivatedRoute) { }
+  constructor(private proservice:ProductService,private route: ActivatedRoute) { 
+
+   
+  }
+  form=new FormGroup({
+    rating: new FormControl('5'),
+  })
   
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
@@ -21,11 +28,13 @@ export class ProDetailComponent implements OnInit {
       this.proservice.getProduct(this.id).subscribe(data=>{
         console.log("xxxxxxxxxxxxxxxxxxxxxxx");
         this.product=data;
+   
         console.log(data);
       })
 
 
    });
   }
+  
 
 }

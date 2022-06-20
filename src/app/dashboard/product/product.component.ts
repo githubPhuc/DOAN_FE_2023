@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from './product.service';
 
@@ -13,6 +14,10 @@ export class ProductComponent implements OnInit {
   count: number = 0;
   tableSize: number = 10;
   tableSizes: any = [3, 6, 9, 12];
+
+  searchForm=new FormGroup({
+    txt: new FormControl('')
+  })
 
   constructor(private responseProduct:ProductService,private router:Router) { }
 
@@ -61,5 +66,16 @@ export class ProductComponent implements OnInit {
       }
       
     );
+  }
+
+  onSubmit(form:FormGroup)
+  {
+      if(form.value.txt=='')
+      {
+        location.reload();
+      }
+      this.responseProduct.searchProduct(form.value.txt).subscribe(data=>{
+        this.POSTS=data;
+      })
   }
 }

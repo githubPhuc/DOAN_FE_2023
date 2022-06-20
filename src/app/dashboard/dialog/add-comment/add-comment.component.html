@@ -7,13 +7,8 @@
             <textarea id="form-review" rows="5" formControlName="content"></textarea>
         </div>
         
-        <select name="star" id="" formControlName="star">
-            <option value="1">1 </option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+     <div class="rate"> <ngx-star-rating formControlName="star" [id]="'rating'"></ngx-star-rating></div> <br>
+      
         <div class="from-box__buttons d-flex justify-content-between d-flex-warp m-t-25 align-items-center">
             <div class="form-box-right">
                 <button class="btn btn--box btn--small btn--blue btn--uppercase btn--weight" type="submit">Send</button>
@@ -23,3 +18,9 @@
         </div>
     </form>
 </div>
+<style>
+    .rate{
+        display: flex;
+        justify-content: flex-start;
+    }
+</style>

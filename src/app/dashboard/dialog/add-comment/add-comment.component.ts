@@ -27,6 +27,7 @@ export class AddCommentComponent implements OnInit {
 
   onSubmit(form:FormGroup)
   {
+    alert(form.value.star);
     this.data1={
       userId: localStorage.getItem('userid'),
       content: form.value.content,

@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryModel } from 'src/app/category-model';
 import { CategoryService } from '../../category.service';
+import { TrademarkService } from '../../trademark/trademark.service';
 import { ProductModel } from '../product-model';
 import { ProductService } from '../product.service';
 
@@ -14,7 +15,7 @@ import { ProductService } from '../product.service';
 })
 export class ProCreateComponent implements OnInit {
 
-  constructor(private responseCate:CategoryService,private router:Router,private responsePro:ProductService,private httpClient:HttpClient) { }
+  constructor(private responseCate:CategoryService,private router:Router,private responsePro:ProductService,private httpClient:HttpClient,private tradeService:TrademarkService) { }
 
   category:any;
   selectId="";
@@ -23,6 +24,7 @@ export class ProCreateComponent implements OnInit {
   fileToUpload:any
   fileName:any;
   name!:string;
+  brand:any;
 
   formData=new FormData();
   @Output() public onUploadFinished = new EventEmitter();
@@ -30,6 +32,10 @@ export class ProCreateComponent implements OnInit {
 
     this.responseCate.getAllCategory().subscribe(data=>{
       this.category=data;
+    })
+
+    this.tradeService.getAllTrademark().subscribe(data=>{
+      this.brand=data;
     })
   }
 
@@ -54,27 +60,18 @@ export class ProCreateComponent implements OnInit {
   ram: new FormControl(''),
   sizeWeight: new FormControl(''),
   vga: new FormControl(''),
+  hardDisk: new FormControl(''),
+  os: new FormControl(''),
+  port: new FormControl(''),
+  releaseTime: new FormControl(''),
+
 
 
 
 });
-pro=new ProductModel('','',0,0,0,'',5,'','','','','','','',);
+pro=new ProductModel('','',1,1,1,1,1,'','','','','','','','','','','',);
 
-dta={
-  Name: 'á',
-  Descriptin: 'á',
-  Price: 1,
-  Quantily: 1,
-  CategoryId: 1,
-  TradeMark: 'á',
-  Star: 5,
-  CPU: 'á',
-  DesignStyle: 'á',
-  Monitor: 'á',
-  RAM: 'á',
-  SizeWeight: 'a',
-  VGA: 'á'
-}
+
 onSubmit(form:FormGroup) {
 
   this.pro.Name=form.value.name;
@@ -82,7 +79,7 @@ onSubmit(form:FormGroup) {
   this.pro.Price=form.value.price;
   this.pro.Quantily=form.value.quantily;
   this.pro.CategoryId=form.value.categoryId;
-  this.pro.TradeMark=form.value.tradeMark;
+  this.pro.TradeMarkId=form.value.tradeMark;
   this.pro.Star=5;
   this.pro.CPU=form.value.cpu;
   this.pro.DesignStyle=form.value.designStyle;
@@ -90,9 +87,13 @@ onSubmit(form:FormGroup) {
   this.pro.Ram=form.value.ram;
   this.pro.SizeWeight=form.value.sizeWeight;
   this.pro.VGA=form.value.vga;
-  this.pro.Image='';
+  this.pro.Image='noimage.png';
+  this.pro.HardDisk=form.value.hardDisk;
+  this.pro.OS=form.value.os;
+  this.pro.Port=form.value.port;
+  this.pro.ReleaseTime=form.value.releaseTime;
+  
 
-  console.log('qqqq',this.pro);
 /*  this.formData.append('Name',form.value.name);
   this.formData.append('Description',form.value.description);
   this.formData.append('Price',form.value.price);
@@ -118,7 +119,7 @@ onSubmit(form:FormGroup) {
         let filename=this.name.split('.');
         this.name=filename[1];
         this.fileName=data.id+'.'+this.name;
-        alert(this.fileName)
+
         this.formData = new FormData();
 
         this.formData.append('ImageFile', this.fileToUpload, this.fileName);

@@ -48,9 +48,10 @@ Product successfully added. </div>
                 </div>
                 <div class="form-group">
                     <label>Thương hiệu</label>
-                    <input type="text" class="form-control form-control-rounded col-md-4"
-                        formControlName="tradeMark" >
-                </div>
+                    <select class="form-control m-b" formControlName="tradeMarkId">
+                        <Option *ngFor="let p of brand" value="{{p.id}}">{{p.name}}</Option>
+                    </select>
+                    </div>
                 <div class="form-group">
                     <label>CPU</label>
                     <input type="text" class="form-control form-control-rounded col-md-4"
@@ -72,6 +73,11 @@ Product successfully added. </div>
                         formControlName="ram" >
                 </div>
                 <div class="form-group">
+                    <label>Ổ cứng</label>
+                    <input type="text" class="form-control form-control-rounded col-md-4"
+                        formControlName="hardDisk" >
+                </div>
+                <div class="form-group">
                     <label>Kích thước - cân nặng</label>
                     <input type="text" class="form-control form-control-rounded col-md-4"
                         formControlName="sizeWeight" >
@@ -80,6 +86,21 @@ Product successfully added. </div>
                     <label>Card đồ hoạ (VGA)</label>
                     <input type="text" class="form-control form-control-rounded col-md-4"
                         formControlName="vga" >
+                </div>
+                <div class="form-group">
+                    <label>Hệ điều hành</label>
+                    <input type="text" class="form-control form-control-rounded col-md-4"
+                        formControlName="os" >
+                </div>
+                <div class="form-group">
+                    <label>Cổng kết nối</label>
+                    <input type="text" class="form-control form-control-rounded col-md-4"
+                        formControlName="port" >
+                </div>
+                <div class="form-group">
+                    <label>Ngày ra mắt</label>
+                    <input type="text" class="form-control form-control-rounded col-md-4"
+                        formControlName="releaseTime" >
                 </div>
                 <div class="form-group">
                     <label>Hình ảnh</label>

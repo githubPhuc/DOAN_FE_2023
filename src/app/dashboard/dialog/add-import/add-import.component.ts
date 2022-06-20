@@ -33,6 +33,7 @@ export class AddImportComponent implements OnInit {
   ngOnInit(): void {
     this.proService.getAllProduct().subscribe(data1=>{
       this.product=data1;
+      this.itemForm.value.sanPham=data1[0].id;
     });
 
     this.supService.getAllSupplier().subscribe(data1=>{
@@ -52,12 +53,13 @@ export class AddImportComponent implements OnInit {
     this.sanpham=form.value.sanPham.toString();
     console.log(form.value);
     this.importService.addImportItem(this.gia,this.ncc,this.soluong,this.sanpham).subscribe(data=>{
-      if(data==200)
+      if(data.status==200)
       {
         alert(data.msg);
-        this.dialogR.closeDialog();
+        
         location.reload();
       }
+      this.dialogR.closeDialog();
     })
   }
 }

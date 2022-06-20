@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 
 
@@ -32,7 +33,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgPipesModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxStarRatingModule
 
   ]
 })

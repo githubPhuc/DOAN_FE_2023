@@ -1,5 +1,17 @@
-<div class="row page-header">
-    <div class="col-lg-6 align-self-center ">
+<div class="row">
+    <div class="col-lg-6 ">
+  
+            <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
+            <div class="form-group">
+                <label>Tìm kiếm</label>
+                <div class="sr">
+                <input type="text" placeholder="Nhập tên sản phẩm cần tìm" class="form-control form-control-rounded"  id="txt"  formControlName="txt">
+                <button id="search" class="btn btn-success btn-icon" ><i class="fa fa-search "></i>Search</button>
+            </div>
+            </div>
+        </form>
+            
+
     </div>
     <div class="col-lg-6 align-self-center text-right">
         <a class="nav-link"  [routerLink]="['/admin/product/create']" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-plus"></i> Create New</a>
@@ -49,12 +61,20 @@
         </tr>
       
     </tbody>
-    <div class="d-flex justify-content-center">
-        <pagination-controls
-          previousLabel="Prev"
-          nextLabel="Next"
-          (pageChange)="onTableDataChange($event)"
-        >
-        </pagination-controls>
-      </div>
+    
 </table>
+<div class="d-flex justify-content-center">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+    >
+    </pagination-controls>
+  </div>
+
+  <style>
+    .sr {
+        display: flex;
+
+    }
+  </style>

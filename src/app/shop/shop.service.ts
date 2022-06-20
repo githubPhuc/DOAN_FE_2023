@@ -166,4 +166,14 @@ export class ShopService {
       'Authorization': 'Bearer ' + this.token
    })});
   }
+
+  public getAllTrademark()
+  {
+    return this.httpClient
+			.get<any>('https://localhost:7043/api/trademark/getalltrademark',{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+     })});
+		
+  }
 }

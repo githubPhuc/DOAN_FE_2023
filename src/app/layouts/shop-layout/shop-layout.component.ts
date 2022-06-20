@@ -2,6 +2,7 @@ import { SelectorMatcher } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CategoryService } from 'src/app/dashboard/category.service';
 import { DialogService } from 'src/app/dashboard/dialog.service';
 import { ShopService } from 'src/app/shop/shop.service';
 
@@ -12,14 +13,15 @@ import { ShopService } from 'src/app/shop/shop.service';
 })
 export class ShopLayoutComponent implements OnInit {
 
-  constructor(private shopservice:ShopService,private router:Router,private dialog:DialogService) { }
+  constructor(private shopservice:ShopService,private router:Router,private dialog:DialogService,private cateService:CategoryService) { }
 
   count=0;
   count2=0;
   username:any;
   islogin!:boolean;
-
+  lstCategory:any;
   lstProduct:any;
+  lstTrademark:any;
   productForm=new FormGroup({
     txtSearch: new FormControl(''),
   });
@@ -60,7 +62,13 @@ export class ShopLayoutComponent implements OnInit {
       
      });
 
-   
+     this.cateService.getAllCategory().subscribe(data=>{
+      this.lstCategory=data;
+     });
+
+     this.shopservice.getAllTrademark().subscribe(data=>{
+      this.lstTrademark=data;
+     })
    
    
     

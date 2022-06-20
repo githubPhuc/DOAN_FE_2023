@@ -40,38 +40,44 @@
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Next</span>
                                     </a>
+                                    <h2>aaaaaaaaaaaaaa</h2>
                                 </div>
 
                                 <style>
                                     .carousel-item {
                                         height: 500px;
                                     }
+
                                     .carousel-inner {
-                                        height: 600px;
+                                        height: 450px;
                                     }
 
                                     .product__price {
                                         display: flex;
                                         justify-content: space-between;
                                     }
-                                    .product__price button i{
+
+                                    .product__price button i {
                                         color: royalblue;
                                     }
-                                    .product__price button{
+
+                                    .product__price button {
                                         padding: 10px;
                                         border: 1px solid royalblue;
                                         border-radius: 10px;
                                         color: royalblue;
                                     }
-                                    .product__price button:hover{
-                                       background-color: royalblue;
-                                       color: white;
+
+                                    .product__price button:hover {
+                                        background-color: royalblue;
+                                        color: white;
                                     }
-                                    .product__price button:hover #icon{
-                                       background-color: royalblue;
-                                       color: white;
+
+                                    .product__price button:hover #icon {
+                                        background-color: royalblue;
+                                        color: white;
                                     }
-                                  
+
                                     .item img {
                                         position: absolute;
                                         top: 0;
@@ -82,8 +88,9 @@
                                     #btn-slideshow {
                                         width: 200px;
                                     }
+
                                     .product__price-reg {
-                                       padding-top: 5px;
+                                        padding-top: 5px;
                                     }
 
                                     #ctn {
@@ -102,6 +109,7 @@
                                         border-top: 1px grey solid;
                                     }
                                 </style>
+                           
                             </div>
                             <div class="col-md-6">
                                 <div class="product-details-box">
@@ -114,9 +122,11 @@
                                     </div>
                                     <div class="product__price">
 
-                                        <span class="product__price-reg" style="font-size: 20px;">Giá :{{product.price | currency:'VND'}}</span>
+                                        <span class="product__price-reg" style="font-size: 20px;">Giá :{{product.price |
+                                            currency:'VND'}}</span>
 
-                                        <button (click)="addCart(product.id)"><i id="icon" class="fa fa-cart-plus" ></i> Thêm vào giỏ hàng </button>
+                                        <button (click)="addCart(product.id)"><i id="icon" class="fa fa-cart-plus"></i>
+                                            Thêm vào giỏ hàng </button>
                                     </div>
                                     <div class="info">
                                         <div class="product__desc m-t-25 m-b-30">
@@ -156,108 +166,78 @@
                                                 <ul
                                                     class="tablist tablist--style-black tablist--style-title tablist--style-gap-70 nav">
                                                     <li><a class="nav-link active" data-toggle="tab"
-                                                        href="#product-review">Reviews</a></li>
-                                                    <li><a class="nav-link" data-toggle="tab"
-                                                            href="#product-desc">Description</a></li>
+                                                            href="#product-review">Reviews</a></li>
+                                          
                                                     <li><a class="nav-link" data-toggle="tab"
                                                             href="#product-dis">Product Details</a></li>
-                                                   
+
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="product-details-tab-box m-t-50">
                                                 <div class="tab-content">
-                                                    <!-- Start Tab - Product Description -->
-                                                    <div class="tab-pane show " id="product-desc">
-                                                        <div class="para__content">
-                                                            <p class="para__text">Use the Canon VIXIA GX10 Camcorder to
-                                                                capture UHD 4K video at 60 fps, recording in MP4 to dual
-                                                                SD memory card slots. This camcorder packs several
-                                                                pro-style features into its compact form, including
-                                                                Dual-Pixel Autofocus (DPAF). The GX10's 1" 8.29MP CMOS
-                                                                sensor and dual DIGIC DV 6 image processors support Wide
-                                                                DR Gamma with high sensitivity and low noise. Slow and
-                                                                fast-motion recording up to 120 fps offers special looks
-                                                                for highlighting sports and other special events.
-                                                                Smooth, steady shooting is assisted by the GX10's
-                                                                five-axis optical image stabilization. For composing and
-                                                                viewing your footage, the VIXIA GX10 incorporates a
-                                                                flip-out 3.5" touchscreen LCD, and a 0.24" electronic
-                                                                viewfinder. </p>
-
-                                                            <p class="para__text">Additional GX10 features include an
-                                                                HDMI 2.0 port for outputting your 4K UHD footage,
-                                                                assignable user buttons, and remote control using the
-                                                                included WL-D89 controller. Wi-Fi connectivity offers
-                                                                live streaming, FTP file sharing, and remote control via
-                                                                iOS and Android apps.</p>
-
-                                                            <h6 class="para__title">Product Highlights:</h6>
-                                                            <ul class="para__list">
-                                                                <li>UHD 4K Output up to 60 fps</li>
-                                                                <li>8.29MP, 1" CMOS Sensor</li>
-                                                                <li>Dual-Pixel CMOS Autofocus Feature</li>
-                                                                <li>Integrated 15x Optical Zoom Lens</li>
-                                                                <li>2 x DIGIC DV 6 Processors</li>
-                                                                <li>5-Axis Optical Image Stabilization</li>
-                                                                <li>Wide Dynamic Range Support</li>
-                                                                <li>Records 4K UHD/HD to Dual SD Card Slots</li>
-                                                                <li>3.5" Touchscreen LCD & 0.24" EVF</li>
-                                                                <li>Live Stream/FTP/Remote App via Wi-Fi</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div> <!-- End Tab - Product Description -->
+                                          
 
                                                     <!-- Start Tab - Product Details -->
-                                                    <div class="tab-pane product-dis" id="product-dis">
-                                                        <div class="product-dis__content">
+                                                    <div class="tab-pane show product-dis" id="product-dis">
+                                                  
                                                             <a href="#" class="product-dis__img m-b-30"><img
                                                                     src="assets/img/logo/another-logo.jpg" alt=""></a>
-                                                            <div class="table-responsive-md">
+                                                            <div class="table">
                                                                 <table class="product-dis__list table table-bordered">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td class="product-dis__title">Nhà sản xuất</td>
-                                                                            <td class="product-dis__text">{{product.tradeMark}}</td>
+                                                                            <td class="product-dis__title">Nhà sản xuất
+                                                                            </td>
+                                                                            <td class="product-dis__text">
+                                                                                {{product.tradeMark}}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="product-dis__title">CPU
                                                                             </td>
-                                                                            <td class="product-dis__text">{{product.cpu}}</td>
+                                                                            <td class="product-dis__text">
+                                                                                {{product.cpu}}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="product-dis__title">RAM
                                                                             </td>
-                                                                            <td class="product-dis__text">{{product.ram}}</td>
+                                                                            <td class="product-dis__text">
+                                                                                {{product.ram}}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="product-dis__title">Màn hình
                                                                             </td>
-                                                                            <td class="product-dis__text">{{product.monitor}}</td>
+                                                                            <td class="product-dis__text">
+                                                                                {{product.monitor}}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="product-dis__title">Card đồ hoạ
                                                                             </td>
-                                                                            <td class="product-dis__text">{{product.vga}}</td>
+                                                                            <td class="product-dis__text">
+                                                                                {{product.vga}}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="product-dis__title">Kiểu thiết kế
                                                                             </td>
-                                                                            <td class="product-dis__text">{{product.designStyle}}</td>
+                                                                            <td class="product-dis__text">
+                                                                                {{product.designStyle}}</td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td class="product-dis__title">Kích thước - cân nặng
+                                                                            <td class="product-dis__title">Kích thước -
+                                                                                cân nặng
                                                                             </td>
-                                                                            <td class="product-dis__text">{{product.sizeWeight}}</td>
+                                                                            <td class="product-dis__text">
+                                                                                {{product.sizeWeight}}</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
-                                                            </div>
+                                                           
                                                         </div>
                                                     </div> <!-- End Tab - Product Details -->
                                                     <!-- Start Tab - Product Review -->
-                                                    <div class="tab-pane show active product-review" id="product-review">
+                                                    <div class="tab-pane show active product-review"
+                                                        id="product-review">
                                                         <!-- Start - Review Comment -->
                                                         <ul class="comment">
                                                             <!-- Start - Review Comment list-->
@@ -272,16 +252,20 @@
                                                                             <div class="comment__content-left">
                                                                                 <h6 class="comment__name">
                                                                                     {{cmt.tenNguoiDung}}</h6>
-                                                                                
+
                                                                             </div>
+
                                                                             <div class="comment__content-right">
                                                                                 <a (click)="openRepComment(cmt.id)"
                                                                                     class="link--gray link--icon-left m-b-5"><i
                                                                                         class="fas fa-reply"></i>Reply</a>&nbsp;
 
-                                                                                       <a (click)="removeComment(cmt.id)"> <span *ngIf="userid==cmt.userId">x</span></a>
+                                                                                <a (click)="removeComment(cmt.id)">
+                                                                                    <span
+                                                                                        *ngIf="userid==cmt.userId">x</span></a>
                                                                             </div>
                                                                         </div>
+
 
                                                                         <div class="para__content">
                                                                             <p class="para__text">{{cmt.noiDung}}</p>
@@ -303,9 +287,12 @@
                                                                                             {{cmt.tenNguoiDung}}</h6>
                                                                                     </div>
                                                                                     <div class="comment__content-right">
-                                                                                       &nbsp;
-        
-                                                                                               <a (click)="removeComment(cmt.id)"> <span *ngIf="userid==cmt.userId">x</span></a>
+                                                                                        &nbsp;
+
+                                                                                        <a
+                                                                                            (click)="removeComment(cmt.id)">
+                                                                                            <span
+                                                                                                *ngIf="userid==cmt.userId">x</span></a>
                                                                                     </div>
                                                                                 </div>
 

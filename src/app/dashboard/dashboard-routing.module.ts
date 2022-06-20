@@ -16,6 +16,7 @@ import { ProEditComponent } from './product/pro-edit/pro-edit.component';
 import { ProductComponent } from './product/product.component';
 import { SupplierCreateComponent } from './supplier/supplier-create/supplier-create.component';
 import { SupplierComponent } from './supplier/supplier.component';
+import { TrademarkComponent } from './trademark/trademark.component';
 
 const routes: Routes = [
   {
@@ -89,6 +90,11 @@ const routes: Routes = [
   {
     path: 'supplier/create',
     component: SupplierCreateComponent
+  },
+  //trademaark
+  {
+    path: 'brand',
+    component: TrademarkComponent
   }
 ];
 

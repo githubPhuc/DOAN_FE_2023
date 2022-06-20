@@ -40,4 +40,22 @@ export class LoginService {
      
    })});
    }
+
+   public sendMail(mail:string)
+   {
+    return this.httpClient
+    .post<any>('https://localhost:7043/api/authenticate/taomaxacthuc?mail='+mail,{headers: new HttpHeaders({ 
+      'Content-Type': 'application/json'
+     
+   })});
+   }
+
+   public changePassword(mail:string,newPass:string)
+   {
+    return this.httpClient
+    .post<any>('https://localhost:7043/api/authenticate/changepassword?mail='+mail+'&newPass='+newPass,{headers: new HttpHeaders({ 
+      'Content-Type': 'application/json'
+     
+   })});
+   }
 }

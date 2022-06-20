@@ -28,7 +28,9 @@ import { ImportDetailComponent } from './dialog/import-detail/import-detail.comp
 
 import { NgxPaginationModule } from 'ngx-pagination';
 
-
+import { NgxStarRatingModule } from 'ngx-star-rating';
+import { TrademarkComponent } from './trademark/trademark.component';
+import { EditBrandComponent } from './dialog/edit-brand/edit-brand.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SupplierComponent,
     SupplierCreateComponent,
     ImportDetailComponent,
+    TrademarkComponent,
+    EditBrandComponent,
 
   ],
   imports: [
@@ -61,7 +65,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     DashboardRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxStarRatingModule
   ]
 })
 export class DashboardModule { }

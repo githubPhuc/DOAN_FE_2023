@@ -73,7 +73,7 @@ openDialogAddItem()
 
    this.dialog1.open(AddImportComponent,{
     height: '420px',
-    width: '600px',
+    width: '700px',
   }
   );
 }

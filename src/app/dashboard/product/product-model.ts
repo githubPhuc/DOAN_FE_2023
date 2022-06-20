@@ -5,7 +5,7 @@ export class ProductModel {
         public Price:number,
         public Quantily: number,
         public CategoryId: number,
-        public TradeMark: string,
+        public TradeMarkId: number,
         public Star:number,
         public CPU:string,
         public DesignStyle:string,
@@ -13,7 +13,11 @@ export class ProductModel {
         public Ram:string,
         public SizeWeight:string,
         public VGA:string,
-        public Image:string
+        public Image:string,
+        public HardDisk:string,
+        public OS:string,
+        public Port:string,
+        public ReleaseTime:string
 
     ){}
 }
