@@ -40,8 +40,8 @@ export class WishlistComponent implements OnInit {
     this.shopService.addCart(this.cart).subscribe(data1=>{
       if(data1.status==200)
       {
-        alert("Đã thêm sản phẩm vào giỏ hàng");
-        window.location.reload();
+        this.dialog.openDialogSuccess(data1.msg);
+
       }
       
     });
@@ -50,6 +50,7 @@ export class WishlistComponent implements OnInit {
 
   removeWishList(id:number)
   {
+ 
     this.shopService.removeWishList(id).subscribe(data=>{
       
     });

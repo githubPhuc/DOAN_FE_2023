@@ -15,6 +15,11 @@
   #btn-slideshow {
       width: 200px;
   }
+
+  #wish:hover i {
+    color: aqua;
+  }
+
   
     </style>
   <main id="main-container" class="main-container">
@@ -64,7 +69,7 @@
   
                                       <a (click)="addCart(pro.id)" data-toggle="modal" class="btn btn--box btn--small btn--gray btn--uppercase btn--weight btn--hover-zoom product__upper-btn">Add to cart</a>
   
-                                      <a (click)="addToWishList(pro.id)" class="product__wishlist-icon"><i class="icon-heart"></i></a>
+                                      <a (click)="addToWishList(pro.id)" id="wish" class="product__wishlist-icon"><i class="icon-heart" style="color: red;"></i></a>
                                     
                                   </div>
                                   <div class="product__price m-t-10">
@@ -85,7 +90,7 @@
                       </div>
               
   
-          
+                
               </div>  <!-- Start Rightside - Content -->
               
           </div>
@@ -93,3 +98,4 @@
       </div>
   </main>  
   
+

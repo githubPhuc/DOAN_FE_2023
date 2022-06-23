@@ -69,7 +69,7 @@ export class ProCreateComponent implements OnInit {
 
 
 });
-pro=new ProductModel('','',1,1,1,1,1,'','','','','','','','','','','',);
+pro=new ProductModel('','',1,0,1,1,1,'','','','','','','','','','','',);
 
 
 onSubmit(form:FormGroup) {
@@ -77,7 +77,7 @@ onSubmit(form:FormGroup) {
   this.pro.Name=form.value.name;
   this.pro.Description=form.value.description;
   this.pro.Price=form.value.price;
-  this.pro.Quantily=form.value.quantily;
+
   this.pro.CategoryId=form.value.categoryId;
   this.pro.TradeMarkId=form.value.tradeMark;
   this.pro.Star=5;

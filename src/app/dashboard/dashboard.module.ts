@@ -31,6 +31,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { TrademarkComponent } from './trademark/trademark.component';
 import { EditBrandComponent } from './dialog/edit-brand/edit-brand.component';
+import { ShowSuccessComponent } from './dialog/show-success/show-success.component';
+import { ConfirmDeleteComponent } from './dialog/confirm-delete/confirm-delete.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { EditBrandComponent } from './dialog/edit-brand/edit-brand.component';
     ImportDetailComponent,
     TrademarkComponent,
     EditBrandComponent,
+    ShowSuccessComponent,
+    ConfirmDeleteComponent,
 
   ],
   imports: [

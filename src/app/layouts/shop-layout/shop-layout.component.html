@@ -68,65 +68,102 @@
 /* Thay đổi màu background cho nút khi được hover */
  .dropdown:hover .nut_dropdown {background-color: #3466e7;}
 
-
+.header__nav{
+    align-items: center;
+  
+}
+.header a{
+ 
+    color: white;
+    text-decoration: none;
+}
+.header__search-input button {
+    padding: 3px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
             </style>
             <div class="header-menu">
+                <div class="header__middle header__middle--style-2 p-tb-30">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-2">
+                                <div class="header__logo">
+                                    <a [routerLink]="['/shop/home']" class="header__logo-link">
+                                        <img src="../../../assets/assets/img/logo/logo-invert.jpg" alt="" class="header__logo-img">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-9 offset-lg-1">
+                             
+                                    <div class="col-lg-9">
+                                        <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">
+                                            <div class="header__search-input">
+                                                <input type="search" placeholder="Nhập sản phẩm cần tìm" formControlName="txtSearch">
+                                                <button class=" btn--blue btn--uppercase btn--weight yellow-bg" type="submit">Search</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                          
+                             
+                            </div>
+                        </div>
+                    </div>
+                  </div> 
                 <div class="container">
                     <div class="row col-12 justify-content-between">
                         <nav>
                             <ul class="header__nav">
-                                <!--Start Single Nav link-->
-                                <li class="header__nav-item pos-relative">
-                                    <a [routerLink]="['/shop/home']" style="font-size: 20px;" class="header__nav-link">Trang chủ</a>
-                                 
-                                </li> <!-- End Single Nav link-->
-
-                                <!--Start Single Nav link-->
-                                <li class="header__nav-item pos-relative">
-                                    <div class="dropdown">
-                                        <button class="nut_dropdown" style="font-size: 20px;">Danh mục </button>
-                                        <div class="noidung_dropdown">
-                                          <a *ngFor="let c of lstCategory" href="#">{{c.name}}</a>
-                                       
-                                        </div>
-                                      </div>
-
-                                </li> <!-- End Single Nav link-->
-
-                                <!--Start Single Nav link-->
-                                <li class="header__nav-item pos-relative">
-                                    <div class="dropdown">
-                                        <button class="nut_dropdown" style="font-size: 20px;">Nhãn hiệu </button>
-                                        <div class="noidung_dropdown">
-                                          <a *ngFor="let c of lstTrademark" href="#">{{c.name}}</a>
-                                       
-                                        </div>
-                                      </div>
-                              
-                                </li> <!-- Start Single Nav link-->
-
-                                <!--Start Single Nav link-->
-                                <li class="header__nav-item pos-relative">
-                                    <a href="#" class="header__nav-link" style="font-size: 20px;">Giới thiệu </a>
-                              
-                                </li> <!-- Start Single Nav link-->
-
+                               <li class="header">
+                                <a [routerLink]="['/shop/home']" style="font-size: 20px; color: white;">Trang chủ</a>
+                               </li>
+                               <li  class="header1">
+                                <div class="dropdown">
+                                    <button class="nut_dropdown" style="font-size: 20px;">Danh mục </button>
+                                    <div class="noidung_dropdown">
+                                      <a *ngFor="let c of lstCategory" (click)="getByCate(c.id)" style="color: black;" >{{c.name}}</a>
+                                   
+                                    </div>
+                                  </div>
+                               </li>
+                               <li  class="header">
+                                <div class="dropdown">
+                                    <button class="nut_dropdown" style="font-size: 20px;">Nhãn hiệu </button>
+                                    <div class="noidung_dropdown">
+                                      <a *ngFor="let c of lstTrademark" href="#"  style="color: black;">{{c.name}}</a>
+                                   
+                                    </div>
+                                  </div>
+                               </li>
+                               <li  class="header"> 
+                                <a href="" style="font-size: 20px;">Giới thiệu</a>
+                               </li>
                           
                             </ul>
                         </nav>
 
                         <div class="header__wishlist-box">
                             <!-- Start Header Wishlist Box -->
-                            <div class="header__wishlist pos-relative">
-                                <a [routerLink]="['/shop/wishlist']" class="header__wishlist-link">
+                            <div *ngIf="islogin" class="header__wishlist pos-relative">
+                                <a  [routerLink]="['/shop/wishlist']" class="header__wishlist-link">
                                     <i class="fa fa-heart" style="color: white;" aria-hidden="true"></i>
                                     <span class="wishlist-item-count pos-absolute yellow-bg">{{count2}}</span>
                                 </a>
-                            </div> <!-- End Header Wishlist Box -->
+                            </div>
+                            <div *ngIf="!islogin" class="header__wishlist pos-relative">
+                                <a  [routerLink]="['/auth/login']" class="header__wishlist-link">
+                                    <i class="fa fa-heart" style="color: white;" aria-hidden="true"></i>
+                                    <span class="wishlist-item-count pos-absolute yellow-bg">{{count2}}</span>
+                                </a>
+                            </div>  <!-- End Header Wishlist Box -->
 
                             <!-- Start Header Add Cart Box -->
                             <div class="header-add-cart pos-relative m-l-40">
-                                <a [routerLink]="['/shop/cart']" class="header__wishlist-link offcanvas-toggle">
+                                <a *ngIf="islogin" [routerLink]="['/shop/cart']" class="header__wishlist-link offcanvas-toggle">
+                                    <i class="fa fa-shopping-cart" style="color: white;" aria-hidden="true"></i>
+                                    <span class="wishlist-item-count pos-absolute yellow-bg">{{count}}</span>
+                                </a>
+                                <a *ngIf="!islogin" [routerLink]="['/auth/login']" class="header__wishlist-link offcanvas-toggle">
                                     <i class="fa fa-shopping-cart" style="color: white;" aria-hidden="true"></i>
                                     <span class="wishlist-item-count pos-absolute yellow-bg">{{count}}</span>
                                 </a>

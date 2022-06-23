@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CategoryService } from 'src/app/dashboard/category.service';
 import { CommentService } from 'src/app/dashboard/comment/comment.service';
 import { DialogService } from 'src/app/dashboard/dialog.service';
 import { ProductService } from 'src/app/dashboard/product/product.service';
@@ -17,10 +18,11 @@ export class DetailProComponent implements OnInit {
   private sub: any;
 
   product:any;
+  category:any;
   comment:any;
 
   userid=localStorage.getItem('userid');
-  constructor(private proservice:ProductService,private route: ActivatedRoute,private dialog:DialogService,private commentService:CommentService,private shopService:ShopService) { }
+  constructor(private proservice:ProductService,private route: ActivatedRoute,private dialog:DialogService,private commentService:CommentService,private shopService:ShopService,private cateService:CategoryService) { }
   
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
@@ -32,12 +34,21 @@ export class DetailProComponent implements OnInit {
         console.log(data);
       })
 
+     
+      
 
    });
+
+
    this.commentService.getAllCommentInProduct(this.id).subscribe(data=>{
     this.comment=data;
     console.log('cmt',data);
    });
+
+   this.shopService.getProductByCategory(this.product[0].categoryId).subscribe(data=>{
+    this.category=data;
+  })
+  alert('á');
    
   }
 
@@ -66,11 +77,20 @@ export class DetailProComponent implements OnInit {
     this.cart.userid=localStorage.getItem('userid')!;
     console.log(this.cart);
     this.shopService.addCart(this.cart).subscribe(data1=>{
-      if(data1.status=200)
+      if(data1.status==200)
       {
         alert(data1.msg);
       }
 
     });
+  }
+
+  goToProductDetails(id:number){
+
+  }
+
+  addToWishList(id:number)
+  {
+    
   }
 }

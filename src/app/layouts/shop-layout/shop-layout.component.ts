@@ -15,6 +15,7 @@ export class ShopLayoutComponent implements OnInit {
 
   constructor(private shopservice:ShopService,private router:Router,private dialog:DialogService,private cateService:CategoryService) { }
 
+  txt:any;
   count=0;
   count2=0;
   username:any;
@@ -91,10 +92,19 @@ export class ShopLayoutComponent implements OnInit {
   onSubmit(form:FormGroup)
   {
 
-    this.shopservice.searchProduct(form.value.txtSearch).subscribe(data=>{
-      this.lstProduct=data;
+    this.txt=form.value.txtSearch;
+    this.router.navigate(['/shop/search',this.txt]).then(()=>{
+      location.reload();
     });
   }
 
+  getByCate(id:number)
+  {
+    
+    this.router.navigate(['/shop/product/category',id]).then(()=>{
+      location.reload();
+    });
+    
+  }
 
 }

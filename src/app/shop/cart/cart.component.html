@@ -1,41 +1,5 @@
-<div class="header__middle header__middle--style-2 p-tb-30">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-2">
-                <div class="header__logo">
-                    <a href="index.html" class="header__logo-link">
-                        <img src="../../../assets/assets/img/logo/logo-invert.jpg" alt="" class="header__logo-img">
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-9 offset-lg-1">
-             
-                    <div class="col-lg-9">
-                        <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">
-                            <div class="header__search-input">
-                                <input type="search" placeholder="Enter your search key" formControlName="txtSearch">
-                                <button class=" btn--blue btn--uppercase btn--weight yellow-bg" type="submit">Search</button>
-                            </div>
-                        </form>
-                    </div>
-          
-             
-            </div>
-        </div>
-    </div>
-  </div> 
-<div class="page-breadcrumb">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <ul class="page-breadcrumb__menu">
-                    <li class="page-breadcrumb__nav"><a href="#">Home</a></li>
-                    <li class="page-breadcrumb__nav active">Cart Page</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div> <!-- ::::::  End  Breadcrumb Section  ::::::  -->
+
+
 
 <!-- ::::::  Start  Main Container Section  ::::::  -->
 <main id="main-container" class="main-container">
@@ -44,17 +8,18 @@
             <div class="col-12">
                 <div class="section-content">
                     <h5 class="section-content__title">Your cart items</h5>
+                    <a (click)="removeAllCart()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20" style="color: white;">XOÁ TOÀN BỘ GIỎ HÀNG</a>
                 </div>
                 <!-- Start Cart Table -->
                 <div class="table-content table-responsive cart-table-content m-t-30">
                     <table>
                         <thead class="gray-bg">
                             <tr>
-                                <th>Image</th>
-                                <th>Product Name</th>
-                                <th>Until Price</th>
-                                <th>Qty</th>
-                                <th>Subtotal</th>
+                                <th>Hình ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Đơn giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng phụ</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -75,7 +40,11 @@
                                         currency:'VND'}}</span></td>
                                 <td class="product-quantities">
                                     <div class="quantity d-inline-block">
-                                        <input type="number" min="1" step="1" value="{{c.soLuong}}">
+                                        <input id="sl" #sl type="number" min="1" step="1" value="{{c.soLuong}}" >
+                                   
+                                            <i class="fa fa-caret-up" aria-hidden="true" (click)="plus(c.id)"></i> <br>
+                                            <i class="fa fa-caret-down" aria-hidden="true" (click)="remove(c.id)"></i>
+                                      
                                     </div>
                                 </td>
                                 <td class="product-subtotal">{{c.gia | currency:'VND'}}</td>
@@ -90,15 +59,14 @@
                 <!-- Start Cart Table Button -->
                 <div *ngIf="!isempty" class="cart-table-button m-t-10">
                     <div class="cart-table-button--left">
-                        <a href="#" class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">CONTINUE
+                        <a [routerLink]="['/shop/home']" class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">CONTINUE
                             SHOPPING</a>
                     </div>
                     <div class="cart-table-button--right">
-                        <a (click)="removeAllCart()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20">XOÁ TOÀN BỘ GIỎ HÀNG</a>
-                        <a href="#"
-                            class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20 m-r-20">CẬP NHẬT GIỎ HÀNG</a>
-                        <a (click)="order()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20">ĐẶT HÀNG</a>
-                        <a (click)="pay()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20">THANH TOÁN</a>
+                        
+                     
+                        <a (click)="order()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20" style="color: white;">ĐẶT HÀNG</a>
+
                     </div>
                 </div>
                 <div *ngIf="isempty" class="content">
@@ -149,6 +117,22 @@
     input[type=number]::-webkit-inner-spin-button {
     opacity: 1
 }
+main {
+    min-height: 500px;
+}
 
+.section-content__title {
+    margin-top: 20px;
+}
+.header__search-input button{
+    padding-left: 3px;
+    padding-right: 3px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.section-content {
+    display: flex;
+    justify-content: space-between;
+}
 </style>
 

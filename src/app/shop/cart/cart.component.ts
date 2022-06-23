@@ -40,6 +40,31 @@ export class CartComponent implements OnInit {
     })
   }
 
+  plus(id:number)
+  {
+    this.shopService.updateCart(id,1).subscribe(data=>{
+      if(data.status==200)
+      {
+        location.replace(location.href);
+      }
+    })
+  }
+  remove(id:number)
+  {
+    this.shopService.updateCart(id,-1).subscribe(data=>{
+      if(data.status==200)
+      {
+        location.replace(location.href);
+      }
+    })
+  }
+  update(txt:any)
+  {
+    var a= document.getElementById('sl');
+   
+      alert(txt);
+  }
+
   order()
   {
     this.shopService.order(localStorage.getItem('userid')!,localStorage.getItem('address')!,localStorage.getItem('phone')!).subscribe(data=>{
@@ -64,7 +89,12 @@ export class CartComponent implements OnInit {
   removeAllCart()
   {
     this.shopService.removeAllCart(localStorage.getItem('userid')!).subscribe(data=>{
-      location.reload();
+      if(data.status==200)
+      {
+        alert(data.msg);
+        location.reload();
+      }
+      
     });
   }
   goToProductDetails(id:number) {

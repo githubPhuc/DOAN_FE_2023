@@ -58,6 +58,15 @@ export class ShopService {
      })});
 		
   }
+  public getProductByCategory(id:number)
+  {
+    return this.httpClient
+			.get<any>('https://localhost:7043/api/product/getproductbycategory?id='+id.toString(),{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+     })});
+		
+  }
 
   public getCart(id:string)
   {
@@ -113,6 +122,16 @@ export class ShopService {
   {
     return this.httpClient
 			.post<any>('https://localhost:7043/api/cart/removecart?cartid='+id.toString(),{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+     })});
+		
+  }
+
+  public updateCart(id:number,sl:number)
+  {
+    return this.httpClient
+			.post<any>('https://localhost:7043/api/cart/updatecart?cartid='+id.toString()+'&sl='+sl.toString(),{headers: new HttpHeaders({ 
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.token
      })});

@@ -14,6 +14,7 @@ import { SearchComponent } from './search/search.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxStarRatingModule } from 'ngx-star-rating';
+import { ProductByCategoryComponent } from './product-by-category/product-by-category.component';
 
 
 
@@ -25,6 +26,7 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
     ProfileComponent,
     DetailProComponent,
     SearchComponent,
+    ProductByCategoryComponent,
     
   ],
   imports: [

@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import {MatDialog, MatDialogConfig, MatDialogModule, MatDialogRef, _closeDialogVia} from '@angular/material/dialog';
 import { Router } from '@angular/router';
+
 import { AddCommentComponent } from './dialog/add-comment/add-comment.component';
 import { AddImportComponent } from './dialog/add-import/add-import.component';
+import { ConfirmDeleteComponent } from './dialog/confirm-delete/confirm-delete.component';
 import { ConfirmComponent } from './dialog/confirm/confirm.component';
 import { EditCategoryComponent } from './dialog/edit-category/edit-category.component';
 import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/invoice-detail-dialog.component';
 import { RepCommentComponent } from './dialog/rep-comment/rep-comment.component';
+import { ShowSuccessComponent } from './dialog/show-success/show-success.component';
 
 
 
@@ -41,6 +44,32 @@ openDialogConfirm(content:string)
     }
   }
   );
+}
+
+openDialogSuccess(content:string)
+  {
+
+   this.dialog1.open(ShowSuccessComponent,{
+    height: '200px',
+    width: '400px',
+    data: {
+      'content': content
+    }
+  }
+  );
+}
+openDelete(content:string)
+  {
+
+   this.dialog1.open(ConfirmDeleteComponent,{
+    height: '200px',
+    width: '400px',
+    data: {
+      'content': content
+    }
+  }
+  );
+
 }
 openDialogEditCate(id:number)
   {

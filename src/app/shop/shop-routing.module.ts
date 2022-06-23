@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import { DetailProComponent } from './detail-pro/detail-pro.component';
 import { HomeComponent } from './home/home.component';
+import { ProductByCategoryComponent } from './product-by-category/product-by-category.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
 import { ShopComponent } from './shop.component';
@@ -51,6 +52,11 @@ const routes: Routes = [
 {
   path: 'search/:txt',
   component: SearchComponent
+
+},
+{
+  path: 'product/category/:txt',
+  component: ProductByCategoryComponent
 
 },
 
