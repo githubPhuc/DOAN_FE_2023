@@ -16,7 +16,7 @@ import { ProductService } from '../product.service';
 export class ProCreateComponent implements OnInit {
 
   constructor(private responseCate:CategoryService,private router:Router,private responsePro:ProductService,private httpClient:HttpClient,private tradeService:TrademarkService) { }
-
+  images:any;
   category:any;
   selectId="";
   progress!: number;
@@ -27,6 +27,7 @@ export class ProCreateComponent implements OnInit {
   brand:any;
 
   formData=new FormData();
+  formData1=new FormData();
   @Output() public onUploadFinished = new EventEmitter();
   ngOnInit(): void {
 
@@ -64,6 +65,7 @@ export class ProCreateComponent implements OnInit {
   os: new FormControl(''),
   port: new FormControl(''),
   releaseTime: new FormControl(''),
+  fileSource: new FormControl(''),
 
 
 
@@ -139,19 +141,33 @@ onSubmit(form:FormGroup) {
 }
 
 
-
-
-
-
-
-
-
-
   uploadFile(files:any){
   
     this.fileToUpload = <File>files[0];
 
- 
-    console.log('ímg',this.formData);
+    this.formData1.append('image',this.fileToUpload);
+    console.log('ímg',this.formData1);
   }
+
+
+
+  onFileChange(event:any) {
+    if (event.target.files && event.target.files[0]) {
+        var filesAmount = event.target.files.length;
+        for (let i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+    
+                reader.onload = (event:any) => {
+                  console.log(event.target.result);
+                   this.images.push(event.target.result); 
+    
+                   this.categoryForm.patchValue({
+                      fileSource: this.images
+                   });
+                }
+   
+                reader.readAsDataURL(event.target.files[i]);
+        }
+    }
+}
 }

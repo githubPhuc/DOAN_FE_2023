@@ -93,7 +93,7 @@ export class ShopLayoutComponent implements OnInit {
   {
 
     this.txt=form.value.txtSearch;
-    this.router.navigate(['/shop/search',this.txt]).then(()=>{
+    this.router.navigate(['/search',this.txt]).then(()=>{
       location.reload();
     });
   }
@@ -101,7 +101,7 @@ export class ShopLayoutComponent implements OnInit {
   getByCate(id:number)
   {
     
-    this.router.navigate(['/shop/product/category',id]).then(()=>{
+    this.router.navigate(['/product/category',id]).then(()=>{
       location.reload();
     });
     

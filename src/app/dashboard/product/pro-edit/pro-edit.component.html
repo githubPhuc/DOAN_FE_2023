@@ -110,8 +110,9 @@ Product successfully added. </div>
                         </div>
                         <span class="btn btn-primary  btn-file" >
                             <span class="fileinput-new">Select</span>
-                            <span class="fileinput-exists">Change</span>
-                            <input type="file" id="image" name="image" formControlName="image">
+                            
+                            <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+                            <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
                         </span>
                         <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remove</a>
                     </div>

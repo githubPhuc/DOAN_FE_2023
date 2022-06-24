@@ -12,10 +12,10 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 const routes: Routes = [
   {
     path: '',
-    component: ShopComponent,
+    component: HomeComponent,
     children: [
       {
-        path: 'shop/home',
+        path: '/shop/home',
         component: HomeComponent,
         
       }

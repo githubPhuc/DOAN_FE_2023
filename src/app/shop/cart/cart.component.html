@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-content">
-                    <h5 class="section-content__title">Your cart items</h5>
+                    <h5 class="section-content__title">Giỏ hàng của bạn</h5>
                     <a (click)="removeAllCart()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20" style="color: white;">XOÁ TOÀN BỘ GIỎ HÀNG</a>
                 </div>
                 <!-- Start Cart Table -->
@@ -76,6 +76,10 @@
                     </div>
                     <div class="row" id="cart-content">
                         <div><i class="fa fa-ban fa-10x" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="cart-table-button--left">
+                        <a [routerLink]="['/shop/home']" class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">CONTINUE
+                            SHOPPING</a>
                     </div> <!-- End Cart Table Button -->
                 </div>
             </div>

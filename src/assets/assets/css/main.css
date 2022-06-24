@@ -3159,6 +3159,8 @@ input[type=radio].shipping-select:checked::after {
   opacity: 1;
   transform: rotateX(0deg);
   transition: all 0.3s linear;
+
+ 
 }
 
 .mobile-header {
@@ -3633,7 +3635,7 @@ table tbody > tr td {
   color: #666;
   font-size: 15px;
   padding: 30px 15px;
-  text-align: center;
+  text-align: left;
 }
 table tbody > tr td a {
   color: #666;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { CategoryService } from '../../category.service';
 import { TrademarkService } from '../../trademark/trademark.service';
 import { ProductModel } from '../product-model';
@@ -13,9 +14,12 @@ import { ProductService } from '../product.service';
 })
 export class ProEditComponent implements OnInit {
 
-  constructor(private cateService:CategoryService,private proService:ProductService,private route: ActivatedRoute,private tradeService:TrademarkService) { }
+  constructor(private cateService:CategoryService,private proService:ProductService,private route: ActivatedRoute,private tradeService:TrademarkService,private router:Router) { }
 
-
+  formData:any;
+  fileToUpload:any
+  fileName:any;
+  name!:string;
   category:any;
   product:any;
   brand:any;
@@ -95,8 +99,36 @@ export class ProEditComponent implements OnInit {
 
   console.log(this.pro);
   this.proService.editProduct(this.pro,this.id).subscribe(data=>{
+      if(data.status==200)
+      {
+  
+        if(this.fileToUpload!=null)
+        {
+          this.name=this.fileToUpload.name;
+          let filename=this.name.split('.');
+          this.name=filename[1];
+          this.fileName=this.id+'.'+this.name;
 
+          //
+          this.formData = new FormData();
+
+          this.formData.append('ImageFile', this.fileToUpload, this.fileName);
+          this.proService.uploadEdit(this.formData).subscribe(data1=>{
+
+          });
+        }
+        this.router.navigate(['/admin/product']);
+        
+      }
   })
 
   }
+
+  uploadFile(files:any){
+  
+    this.fileToUpload = <File>files[0];
+
+    console.log('form',this.fileToUpload);
+  }
+
 }

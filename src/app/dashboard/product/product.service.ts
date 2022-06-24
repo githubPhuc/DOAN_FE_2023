@@ -65,6 +65,15 @@ export class ProductService {
       
     }
 
+    public uploadEdit(data:FormData)
+    {
+     
+      console.log('áaaaaaaaaa',data);
+      return this.httpClient
+        .post<any>('https://localhost:7043/api/product/upload',data,{reportProgress: true, observe: 'events'});
+      
+    }
+
     public editProduct(data:ProductModel,id:number)
     {
      

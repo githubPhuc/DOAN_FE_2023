@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { CategoryService } from 'src/app/dashboard/category.service';
 import { CommentService } from 'src/app/dashboard/comment/comment.service';
 import { DialogService } from 'src/app/dashboard/dialog.service';
@@ -20,11 +21,12 @@ export class DetailProComponent implements OnInit {
   product:any;
   category:any;
   comment:any;
-
+ 
   userid=localStorage.getItem('userid');
   constructor(private proservice:ProductService,private route: ActivatedRoute,private dialog:DialogService,private commentService:CommentService,private shopService:ShopService,private cateService:CategoryService) { }
   
   ngOnInit(): void {
+    
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
 
@@ -32,11 +34,7 @@ export class DetailProComponent implements OnInit {
         console.log("xxxxxxxxxxxxxxxxxxxxxxx");
         this.product=data;
         console.log(data);
-      })
-
-     
-      
-
+      });
    });
 
 
@@ -45,10 +43,13 @@ export class DetailProComponent implements OnInit {
     console.log('cmt',data);
    });
 
-   this.shopService.getProductByCategory(this.product[0].categoryId).subscribe(data=>{
+   this.shopService.getProductByCategory(1).subscribe(data=>{
     this.category=data;
-  })
-  alert('á');
+    console.log('cate',data)
+  });
+
+
+
    
   }
 
@@ -93,4 +94,6 @@ export class DetailProComponent implements OnInit {
   {
     
   }
+
+
 }

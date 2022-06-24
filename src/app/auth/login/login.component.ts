@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/'+'admin']);
       }else
       {
-      this.router.navigate(['/'+'shop/home']);
+      this.router.navigate(['/'+'home']);
       }
     });
     

@@ -12,12 +12,12 @@ const routes: Routes = [
       component: ShopLayoutComponent,
       children: [
         {
-          path: 'shop',
+          path: '',
           redirectTo: '/shop/home',
           pathMatch: 'full'
         },
         {
-          path: 'shop',
+          path: '',
           loadChildren: ()=>import('./shop/shop.module').then(m=>m.ShopModule)
         }
       ]

@@ -1,4 +1,4 @@
-<div class="container" id="ctn">
+
     <main id="main-container" class="main-container">
         <div class="container">
             <div class="row">
@@ -116,6 +116,7 @@
                                     <div class="review-box">
                                         <span style="color: Yellow;font-weight: 1000;"> {{product.star}} <i
                                                 class="fa fa-star" style="color: Yellow;"></i></span>
+                                               
 
                                     </div>
                                     <div class="product__price">
@@ -123,6 +124,7 @@
                                         <span class="product__price-reg" style="font-size: 20px;">Giá :{{product.price |
                                             currency:'VND'}}</span>
 
+                                       
                                         <button (click)="addCart(product.id)"><i id="icon" class="fa fa-cart-plus"></i>
                                             Thêm vào giỏ hàng </button>
                                     </div>
@@ -149,8 +151,55 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- End Product Details Gallery -->
-          
+                </div>
+             
+                    <div class="col-12">
+                        
+                        <div class="lable-pro">SẢN PHẨM CÙNG LOẠI <button>Xem tất cả</button></div>
+                       
+                   
+                        
+                    </div>
+           
+              
+               <!-- End Product Details Gallery -->
+                <div class="tab-content " >
+                   
+                    <div class="tab-pane show active clearfix" id="sort-grid" >
+                      <!-- Start Single Default Product -->
+        
+                      <div *ngFor="let pro of category"
+                        class="product__box product__box--default product__box--border-hover text-center float-left float-3">
+                        <div class="product__img-box">
+                          <a *ngIf="pro.image" (click)="goToProductDetails(pro.id)" class="product__img--link">
+                            <img class="product__img" src="../../assets/img/product/{{pro.image}}" alt="">
+                          </a>
+                          <a *ngIf="!pro.image" (click)="goToProductDetails(pro.id)" class="product__img--link">
+                            <img class="product__img" src="../../../assets/img/product/noimage.png" alt="">
+                          </a>
+        
+                          <a (click)="addCart(pro.id)" data-toggle="modal"
+                            class="btn btn--box btn--small btn--gray btn--uppercase btn--weight btn--hover-zoom product__upper-btn">Add
+                            to cart</a>
+        
+                          <a (click)="addToWishList(pro.id)" class="product__wishlist-icon"><i class="icon-heart"></i></a>
+        
+                        </div>
+                        <div class="product__price m-t-10">
+        
+                          <span class="product__price-reg">{{pro.price | currency:'VND'}}</span>
+                        </div>
+                        <a href="" class="product__link product__link--underline product__link--weight-light m-t-15">
+                          {{pro.name}}
+                        </a>
+                      </div>
+        
+                    </div>
+        
+        
+        
+                  </div>
+        
                 <!-- Start Product Details Tab -->
                 <div class="col-12">
                     <div class="product product--1 border-around product-details-tab-area">
@@ -176,7 +225,7 @@
                                             <div class="product-details-tab-box m-t-50">
                                                 <div class="tab-content">
                                           
-
+                                                    
                                                     <!-- Start Tab - Product Details -->
                                                     <div class="tab-pane show product-dis" id="product-dis">
 
@@ -273,8 +322,12 @@
                                                                             <div class="comment__content-left">
                                                                                 <h6 class="comment__name">
                                                                                     {{cmt.tenNguoiDung}}</h6>
+                                                                                    <ul class="product__review">
+                                                                                       
+                                                                                    </ul>
 
                                                                             </div>
+                                                                          
 
                                                                             <div class="comment__content-right">
                                                                                 <a (click)="openRepComment(cmt.id)"
@@ -287,7 +340,7 @@
                                                                             </div>
                                                                         </div>
 
-
+                                                                     
                                                                         <div class="para__content">
                                                                             <p class="para__text">{{cmt.noiDung}}</p>
                                                                         </div>
@@ -347,4 +400,47 @@
             </div>
         </div>
     </main>
-</div>
+
+<style>
+    .product-dis__title {
+        font-weight: bold;
+    }
+  
+  .lable-pro {
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    background-color: #0063d1;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .lable-pro button{
+    
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .lable-pro button:hover {
+    color: #0063d1;
+    font-size: 16px;
+    padding-right: 5px;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .tab-content {
+    margin-bottom: 5px;
+  }
+
+  main {
+    min-height: 1000px;
+  }
+
+ 
+</style>

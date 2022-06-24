@@ -20,15 +20,9 @@
 <body>
     <!-- ::::::  Start  Header Section  ::::::  -->
     <header>
-        <!-- ::::::  Start Large Header Section  ::::::  -->
+   
         <div class="header header--1">
-            <!-- Start Header Top area -->
-           <!-- Start Header Top area -->
-
-            <!-- Start Header Middle area -->
-           <!-- End Header Middle area -->
-
-            <!-- Start Header Menu Area -->
+ 
             <style>
                 .nut_dropdown {
    background-color: #0080ff;
@@ -82,6 +76,7 @@
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
 }
+
             </style>
             <div class="header-menu">
                 <div class="header__middle header__middle--style-2 p-tb-30">
@@ -89,7 +84,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-2">
                                 <div class="header__logo">
-                                    <a [routerLink]="['/shop/home']" class="header__logo-link">
+                                    <a [routerLink]="['/home']" class="header__logo-link">
                                         <img src="../../../assets/assets/img/logo/logo-invert.jpg" alt="" class="header__logo-img">
                                     </a>
                                 </div>
@@ -114,31 +109,37 @@
                     <div class="row col-12 justify-content-between">
                         <nav>
                             <ul class="header__nav">
-                               <li class="header">
-                                <a [routerLink]="['/shop/home']" style="font-size: 20px; color: white;">Trang chủ</a>
-                               </li>
+                                <li class="header__nav-item pos-relative">
+                                    <a [routerLink]="['/home']" class="header__nav-link">TRANG CHỦ</a>
+                                 
+                                </li>
                         
-                               <li  class="header1">
-                                <div class="dropdown">
-                                    <button class="nut_dropdown" style="font-size: 20px;">Danh mục <i class="fa fa-angle-down" aria-hidden="true"></i></button>
-                                    <div class="noidung_dropdown">
-                                      <a *ngFor="let c of lstCategory" (click)="getByCate(c.id)" style="color: black;" >{{c.name}}</a>
-                                   
-                                    </div>
-                                  </div>
-                               </li>
-                               <li  class="header">
-                                <div class="dropdown">
-                                    <button class="nut_dropdown" style="font-size: 20px;">Nhãn hiệu <i class="fa fa-angle-down" aria-hidden="true"></i></button>
-                                    <div class="noidung_dropdown">
-                                      <a *ngFor="let c of lstTrademark" href="#"  style="color: black;">{{c.name}}</a>
-                                   
-                                    </div>
-                                  </div>
-                               </li>
-                               <li  class="header"> 
-                                <a href="" style="font-size: 20px;">Giới thiệu</a>
-                               </li>
+                               <li class="header__nav-item pos-relative">
+                                <a href="#" class="header__nav-link">DANH MỤC <i class="icon-chevron-down"></i></a>
+                                <!--Single Dropdown Menu-->
+                                <ul class="dropdown__menu pos-absolute">
+                                    <li *ngFor="let c of lstTrademark" class="dropdown__list"><a (click)="getByCate(c.id)" class="dropdown__link" style="color: blue;">{{c.name}}</a></li>
+                              
+                                </ul>
+                                <!--Single Dropdown Menu-->
+                            </li>
+                               <li class="header__nav-item pos-relative">
+                                <a href="#" class="header__nav-link">THƯƠNG HIỆU <i class="icon-chevron-down"></i></a>
+                                <!--Single Dropdown Menu-->
+                                <ul class="dropdown__menu pos-absolute">
+                                    <li *ngFor="let c of lstTrademark" class="dropdown__list"><a href="index.html" class="dropdown__link" style="color: blue;">{{c.name}}</a></li>
+                              
+                                </ul>
+                                <!--Single Dropdown Menu-->
+                            </li>
+                               <li class="header__nav-item pos-relative">
+                                <a href="#" class="header__nav-link">GIỚI THIỆU</a>
+                            
+                            </li> 
+                            <li class="header__nav-item pos-relative">
+                                <a href="#" class="header__nav-link">LIÊN HỆ</a>
+                            
+                            </li> 
                           
                             </ul>
                         </nav>
@@ -146,7 +147,7 @@
                         <div class="header__wishlist-box">
                             <!-- Start Header Wishlist Box -->
                             <div *ngIf="islogin" class="header__wishlist pos-relative">
-                                <a  [routerLink]="['/shop/wishlist']" class="header__wishlist-link">
+                                <a  [routerLink]="['/wishlist']" class="header__wishlist-link">
                                     <i class="fa fa-heart" style="color: white;" aria-hidden="true"></i>
                                     <span class="wishlist-item-count pos-absolute yellow-bg">{{count2}}</span>
                                 </a>
@@ -160,7 +161,7 @@
 
                             <!-- Start Header Add Cart Box -->
                             <div class="header-add-cart pos-relative m-l-40">
-                                <a *ngIf="islogin" [routerLink]="['/shop/cart']" class="header__wishlist-link offcanvas-toggle">
+                                <a *ngIf="islogin" [routerLink]="['/cart']" class="header__wishlist-link offcanvas-toggle">
                                     <i class="fa fa-shopping-cart" style="color: white;" aria-hidden="true"></i>
                                     <span class="wishlist-item-count pos-absolute yellow-bg">{{count}}</span>
                                 </a>
@@ -170,7 +171,7 @@
                                 </a>
                             </div> <!-- End Header Add Cart Box -->
                             <div class="header-add-cart pos-relative m-l-40">
-                                <a *ngIf="islogin" [routerLink]="['/shop/profile']" class="header__wishlist-link offcanvas-toggle">
+                                <a *ngIf="islogin" [routerLink]="['/profile']" class="header__wishlist-link offcanvas-toggle">
                                     <i class="fa fa-user" style="color: white;" aria-hidden="true"></i>&nbsp;
                                     <span *ngIf="islogin" style="color: white;">{{username}}</span> 
                                    
