@@ -17,9 +17,9 @@ export class ImportComponent implements OnInit {
       this.invoice=data;
     })
   }
-  view()
+  view(id:number)
   {
-    
+      this.dialog.opentImportDetail(id);
   }
 
 

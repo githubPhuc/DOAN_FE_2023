@@ -15,7 +15,8 @@ import { ProductService } from '../product.service';
 export class ProEditComponent implements OnInit {
 
   constructor(private cateService:CategoryService,private proService:ProductService,private route: ActivatedRoute,private tradeService:TrademarkService,private router:Router) { }
-
+  imagePreviewSrc: string | ArrayBuffer | null | undefined = '';
+  isImageSelected: boolean = false;
   formData:any;
   fileToUpload:any
   fileName:any;
@@ -68,6 +69,12 @@ export class ProEditComponent implements OnInit {
         this.categoryForm.patchValue(data);
         this.pro.CategoryId=data.categoryId;
         this.pro.TradeMarkId=data.tradeMarkId;
+        if(data.image!='')
+        {
+          this.imagePreviewSrc='../../../../assets/img/product/'+data.image;
+          this.isImageSelected=true;
+        }
+       
         console.log(data);
       })
 
@@ -117,6 +124,7 @@ export class ProEditComponent implements OnInit {
 
           });
         }
+        alert('Cập nhật thành công')
         this.router.navigate(['/admin/product']);
         
       }
@@ -124,11 +132,25 @@ export class ProEditComponent implements OnInit {
 
   }
 
-  uploadFile(files:any){
+  uploadFile(files:any,event: Event){
   
     this.fileToUpload = <File>files[0];
 
     console.log('form',this.fileToUpload);
+    let selectedFile = (event.target as HTMLInputElement).files?.item(0);
+    if (selectedFile) {
+      if (["image/jpeg", "image/png", "image/svg+xml"].includes(selectedFile.type)) {
+        let fileReader = new FileReader();
+        fileReader.readAsDataURL(selectedFile);
+
+        fileReader.addEventListener('load', (event) => {
+          this.imagePreviewSrc = event.target?.result;
+          this.isImageSelected = true
+        })
+      }
+    } else {
+      this.isImageSelected = false
+    }
   }
 
 }

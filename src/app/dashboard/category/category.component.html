@@ -7,7 +7,7 @@
         <label>Tên danh mục</label>
         <div class="sr1">	
         <input type="text" placeholder="Nhập tên danh mục" class="form-control form-control-rounded"  id="name"  formControlName="name">
-        <button class="btn btn-success btn-icon" type="submit" [disabled]="!categoryForm.valid"><i class="fa fa-floppy-o "></i>Create</button>
+        <button class="btn btn-info" type="submit" [disabled]="!categoryForm.valid"><i class="fa fa-floppy-o "></i>&nbsp;Create</button>
     </div>
 
 </div>
@@ -20,7 +20,7 @@
         <label>Tìm kiếm</label>
         <div class="sr">
         <input type="text" placeholder="Nhập tên danh mục cần tìm" class="form-control form-control-rounded"  id="txtSearch"  formControlName="txtSearch">
-        <button id="search" class="btn btn-success btn-icon" ><i class="fa fa-search "></i>Search</button>
+        <button id="search" class="btn btn-info" ><i class="fa fa-search "></i>&nbsp;Search</button>
     </div>
     </div>
 </form>
@@ -64,7 +64,7 @@
            
             <td class="text-center">
                
-                <button (click)="edit(cate.id)" type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>&nbsp;
+                <button (click)="edit(cate.id)" type="button" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>&nbsp;
                 <button (click)="deleteCategory(cate.id)" type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
             </td>
         </tr>

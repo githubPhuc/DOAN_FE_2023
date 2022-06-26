@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SlideShowService } from 'src/app/dashboard/slide-show/slide-show.service';
 import { DashboardLayoutComponent } from 'src/app/layouts/dashboard-layout/dashboard-layout.component';
 import { Cart } from '../cart';
 import { ShopService } from '../shop.service';
@@ -12,14 +13,14 @@ import { ShopService } from '../shop.service';
 })
 export class HomeComponent implements OnInit {
   @ViewChild(DashboardLayoutComponent) dash:any;
-  constructor(private shopservice:ShopService,private router:Router,private ele: ElementRef) { }
+  constructor(private shopservice:ShopService,private router:Router,private ele: ElementRef,private slideService:SlideShowService) { }
 
   product:any;
   lstProduct:any;
   txt!:string;
   newProduct:any;
   hotProduct:any
-
+  slideshow:any;
   POSTS: any;
   page: number = 1;
   count: number = 0;
@@ -37,6 +38,10 @@ export class HomeComponent implements OnInit {
       this.hotProduct=data;
     })
    this.fetchPosts();
+
+   this.slideService.getAllSlide().subscribe(data=>{
+    this.slideshow=data;
+   })
   }
   cart=new Cart(0,1,'');
   addCart(data:number)
@@ -88,6 +93,7 @@ export class HomeComponent implements OnInit {
       
     );
   }
+
 
 }
  

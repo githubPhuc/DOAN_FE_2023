@@ -14,6 +14,7 @@ import { ProCreateComponent } from './product/pro-create/pro-create.component';
 import { ProDetailComponent } from './product/pro-detail/pro-detail.component';
 import { ProEditComponent } from './product/pro-edit/pro-edit.component';
 import { ProductComponent } from './product/product.component';
+import { SlideShowComponent } from './slide-show/slide-show.component';
 import { SupplierCreateComponent } from './supplier/supplier-create/supplier-create.component';
 import { SupplierComponent } from './supplier/supplier.component';
 import { TrademarkComponent } from './trademark/trademark.component';
@@ -95,6 +96,12 @@ const routes: Routes = [
   {
     path: 'brand',
     component: TrademarkComponent
+  },
+  //
+  //trademaark
+  {
+    path: 'slideshow',
+    component: SlideShowComponent
   }
 ];
 

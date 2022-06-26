@@ -7,9 +7,11 @@ import { AddImportComponent } from './dialog/add-import/add-import.component';
 import { ConfirmDeleteComponent } from './dialog/confirm-delete/confirm-delete.component';
 import { ConfirmComponent } from './dialog/confirm/confirm.component';
 import { EditCategoryComponent } from './dialog/edit-category/edit-category.component';
+import { ImportDetailComponent } from './dialog/import-detail/import-detail.component';
 import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/invoice-detail-dialog.component';
 import { RepCommentComponent } from './dialog/rep-comment/rep-comment.component';
 import { ShowSuccessComponent } from './dialog/show-success/show-success.component';
+import { SlideShowCreateComponent } from './dialog/slide-show-create/slide-show-create.component';
 
 
 
@@ -32,6 +34,18 @@ export class DialogService {
     }
   }
   );
+}
+opentImportDetail(id:number)
+{
+
+ this.dialog1.open(ImportDetailComponent,{
+  height: '500px',
+  width: '800px',
+  data: {
+    'id': id
+  }
+}
+);
 }
 openDialogConfirm(content:string)
   {
@@ -80,6 +94,16 @@ openDialogEditCate(id:number)
     data: {
       'id': id
     }
+  }
+  );
+}
+openDialogCreateSlide()
+  {
+
+   this.dialog1.open(SlideShowCreateComponent,{
+    height: '500px',
+    width: '670px',
+
   }
   );
 }

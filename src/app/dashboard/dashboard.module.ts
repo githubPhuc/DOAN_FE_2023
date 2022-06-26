@@ -33,6 +33,9 @@ import { TrademarkComponent } from './trademark/trademark.component';
 import { EditBrandComponent } from './dialog/edit-brand/edit-brand.component';
 import { ShowSuccessComponent } from './dialog/show-success/show-success.component';
 import { ConfirmDeleteComponent } from './dialog/confirm-delete/confirm-delete.component';
+import { SlideShowComponent } from './slide-show/slide-show.component';
+import { SlideShowCreateComponent } from './dialog/slide-show-create/slide-show-create.component';
+
 
 @NgModule({
   declarations: [
@@ -62,6 +65,9 @@ import { ConfirmDeleteComponent } from './dialog/confirm-delete/confirm-delete.c
     EditBrandComponent,
     ShowSuccessComponent,
     ConfirmDeleteComponent,
+    SlideShowComponent,
+    SlideShowCreateComponent,
+
 
   ],
   imports: [

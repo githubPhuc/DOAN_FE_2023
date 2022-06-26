@@ -60,6 +60,7 @@ export class ShopService {
   }
   public getProductByCategory(id:number)
   {
+  
     return this.httpClient
 			.get<any>('https://localhost:7043/api/product/getproductbycategory?id='+id.toString(),{headers: new HttpHeaders({ 
         'Content-Type': 'application/json',

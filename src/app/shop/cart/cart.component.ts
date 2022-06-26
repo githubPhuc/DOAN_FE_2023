@@ -98,7 +98,7 @@ export class CartComponent implements OnInit {
     });
   }
   goToProductDetails(id:number) {
-    this.router.navigate(['shop/product-detail', id]);
+    this.router.navigate(['/product-detail', id]);
   }
 
   onSubmit(form:FormGroup)

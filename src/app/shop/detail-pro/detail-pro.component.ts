@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { CategoryService } from 'src/app/dashboard/category.service';
 import { CommentService } from 'src/app/dashboard/comment/comment.service';
@@ -14,36 +14,42 @@ import { ShopService } from '../shop.service';
   styleUrls: ['./detail-pro.component.scss']
 })
 export class DetailProComponent implements OnInit {
-
+  isScroll:boolean=false;
   id!: number;
   private sub: any;
-
-  product:any;
+ product:any;
   category:any;
   comment:any;
  
   userid=localStorage.getItem('userid');
-  constructor(private proservice:ProductService,private route: ActivatedRoute,private dialog:DialogService,private commentService:CommentService,private shopService:ShopService,private cateService:CategoryService) { }
+  constructor(private proservice:ProductService,private route: ActivatedRoute,private dialog:DialogService,private commentService:CommentService,private shopService:ShopService,private cateService:CategoryService,private router:Router) { }
   
   ngOnInit(): void {
-    
+
+window.scrollTo(0,0);
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
 
       this.proservice.getProduct(this.id).subscribe(data=>{
-        console.log("xxxxxxxxxxxxxxxxxxxxxxx");
+        
         this.product=data;
-        console.log(data);
+        this.shopService.getProductByCategory(this.product.categoryId).subscribe(data=>{
+          this.category=data;
+          console.log('cate',data)
+        });
+       
+        
+        
       });
+
    });
-
-
+  
    this.commentService.getAllCommentInProduct(this.id).subscribe(data=>{
     this.comment=data;
     console.log('cmt',data);
    });
 
-   this.shopService.getProductByCategory(1).subscribe(data=>{
+   this.shopService.getProductByCategory(this.product.categoryId).subscribe(data=>{
     this.category=data;
     console.log('cate',data)
   });
@@ -87,13 +93,20 @@ export class DetailProComponent implements OnInit {
   }
 
   goToProductDetails(id:number){
-
+    this.router.navigate(['/product-detail',id])
   }
 
   addToWishList(id:number)
   {
-    
+    this.shopService.addWishList(id).subscribe(data=>{
+
+    })
+  }
+  viewAnother()
+  {
+    this.router.navigate(['/product/category',])
   }
 
 
+  
 }

@@ -22,7 +22,7 @@
                     <div class="row justify-content-center">
                         <div class="col-4">
                               <div class="misc-header text-center">
-								<img alt="" src="../../../assets/img/icon.png" class="logo-icon margin-r-10">
+								<img alt="" src="../../../assets/img/icon-2p.png" class="logo-icon margin-r-10">
 								<img alt="" src="../../../assets/img/logo-dark.png" class="toggle-none hidden-xs">
                             </div>
                             <div class="misc-box" ng-app="myApp" ng-controller="loginCtrl">   
@@ -43,12 +43,7 @@
                                     </div>
                                     <small *ngIf="!loginSus" style="color: red;">Tên tài khoản hoặc mật khẩu không đúng</small>
                                     <div class="clearfix">
-                                        <div class="float-left">
-                                           <div class="checkbox checkbox-primary margin-r-5">
-												<input id="checkbox2" type="checkbox" checked="">
-												<label for="checkbox2"> Remember Me </label>
-											</div>
-                                        </div>
+                                       
                                         <div class="float-right">
                                             <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Login</button>
                                         </div>

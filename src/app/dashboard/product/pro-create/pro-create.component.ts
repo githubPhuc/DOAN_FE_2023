@@ -16,6 +16,8 @@ import { ProductService } from '../product.service';
 export class ProCreateComponent implements OnInit {
 
   constructor(private responseCate:CategoryService,private router:Router,private responsePro:ProductService,private httpClient:HttpClient,private tradeService:TrademarkService) { }
+  imagePreviewSrc: string | ArrayBuffer | null | undefined = '';
+  isImageSelected: boolean = false;
   images:any;
   category:any;
   selectId="";
@@ -141,12 +143,28 @@ onSubmit(form:FormGroup) {
 }
 
 
-  uploadFile(files:any){
+  uploadFile(files:any,event:Event){
   
     this.fileToUpload = <File>files[0];
 
     this.formData1.append('image',this.fileToUpload);
     console.log('ímg',this.formData1);
+
+    let selectedFile = (event.target as HTMLInputElement).files?.item(0);
+
+    if (selectedFile) {
+      if (["image/jpeg", "image/png", "image/svg+xml"].includes(selectedFile.type)) {
+        let fileReader = new FileReader();
+        fileReader.readAsDataURL(selectedFile);
+
+        fileReader.addEventListener('load', (event) => {
+          this.imagePreviewSrc = event.target?.result;
+          this.isImageSelected = true
+        })
+      }
+    } else {
+      this.isImageSelected = false
+    }
   }
 
 

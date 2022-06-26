@@ -19,6 +19,7 @@ export class ProductByCategoryComponent implements OnInit {
   constructor(private shopservice:ShopService,private router:Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     this.route.params.subscribe(params=>{
       this.txt=params['txt'];
     })
@@ -38,7 +39,13 @@ export class ProductByCategoryComponent implements OnInit {
   }
 
   goToProductDetails(id:number) {
-    this.router.navigate(['shop/product-detail', id]);
+    this.router.navigate(['shop/product-detail', id]).then(()=>{
+      window.scroll({ 
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth' 
+ });
+    });
   }
   cart=new Cart(0,1,'');
   addCart(data:number)
