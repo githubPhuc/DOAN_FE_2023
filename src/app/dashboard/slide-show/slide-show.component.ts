@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DialogService } from '../dialog.service';
+import { SlideShowService } from './slide-show.service';
 
 @Component({
   selector: 'app-slide-show',
@@ -14,7 +15,7 @@ export class SlideShowComponent implements OnInit {
   searchForm=new FormGroup({
     txt: new FormControl('')
   })
-  constructor(private http:HttpClient,private dialog:DialogService) { }
+  constructor(private http:HttpClient,private dialog:DialogService,private slideService:SlideShowService) { }
 
   loadSlide()
   {
@@ -33,5 +34,16 @@ export class SlideShowComponent implements OnInit {
   create()
   {
     this.dialog.openDialogCreateSlide();
+  }
+  delete(id:number)
+  {
+    this.slideService.deleteSlide(id).subscribe(data=>{
+      if(data.status==200)
+      {
+        alert("Xoá thành công");
+        location.reload();
+        
+      }
+    })
   }
 }

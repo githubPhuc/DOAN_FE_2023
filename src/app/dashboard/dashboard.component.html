@@ -1,1 +1,95 @@
-<p>dashboard works!</p>
+<style>
+    .link {
+        background-color: rgb(120, 120, 251);
+        border-radius: 5px;
+        padding: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .link a {
+        color: white;
+    }
+
+    .link:hover {
+        background-color: wheat;
+    }
+    .link:hover a{
+        color: rgb(86, 86, 249);
+    }
+   
+</style>
+<main>
+    <div class="data">
+        <div class="title">
+            <span>Dữ liệu</span>
+        </div>
+        <div class="row w-no-padding margin-b-30">
+			
+            <div class="col-md-3">
+                <div class="widget  bg-light">
+                    <div class="row row-table " id="row">
+                        <div  style="height: 100px;">
+                            <h2 class="margin-b-5">Sản phẩm</h2>
+                            <p class="text-muted">Tổng số lượng sản phẩm</p>
+                            <span class="float-right text-primary widget-r-m">{{product}}</span>
+                        </div>
+                        <div class="link" style="height: 30px;">
+                            <a [routerLink]="['/admin/product']"><span>Xem chi tiết</span>&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget  bg-light">
+                    <div class="row row-table " id="row">
+                        <div  style="height: 100px;">
+                            <h2 class="margin-b-5">Tài khoản</h2>
+                            <p class="text-muted">Tổng số lượng tài khoản</p>
+                            <span class="float-right text-primary widget-r-m">{{account}}</span>
+                        </div>
+                        <div class="link" style="height: 30px;">
+                            <a href=""><span>Xem chi tiết</span>&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget  bg-light">
+                    <div class="row row-table " id="row">
+                        <div  style="height: 100px;">
+                            <h2 class="margin-b-5">Hoá đơn</h2>
+                            <p class="text-muted">Tổng số lượng hoá đơn</p>
+                            <span class="float-right text-primary widget-r-m">{{invoice}}</span>
+                        </div>
+                        <div class="link" style="height: 30px;">
+                            <a href=""><span>Xem chi tiết</span>&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget  bg-light">
+                    <div class="row row-table " id="row">
+                        <div  style="height: 100px;">
+                            <h2 class="margin-b-5">Nhà cung cấp</h2>
+                            <p class="text-muted">Số lượng nhà cung cấp</p>
+                            <span class="float-right text-primary widget-r-m">{{sup}}</span>
+                        </div>
+                        <div class="link" style="height: 30px;">
+                            <a href=""><span>Xem chi tiết</span>&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+           
+           
+            
+        
+        </div>
+    </div>
+</main>

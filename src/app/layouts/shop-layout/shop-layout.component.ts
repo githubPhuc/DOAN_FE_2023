@@ -28,7 +28,7 @@ export class ShopLayoutComponent implements OnInit {
   });
   ngOnInit(): void {
 
-    if(localStorage.getItem('role')=='Admin')
+    if(localStorage.getItem('role')=='')
     {
       this.router.navigate(['/admin']);
     }
@@ -36,13 +36,13 @@ export class ShopLayoutComponent implements OnInit {
     this.username=window.localStorage.getItem('username');
     this.shopservice.getCart(localStorage.getItem('userid')!).subscribe(data=>{
      console.log(data);
-     if(data[0]==null)
+     if(data.cart[0]==null)
      {
       this.count=0;
      
      }else
      {
-      this.count=data[0].soLuongCart;
+      this.count=data.cart[0].soLuongCart;
       
      
      }
@@ -102,6 +102,14 @@ export class ShopLayoutComponent implements OnInit {
   {
     
     this.router.navigate(['/product/category',id]).then(()=>{
+      location.reload();
+    });
+    
+  }
+  getByBrand(id:number)
+  {
+    
+    this.router.navigate(['/product/brand',id]).then(()=>{
       location.reload();
     });
     

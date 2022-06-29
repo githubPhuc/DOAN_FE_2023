@@ -15,6 +15,9 @@ import { SearchComponent } from './search/search.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { ProductByCategoryComponent } from './product-by-category/product-by-category.component';
+import { ProductByBrandComponent } from './product-by-brand/product-by-brand.component';
+import { AboutComponent } from './about/about.component';
+
 
 
 
@@ -27,6 +30,8 @@ import { ProductByCategoryComponent } from './product-by-category/product-by-cat
     DetailProComponent,
     SearchComponent,
     ProductByCategoryComponent,
+    ProductByBrandComponent,
+    AboutComponent,
     
   ],
   imports: [

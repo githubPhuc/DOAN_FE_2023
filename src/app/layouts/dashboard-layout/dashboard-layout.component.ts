@@ -25,6 +25,10 @@ export class DashboardLayoutComponent implements OnInit {
     }
 
     this.username=window.localStorage.getItem('username');
+
+    
+   
+  
   }
 
  public logOut()
@@ -32,6 +36,24 @@ export class DashboardLayoutComponent implements OnInit {
     this.dialog.openDialogConfirm('Bạn có muốn đăng xuất ?');
     
 
+  }
+  
+  drop()
+  {
+    var a= document.getElementById('test');
+    var b =document.getElementById('icon-inv');
+    if(a?.getAttribute('style')=='display: none;')
+    {
+      a.setAttribute('style','display: block;');
+      b?.setAttribute('class','fa fa-angle-up')
+    }else
+    {
+      a?.setAttribute('style','display: none;');
+      b?.setAttribute('class','fa fa-angle-down')
+    }
+    
+    
+    
   }
   
 }

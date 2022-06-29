@@ -13,6 +13,7 @@
                                     <th>Số điện thoại</th>
                                     <th>Ngày lập</th>
                                     <th>Tổng tiền</th>
+                                    <th>Trạng thái</th>
                                     <th>Action</th>
                                  
                                 </tr>
@@ -25,9 +26,11 @@
                                     <td>{{inv.phone}}</td>
                                     <td>{{inv.date | date:'dd/MM/yyyy'}}</td>
                                     <td>{{inv.total | currency:'VND'}}</td>
+                                    <td *ngIf="inv.complete">Hoàn thành</td>
+                                    <td *ngIf="!inv.complete&&inv.status">Đang giao</td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-sm btn-info" (click)="openDialog(inv.id)"><i class="fa fa-eye"></i></button>
-                                        <button type="button" class="btn btn-sm btn-info"><i class="fa fa-check"></i></button>
+                                        <button type="button" class="btn btn-sm btn-info" (click)="openDialog(inv.id)"><i class="fa fa-eye"></i></button>&nbsp;
+                                        <button *ngIf="!inv.complete&&inv.status" type="button" class="btn btn-sm btn-info" (click)="complete(inv.id)"><i class="fa fa-check"></i></button>
                                     </td>
                                
                                 </tr>

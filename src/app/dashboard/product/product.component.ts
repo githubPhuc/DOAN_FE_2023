@@ -59,7 +59,7 @@ export class ProductComponent implements OnInit {
   fetchPosts(): void {
     this.responseProduct.getAllProduct().subscribe(
       data => {
-        this.POSTS = data;
+        this.POSTS = data.pro;
         console.log(data);
 
    

@@ -20,7 +20,7 @@ export class AccountComponent implements OnInit {
       {
         this.avt=true;
       }
-      this.account=data;
+      this.account=data.acc;
     });
   }
 

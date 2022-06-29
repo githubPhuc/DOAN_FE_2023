@@ -19,7 +19,7 @@
                                     <tr *ngFor="let inv of data1">
                                         <td>{{inv.sanPham}}</td>
                                         <td>{{inv.soluong}}</td>
-                                        <td>{{inv.donGia}}</td>
+                                        <td>{{inv.donGia | currency:'VND'}}</td>
                                     </tr>
                                 </tbody>
                 </table>

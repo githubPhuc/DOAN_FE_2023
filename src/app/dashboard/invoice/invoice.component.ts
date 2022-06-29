@@ -21,7 +21,7 @@ export class InvoiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.responseIn.getAllInvoice().subscribe(data=>{
-      this.invoice=data;
+      this.invoice=data.inv;
       console.log(data);
       
     });
@@ -42,4 +42,11 @@ export class InvoiceComponent implements OnInit {
    goTo(location:string) { 
     this.router.navigate(['/'+location]); 
  } 
+
+ complete(id:number)
+ {
+  this.responseIn.hoanThanh(id).subscribe(data=>{
+    
+  })
+ }
 }

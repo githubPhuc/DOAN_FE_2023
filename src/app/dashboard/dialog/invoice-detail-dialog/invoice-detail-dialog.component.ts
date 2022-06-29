@@ -32,5 +32,6 @@ export class InvoiceDetailDialogComponent implements OnInit {
   {
  
    this.dialogR.closeDialog();
+   
   }
 }

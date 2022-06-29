@@ -56,6 +56,9 @@
 
                         </tbody>
                     </table>
+                    <div class="total" style="display: flex; justify-content:flex-end">
+                        <span style="font-weight: bold;">Tổng : </span>&nbsp;<h3>{{total | currency:'VND'}}</h3>
+                    </div>
                 </div> <!-- End Cart Table -->
                 <!-- Start Cart Table Button -->
                 <div *ngIf="!isempty" class="cart-table-button m-t-10">
@@ -66,7 +69,7 @@
                     <div class="cart-table-button--right">
                         
                      
-                        <a (click)="order()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20" style="color: white;">ĐẶT HÀNG</a>
+                        <a (click)="pay()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20" style="color: white;">ĐẶT HÀNG</a>
 
                     </div>
                 </div>

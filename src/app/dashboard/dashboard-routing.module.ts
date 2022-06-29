@@ -10,6 +10,7 @@ import { ImportCreComponent } from './import/import-cre/import-cre.component';
 import { ImportComponent } from './import/import.component';
 import { InvoiceConfirmComponent } from './invoice/invoice-confirm/invoice-confirm.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { StatisticalComponent } from './invoice/statistical/statistical.component';
 import { ProCreateComponent } from './product/pro-create/pro-create.component';
 import { ProDetailComponent } from './product/pro-detail/pro-detail.component';
 import { ProEditComponent } from './product/pro-edit/pro-edit.component';
@@ -60,6 +61,10 @@ const routes: Routes = [
   },{
     path: 'invoice/confirm',
     component: InvoiceConfirmComponent
+  },
+  {
+    path: 'invoice/statistical',
+    component: StatisticalComponent
   },
   //account
   {

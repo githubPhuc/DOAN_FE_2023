@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommentService } from './comment.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class CommentComponent implements OnInit {
   tableSize: number = 10;
   tableSizes: any = [3, 6, 9, 12];
 
-  constructor(private commentService:CommentService) { }
+  constructor(private commentService:CommentService,private router:Router) { }
   comment:any;
   ngOnInit(): void {
   this.fetchPosts();
@@ -23,7 +24,7 @@ export class CommentComponent implements OnInit {
   {
     this.commentService.removeComment(id).subscribe(data=>{
       location.reload();
-    })
+    });
   }
 
   onTableDataChange(event: any) {
@@ -45,5 +46,14 @@ export class CommentComponent implements OnInit {
       }
       
     );
+  }
+
+  goToComment(id:number)
+  {
+    this.router.navigate(['/product-detail',id]).then(()=>{
+      var a= document.getElementById('test');
+     
+      a?.scrollIntoView({behavior: 'smooth'});
+    });
   }
 }

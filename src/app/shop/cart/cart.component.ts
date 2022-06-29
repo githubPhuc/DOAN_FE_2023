@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
   txt!:string;
   cart:any;
   isempty!:boolean;
-
+  total:any;
   POSTS: any;
   page: number = 1;
   count: number = 0;
@@ -26,17 +26,19 @@ export class CartComponent implements OnInit {
   });
   ngOnInit(): void {
 
+    
     this.shopService.getCart(localStorage.getItem('userid')!).subscribe(data=>{
       console.log('cart',data);
-      if(data[0]!=null)
+      if(data.cart[0]!=null)
       {
         this.isempty=false;
       }else
       {
         this.isempty=true;
       }
- 
-    this.POSTS=data;
+    
+    this.POSTS=data.cart;
+    this.total=data.total;
     })
   }
 
@@ -107,10 +109,12 @@ export class CartComponent implements OnInit {
     this.router.navigate(['/shop/search',this.txt],);
   }
 
+
   pay()
   {
-    this.shopService.payment().subscribe(data=>{
-
+   
+    this.shopService.payment(this.total).subscribe(data=>{
+      window.location.href=data.url;
     })
   }
 
@@ -142,4 +146,6 @@ export class CartComponent implements OnInit {
 
 
   }
+
+ 
 }

@@ -115,7 +115,7 @@
                                 </li>
                         
                                <li class="header__nav-item pos-relative">
-                                <a href="#" class="header__nav-link">DANH MỤC <i class="icon-chevron-down"></i></a>
+                                <a  class="header__nav-link">DANH MỤC <i class="icon-chevron-down"></i></a>
                                 <!--Single Dropdown Menu-->
                                 <ul class="dropdown__menu pos-absolute">
                                     <li *ngFor="let c of lstCategory" class="dropdown__list"><a (click)="getByCate(c.id)" class="dropdown__link" style="color: blue;">{{c.name}}</a></li>
@@ -124,16 +124,16 @@
                                 <!--Single Dropdown Menu-->
                             </li>
                                <li class="header__nav-item pos-relative">
-                                <a href="#" class="header__nav-link">THƯƠNG HIỆU <i class="icon-chevron-down"></i></a>
+                                <a  class="header__nav-link">THƯƠNG HIỆU <i class="icon-chevron-down"></i></a>
                                 <!--Single Dropdown Menu-->
                                 <ul class="dropdown__menu pos-absolute">
-                                    <li *ngFor="let c of lstTrademark" class="dropdown__list"><a href="index.html" class="dropdown__link" style="color: blue;">{{c.name}}</a></li>
+                                    <li *ngFor="let c of lstTrademark" class="dropdown__list"><a (click)="getByBrand(c.id)" class="dropdown__link" style="color: blue;">{{c.name}}</a></li>
                               
                                 </ul>
                                 <!--Single Dropdown Menu-->
                             </li>
                                <li class="header__nav-item pos-relative">
-                                <a href="#" class="header__nav-link">GIỚI THIỆU</a>
+                                <a [routerLink]="['/about']" class="header__nav-link">GIỚI THIỆU</a>
                             
                             </li> 
                             <li class="header__nav-item pos-relative">

@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-default">
+              Danh sách hoá đơn
+            </div>
+            <div class="tk">
+                <form [formGroup]="staForm" (ngSubmit)="onSubmit(staForm)">
+                    <div class="header__search-input">
+                        <input type="datetime-local"   formControlName="start" >
+                        
+                    </div>
+                    &nbsp;
+                    <span>To</span>
+                    &nbsp;
+                    <div class="header__search-input">
+                        <input type="datetime-local"  formControlName="end">
+                        
+                    </div>
+                    &nbsp;
+                    <button class="btn btn-info" type="submit" style="height: 30px;">Thống kê</button>
+                </form>
+            </div>
+            <div class="card-body">
+                <table id="datatable" class="table table-striped dt-responsive nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Địa chỉ </th>
+                                        <th>Số điện thoại</th>
+                                        <th>Ngày lập</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Action</th>
+                                     
+                                    </tr>
+                                </thead>
+    
+                                <tbody>
+                                    <tr *ngFor="let inv of invoice">
+                                        <td>{{inv.username}}</td>
+                                        <td>{{inv.shippingAddress}}</td>
+                                        <td>{{inv.phone}}</td>
+                                        <td>{{inv.date | date:'dd/MM/yyyy'}}</td>
+                                        <td>{{inv.total | currency:'VND'}}</td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-sm btn-info" (click)="openDialog(inv.id)"><i class="fa fa-eye"></i></button>
+                                         
+                                        </td>
+                                   
+                                    </tr>
+                                    
+               
+                                </tbody>
+                            </table>
+                            <div *ngIf="isSta" class="total">
+                                <ul>
+                                    <li>Số lượng nhập vào : <span>{{importQuantily}}</span></li>
+                                    <li>Số lượng bán ra : <span>{{saleQuantily}}</span></li>
+                                    <li>Tổng tiền nhập hàng : <span>{{importTotal | currency:'VND'}}</span></li>
+                                    <li>Tổng tiền bán ra : <span>{{saleTotal | currency:'VND'}}</span></li>
+                                    <li>Doanh thu : <span>{{saleTotal-importTotal | currency:'VND'}}</span></li>
+                                </ul>
+                            </div>
+    
+            </div>
+        </div>
+    </div>
+    </div>
+    <style>
+        form {
+            margin-left: 20px;
+            display: flex;
+        }
+        .total {
+            margin-top: 10px;
+        }
+        .total ul{
+
+            display: flex;
+            list-style-type: none;
+        }
+        .total ul li {
+            padding: 5px;
+            margin-right: 10px;
+            border: 1px solid grey;
+            border-radius: 5px;
+           
+        }
+    </style>

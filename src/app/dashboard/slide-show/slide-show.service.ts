@@ -17,4 +17,14 @@ export class SlideShowService {
      })});
 		
   }
+
+  public deleteSlide(id:number)
+  {
+    return this.httpClient
+			.post<any>('https://localhost:7043/api/slideshow/delete?id='+id.toString(),{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+
+     })});
+		
+  }
 }

@@ -13,7 +13,7 @@ export class SupplierComponent implements OnInit {
   ngOnInit(): void {
 
     this.supService.getAllSupplier().subscribe(data=>{
-      this.supplier=data;
+      this.supplier=data.sup;
     })
   }
 
