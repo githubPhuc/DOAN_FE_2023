@@ -39,7 +39,7 @@ export class ProductByCategoryComponent implements OnInit {
   }
 
   goToProductDetails(id:number) {
-    this.router.navigate(['shop/product-detail', id]).then(()=>{
+    this.router.navigate(['/product-detail', id]).then(()=>{
       window.scroll({ 
         top: 0, 
         left: 0, 

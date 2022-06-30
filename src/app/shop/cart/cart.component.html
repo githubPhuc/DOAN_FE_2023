@@ -8,7 +8,7 @@
             <div class="col-12">
                 <div class="section-content">
                     <h5 class="section-content__title">Giỏ hàng của bạn</h5>
-                    <a (click)="removeAllCart()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20" style="color: white;">XOÁ TOÀN BỘ GIỎ HÀNG</a>
+                    <a *ngIf="!isempty" (click)="removeAllCart()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20" style="color: white;">XOÁ TOÀN BỘ GIỎ HÀNG</a>
                 </div>
                 <!-- Start Cart Table -->
                 <div class="table-content table-responsive cart-table-content m-t-30">
@@ -56,7 +56,7 @@
 
                         </tbody>
                     </table>
-                    <div class="total" style="display: flex; justify-content:flex-end">
+                    <div *ngIf="!isempty" class="total" style="display: flex; justify-content:flex-end">
                         <span style="font-weight: bold;">Tổng : </span>&nbsp;<h3>{{total | currency:'VND'}}</h3>
                     </div>
                 </div> <!-- End Cart Table -->

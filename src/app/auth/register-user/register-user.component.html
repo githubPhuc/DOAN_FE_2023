@@ -31,47 +31,60 @@
                                         <label  for="exampleuser1">Tên đầy đủ</label>
                                         <div class="group-icon">
                                         <input id="txtUsername" class="form-control" type="text" name="" id="username"  formControlName="fullName">
-                                        <span class="icon-user text-muted icon-input"></span>
+                                        <span class="text-muted icon-input"><i class="fa fa-user" aria-hidden="true"></i></span>
                                         </div>
                                         <div *ngIf="!registerForm.value.fullName"style="color: red;">
                                             <small> Full name is required.</small>
                                            </div>
                                     </div>
                                     <div class="form-group">                                      
-                                        <label  for="exampleuser1">Username</label>
+                                        <label  for="exampleuser1">Tên tài khoản</label>
                                         <div class="group-icon">
                                         <input id="txtUsername" class="form-control" type="text" name="" id="username"  formControlName="username">
-                                        <span class="icon-user text-muted icon-input"></span>
+                                        <span class="text-muted icon-input"><i class="fa fa-user" aria-hidden="true"></i></span>
                                         </div>
                                         <div *ngIf="!registerForm.value.username" style="color: red;">
                                             <small> Username is required.</small>
                                            </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
+                                        <label for="exampleInputPassword1">Mật khẩu</label>
                                         <div class="group-icon">
                                         <input id="txtPassword" class="form-control" type="password" name="" id="password"  formControlName="password">
-                                        <span class="icon-lock text-muted icon-input"></span>
+                                        <span (click)="showPass()" class="text-muted icon-input"><i id="icon-pass" class="fa fa-eye"></i></span>
                                         </div>
                                         <div *ngIf="!registerForm.value.password" style="color: red;">
                                             <small> Password is required.</small>
                                            </div>
                                     </div>
                                     <div class="form-group">
+                                        <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
+                                        <div class="group-icon">
+                                        <input id="txtPassword" class="form-control" type="password" name="" id="rePassword"  formControlName="rePassword">
+                                        <span (click)="showRePass()" class=" text-muted icon-input"><i id="icon-repass" class="fa fa-eye"></i></span>
+                                        </div>
+                                        <div *ngIf="!registerForm.value.password" style="color: red;">
+                                            <small> Password is required.</small>
+                                           </div>
+                                           <div *ngIf="!checkPass" style="color: red;">
+                                            <small> Mật khẩu không trùng khớp.</small>
+                                           </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="exampleInputPassword1">Email</label>
                                         <div class="group-icon">
                                         <input id="txtPassword" class="form-control" type="text" name="" id="email"  formControlName="email">
-                                        <span class="icon-lock text-muted icon-input"></span>
+                                        <span class="text-muted icon-input"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                                         </div>
                                         <div *ngIf="!registerForm.value.email" style="color: red;">
                                             <small> Email is required.</small>
                                            </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Phone</label>
+                                        <label for="exampleInputPassword1">Số điện thoại</label>
                                         <div class="group-icon">
                                         <input id="txtPassword" class="form-control" type="text" name="" id="phone"  formControlName="phone">
-                                        <span class="icon-lock text-muted icon-input"></span>
+                                        <span class=" text-muted icon-input"><i class="fa fa-mobile" aria-hidden="true"></i></span>
                                         </div>
                                         <div *ngIf="!registerForm.value.phone" style="color: red;">
                                             <small> Phone is required.</small>
@@ -81,7 +94,7 @@
                                         <label for="exampleInputPassword1">Địa chỉ</label>
                                         <div class="group-icon">
                                         <input id="txtPassword" class="form-control" type="text" name="" id="phone"  formControlName="address">
-                                        <span class="icon-lock text-muted icon-input"></span>
+                                        <span class=" text-muted icon-input"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
                                         </div>
                                         <div *ngIf="!registerForm.value.address" style="color: red;">
                                             <small> Address is required.</small>

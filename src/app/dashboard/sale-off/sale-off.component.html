@@ -1,0 +1,141 @@
+<div class="container" style="display: flex;">
+<div class="check" style="display: block; margin-top: 5px;">
+    <input type="radio" name="check" [checked]="checkCate" (change)="tick()">&nbsp;Giảm theo danh mục <br> <br>
+    <input type="radio" name="check" [checked]="checkBrand" (change)="tick()">&nbsp;Giảm theo thương hiệu
+</div>
+
+  
+    <form *ngIf="type" [formGroup]="saleForm" (ngSubmit)="onSubmit(saleForm)" style="display: flex; margin-left: 15px; margin-top: 7px;">
+    
+        <div class="form-group" style="margin-left:30px;width: 200px;" >
+         
+            <select name="" id="" formControlName="idCate">
+                <option *ngFor="let c of category" value="{{c.id}}">{{c.name}}</option>
+            </select>
+        </div>
+    
+        <div class="check" style="display: block; margin-left: 50px;">
+            <input type="radio" name="check" [checked]="checkPer" (change)="tick1()"> %<br> <br>
+            <input type="radio" name="check" [checked]="checkPri" (change)="tick1()"> VND
+        </div>
+    <div class="form-group" style="width: 200px;">
+        <input *ngIf="!checkPer" type="number"  formControlName="price" value="0" style="margin-left: 10px;" >&nbsp;
+        <input *ngIf="checkPer" type="number"  [max]="100"  formControlName="percent" value="0">&nbsp;
+    </div>
+
+   
+       <div class="btn">
+        <button class="btn btn-info" type="submit">Lưu</button>
+       </div>
+    </form>
+    <form *ngIf="!type" [formGroup]="saleForm" (ngSubmit)="onSubmit(saleForm)" style="display: flex; margin-left: 15px; margin-top: 7px;">
+    
+        <div class="form-group" style="margin-left:30px;width: 200px;">
+         
+            <select name="" id="" formControlName="idBrand">
+                <option *ngFor="let c of brand" value="{{c.id}}">{{c.name}}</option>
+            </select>
+        </div>
+    
+        <div class="check" style="display: block; margin-left: 50px;">
+            <input type="radio" name="check" [checked]="checkPer" (change)="tick1()"> %<br> <br>
+            <input type="radio" name="check" [checked]="checkPri" (change)="tick1()"> VND
+        </div>
+    <div class="form-group" style="width: 200px;">
+        <input *ngIf="!checkPer" type="number"  formControlName="price" value="0" style="margin-left: 10px;" >&nbsp;
+        <input *ngIf="checkPer" type="number"   formControlName="percent" value="0">&nbsp;
+    </div>
+
+   
+       <div class="btn">
+        <button class="btn btn-info" type="submit">Lưu</button>
+       </div>
+    </form>
+    
+    
+    
+   
+</div>
+<div class="row">
+    <div class="col-lg-6 ">
+  
+            <form [formGroup]="searchForm" (ngSubmit)="onSearch(searchForm)">
+            <div class="form-group">
+                <label>Tìm kiếm</label>
+                <div class="sr">
+                <input type="text" placeholder="Nhập tên sản phẩm cần tìm" class="form-control form-control-rounded"  id="txt"  formControlName="txt">
+                <button id="search" class="btn btn-info" ><i class="fa fa-search "></i>&nbsp;Tìm kiếm</button>
+            </div>
+            </div>
+        </form>
+            
+
+    </div>
+    <div class="col-lg-6 align-self-center text-right">
+        <a class="nav-link"  (click)="refresh()" class="btn btn-info box-shadow  btn-rounded"><i class="fa fa-refresh"></i></a>
+    </div>
+</div>
+<table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline" width="100%">
+    <thead>
+        <tr>
+            <th>
+                <strong>Hình ảnh</strong>
+            </th>
+            <th>
+                <strong>Tên sản phẩm</strong>
+            </th>
+            <th>
+                <strong>Giá</strong>
+            </th>
+            <th>
+                <strong>Giá khuyến mãi</strong>
+            </th>
+            <th>
+                <strong>Action</strong>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pro of POSTS ">
+            <td *ngIf="pro.image!=null"><img src="../../../assets/img/product/{{pro.image}}" style="width: 150px"
+                    alt=""></td>
+            <td *ngIf="pro.image==null"><img src="../../../assets/img/product/noimage.png" style="width: 150px" alt="">
+            </td>
+            <td style="word-wrap: inherit;">
+                {{pro.name}}
+            </td>
+            <td>{{pro.price | currency:'VND'}}</td>
+            <td>{{pro.salePrice | currency:'VND'}}</td>
+
+
+            <td class="">
+                <button (click)="goToProductDetails(pro.id)"  type="button" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>&nbsp;
+                <button (click)="openSale(pro.id)"  type="button" class="btn btn-sm btn-info"><i class="fa fa-percent"></i></button>&nbsp;
+            </td>
+        </tr>
+
+    </tbody>
+
+</table>
+<!-- <div class="d-flex justify-content-center">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+    >
+    </pagination-controls>
+  </div> -->
+
+<style>
+    .sr {
+        display: flex;
+
+    }
+
+    .check {
+        display: flex;
+    }
+    .check .form-check{
+        margin: 15px;
+    }
+</style>

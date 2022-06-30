@@ -17,7 +17,7 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
 import { ProductByCategoryComponent } from './product-by-category/product-by-category.component';
 import { ProductByBrandComponent } from './product-by-brand/product-by-brand.component';
 import { AboutComponent } from './about/about.component';
-
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 
 
@@ -41,8 +41,9 @@ import { AboutComponent } from './about/about.component';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    NgxStarRatingModule
+    NgxStarRatingModule,
 
-  ]
+  ],
+  providers: [{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService],
 })
 export class ShopModule { }

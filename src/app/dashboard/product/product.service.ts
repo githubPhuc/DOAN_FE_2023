@@ -55,6 +55,17 @@ export class ProductService {
        })});
       
     }
+    public Promotion(data:any)
+    {
+     
+      console.log('áaaaaaaaaa',data);
+      return this.httpClient
+        .post<any>('https://localhost:7043/api/product/promotion',data,{headers: new HttpHeaders({ 
+          'Content-Type': 'application/json'
+         
+       })});
+      
+    }
 
     public upload(data:FormData)
     {

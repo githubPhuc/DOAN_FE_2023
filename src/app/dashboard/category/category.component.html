@@ -41,7 +41,7 @@
     <thead>
         <tr>
             <th>
-                <strong>ID</strong>
+                <strong>STT</strong>
             </th>
             <th>
                 <strong>Tên danh mục</strong>
@@ -55,14 +55,14 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let cate of category">
-            <td>{{cate.id}}</td>
+        <tr *ngFor="let cate of category; let i=index">
+            <td>{{i+1}}</td>
             <td>
                 {{cate.name}}
             </td>
             <td>{{cate.totalProduct}}</td>
            
-            <td class="text-center">
+            <td class="">
                
                 <button (click)="edit(cate.id)" type="button" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>&nbsp;
                 <button (click)="deleteCategory(cate.id)" type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>

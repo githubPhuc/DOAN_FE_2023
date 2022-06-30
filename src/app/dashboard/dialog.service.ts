@@ -10,6 +10,7 @@ import { EditCategoryComponent } from './dialog/edit-category/edit-category.comp
 import { ImportDetailComponent } from './dialog/import-detail/import-detail.component';
 import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/invoice-detail-dialog.component';
 import { RepCommentComponent } from './dialog/rep-comment/rep-comment.component';
+import { SaleComponent } from './dialog/sale/sale.component';
 import { ShowSuccessComponent } from './dialog/show-success/show-success.component';
 import { SlideShowCreateComponent } from './dialog/slide-show-create/slide-show-create.component';
 
@@ -34,6 +35,18 @@ export class DialogService {
     }
   }
   );
+}
+openSale(id:number)
+{
+
+ this.dialog1.open(SaleComponent,{
+  height: '230px',
+  width: '460px',
+  data: {
+    'id': id
+  }
+}
+);
 }
 opentImportDetail(id:number)
 {

@@ -12,6 +12,7 @@ import { RegisterModel } from '../register-model';
 })
 export class RegisterUserComponent implements OnInit {
 
+  checkPass:boolean=true;
   constructor(private loginservice:LoginService,private router:Router) { }
 
   ngOnInit(): void {
@@ -21,6 +22,7 @@ export class RegisterUserComponent implements OnInit {
     fullName: new FormControl('',[Validators.required]),
     username: new FormControl(''),
     password: new FormControl(''),
+    rePassword: new FormControl(''),
     email:new FormControl(''),
     phone:new FormControl(''),
     address:new FormControl(''),
@@ -31,6 +33,11 @@ export class RegisterUserComponent implements OnInit {
   regis=new RegisterModel("","","","","","");
   onSubmit(form:FormGroup)
   {
+    if(form.value.password!=form.value.rePassword)
+    {
+      this.checkPass=false;
+      return;
+    }
     console.log('data',form.value);
 
     this.regis.username=form.value.username;
@@ -44,21 +51,46 @@ export class RegisterUserComponent implements OnInit {
       if(data.status=='Success')
       {
         alert("Đăng ký thành công");
-        this.loginservice.login(new Login(this.regis.username,this.regis.password)).subscribe(data1=>{
-          console.log(data1.role);
-          window.localStorage.setItem('token',data1.token);
-          window.localStorage.setItem('userid',data1.id);
-          window.localStorage.setItem('phone',data1.phone);
-          window.localStorage.setItem('role',data1.role);
-          if(data1.role=='Admin')
-          {
-          this.router.navigate(['/'+'admin']);
-          }else
-          {
-          this.router.navigate(['/'+'shop/home']);
-          }
-        });;
+       this.router.navigate(['/auth/login']);
+      }else if(data.status==500)
+      {
+        alert(data.msg);
       }
     })
+  }
+
+
+  showPass()
+  {
+   let pass= document.getElementById('password');
+   let icon=document.getElementById('icon-pass');
+
+   if(pass?.getAttribute('type')=='password'&&icon?.getAttribute('class')=='fa fa-eye')
+   {
+    pass?.setAttribute('type','text');
+    icon.setAttribute('class','fa fa-eye-slash');
+
+   }else
+   {
+    pass?.setAttribute('type','password');
+    icon?.setAttribute('class','fa fa-eye');
+   }
+
+  
+   
+  }
+  showRePass()
+  {
+    let iconre=document.getElementById('icon-repass');
+    let repass= document.getElementById('rePassword');
+    if(repass?.getAttribute('type')=='password'&&iconre?.getAttribute('class')=='fa fa-eye')
+    {
+     repass?.setAttribute('type','text');
+     iconre?.setAttribute('class','fa fa-eye-slash');
+    }else
+    {
+     repass?.setAttribute('type','password');
+     iconre?.setAttribute('class','fa fa-eye');
+    }
   }
 }

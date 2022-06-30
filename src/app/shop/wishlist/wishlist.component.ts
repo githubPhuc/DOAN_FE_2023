@@ -57,7 +57,7 @@ export class WishlistComponent implements OnInit {
     location.replace(location.href);
   }
   goToProductDetails(id:number) {
-    this.router.navigate(['shop/product-detail', id]);
+    this.router.navigate(['/product-detail', id]);
   }
 
 }

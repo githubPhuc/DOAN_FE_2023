@@ -53,9 +53,13 @@ export class CategoryComponent implements OnInit {
     this.responseCate.deleteCategory(id)
       .subscribe(data => {
         console.log(data);
+        if(data==200)
+        {
+          window.location.reload();
+        }
         
       }); 
-      location.reload();
+      
   }
 
 
@@ -76,9 +80,9 @@ export class CategoryComponent implements OnInit {
         console.log(data);
        
       }); 
-      location.replace(location.href);
+     
 
-      //window.location.reload();
+      window.location.reload();
   }
 
   onSubmit1(form:FormGroup)

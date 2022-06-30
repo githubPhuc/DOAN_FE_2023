@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { ShopService } from '../shop.service';
+
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +13,7 @@ import { ShopService } from '../shop.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private shopService:ShopService,private router:Router) { }
+  constructor(private shopService:ShopService,private router:Router,private jwtHelper: JwtHelperService) { }
   txt!:string;
   cart:any;
   isempty!:boolean;
@@ -20,7 +22,7 @@ export class CartComponent implements OnInit {
   page: number = 1;
   count: number = 0;
   tableSize: number = 5;
-
+  tkp:any;
   productForm=new FormGroup({
     txtSearch: new FormControl(''),
   });
@@ -146,6 +148,13 @@ export class CartComponent implements OnInit {
 
 
   }
+  
+  getTokenI()
+  {
+  this.tkp= JSON.stringify(this.jwtHelper.decodeToken(localStorage.getItem('token')!));
 
+  console.log('token',this.tkp['/']);
+
+  }
  
 }

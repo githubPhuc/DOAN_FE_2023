@@ -40,7 +40,7 @@ export class AddCommentComponent implements OnInit {
       {
         this.dialog.closeDialog();
         alert(res.msg);
-
+          
       }
       
     });

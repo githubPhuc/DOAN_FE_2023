@@ -1,6 +1,15 @@
+<div class="title">
+    <span>Danh sách bình luận</span>
+</div>
 <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline align-self-center" width="100%">
     <thead>
         <tr>
+            <th>
+                <strong>STT</strong>
+            </th>
+            <th>
+                <strong>Người dùng</strong>
+            </th>
             <th>
                 <strong>Nội dung</strong>
             </th>
@@ -26,11 +35,13 @@
             totalItems: count
           };
     let i = index">
+            <td>{{i+1}}</td>
+            <td>{{cate.userName}}</td>
             <td>{{cate.noiDung}}</td>
-            <td>
+            <td style="white-space: inherit;">
                 {{cate.tenSanPham}}
             </td>
-            <td>{{cate.thoiGian}}</td>
+            <td>{{cate.thoiGian | date:'dd/MM/yyyy HH:mm'}}</td>
             <td>{{cate.danhGia}}</td>
            
             <td class="text-center">

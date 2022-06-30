@@ -24,7 +24,7 @@ export class ProductByBrandComponent implements OnInit {
     })
 
 
-  this.shopservice.getProductByCategory(this.txt).subscribe(data=>{
+  this.shopservice.getProductByBrand(this.txt).subscribe(data=>{
     this.product=data;
   })
 }
@@ -38,7 +38,7 @@ export class ProductByBrandComponent implements OnInit {
   }
 
   goToProductDetails(id:number) {
-    this.router.navigate(['shop/product-detail', id]).then(()=>{
+    this.router.navigate(['/product-detail', id]).then(()=>{
       window.scroll({ 
         top: 0, 
         left: 0, 

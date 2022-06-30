@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AboutService } from 'src/app/dashboard/about/about.service';
+import { AboutService } from './about.service';
 
 @Component({
   selector: 'app-about',
@@ -7,13 +7,13 @@ import { AboutService } from 'src/app/dashboard/about/about.service';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-
+  POSTS:any;
   constructor(private aboutService:AboutService) { }
-  about:any;
+
   ngOnInit(): void {
 
     this.aboutService.getAllAbount().subscribe(data=>{
-      this.about=data[0];
+      this.POSTS=data;
     })
   }
 

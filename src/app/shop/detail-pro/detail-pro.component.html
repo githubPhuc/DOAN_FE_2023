@@ -110,8 +110,19 @@
                                                
 
                                     </div>
-                                    <div class="product__price">
+                                    <div *ngIf="product.salePrice>0" class="product__price">
+                                        <div class="price" style="display: block;">
+                                            <span class="product__price-del">{{product.price | currency:'VND'}}</span>
+                                        <span class="product__price-reg" style="font-size: 20px;">Giá :{{product.salePrice |
+                                            currency:'VND'}}</span>
+                                        </div>
 
+                                       
+                                        <button (click)="addCart(product.id)"><i id="icon" class="fa fa-cart-plus"></i>
+                                            Thêm vào giỏ hàng </button>
+                                    </div>
+                                    <div *ngIf="product.salePrice==0" class="product__price">
+                                      
                                         <span class="product__price-reg" style="font-size: 20px;">Giá :{{product.price |
                                             currency:'VND'}}</span>
 

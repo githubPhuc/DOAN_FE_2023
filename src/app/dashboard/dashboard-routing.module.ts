@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../auth/login/login.component';
+import { AboutCreComponent } from './about/about-cre/about-cre.component';
+import { AboutComponent } from './about/about.component';
 import { AccountComponent } from './account/account.component';
 import { AdminCreateComponent } from './account/admin-create/admin-create.component';
 import { CategoryComponent } from './category/category.component';
@@ -15,6 +17,7 @@ import { ProCreateComponent } from './product/pro-create/pro-create.component';
 import { ProDetailComponent } from './product/pro-detail/pro-detail.component';
 import { ProEditComponent } from './product/pro-edit/pro-edit.component';
 import { ProductComponent } from './product/product.component';
+import { SaleOffComponent } from './sale-off/sale-off.component';
 import { SlideShowComponent } from './slide-show/slide-show.component';
 import { SupplierCreateComponent } from './supplier/supplier-create/supplier-create.component';
 import { SupplierComponent } from './supplier/supplier.component';
@@ -107,6 +110,20 @@ const routes: Routes = [
   {
     path: 'slideshow',
     component: SlideShowComponent
+  },
+  //about
+  {
+    path: 'about',
+    component: AboutComponent
+  },
+  {
+    path: 'about/create',
+    component: AboutCreComponent
+  },
+  //saleoff
+  {
+    path: 'sale-off',
+    component: SaleOffComponent
   }
 ];
 
