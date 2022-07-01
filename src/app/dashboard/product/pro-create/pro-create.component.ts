@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryModel } from 'src/app/category-model';
 import { CategoryService } from '../../category.service';
@@ -18,7 +18,7 @@ export class ProCreateComponent implements OnInit {
   constructor(private responseCate:CategoryService,private router:Router,private responsePro:ProductService,private httpClient:HttpClient,private tradeService:TrademarkService) { }
   imagePreviewSrc: string | ArrayBuffer | null | undefined = '';
   isImageSelected: boolean = false;
-  images:any;
+  images: any[] = [];
   category:any;
   selectId="";
   progress!: number;
@@ -40,9 +40,12 @@ export class ProCreateComponent implements OnInit {
     this.tradeService.getAllTrademark().subscribe(data=>{
       this.brand=data;
     })
+
+    
   }
 
   reloadCurrentPage() {
+    
     window.location.reload();
    }
 
@@ -83,7 +86,16 @@ onSubmit(form:FormGroup) {
   this.pro.Price=form.value.price;
 
   this.pro.CategoryId=form.value.categoryId;
+  if(form.value.categoryId==null)
+  {
+    alert(this.brand[0].id);
+    this.pro.CategoryId=1;
+  }
   this.pro.TradeMarkId=form.value.tradeMark;
+  if(form.value.categoryId==null)
+  {
+    this.pro.TradeMarkId=this.brand[0].id;
+  }
   this.pro.Star=5;
   this.pro.CPU=form.value.cpu;
   this.pro.DesignStyle=form.value.designStyle;
@@ -98,19 +110,6 @@ onSubmit(form:FormGroup) {
   this.pro.ReleaseTime=form.value.releaseTime;
   
 
-/*  this.formData.append('Name',form.value.name);
-  this.formData.append('Description',form.value.description);
-  this.formData.append('Price',form.value.price);
-  this.formData.append('Quantily',form.value.quantily);
-  this.formData.append('CategoryId','1');
-  this.formData.append('TradeMark',form.value.tradeMark);
-  this.formData.append('Star','1');
-  this.formData.append('CPU',form.value.cpu);
-  this.formData.append('DesignStyle',form.value.designStyle);
-  this.formData.append('Monitor',form.value.monitor);
-  this.formData.append('Ram',form.value.ram);
-  this.formData.append('SizeWeight',form.value.sizeWeight);
-  this.formData.append('VGA',form.value.vga);*/
 
 
   
@@ -124,11 +123,14 @@ onSubmit(form:FormGroup) {
         this.name=filename[1];
         this.fileName=data.id+'.'+this.name;
 
-        this.formData = new FormData();
+        for(let i of this.lstImg)
+        {
+          this.formData1.append('image',i);
+        }
 
         this.formData.append('ImageFile', this.fileToUpload, this.fileName);
 
-        this.responsePro.upload(this.formData).subscribe(data=>{
+        this.responsePro.upload(this.formData1,data.id).subscribe(data=>{
 
         })
         alert("Thêm thành công");
@@ -142,12 +144,15 @@ onSubmit(form:FormGroup) {
 
 }
 
-
+  lstImg:any=[];
   uploadFile(files:any,event:Event){
-  
+    
     this.fileToUpload = <File>files[0];
 
-    this.formData1.append('image',this.fileToUpload);
+    //this.formData1.append('image',this.fileToUpload);
+
+  
+  
     console.log('ímg',this.formData1);
 
     let selectedFile = (event.target as HTMLInputElement).files?.item(0);
@@ -155,10 +160,11 @@ onSubmit(form:FormGroup) {
     if (selectedFile) {
       if (["image/jpeg", "image/png", "image/svg+xml"].includes(selectedFile.type)) {
         let fileReader = new FileReader();
-        fileReader.readAsDataURL(selectedFile);
-
+        fileReader.readAsDataURL(<File>files[0]);
         fileReader.addEventListener('load', (event) => {
           this.imagePreviewSrc = event.target?.result;
+          this.images.push(event.target?.result);
+          this.lstImg.push(<File>files[0]);
           this.isImageSelected = true
         })
       }
@@ -187,5 +193,24 @@ onSubmit(form:FormGroup) {
                 reader.readAsDataURL(event.target.files[i]);
         }
     }
+}
+removeImg(url:any)
+{
+  let c=0;
+  let c1=-1;
+  for(let u of this.images)
+  {
+    c++;
+    if(u==url)
+    {
+      //c1=c;
+      break;
+    }
+  }
+  this.images = this.images.filter((a) => a !== url);
+  this.lstImg.splice(c-1,1);
+  console.log(c,this.lstImg);
+
+ 
 }
 }

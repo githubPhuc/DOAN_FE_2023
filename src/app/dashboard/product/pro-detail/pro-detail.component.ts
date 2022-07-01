@@ -27,7 +27,7 @@ export class ProDetailComponent implements OnInit {
   
       this.proservice.getProduct(this.id).subscribe(data=>{
         console.log("xxxxxxxxxxxxxxxxxxxxxxx");
-        this.product=data;
+        this.product=data.pro;
    
         console.log(data);
       })

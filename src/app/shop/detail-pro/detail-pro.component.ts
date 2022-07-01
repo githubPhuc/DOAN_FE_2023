@@ -18,6 +18,7 @@ export class DetailProComponent implements OnInit {
   id!: number;
   private sub: any;
  product:any;
+ img:any;
   category:any;
   comment:any;
  
@@ -32,7 +33,8 @@ window.scrollTo(0,0);
 
       this.proservice.getProduct(this.id).subscribe(data=>{
         
-        this.product=data;
+        this.product=data.pro;
+        this.img=data.img;
         this.shopService.getProductByCategory(this.product.categoryId).subscribe(data=>{
           this.category=data;
           console.log('cate',data)

@@ -67,12 +67,12 @@ export class ProductService {
       
     }
 
-    public upload(data:FormData)
+    public upload(data:FormData,id:number)
     {
      
       console.log('áaaaaaaaaa',data);
       return this.httpClient
-        .post<any>('https://localhost:7043/api/product/testimg',data,{reportProgress: true, observe: 'events'});
+        .post<any>('https://localhost:7043/api/product/testimg?id1='+id.toString(),data,{reportProgress: true, observe: 'events'});
       
     }
 

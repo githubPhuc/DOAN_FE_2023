@@ -45,17 +45,13 @@ export class SlideShowCreateComponent implements OnInit {
         let filename=this.name.split('.');
         this.name=filename[1];
         this.fileName=data.id+'.'+this.name;
-
-
-
-        this.formData1.append('ImageFile', this.fileToUpload, this.fileName);
-
-        this.http.post<any>('https://localhost:7043/api/slideshow/upload',this.formData1).subscribe(data=>{
+         this.formData1.append('ImageFile', this.fileToUpload, this.fileToUpload.name);
+        this.http.post<any>('https://localhost:7043/api/slideshow/upload?id1='+data.id,this.formData1).subscribe(data=>{
 
         })
         alert("Thêm thành công");
         this.dialog.closeDialog();
-     
+        location.reload();
       }
     });
 
@@ -63,12 +59,9 @@ export class SlideShowCreateComponent implements OnInit {
   uploadFile(files:any, event: Event){
   
     this.fileToUpload = <File>files[0];
-
    
-    console.log('ímg',this.formData1);
-    //
     
-
+    console.log('ímg',this.formData1);
     let selectedFile = (event.target as HTMLInputElement).files?.item(0);
 
     if (selectedFile) {
@@ -85,7 +78,6 @@ export class SlideShowCreateComponent implements OnInit {
       this.isImageSelected = false
     }
   }
-
 
 
 

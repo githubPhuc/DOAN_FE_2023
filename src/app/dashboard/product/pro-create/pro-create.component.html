@@ -100,9 +100,13 @@
                     </div>
                     <div class="form-group">
                         <label>Hình ảnh</label>
-                        <div class="review">
-                            <img *ngIf="isImageSelected" [src]="imagePreviewSrc"  alt="..." style="width: 150px;">
+                        <div class="review" style="display: flex;">
+                            
+                           <div class="img" *ngFor="let url of images">
+                            <img  [src]="url"  alt="..." style="width: 150px;"> <span (click)="removeImg(url)">x</span>
+                           </div>
                         </div>
+                   
                         <div class="fileinput-new" data-provides="fileinput">
                        
                            
@@ -111,8 +115,10 @@
                                 <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files,$event)" style="display:none;">
                                 <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
                             </span>
+                            
                         
                         </div>
+                       
                     </div>
                     <button type="submit" class="btn btn-success btn-icon"><i class="fa fa-floppy-o "></i>Thêm mới</button>
                     <a [routerLink]="['/admin/product']" class="btn btn-warning btn-icon"><i class="fa fa-reply"></i>trở về</a>
