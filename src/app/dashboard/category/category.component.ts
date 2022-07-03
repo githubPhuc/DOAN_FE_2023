@@ -55,11 +55,12 @@ export class CategoryComponent implements OnInit {
         console.log(data);
         if(data==200)
         {
+         
           window.location.reload();
         }
         
       }); 
-      
+   
   }
 
 
@@ -72,7 +73,10 @@ export class CategoryComponent implements OnInit {
   onSubmit(form:FormGroup) {
     // TODO: Use EventEmitter with form value
     console.warn(this.categoryForm.value);
-
+    if(form.value.name==null||form.value.name=='')
+    {
+      return;
+    }
     this.cate.name=form.value.name;
     console.log(this.cate);
     this.responseCate.postCategory(this.cate)

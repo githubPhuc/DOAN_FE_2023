@@ -36,7 +36,7 @@ window.scrollTo(0,0);
         this.product=data.pro;
         this.img=data.img;
         this.shopService.getProductByCategory(this.product.categoryId).subscribe(data=>{
-          this.category=data;
+          this.category=data.pro;
           console.log('cate',data)
         });
        

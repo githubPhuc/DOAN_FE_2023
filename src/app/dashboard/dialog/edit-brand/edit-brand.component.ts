@@ -12,6 +12,7 @@ import { TrademarkService } from '../../trademark/trademark.service';
 export class EditBrandComponent implements OnInit {
 
   categoryForm = new FormGroup({
+  
     name: new FormControl(''),
 
 
@@ -20,14 +21,23 @@ export class EditBrandComponent implements OnInit {
 
   data1:any;
   ngOnInit(): void {
-    
+      this.tradeService.getTrademark(this.data.id).subscribe(res=>{
+       this.categoryForm.patchValue(res);
+      
+      })
   }
 
 
 
   onSubmit(form:FormGroup)
   {
-
+    let bra= {
+  
+      Name: form.value.name
+    }
+    this.tradeService.EditTrademark(this.data.id,bra).subscribe(res=>{
+    
+    });
     this.closeDialog();
     location.reload();
   }

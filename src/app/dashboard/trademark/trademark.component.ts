@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { DialogService } from '../dialog.service';
 import { TrademarkService } from './trademark.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class TrademarkComponent implements OnInit {
   });
 
 
-  constructor(private tradeService:TrademarkService) { }
+  constructor(private tradeService:TrademarkService,private dialog:DialogService) { }
 
   ngOnInit(): void {
     this.tradeService.getAllTrademark().subscribe(data=>{
@@ -45,7 +46,7 @@ export class TrademarkComponent implements OnInit {
 
   edit(id:number)
   {
-
+    this.dialog.openDialogEditBrand(id);
   }
 
   deleteTrademark(id:number)

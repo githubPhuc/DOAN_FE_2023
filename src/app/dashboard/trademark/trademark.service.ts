@@ -17,6 +17,13 @@ export class TrademarkService {
       'Authorization': 'Bearer ' + this.token
    })});
   }
+  EditTrademark(id:number,data:any)
+  {
+    return this.httpClient.put<any>('https://localhost:7043/api/trademark/edittrademark?id='+id.toString(),data,{headers: new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.token
+   })});
+  }
   DeleteTrademark(id:number)
   {
     return this.httpClient.post<any>('https://localhost:7043/api/trademark/removetrademark?id='+id.toString(),{headers: new HttpHeaders({ 
@@ -28,6 +35,14 @@ export class TrademarkService {
   getAllTrademark()
   {
     return this.httpClient.get<any>('https://localhost:7043/api/trademark/getalltrademark',{headers: new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.token
+   })});
+  }
+
+  getTrademark(id:number)
+  {
+    return this.httpClient.get<any>('https://localhost:7043/api/trademark/gettrademarkbyid?id='+id.toString(),{headers: new HttpHeaders({ 
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.token
    })});

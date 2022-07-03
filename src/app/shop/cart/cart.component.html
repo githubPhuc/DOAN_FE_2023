@@ -1,16 +1,14 @@
-
-
-
-<!-- ::::::  Start  Main Container Section  ::::::  -->
 <main id="main-container" class="main-container">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="section-content">
                     <h5 class="section-content__title">Giỏ hàng của bạn</h5>
-                    <a *ngIf="!isempty" (click)="removeAllCart()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20" style="color: white;">XOÁ TOÀN BỘ GIỎ HÀNG</a>
+                    <a *ngIf="!isempty" (click)="removeAllCart()"
+                        class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20"
+                        style="color: white;">XOÁ TOÀN BỘ GIỎ HÀNG</a>
                 </div>
-                <!-- Start Cart Table -->
+
                 <div class="table-content table-responsive cart-table-content m-t-30">
                     <table>
                         <thead class="gray-bg">
@@ -23,7 +21,7 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-center">
                             <tr *ngFor="let c of POSTS | paginate
                             : {
                                 itemsPerPage: tableSize,
@@ -32,22 +30,23 @@
                               };
                         let i = index">
                                 <td class="product-thumbnail">
-                                    <a (click)="goToProductDetails(c.idSanPham)"><img class="img-fluid" src="../../../assets/img/product/{{c.image}}"
-                                            alt=""></a>
+                                    <a (click)="goToProductDetails(c.idSanPham)"><img class="img-fluid"
+                                            src="../../../assets/img/product/{{c.image}}" alt=""></a>
                                 </td>
-                                <td class="product-name"><a (click)="goToProductDetails(c.idSanPham)">{{c.tenSanPham}}</a></td>
+                                <td class="product-name"><a
+                                        (click)="goToProductDetails(c.idSanPham)">{{c.tenSanPham}}</a></td>
                                 <td class="product-price-cart"><span class="amount">{{c.giaSanPham |
                                         currency:'VND'}}</span></td>
                                 <td class="product-quantities">
                                     <div class="quantity d-inline-block">
-                                        <input id="sl" #sl type="number" min="1" step="1" value="{{c.soLuong}}" >
-                                   
-                                            <i class="fa fa-caret-up" aria-hidden="true" (click)="plus(c.id)"></i> <br>
-                                            <i class="fa fa-caret-down" aria-hidden="true" (click)="remove(c.id)"></i>
-                                      
+                                        <input id="sl" #sl type="number" min="1" step="1" value="{{c.soLuong}}">
+
+                                        <i class="fa fa-caret-up" aria-hidden="true" (click)="plus(c.id)"></i> <br>
+                                        <i class="fa fa-caret-down" aria-hidden="true" (click)="remove(c.id)"></i>
+
                                     </div>
                                 </td>
-                                
+
                                 <td class="product-subtotal">{{c.gia | currency:'VND'}}</td>
                                 <td class="product-remove">
                                     <a (click)="removeCart(c.id)"><i class="fa fa-times"></i></a>
@@ -59,17 +58,18 @@
                     <div *ngIf="!isempty" class="total" style="display: flex; justify-content:flex-end">
                         <span style="font-weight: bold;">Tổng : </span>&nbsp;<h3>{{total | currency:'VND'}}</h3>
                     </div>
-                </div> <!-- End Cart Table -->
-                <!-- Start Cart Table Button -->
+                </div>
                 <div *ngIf="!isempty" class="cart-table-button m-t-10">
                     <div class="cart-table-button--left">
-                        <a [routerLink]="['/shop/home']" class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">CONTINUE
+                        <a [routerLink]="['/shop/home']"
+                            class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">CONTINUE
                             SHOPPING</a>
                     </div>
                     <div class="cart-table-button--right">
-                        
-                     
-                        <a (click)="pay()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20" style="color: white;">ĐẶT HÀNG</a>
+
+
+                        <a (click)="order()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20"
+                            style="color: white;">ĐẶT HÀNG</a>
 
                     </div>
                 </div>
@@ -82,26 +82,23 @@
                         <div><i class="fa fa-ban fa-10x" aria-hidden="true"></i></div>
                     </div>
                     <div class="cart-table-button--left">
-                        <a [routerLink]="['/shop/home']" class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">CONTINUE
+                        <a [routerLink]="['/shop/home']"
+                            class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">CONTINUE
                             SHOPPING</a>
-                    </div> <!-- End Cart Table Button -->
+                    </div>
                 </div>
             </div>
 
         </div>
 
     </div>
-   
+
 </main>
 <footer>
     <div class="d-flex justify-content-center">
-        <pagination-controls
-          previousLabel="Prev"
-          nextLabel="Next"
-          (pageChange)="onTableDataChange($event)"
-        >
+        <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
         </pagination-controls>
-      </div>
+    </div>
 </footer>
 
 <style>
@@ -123,24 +120,26 @@
     }
 
     input[type=number]::-webkit-inner-spin-button {
-    opacity: 1
-}
-main {
-    min-height: 500px;
-}
+        opacity: 1
+    }
 
-.section-content__title {
-    margin-top: 20px;
-}
-.header__search-input button{
-    padding-left: 3px;
-    padding-right: 3px;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
-}
-.section-content {
-    display: flex;
-    justify-content: space-between;
-}
+    main {
+        min-height: 500px;
+    }
+
+    .section-content__title {
+        margin-top: 20px;
+    }
+
+    .header__search-input button {
+        padding-left: 3px;
+        padding-right: 3px;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .section-content {
+        display: flex;
+        justify-content: space-between;
+    }
 </style>
-

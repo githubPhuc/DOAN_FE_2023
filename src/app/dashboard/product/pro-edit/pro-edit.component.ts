@@ -26,6 +26,7 @@ export class ProEditComponent implements OnInit {
   brand:any;
   id!: number;
   private sub: any;
+  lstImg:any=[];
   pro=new ProductModel('','1',1,1,1,1,5,'1','1','1','1','1','1','','','','','');
 
   categoryForm = new FormGroup({
@@ -65,17 +66,23 @@ export class ProEditComponent implements OnInit {
       this.id = +params['id'];
       
       this.proService.getProduct(this.id).subscribe(data=>{
-        this.product=data;
-        this.categoryForm.patchValue(data);
+        this.product=data.pro;
+        console.log(data.pro)
+        this.categoryForm.patchValue(data.pro);
         this.pro.CategoryId=data.categoryId;
         this.pro.TradeMarkId=data.tradeMarkId;
         if(data.image!='')
         {
-          this.imagePreviewSrc='../../../../assets/img/product/'+data.image;
+          this.imagePreviewSrc='../../../../assets/img/product/'+data.pro.image;
           this.isImageSelected=true;
         }
        
-        console.log(data);
+       
+        for(let i of data.img)
+        {
+          this.lstImg.push(i.image);
+        }
+        console.log(this.lstImg);
       })
 
 

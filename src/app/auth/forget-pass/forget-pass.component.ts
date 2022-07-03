@@ -10,6 +10,7 @@ import { LoginService } from '../login.service';
 })
 export class ForgetPassComponent implements OnInit {
 
+  err:any;
   isMail=1;
   XacThuc=-1;
   mail:any;
@@ -38,6 +39,10 @@ export class ForgetPassComponent implements OnInit {
         this.mail=form.value.email;
         this.isMail=0;
         this.otp=data.otp;
+      }
+      if(data.status==500)
+      {
+        this.err=data.msg;
       }
     })
 

@@ -10,6 +10,7 @@ import { ShopService } from '../shop.service';
 })
 export class ProductByBrandComponent implements OnInit {
 
+
   product:any;
   lstProduct:any;
   private sub:any;

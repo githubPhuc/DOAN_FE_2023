@@ -23,6 +23,7 @@ export class EditCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.cateService.getCategory(this.data.id).subscribe(data2=>{
       this.categoryForm.patchValue(data2);
+     
     });
   }
 catedata=new CategoryModel(0,"",0,true);

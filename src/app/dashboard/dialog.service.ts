@@ -6,6 +6,7 @@ import { AddCommentComponent } from './dialog/add-comment/add-comment.component'
 import { AddImportComponent } from './dialog/add-import/add-import.component';
 import { ConfirmDeleteComponent } from './dialog/confirm-delete/confirm-delete.component';
 import { ConfirmComponent } from './dialog/confirm/confirm.component';
+import { EditBrandComponent } from './dialog/edit-brand/edit-brand.component';
 import { EditCategoryComponent } from './dialog/edit-category/edit-category.component';
 import { ImportDetailComponent } from './dialog/import-detail/import-detail.component';
 import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/invoice-detail-dialog.component';
@@ -102,6 +103,18 @@ openDialogEditCate(id:number)
   {
 
    this.dialog1.open(EditCategoryComponent,{
+    height: '150px',
+    width: '400px',
+    data: {
+      'id': id
+    }
+  }
+  );
+}
+openDialogEditBrand(id:number)
+  {
+
+   this.dialog1.open(EditBrandComponent,{
     height: '150px',
     width: '400px',
     data: {

@@ -53,7 +53,7 @@
                           <div class="tab-pane show active clearfix" id="sort-grid">
                               <!-- Start Single Default Product -->
                            
-                              <div *ngFor="let pro of product | orderBy: 'price'" class="product__box product__box--default product__box--border-hover text-center float-left float-3" >
+                              <div *ngFor="let pro of product.pro | orderBy: 'price'" class="product__box product__box--default product__box--border-hover text-center float-left float-3" >
                                   <div class="product__img-box">
                                       <a *ngIf="pro.image" (click)="goToProductDetails(pro.id)" class="product__img--link">
                                           <img class="product__img" src="../../assets/img/product/{{pro.image}}" alt="">

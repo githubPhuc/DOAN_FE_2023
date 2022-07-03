@@ -22,8 +22,8 @@
                     <div class="row justify-content-center">
                         <div class="col-4">
                               <div class="misc-header text-center">
-								<img alt="" src="../../../assets/img/icon.png" class="logo-icon margin-r-10">
-								<img alt="" src="../../../assets/img/logo-dark.png" class="toggle-none hidden-xs">
+							
+								<img alt="" src="../../../assets/img/text.jpg" class="toggle-none hidden-xs">
                             </div>
                             <div class="misc-box" ng-app="myApp" ng-controller="loginCtrl">   
 <form *ngIf="isMail==1" [formGroup]="mailForm" (ngSubmit)="onSubmit(mailForm)">
@@ -33,6 +33,7 @@
         <input id="txtUsername" class="form-control" type="text" name="" id="username"  formControlName="email">
         <span class="icon-user text-muted icon-input"></span>
         </div>
+        <small *ngIf="err!=null&&err!=''" style="color: red;">{{err}}</small>
     </div>
 
     <div class="clearfix">

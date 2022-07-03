@@ -101,7 +101,7 @@ Product successfully added. </div>
                 <div class="form-group">
                     <label>Hình ảnh</label>
                     <div class="review">
-                        <img *ngIf="isImageSelected" [src]="imagePreviewSrc"  alt="..." style="width: 150px;">
+                        <img *ngFor="let url of lstImg" src="../../../../assets/img/product/{{url}}"  alt="..." style="width: 150px;">
                   
                     </div>
                     <div class="fileinput-new" data-provides="fileinput" >

@@ -22,12 +22,12 @@
                         <tbody>
                             <tr *ngFor="let c of wishlist">
                                 <td class="product-thumbnail">
-                                    <a (click)="goToProductDetails(c.id)"><img class="img-fluid" src="../../../assets/img/product/{{c.image}}"
+                                    <a (click)="goToProductDetails(c.idSanPham)"><img class="img-fluid" src="../../../assets/img/product/{{c.image}}"
                                             alt=""></a>
                                 </td>
                                 <td class="product-name"><a (click)="goToProductDetails(c.id)">{{c.tenSanPham}}</a></td>
                                
-                                <td class="product-subtotal">{{c.gia | currency:'VND'}}</td>
+                                <td class="product-subtotal text-center" >{{c.gia | currency:'VND'}}</td>
                                 <td class="product-remove">
                                     <a (click)="addCart(c.idSanPham)" ><i class="fa fa-cart-plus"></i></a>
                                     <a (click)="removeWishList(c.id)"><i class="fa fa-times"></i></a>
