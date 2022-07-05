@@ -9,12 +9,34 @@ import { AboutService } from 'src/app/dashboard/about/about.service';
 export class AboutComponent implements OnInit {
 
   constructor(private aboutService:AboutService) { }
-  about:any;
+  about:number=0;
+  ab:any;
+  dataAb:any
   ngOnInit(): void {
 
     this.aboutService.getAllAbount().subscribe(data=>{
-      this.about=data[0];
+      this.dataAb=data[this.about];
+      this.ab=data;
+      
     })
   }
-
+  next()
+  {
+    if(this.ab[this.about+1]==null)
+    {
+      return;
+    }
+    this.about++;
+    this.dataAb=this.ab[this.about];
+  }
+  prev()
+  {
+    if(this.about<=0)
+    {
+      return;
+    }
+    this.about--;
+    this.dataAb=this.ab[this.about];
+    
+  }
 }

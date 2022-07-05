@@ -39,9 +39,11 @@
                                         <div class="group-icon">
                                         <input id="txtPassword" class="form-control" type="password" name="" id="password"  formControlName="password">
                                         <span class="icon-lock text-muted icon-input"></span>
+                                        <small *ngIf="!loginSus" style="color: red;">Tên tài khoản hoặc mật khẩu không đúng</small>
+                                    <small *ngIf="isEMPTY" style="color: red;">Mật khẩu không được bỏ trống</small>
                                         </div>
                                     </div>
-                                    <small *ngIf="!loginSus" style="color: red;">Tên tài khoản hoặc mật khẩu không đúng</small>
+                                    
                                     <div class="clearfix">
                                        
                                         <div class="float-right">

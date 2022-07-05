@@ -25,9 +25,9 @@
       
         </style>
       <main id="main-container" class="main-container">
-          <div class="count">
+          <!-- <div class="count">
             <h3>Số lượng sản phẩm : {{product.count}}</h3>
-          </div>
+          </div> -->
           <div class="container">
               <div class="row flex-column-reverse flex-lg-row">
        
@@ -37,13 +37,21 @@
                     
       
         
-      
+                    <div class="sort-box m-tb-30">
+                        <!-- Start Sort Left Side -->
+                     <!-- Start Sort Left Side -->
+    
+                        <div class="sort-box__right">
+                            <span>Có {{product.count}} sản phẩm.</span>
+                          
+                        </div>
+                    </div> 
                       <div class="product-tab-area">
                           <div class="tab-content ">
                               <div class="tab-pane show active clearfix" id="sort-grid">
                                   <!-- Start Single Default Product -->
                                
-                                  <div *ngFor="let pro of product.pro | orderBy: 'price'" class="product__box product__box--default product__box--border-hover text-center float-left float-3" >
+                                  <div *ngFor="let pro of product.pro | orderBy: 'price'" class="product__box product__box--default product__box--border-hover text-center float-left float-4" style="background-color: white; height: 300px;">
                                       <div class="product__img-box">
                                           <a *ngIf="pro.image" (click)="goToProductDetails(pro.id)" class="product__img--link">
                                               <img class="product__img" src="../../assets/img/product/{{pro.image}}" alt="">
@@ -57,9 +65,12 @@
                                           <a (click)="addToWishList(pro.id)" id="wish" class="product__wishlist-icon"><i class="icon-heart" style="color: red;"></i></a>
                                         
                                       </div>
-                                      <div class="product__price m-t-10">
-                             
-                                          <span class="product__price-reg">{{pro.price | currency:'VND'}}</span>
+                                      <div *ngIf="pro.salePrice>0" class="product__price m-t-10">
+                                        <span  class="product__price-del">{{pro.price | currency:'VND'}}</span>
+                                        <span class="product__price-reg">{{pro.salePrice | currency:'VND'}}</span>
+                                      </div>
+                                      <div *ngIf="pro.salePrice==0" class="product__price m-t-10">
+                                        <span class="product__price-reg">{{pro.price | currency:'VND'}}</span>
                                       </div>
                                       <a href="" class="product__link product__link--underline product__link--weight-light m-t-15">
                                           {{pro.name}}

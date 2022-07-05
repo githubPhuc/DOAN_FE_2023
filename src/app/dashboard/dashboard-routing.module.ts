@@ -5,6 +5,7 @@ import { AboutCreComponent } from './about/about-cre/about-cre.component';
 import { AboutComponent } from './about/about.component';
 import { AccountComponent } from './account/account.component';
 import { AdminCreateComponent } from './account/admin-create/admin-create.component';
+import { EditAccountComponent } from './account/edit-account/edit-account.component';
 import { CategoryComponent } from './category/category.component';
 import { CommentComponent } from './comment/comment.component';
 import { DashboardComponent } from './dashboard.component';
@@ -73,6 +74,10 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent
+  },
+  {
+    path: 'account/edit',
+    component: EditAccountComponent
   },
   {
     path: 'account/admin-create',

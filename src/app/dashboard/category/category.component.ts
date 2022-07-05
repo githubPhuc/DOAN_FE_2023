@@ -50,16 +50,26 @@ export class CategoryComponent implements OnInit {
 
   deleteCategory(id:number)
   {
+
+    if(window.confirm('Bạn có muốn xoá danh mục này ?'))
+    {
+
+   
     this.responseCate.deleteCategory(id)
       .subscribe(data => {
         console.log(data);
-        if(data==200)
+        if(data.status==200)
         {
          
           window.location.reload();
         }
-        
+        if(data.status==500)
+        {
+          alert('Không thể xoá, danh mục còn tồn tại sản phẩm')
+        }
+       
       }); 
+    }
    
   }
 

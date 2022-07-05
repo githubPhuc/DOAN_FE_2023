@@ -29,14 +29,13 @@ export class SlideShowCreateComponent implements OnInit {
   }
 
   slide= {
-    title: '',
-    content: '',
+    link: '',
     image: '1'
   }
   onSubmit(form: FormGroup)
   {
-    this.slide.title=form.value.title;
-    this.slide.content=form.value.content;
+
+    this.slide.link=form.value.content;
     //
     this.http.post<any>('https://localhost:7043/api/slideshow/postslideshow',this.slide).subscribe(data=>{
       if(data.status==200)

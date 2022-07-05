@@ -66,6 +66,17 @@ export class ProductService {
        })});
       
     }
+    public resetPromotion(data:any)
+    {
+     
+      console.log('áaaaaaaaaa',data);
+      return this.httpClient
+        .post<any>('https://localhost:7043/api/product/resetpromotion?proid='+data.proId.toString()+'&cateid='+data.cateId.toString()+'&brandId='+data.brandId.toString(),{headers: new HttpHeaders({ 
+          'Content-Type': 'application/json'
+         
+       })});
+      
+    }
 
     public upload(data:FormData,id:number)
     {
@@ -75,13 +86,29 @@ export class ProductService {
         .post<any>('https://localhost:7043/api/product/testimg?id1='+id.toString(),data,{reportProgress: true, observe: 'events'});
       
     }
-
-    public uploadEdit(data:FormData)
+    public uploadShow(data:FormData,id:number)
     {
      
       console.log('áaaaaaaaaa',data);
       return this.httpClient
-        .post<any>('https://localhost:7043/api/product/upload',data,{reportProgress: true, observe: 'events'});
+        .post<any>('https://localhost:7043/api/product/uploadshow?id1='+id.toString(),data,{reportProgress: true, observe: 'events'});
+      
+    }
+
+    public uploadEdit(data:FormData,id:number)
+    {
+     
+      console.log('áaaaaaaaaa',data);
+      return this.httpClient
+        .post<any>('https://localhost:7043/api/product/upload?id='+id.toString(),data,{reportProgress: true, observe: 'events'});
+      
+    }
+    public uploadEditList(data:FormData,id:number)
+    {
+     
+      console.log('áaaaaaaaaa',data);
+      return this.httpClient
+        .post<any>('https://localhost:7043/api/product/uploadedit?id1='+id.toString(),data,{reportProgress: true, observe: 'events'});
       
     }
 

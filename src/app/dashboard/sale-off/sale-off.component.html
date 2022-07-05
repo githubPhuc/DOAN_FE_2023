@@ -82,7 +82,7 @@
                 <strong>Hình ảnh</strong>
             </th>
             <th>
-                <strong>Tên sản phẩm</strong>
+                <strong >Tên sản phẩm</strong>
             </th>
             <th>
                 <strong>Giá</strong>
@@ -101,7 +101,7 @@
                     alt=""></td>
             <td *ngIf="pro.image==null"><img src="../../../assets/img/product/noimage.png" style="width: 150px" alt="">
             </td>
-            <td style="word-wrap: inherit;">
+            <td style="white-space: normal;">
                 {{pro.name}}
             </td>
             <td>{{pro.price | currency:'VND'}}</td>
@@ -111,6 +111,7 @@
             <td class="">
                 <button (click)="goToProductDetails(pro.id)"  type="button" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>&nbsp;
                 <button (click)="openSale(pro.id)"  type="button" class="btn btn-sm btn-info"><i class="fa fa-percent"></i></button>&nbsp;
+                <button (click)="resetp(0,0,pro.id)"  type="button" class="btn btn-sm btn-info"><i class="fa fa-refresh"></i></button>&nbsp;
             </td>
         </tr>
 

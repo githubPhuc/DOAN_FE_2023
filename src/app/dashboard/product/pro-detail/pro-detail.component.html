@@ -15,7 +15,11 @@
                                     </ol>
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img src="../../../assets/img/product/{{product.image}}" class="d-block w-100" alt="...">
+                                            <img src="../../../assets/img/product/{{product.pro.image}}" class="d-block w-100" alt="...">
+                                        
+                                        </div>
+                                        <div *ngFor="let i of product.img" class="carousel-item">
+                                            <img src="../../../assets/img/product/{{i.image}}" class="d-block w-100" alt="...">
                                         
                                         </div>
                                     
@@ -52,63 +56,138 @@
                                 </style>
                             </div>
                             <div class="col-md-6">
-                                <div class="product-details-box">
-                                    <h5 class="section-content__title">{{product.name}}</h5>
+                                <div class="table">
+                                    <table class="product-dis__list table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td class="product-dis__title">Nhà sản xuất
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.tradeMark}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">CPU
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.cpu}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">RAM
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.ram}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Ổ cứng
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.hardDisk}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Hệ điều hành
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.os}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Cổng kết nối
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.port}}</td>
+                                            </tr>
+                                         
+                                            <tr>
+                                                <td class="product-dis__title">Màn hình
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.monitor}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Card đồ hoạ
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.vga}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Kiểu thiết kế
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.designStyle}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Kích thước -
+                                                    cân nặng
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.sizeWeight}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Thời điểm ra mắt
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.releaseTime}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                               
+                            </div>
+                                <!-- <div class="product-details-box">
+                                    <h5 class="section-content__title">{{product.pro.name}}</h5>
 
                                 
     
                                     <div class="review-box">
-                                       <span style="color: Yellow;font-weight: 1000;"> {{product.star}} <i class="fa fa-star" style="color: Yellow;"></i></span>
+                                       <span style="color: Yellow;font-weight: 1000;"> {{product.pro.star}} <i class="fa fa-star" style="color: Yellow;"></i></span>
 
                                     </div>
                                     <div class="product__price">
     
-                                        <span class="product__price-reg">{{product.price | currency:'VND'}}</span>
+                                        <span class="product__price-reg">{{product.pro.price | currency:'VND'}}</span>
                                     </div>
                                     <div class="info">
                                         <div class="product__desc m-t-25 m-b-30">
                                             <p>{{product.description}} </p>
                                         </div>
                                         <div class="product-var p-t-30">
-                                            <p>RAM:&nbsp; {{product.ram}} </p>
+                                            <p>RAM:&nbsp; {{product.pro.ram}} </p>
                                         </div>
                                         <div class="product-var p-t-30">
-                                            <p>CPU:&nbsp; {{product.cpu}} </p>
+                                            <p>CPU:&nbsp; {{product.pro.cpu}} </p>
                                         </div>
                                         <div class="product-var p-t-30">
-                                            <p>Ổ cứng:&nbsp; {{product.hardDisk}} </p>
+                                            <p>Ổ cứng:&nbsp; {{product.pro.hardDisk}} </p>
                                         </div>
                                         <div class="product-var p-t-30">
-                                            <p>Cổng kết nối:&nbsp; {{product.port}} </p>
+                                            <p>Cổng kết nối:&nbsp; {{product.pro.port}} </p>
                                         </div>
                                         <div class="product-var p-t-30">
-                                            <p>Hệ điều hành:&nbsp; {{product.os}} </p>
+                                            <p>Hệ điều hành:&nbsp; {{product.pro.os}} </p>
                                         </div>
                                         <div class="product-var p-t-30">
-                                            <p>Màn hình:&nbsp; {{product.monitor}} </p>
+                                            <p>Màn hình:&nbsp; {{product.pro.monitor}} </p>
                                         </div>
                                         <div class="product-var p-t-30">
-                                            <p>Card đồ hoạ:&nbsp; {{product.vga}} </p>
+                                            <p>Card đồ hoạ:&nbsp; {{product.pro.vga}} </p>
                                         </div>
                                         <div class="product-var p-t-30">
-                                            <p>Kiểu thiết kế:&nbsp; {{product.designStyle}} </p>
+                                            <p>Kiểu thiết kế:&nbsp; {{product.pro.designStyle}} </p>
                                         </div>
                                         <div class="product-var p-t-30">
-                                            <p>Kích thước - cân nặng:&nbsp; {{product.sizeWeight}} </p>
+                                            <p>Kích thước - cân nặng:&nbsp; {{product.pro.sizeWeight}} </p>
                                         </div>
                                         <div class="product-var p-t-30">
-                                            <p>Nhãn hiệu:&nbsp; {{product.tradeMark}} </p>
+                                            <p>Nhãn hiệu:&nbsp; {{product.pro.tradeMark}} </p>
                                         </div>
                                         <div class="product-var p-t-30">
-                                            <p>Thời điểm ra mắt:&nbsp; {{product.releaseTime}} </p>
+                                            <p>Thời điểm ra mắt:&nbsp; {{product.pro.releaseTime}} </p>
                                         </div>
                                         <div class="product-var p-t-30">
-                                            <p>Phù hợp cho :&nbsp; <a href="">{{product.category}}</a> </p>
+                                            <p>Phù hợp cho :&nbsp; <a href="">{{product.pro.category}}</a> </p>
                                         </div>
 
                                     </div>
     
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

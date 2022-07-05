@@ -61,6 +61,15 @@ window.scrollTo(0,0);
    
   }
 
+ 
+  viewComment()
+  {
+    document.getElementById('comment')?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest"
+      });
+  }
   openAddComment(id:number)
   {
     this.dialog.openDialogAddComment(id);
@@ -74,9 +83,17 @@ window.scrollTo(0,0);
 
   removeComment(id:number)
   {
-      this.commentService.removeComment(id).subscribe(data=>{
-
+    if(window.confirm('Bạn có muốn xoá bình luận này ?'))
+    {
+      this.commentService.removeCommentUser(id,localStorage.getItem('userid')!).subscribe(res=>{
+        if(res.status==200)
+        {
+          alert(res.msg);
+          location.reload();
+        }
       })
+    }
+      
   }
 
   cart=new Cart(0,1,'');
@@ -104,9 +121,9 @@ window.scrollTo(0,0);
 
     })
   }
-  viewAnother()
+  viewAnother(id:number)
   {
-    this.router.navigate(['/product/category',])
+    this.router.navigate(['/product/category',id])
   }
 
 

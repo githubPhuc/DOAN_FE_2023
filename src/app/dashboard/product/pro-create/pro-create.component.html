@@ -20,7 +20,7 @@
 
                     <div class="form-group">
                         <label>Loại sản phẩm</label>
-                  
+
                         <select class="form-control m-b" formControlName="categoryId">
                             <Option *ngFor="let p of category" value="{{p.id}}">{{p.name}}</Option>
                         </select>
@@ -34,12 +34,12 @@
 
                         </div>
                     </div>
-                 
+
 
                     <div class="form-group">
                         <label>Mô tả</label>
                         <textarea formControlName="description">
-                   
+
                         </textarea>
                     </div>
                     <div class="form-group">
@@ -47,82 +47,105 @@
                         <select class="form-control m-b" formControlName="tradeMark">
                             <Option *ngFor="let p of brand" value="{{p.id}}">{{p.name}}</Option>
                         </select>
-                        </div>
+                    </div>
                     <div class="form-group">
                         <label>CPU</label>
-                        <input type="text" class="form-control form-control-rounded col-md-4"
-                            formControlName="cpu" >
+
+                        <textarea name="" id="" cols="30" rows="10" formControlName="cpu"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Ổ cứng</label>
-                        <input type="text" class="form-control form-control-rounded col-md-4"
-                            formControlName="hardDisk" >
+
+                        <textarea name="" id="" cols="30" rows="10" formControlName="hardDisk"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Kiểu thiết kế</label>
-                        <input type="text" class="form-control form-control-rounded col-md-4"
-                            formControlName="designStyle" >
+
+                        <textarea name="" id="" cols="30" rows="10" formControlName="designStyle"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Màn hình</label>
-                        <input type="text" class="form-control form-control-rounded col-md-4"
-                            formControlName="monitor" >
+
+                        <textarea name="" id="" cols="30" rows="10" formControlName="monitor"></textarea>
                     </div>
                     <div class="form-group">
                         <label>RAM</label>
-                        <input type="text" class="form-control form-control-rounded col-md-4"
-                            formControlName="ram" >
+
+                        <textarea name="" id="" cols="30" rows="10" formControlName="ram"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Hệ điều hành</label>
-                        <input type="text" class="form-control form-control-rounded col-md-4"
-                            formControlName="os" >
+
+                        <textarea name="" id="" cols="30" rows="10" formControlName="os"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Cổng kết nối</label>
-                        <input type="text" class="form-control form-control-rounded col-md-4"
-                            formControlName="port" >
+
+                        <textarea name="" id="" cols="30" rows="10" formControlName="port"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Ngày ra mắt</label>
                         <input type="text" class="form-control form-control-rounded col-md-4"
-                            formControlName="releaseTime" >
+                            formControlName="releaseTime">
                     </div>
                     <div class="form-group">
                         <label>Kích thước - cân nặng</label>
-                        <input type="text" class="form-control form-control-rounded col-md-4"
-                            formControlName="sizeWeight" >
+
+                        <textarea name="" id="" cols="30" rows="10" formControlName="sizeWeight"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Card đồ hoạ (VGA)</label>
-                        <input type="text" class="form-control form-control-rounded col-md-4"
-                            formControlName="vga" >
+
+
+                        <textarea name="" id="" cols="30" rows="10" formControlName="vga"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label>Ảnh sản phẩm</label> <br>
+                        <div class="rev">
+                            <img *ngIf="imgShowReview!=null" [src]="imgShowReview" alt="..." style="width: 150px;">
+                        </div>
+                        <span class="btn-file1">
+
+                            <input type="file" #file1 placeholder="Choose file"
+                                (change)="uploadFileShow(file1.files,$event)" style="display:none;">
+                            <button type="button" class="btn btn-success" (click)="file1.click()">Upload File1</button>
+                        </span>
+
+                    </div>
+
                     <div class="form-group">
                         <label>Hình ảnh</label>
                         <div class="review" style="display: flex;">
-                            
-                           <div class="img" *ngFor="let url of images">
-                            <img  [src]="url"  alt="..." style="width: 150px;"> <span (click)="removeImg(url)">x</span>
-                           </div>
+
+                            <div class="img" *ngFor="let url of images">
+                                <img [src]="url" alt="..." style="width: 150px;"> <span
+                                    (click)="removeImg(url)">x</span>
+                            </div>
                         </div>
-                   
+
                         <div class="fileinput-new" data-provides="fileinput">
-                       
-                           
+
+
                             <span class="btn-file">
-                        
-                                <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files,$event)" style="display:none;">
-                                <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+
+                                <input type="file" #file placeholder="Choose file"
+                                    (change)="uploadFile(file.files,$event)" style="display:none;">
+                                <button type="button" class="btn btn-success" (click)="file.click()">Upload
+                                    File</button>
                             </span>
-                            
-                        
+
+
                         </div>
-                       
+
                     </div>
-                    <button type="submit" class="btn btn-success btn-icon"><i class="fa fa-floppy-o "></i>Thêm mới</button>
-                    <a [routerLink]="['/admin/product']" class="btn btn-warning btn-icon"><i class="fa fa-reply"></i>trở về</a>
-                 
+
+
+
+                    <button type="submit" class="btn btn-success btn-icon"><i class="fa fa-floppy-o "></i>Thêm
+                        mới</button>
+                    <a [routerLink]="['/admin/product']" class="btn btn-warning btn-icon"><i class="fa fa-reply"></i>trở
+                        về</a>
+
                 </form>
             </div>
         </div>

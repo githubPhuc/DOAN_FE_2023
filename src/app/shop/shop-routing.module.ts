@@ -6,6 +6,7 @@ import { DetailProComponent } from './detail-pro/detail-pro.component';
 import { HomeComponent } from './home/home.component';
 import { ProductByBrandComponent } from './product-by-brand/product-by-brand.component';
 import { ProductByCategoryComponent } from './product-by-category/product-by-category.component';
+import { ProductSaleComponent } from './product-sale/product-sale.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
 import { ShopComponent } from './shop.component';
@@ -64,6 +65,11 @@ const routes: Routes = [
 {
   path: 'product/brand/:txt',
   component: ProductByBrandComponent
+
+},
+{
+  path: 'product/sale',
+  component: ProductSaleComponent
 
 },
 {

@@ -10,6 +10,12 @@ export class TrademarkService {
   constructor(private httpClient:HttpClient) { }
 
 
+  public upload(data:any,id:number)
+  {
+    return this.httpClient
+      .post<any>('https://localhost:7043/api/trademark/upload?id1='+id.toString(),data,{reportProgress: true, observe: 'events'});
+    
+  }
   PostTrademark(name:string)
   {
     return this.httpClient.post<any>('https://localhost:7043/api/trademark/posttrademark?name='+name,{headers: new HttpHeaders({ 

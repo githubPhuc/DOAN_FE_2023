@@ -15,7 +15,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./invoice.component.scss']
 })
 export class InvoiceComponent implements OnInit {
-
+  
   public invoice:any
   constructor(private dialogSer:DialogService, private responseIn:InvoiceService,private router : Router) { }
 
@@ -48,5 +48,21 @@ export class InvoiceComponent implements OnInit {
   this.responseIn.hoanThanh(id).subscribe(data=>{
     
   })
+ }
+ status:any;
+ filter1(sts:number)
+ {
+    console.log('1');
+    if(sts==1)
+    {
+      this.status=false;
+    }else
+    {
+      this.status=true;
+    }
+
+    this.responseIn.getInvoiceByStatus(this.status).subscribe(res=>{
+      this.invoice=res.inv;
+    })
  }
 }

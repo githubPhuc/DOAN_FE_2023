@@ -18,6 +18,7 @@ import { ProductByCategoryComponent } from './product-by-category/product-by-cat
 import { ProductByBrandComponent } from './product-by-brand/product-by-brand.component';
 import { AboutComponent } from './about/about.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { ProductSaleComponent } from './product-sale/product-sale.component';
 
 
 
@@ -32,6 +33,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     ProductByCategoryComponent,
     ProductByBrandComponent,
     AboutComponent,
+    ProductSaleComponent,
     
   ],
   imports: [

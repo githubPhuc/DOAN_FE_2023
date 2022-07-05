@@ -27,9 +27,12 @@ export class ProCreateComponent implements OnInit {
   fileName:any;
   name!:string;
   brand:any;
-
+  imgShowReview:any;
   formData=new FormData();
   formData1=new FormData();
+  frm=new FormData();
+
+  imgshow:any;
   @Output() public onUploadFinished = new EventEmitter();
   ngOnInit(): void {
 
@@ -86,13 +89,13 @@ onSubmit(form:FormGroup) {
   this.pro.Price=form.value.price;
 
   this.pro.CategoryId=form.value.categoryId;
-  if(form.value.categoryId==null)
+  if(form.value.categoryId==null||form.value.categoryId=='')
   {
-    alert(this.brand[0].id);
-    this.pro.CategoryId=1;
+
+    this.pro.CategoryId=this.category[0].id;
   }
   this.pro.TradeMarkId=form.value.tradeMark;
-  if(form.value.categoryId==null)
+  if(form.value.tradeMark=null||form.value.tradeMark=='')
   {
     this.pro.TradeMarkId=this.brand[0].id;
   }
@@ -118,10 +121,7 @@ onSubmit(form:FormGroup) {
       if(data.status==200)
       {
         
-        this.name=this.fileToUpload.name;
-        let filename=this.name.split('.');
-        this.name=filename[1];
-        this.fileName=data.id+'.'+this.name;
+    
 
         for(let i of this.lstImg)
         {
@@ -131,6 +131,12 @@ onSubmit(form:FormGroup) {
         this.formData.append('ImageFile', this.fileToUpload, this.fileName);
 
         this.responsePro.upload(this.formData1,data.id).subscribe(data=>{
+
+        })
+       
+        this.frm.append('image',this.imgshow);
+        console.log('imgas',this.frm)
+        this.responsePro.uploadShow(this.frm,data.id).subscribe(data=>{
 
         })
         alert("Thêm thành công");
@@ -172,7 +178,30 @@ onSubmit(form:FormGroup) {
       this.isImageSelected = false
     }
   }
+  lstImg1:any=[];
+  uploadFileShow(files1:any,event:Event){
+    
+    let selectedFile1 = (event.target as HTMLInputElement).files?.item(0);
 
+    if (selectedFile1) {
+      if (["image/jpeg", "image/png", "image/svg+xml"].includes(selectedFile1.type)) {
+        let fileReader = new FileReader();
+        fileReader.readAsDataURL(<File>files1[0]);
+        fileReader.addEventListener('load', (event) => {
+          this.imgShowReview = event.target?.result;
+       
+        })
+      }
+    } 
+
+    //this.formData1.append('image',this.fileToUpload);
+    
+    
+    this.lstImg1.push(<File>files1[0]);
+    this.imgshow=<File>files1[0];
+    this.imgShowReview=this.imgshow;
+  
+  }
 
 
   onFileChange(event:any) {

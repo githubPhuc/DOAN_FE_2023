@@ -1,14 +1,24 @@
 
 <div class="row">
     <div class="col-md-7">
-      <form [formGroup]="trademarkForm" (ngSubmit)="onSubmit(trademarkForm)">
+      <form [formGroup]="trademarkForm" (ngSubmit)="onSubmit(trademarkForm)" enctype="multipart/form-data">
                             
         <div class="form-group">
-            <label>Tên danh mục</label>
+            <label>Tên nhãn hiệu</label>
             <div class="sr1">	
-            <input type="text" placeholder="Nhập tên danh mục" class="form-control form-control-rounded"  id="name"  formControlName="name">
+            <input type="text" placeholder="Nhập tên nhãn hiệu" class="form-control form-control-rounded"  id="name"  formControlName="name">
             <button class="btn btn-info" type="submit" [disabled]="!trademarkForm.valid"><i class="fa fa-floppy-o "></i>&nbsp;Create</button>
         </div>
+        <div class="form-group">
+            <label>Logo</label> <br>
+     
+                <span class="btn-file1">
+            
+                    <input type="file" #file1 placeholder="Choose file" (change)="uploadFileShow(file1.files)" style="display:none;">
+                    <button type="button" class="btn btn-success" (click)="file1.click()">Upload File1</button>
+                </span>
+       
+            </div>
     
     </div>
         
@@ -41,20 +51,24 @@
         <thead>
             <tr>
                 <th>
-                    <strong>ID</strong>
+                    <strong>STT</strong>
+                </th>
+                <th>
+                    <strong>Logo</strong>
                 </th>
                 <th>
                     <strong>Tên thương hiệu</strong>
                 </th>
        
-                <th>
-                    <strong>Action</strong>
+                <th class="text-center">
+                    <strong >Tác vụ</strong>
                 </th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let cate of tradeMark">
-                <td>{{cate.id}}</td>
+            <tr *ngFor="let cate of tradeMark ; let i=index">
+                <td>{{i+1}}</td>
+                <td><img src="../../../assets/img/brand/{{cate.image}}" alt=""></td>
                 <td>
                     {{cate.name}}
                 </td>

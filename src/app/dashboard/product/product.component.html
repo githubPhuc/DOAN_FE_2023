@@ -17,6 +17,7 @@
         <a class="nav-link"  [routerLink]="['/admin/product/create']" class="btn btn-info box-shadow  btn-rounded"><i class="fa fa-plus"></i> Thêm</a>
     </div>
 </div>
+
 <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline" width="100%">
     <thead>
         <tr>
@@ -38,7 +39,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let pro of POSTS | paginate
+        <tr *ngFor="let pro of POSTS | orderBy:'-id' | paginate
         : {
             itemsPerPage: tableSize,
             currentPage: page,
@@ -47,7 +48,7 @@
     let i = index">
             <td *ngIf="pro.image!=null"><img src="../../../assets/img/product/{{pro.image}}" style="width: 150px" alt=""></td>
             <td *ngIf="pro.image==null"><img src="../../../assets/img/product/noimage.png" style="width: 150px" alt=""></td>
-            <td>
+            <td style="white-space: normal;">
                 {{pro.name}}
             </td>
             <td>{{pro.stock}}</td>

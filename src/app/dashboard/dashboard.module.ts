@@ -40,7 +40,9 @@ import { AboutComponent } from './about/about.component';
 import { AboutCreComponent } from './about/about-cre/about-cre.component';
 import { SaleOffComponent } from './sale-off/sale-off.component';
 import { SaleComponent } from './dialog/sale/sale.component';
-
+import { ChoosePaymentComponent } from './dialog/choose-payment/choose-payment.component';
+import {NgPipesModule} from 'ngx-pipes';
+import { EditAccountComponent } from './account/edit-account/edit-account.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,8 @@ import { SaleComponent } from './dialog/sale/sale.component';
     AboutCreComponent,
     SaleOffComponent,
     SaleComponent,
+    ChoosePaymentComponent,
+    EditAccountComponent,
 
 
   ],
@@ -86,7 +90,8 @@ import { SaleComponent } from './dialog/sale/sale.component';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    NgxStarRatingModule
+    NgxStarRatingModule,
+    NgPipesModule
   ]
 })
 export class DashboardModule { }

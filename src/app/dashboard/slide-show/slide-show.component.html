@@ -1,15 +1,7 @@
 <div class="row">
     <div class="col-lg-6 ">
   
-            <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
-            <div class="form-group">
-                <label>Tìm kiếm</label>
-                <div class="sr">
-                <input type="text" placeholder="Nhập tên sản phẩm cần tìm" class="form-control form-control-rounded"  id="txt"  formControlName="txt">
-                <button id="search" class="btn btn-success btn-icon" ><i class="fa fa-search "></i>Search</button>
-            </div>
-            </div>
-        </form>
+          
             
 
     </div>
@@ -24,12 +16,9 @@
                 <strong>Hình ảnh</strong>
             </th>
             <th>
-                <strong>Tiêu đề</strong>
+                <strong>URL</strong>
             </th>
-            <th>
-                <strong>Nội dung</strong>
-            </th>
-           
+
             <th>
                 <strong>Action</strong>
             </th>
@@ -40,9 +29,9 @@
             <td *ngIf="pro.image!=null"><img src="../../../assets/img/slide/{{pro.image}}" style="width: 150px" alt=""></td>
             <td *ngIf="pro.image==null"><img src="../../../assets/img/product/noimage.png" style="width: 150px" alt=""></td>
             <td>
-                {{pro.title}}
+                {{pro.link}}
             </td>
-            <td>{{pro.content}}</td>
+          
       
            
             <td class="text-center">

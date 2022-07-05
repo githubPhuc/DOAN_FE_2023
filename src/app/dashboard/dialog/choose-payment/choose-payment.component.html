@@ -1,0 +1,36 @@
+<form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm)">
+
+
+
+    <div class="form-group">
+        <label>Chọn phương thức thanh toán :</label>
+        <div class="choose">
+            <input type="radio" name="check" [checked]="vnpay" (change)="tick()"> Thanh toán qua VnPAY <br>
+            <input type="radio" name="check" [checked]="money"(change)="tick()"> Thanh toán bằng tiền mặt
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Địa chỉ giao hàng</label> <br>
+
+        <input type="radio" name="check1" [checked]="check" (change)="checked()"> Sử dụng địa chỉ mặc định <br>
+        <input type="radio" name="check1" [checked]="check1" (change)="checked()" > Thêm địa chỉ mới
+        <div *ngIf="check1" class="sr1">
+            <input type="text" placeholder="Thêm địa chỉ mới" class="form-control form-control-rounded" id="name"
+                formControlName="address" style="margin-top: 15px;"> <br>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Ghi chú</label>
+        <div class="sr1">
+            <input type="text" placeholder="Thêm ghi chú" class="form-control form-control-rounded" id="name"
+                formControlName="note"> <br>
+        </div>
+    </div>
+    <button class="btn btn-success btn-icon" type="submit" [disabled]="!itemForm.valid"><i
+            class="fa fa-floppy-o "></i>Đặt hàng</button>
+
+
+
+
+</form>

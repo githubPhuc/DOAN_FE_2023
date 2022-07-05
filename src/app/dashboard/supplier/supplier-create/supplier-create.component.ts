@@ -10,6 +10,7 @@ import { SupplierService } from '../supplier.service';
 })
 export class SupplierCreateComponent implements OnInit {
 
+
   constructor(private supService:SupplierService,
               private router:Router) { }
   supplierForm = new FormGroup({
@@ -39,8 +40,12 @@ export class SupplierCreateComponent implements OnInit {
       if(data1.status==200)
       {
         alert(data1.msg);
+      
+
+
         this.router.navigate(['/admin/supplier']);
       }
     })
   }
+
 }

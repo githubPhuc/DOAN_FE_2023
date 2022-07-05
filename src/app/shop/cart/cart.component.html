@@ -68,7 +68,7 @@
                     <div class="cart-table-button--right">
 
 
-                        <a (click)="order()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20"
+                        <a (click)="openPay()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20"
                             style="color: white;">ĐẶT HÀNG</a>
 
                     </div>
@@ -82,9 +82,8 @@
                         <div><i class="fa fa-ban fa-10x" aria-hidden="true"></i></div>
                     </div>
                     <div class="cart-table-button--left">
-                        <a [routerLink]="['/shop/home']"
-                            class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">CONTINUE
-                            SHOPPING</a>
+                        <a [routerLink]="['/home']"
+                            class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">Tiếp tục mua sắm</a>
                     </div>
                 </div>
             </div>

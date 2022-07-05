@@ -6,7 +6,16 @@
             </div>
          
             <div class="card-body">
-             
+                <div class="head-iv">
+                    <div class="row">
+                        <div class="col-md-4"><span>Ngày lập:</span> {{data2.date | date:'dd/MM/yyyy'}}</div>
+                        <div class="col-md-4"><span>Khách:</span> {{data2.username}}</div>
+                        <div class="col-md-4"><span>Tổng tiền:</span> {{data2.total | currency:'VND'}}</div>
+                    </div>
+                </div>
+                <div class="note" *ngIf="data1.note!=null">
+                    <span>Ghi chú :</span> <textarea [value]="data1.note" name="" id="" cols="30" rows="10" [disabled]="true"></textarea>
+                </div>
                 <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
@@ -24,13 +33,7 @@
                                 </tbody>
                 </table>
                 
-                <div class="head-iv">
-                    <div class="row">
-                        <div class="col-md-4"><span>Ngày lập:</span> {{data2.date | date:'dd/MM/yyyy'}}</div>
-                        <div class="col-md-4"><span>Khách:</span> {{data2.username}}</div>
-                        <div class="col-md-4"><span>Tổng tiền:</span> {{data2.total | currency:'VND'}}</div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -59,8 +62,10 @@
                                 margin-right: 20px;
                             }
 
-                            .head-iv {
-                                justify-content: center;
+                           
+                            .head-iv .row{
+                                display: flex;
+                                justify-content: space-between;
                                 padding-bottom: 10px;
                             }
 

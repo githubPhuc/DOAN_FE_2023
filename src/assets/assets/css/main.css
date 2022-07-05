@@ -2595,7 +2595,7 @@ input[type=radio].shipping-select:checked::after {
   line-height: 50px;
   padding: 0 20px;
   font-size: 14px;
-  color: #333;
+  color: rgb(51, 51, 51);
   border: 1px solid #e5e5e5;
   margin-top: -1px;
   transition: all 0.3s linear;
@@ -2604,9 +2604,9 @@ input[type=radio].shipping-select:checked::after {
 
 .my-account-menu .account-menu-list li a:hover,
 .my-account-menu .account-menu-list li a.active {
-  background-color: #333;
+  background-color: rgb(65, 104, 246);
   color: #fff;
-  border-color: #333;
+  border-color: white;
 }
 
 .my-account-dashboard .welcome-dashboard p a:hover {
@@ -2616,7 +2616,7 @@ input[type=radio].shipping-select:checked::after {
 .my-account-tab .account-title {
   font-size: 24px;
   font-weight: 700;
-  color: #333;
+  color: rgb(61, 98, 247);
 }
 
 .my-account-details .account-details .title {

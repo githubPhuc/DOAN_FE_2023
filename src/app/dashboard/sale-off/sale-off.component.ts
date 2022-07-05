@@ -42,6 +42,12 @@ export class SaleOffComponent implements OnInit {
     Percent:0
     
   }
+
+  reset={
+    proId: 0,
+    cateId: 0,
+    brandId: 0
+  }
   constructor(private productService:ProductService,private cateSevice:CategoryService,private brandService:TrademarkService,private dialog:DialogService) { }
 
   ngOnInit(): void {
@@ -56,6 +62,7 @@ export class SaleOffComponent implements OnInit {
       this.POSTS=data.pro;
     })
   }
+
 
   tick()
   {
@@ -79,8 +86,8 @@ export class SaleOffComponent implements OnInit {
   onSearch(form: FormGroup)
   {
     this.productService.searchProduct(form.value.txt).subscribe(data=>{
-      this.POSTS=data;
-    })
+      this.POSTS=data.pro;
+    });
   }
 
   onSubmit(form: FormGroup)
@@ -135,6 +142,19 @@ export class SaleOffComponent implements OnInit {
   {
     this.productService.getAllProduct().subscribe(data=>{
       this.POSTS=data.pro;
+    })
+  }
+  resetp(cate:number,brand:number,pro:number)
+  {
+    this.reset.brandId=brand;
+    this.reset.cateId=cate;
+    this.reset.proId=pro;
+    console.log(this.reset);
+    this.productService.resetPromotion(this.reset).subscribe(data=>{
+      if(data.status==200)
+      {
+        alert(data.msg);
+      }
     })
   }
 }

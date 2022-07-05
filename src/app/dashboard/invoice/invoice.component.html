@@ -4,6 +4,19 @@
         <div class="card-header card-default">
           Danh sách hoá đơn
         </div>
+        <div class="filter">
+            <select name="" id="filter">
+                <option (change)="filter1(1)" value="1">
+                    Đang giao
+                </option>
+                <option (select)="filter1(2)" value="2">
+                    Hoàn thành
+                </option>
+                <option (click)="filter1(3)" value="3">
+                    Đã huỷ
+                </option>
+            </select>
+        </div>
         <div class="card-body">
             <table id="datatable" class="table table-striped dt-responsive nowrap">
                             <thead>

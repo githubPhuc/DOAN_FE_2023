@@ -11,6 +11,8 @@ import { TrademarkService } from './trademark.service';
 export class TrademarkComponent implements OnInit {
 
   tradeMark:any;
+  frmData=new FormData();
+  img:any;
   trademarkForm = new FormGroup({
     name: new FormControl(''),
 
@@ -36,6 +38,12 @@ export class TrademarkComponent implements OnInit {
       {
         alert(data.msg);
         location.replace(location.href);
+
+        this.frmData.append('image',this.img);
+        console.log(this.frmData);
+        this.tradeService.upload(this.frmData,data.id).subscribe(data1=>{
+
+        })
       }
     })
   }
@@ -51,12 +59,23 @@ export class TrademarkComponent implements OnInit {
 
   deleteTrademark(id:number)
   {
-    this.tradeService.DeleteTrademark(id).subscribe(data=>{
-      if(data.status==200)
-      {
-        alert(data.msg);
-        location.reload();
-      }
-    })
+    if(window.confirm('Bạn có muốn xoá nhãn hiệu này ?'))
+    {
+      this.tradeService.DeleteTrademark(id).subscribe(data=>{
+        if(data.status==200)
+        {
+          alert(data.msg);
+          location.reload();
+        }
+      })
+    }
+ 
+  }
+
+  
+  uploadFileShow(files:any)
+  {
+    this.img=<File>files[0];
+    console.log(this.img);
   }
 }

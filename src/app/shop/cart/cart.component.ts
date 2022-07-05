@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { DialogService } from 'src/app/dashboard/dialog.service';
 
 import { ShopService } from '../shop.service';
 
@@ -13,7 +14,7 @@ import { ShopService } from '../shop.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private shopService:ShopService,private router:Router,private jwtHelper: JwtHelperService) { }
+  constructor(private shopService:ShopService,private router:Router,private jwtHelper: JwtHelperService,private dialog:DialogService) { }
   txt!:string;
   cart:any;
   isempty!:boolean;
@@ -28,7 +29,19 @@ export class CartComponent implements OnInit {
   });
   ngOnInit(): void {
 
-    
+    //alert(window.location.href.split('?')[1]);
+    if(window.location.href.split('?')[1]!=null)
+    {
+      
+      this.shopService.order(localStorage.getItem('userid')!,localStorage.getItem('address')!,localStorage.getItem('phone')!,localStorage.getItem('note')!).subscribe(res=>{
+        if(res.status==200)
+        {
+          localStorage.removeItem('note');
+          alert(res.msg);
+          location.reload();
+        }
+      })
+    }
     this.shopService.getCart(localStorage.getItem('userid')!).subscribe(data=>{
       console.log('cart',data);
       if(data.cart[0]!=null)
@@ -71,7 +84,7 @@ export class CartComponent implements OnInit {
 
   order()
   {
-    this.shopService.order(localStorage.getItem('userid')!,localStorage.getItem('address')!,localStorage.getItem('phone')!).subscribe(data=>{
+    this.shopService.order(localStorage.getItem('userid')!,localStorage.getItem('address')!,localStorage.getItem('phone')!,'').subscribe(data=>{
       if(data.status==200)
       {
       alert('Đặt hàng thành công');
@@ -82,6 +95,10 @@ export class CartComponent implements OnInit {
     location.reload();
   }
 
+  openPay()
+  {
+    this.dialog.openChoosePayment();
+  }
   removeCart(id:number)
   {
     this.shopService.removeCart(id).subscribe(data=>{
@@ -112,13 +129,7 @@ export class CartComponent implements OnInit {
   }
 
 
-  pay()
-  {
-   
-    this.shopService.payment(this.total).subscribe(data=>{
-      window.location.href=data.url;
-    })
-  }
+  
 
   onTableDataChange(event: any) {
     this.page = event;

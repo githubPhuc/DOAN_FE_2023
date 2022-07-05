@@ -27,7 +27,18 @@ export class ImportCreComponent implements OnInit {
     this.importService.postImport().subscribe(data=>{
       if(data.status==200)
       {
-        alert(data.msg);
+    
+        location.reload();
+      }
+    })
+  }
+
+  remove(id:number)
+  {
+    
+    this.importService.removeImportItem(id).subscribe(data=>{
+      if(data.status==200)
+      {
         location.reload();
       }
     })

@@ -15,7 +15,7 @@ import { SupplierService } from '../../supplier/supplier.service';
 export class AddImportComponent implements OnInit {
   product:any;
   supplier:any;
-
+  lstItem1:any=[];
   itemForm = new FormGroup({
     sanPham: new FormControl(''),
     nhaCungCap: new FormControl(''),
@@ -24,6 +24,8 @@ export class AddImportComponent implements OnInit {
 
 
   });
+
+
   constructor(@Inject(MAT_DIALOG_DATA) private data:any,
                                         private dialogR:DialogService,
                                         private proService:ProductService,
@@ -31,6 +33,7 @@ export class AddImportComponent implements OnInit {
                                         private importService:ImportService) { }
 
   ngOnInit(): void {
+ 
     this.proService.getAllProduct().subscribe(data1=>{
       this.product=data1.pro;
       this.itemForm.value.sanPham.patchValue(1);
@@ -41,7 +44,7 @@ export class AddImportComponent implements OnInit {
     this.supService.getAllSupplier().subscribe(data1=>{
       this.supplier=data1.sup;
     })
-
+   
   }
   gia:any;
   ncc:any;
@@ -49,12 +52,24 @@ export class AddImportComponent implements OnInit {
   sanpham:any;
   onSubmit(form:FormGroup)
   {
+    
     this.gia=form.value.gia.toString();
     this.ncc=form.value.nhaCungCap.toString();
+    if(form.value.nhaCungCap==''||form.value.nhaCungCap==null)
+    {
+      this.ncc=this.supplier[0].id;
+    }
     this.soluong=form.value.soLuong.toString();
     this.sanpham=form.value.sanPham.toString();
-   
+    if(form.value.sanPham==''||form.value.sanPham==null)
+    {
+     
+      this.sanpham=this.product[0].id;
+    }
+ 
     console.log(form.value);
+    this.lstItem1.push(this.data);
+    localStorage.setItem('item1',this.lstItem1);
     this.importService.addImportItem(this.gia,this.ncc,this.soluong,this.sanpham).subscribe(data=>{
       if(data.status==200)
       {

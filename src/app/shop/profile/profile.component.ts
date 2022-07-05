@@ -13,6 +13,7 @@ import { ShopService } from '../shop.service';
 })
 export class ProfileComponent implements OnInit {
 
+  check:number=0;
   constructor(private shopService:ShopService,
               private invoiceService:InvoiceService,
               private dialog:DialogService,
@@ -69,6 +70,7 @@ export class ProfileComponent implements OnInit {
 
   onSubmit(form:FormGroup)
   {
+    
     const  data={
       Id:localStorage.getItem('userid'),
       Email:form.value.email,
@@ -77,14 +79,36 @@ export class ProfileComponent implements OnInit {
       Password:form.value.password
 
     }
-    if(form.value.newPassword==form.value.passwordConfirm)
+    if(form.value.newPassword==form.value.passwordConfirm&&form.value.newPassword!=null)
     {
       data.Password=form.value.passwordConfirm;
+     
+    }else
+    {
+      this.check=1;
+      return;
     }
+    
+    
     this.shopService.editProfile(data).subscribe(res=>{
       alert(res.msg);
 
       location.reload();
+    })
+
+    console.log(data);
+  }
+
+  cancel(id:number)
+  {
+    this.shopService.Cancel(id).subscribe(res=>{
+      if(res.status==200)
+      {
+        alert(res.msg);
+        this.invoiceService.getAllInvoiceUser(localStorage.getItem('userid')!).subscribe(data=>{
+          this.invoice=data;
+        });
+      }
     })
   }
 }

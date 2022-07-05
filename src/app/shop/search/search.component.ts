@@ -45,7 +45,7 @@ export class SearchComponent implements OnInit {
   }
 
   goToProductDetails(id:number) {
-    this.router.navigate(['shop/product-detail', id]);
+    this.router.navigate(['/product-detail', id]);
   }
   cart=new Cart(0,1,'');
   addCart(data:number)

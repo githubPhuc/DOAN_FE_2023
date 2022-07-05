@@ -99,9 +99,23 @@ Product successfully added. </div>
                         formControlName="releaseTime" >
                 </div>
                 <div class="form-group">
+                    <label>Ảnh sản phẩm</label> <br>
+                    <div class="review">
+                        <img *ngIf="lstImg1!=null" src="../../../../assets/img/product/{{lstImg1}}"  alt="..." style="width: 150px;">
+                        <img *ngIf="lstImg1==null&&imgshow!=null" [src]="imgshow"  alt="..." style="width: 150px;">
+                    </div>
+                        <span class="btn-file1">
+                    
+                            <input type="file" #file1 placeholder="Choose file" (change)="uploadFileShow(file1.files,$event)" style="display:none;">
+                            <button type="button" class="btn btn-success" (click)="file1.click()">Upload File1</button>
+                        </span>
+               
+                    </div>
+                <div class="form-group">
                     <label>Hình ảnh</label>
                     <div class="review">
-                        <img *ngFor="let url of lstImg" src="../../../../assets/img/product/{{url}}"  alt="..." style="width: 150px;">
+                        <div *ngIf="lstImg[0]!=null&&lstImg[0]!=''"><img  *ngFor="let url of lstImg" src="../../../../assets/img/product/{{url}}"  alt="..." style="width: 150px;"></div>
+                        <div *ngIf="lstImg[0]==null||lstImg[0]==''&&lstImg3[0]!=null"><img *ngFor="let url of lstImg3" [src]="url"  alt="..." style="width: 150px;"></div>
                   
                     </div>
                     <div class="fileinput-new" data-provides="fileinput" >
@@ -110,13 +124,14 @@ Product successfully added. </div>
                          
                             
                             <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files,$event)" style="display:none;">
-                            <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+                            <button type="button" class="btn btn-success" (click)="file.click()">Tải ảnh lên</button>
+                            <button type="button" class="btn btn-success" (click)="clear()">Clear</button>
                         </span>
                       
                     </div>
                 </div>
                 <button type="submit" class="btn btn-info btn-icon"><i class="fa fa-floppy-o "></i>Save</button>
-                <a href="#" class="btn btn-warning btn-icon"><i class="fa fa-reply"></i>Back</a>
+                <a [routerLink]="['/admin/product']" class="btn btn-warning btn-icon"><i class="fa fa-reply"></i>Back</a>
                 
             </form>
         </div>

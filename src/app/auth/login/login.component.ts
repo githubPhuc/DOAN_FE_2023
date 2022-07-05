@@ -13,6 +13,7 @@ import { LoginService } from '../login.service';
 })
 export class LoginComponent implements OnInit {
 
+  isEMPTY:boolean=false;
   constructor(private httpService: LoginService,private router:Router) { }
 
   ngOnInit(): void {
@@ -30,17 +31,21 @@ export class LoginComponent implements OnInit {
   loginSus=true;
   onSubmit(form:FormGroup) {
    this.data.username=form.value.username;
+   if(form.value.password=='')
+   {
+    this.isEMPTY=true;
+    return;
+   }
    this.data.password=form.value.password;
    console.log(this.data);
     this.httpService.login(this.data).subscribe(data1=>{
-
-      if(data1.status!=400)
+      if(data1.status==400)
       {
-        this.loginSus=true;
-      }else
-      {
+        this.isEMPTY=false;
         this.loginSus=false;
+        return;
       }
+    
       window.localStorage.setItem('token',data1.token);
       window.localStorage.setItem('userid',data1.id);
       window.localStorage.setItem('phone',data1.phone);

@@ -2,7 +2,7 @@
     <form [formGroup]="categoryForm" (ngSubmit)="onSubmit(categoryForm)">
                           
       <div class="form-group">
-          <label>Tên danh mục</label>
+          <label>Tên nhãn hiệu</label>
           <div class="sr1">	
           <input type="text" placeholder="" class="form-control form-control-rounded"  id="Name"  formControlName="name">
           <button class="btn btn-success btn-icon" type="submit" [disabled]="!categoryForm.valid"><i class="fa fa-floppy-o "></i>Save</button>

@@ -38,13 +38,19 @@ export class ProductComponent implements OnInit {
 
   removeProduct(id:number)
   {
-    this.responseProduct.removeProduct(id).subscribe(data=>{
-      if(data.status==200)
-      {
-        alert("Xoá thành công");
-        location.replace(location.href);
-      }
-    })
+    if(window.confirm("Bạn có muốn xoá sản phẩm này ?"))
+    {
+      this.responseProduct.removeProduct(id).subscribe(data=>{
+        if(data.status==200)
+        {
+          alert("Xoá thành công");
+          
+        }
+        
+      });
+      location.reload();
+    }
+   
   }
 
   onTableDataChange(event: any) {

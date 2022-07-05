@@ -40,7 +40,8 @@ export class RepCommentComponent implements OnInit {
       if(res.status==200)
       {
         this.dialog.closeDialog();
-       
+        alert(res.msg);
+        location.reload();
 
       }
       

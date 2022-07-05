@@ -19,6 +19,8 @@ export class ProductByBrandComponent implements OnInit {
   constructor(private shopservice:ShopService,private router:Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+   
     window.scrollTo(0,0);
     this.route.params.subscribe(params=>{
       this.txt=params['txt'];

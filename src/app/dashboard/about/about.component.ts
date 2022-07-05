@@ -17,4 +17,20 @@ export class AboutComponent implements OnInit {
     })
   }
 
+  delete(id:number)
+  {
+    if(window.confirm('Bạn có muốn xoá ?'))
+    {
+
+   
+    this.aboutService.deleteAbount(id).subscribe(res=>{
+      if(res.status==200)
+      {
+        alert('Xoá thành công')
+        location.reload();
+      }
+    });
+  }
+  }
+
 }

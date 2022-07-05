@@ -39,10 +39,28 @@ export class ShopService {
      })});
 		
   }
+  public loadBrand()
+  {
+    return this.httpClient
+			.get<any>('https://localhost:7043/api/trademark/getalltrademark',{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+     })});
+		
+  }
   public loadHotProduct()
   {
     return this.httpClient
 			.get<any>('https://localhost:7043/api/product/showtop',{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+     })});
+		
+  }
+  public loadTopSell()
+  {
+    return this.httpClient
+			.get<any>('https://localhost:7043/api/product/topsell',{headers: new HttpHeaders({ 
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.token
      })});
@@ -73,6 +91,16 @@ export class ShopService {
   
     return this.httpClient
 			.get<any>('https://localhost:7043/api/product/getproductbybrand?id='+id.toString(),{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+     })});
+		
+  }
+  public getProductSale()
+  {
+  
+    return this.httpClient
+			.get<any>('https://localhost:7043/api/product/getsale',{headers: new HttpHeaders({ 
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.token
      })});
@@ -158,10 +186,10 @@ export class ShopService {
 		
   }
 
-  public order(id:string,address:string,phone:string)
+  public order(id:string,address:string,phone:string,note:string)
   {
     return this.httpClient
-			.post<any>('https://localhost:7043/api/invoice/create?id='+id+'&address='+address+'&phone='+phone,{headers: new HttpHeaders({ 
+			.post<any>('https://localhost:7043/api/invoice/create?id='+id+'&address='+address+'&phone='+phone+'&note='+note,{headers: new HttpHeaders({ 
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.token
      })});
@@ -181,7 +209,17 @@ export class ShopService {
   public editProfile(data:any)
   {
     return this.httpClient
-			.post<any>('https://localhost:7043/api/authenticate/editaccount',data,{headers: new HttpHeaders({ 
+			.post<any>('https://localhost:7043/api/authenticate/editacount',data,{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+     })});
+		
+  }
+
+  public Cancel(id:number)
+  {
+    return this.httpClient
+			.post<any>('https://localhost:7043/api/invoice/cancel?id='+id.toString(),{headers: new HttpHeaders({ 
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.token
      })});
@@ -189,9 +227,9 @@ export class ShopService {
   }
 
 
-  public payment(total:number)
+  public payment(total:number,id:string,address:string,phone:string,note:string)
   {
-    return this.httpClient.post<any>('https://localhost:7043/api/pay/pay?total='+total,{headers: new HttpHeaders({ 
+    return this.httpClient.post<any>('https://localhost:7043/api/pay/pay?total='+total+'&id='+id+'&address='+address+'&phone='+phone+'&note='+note,{headers: new HttpHeaders({ 
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.token
    })});

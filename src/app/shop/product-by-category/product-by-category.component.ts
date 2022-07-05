@@ -34,7 +34,11 @@ export class ProductByCategoryComponent implements OnInit {
   addToWishList(id:number)
   {
     this.shopservice.addWishList({productid:id,appuserid:localStorage.getItem('userid')}).subscribe(data=>{
-    
+      if(data.status==200)
+      {
+        alert(data.msg);
+        location.reload();
+      }
     });
   }
 

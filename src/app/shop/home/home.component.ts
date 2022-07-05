@@ -14,10 +14,11 @@ import { ShopService } from '../shop.service';
 export class HomeComponent implements OnInit {
   @ViewChild(DashboardLayoutComponent) dash:any;
   constructor(private shopservice:ShopService,private router:Router,private ele: ElementRef,private slideService:SlideShowService) { }
-
+  brand:any;
   product:any;
   lstProduct:any;
   txt!:string;
+  topSell:any;
   newProduct:any;
   hotProduct:any
   slideshow:any;
@@ -25,23 +26,62 @@ export class HomeComponent implements OnInit {
   page: number = 1;
   count: number = 0;
   tableSize: number = 12;
+  scr:boolean=false;
+  lstBr:any=[];
   productForm=new FormGroup({
     txtSearch: new FormControl(''),
   });
-
+  
   ngOnInit(): void {
-
+    window.onscroll=()=>this.onSCR();
+ 
     this.shopservice.loadNewProduct().subscribe(data=>{
       this.newProduct=data;
     });
     this.shopservice.loadHotProduct().subscribe(data=>{
       this.hotProduct=data;
-    })
+    });
+    this.shopservice.loadTopSell().subscribe(data=>{
+      this.topSell=data;
+    });
+    this.shopservice.loadBrand().subscribe(data=>{
+      this.brand=data;
+    });
    this.fetchPosts();
 
    this.slideService.getAllSlide().subscribe(data=>{
     this.slideshow=data;
-   })
+   });
+   for(let b of this.brand)
+   {
+    this.shopservice.getProductByBrand(b.id).subscribe(res=>{
+      this.lstBr.push(res);
+    });
+   }
+
+   console.log(this.lstBr);
+  }
+
+  scrollTop()
+  {
+      //document.documentElement.scrollTop=0;
+      document.documentElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+        });
+    
+  }
+  onSCR()
+  {
+    if(document.documentElement.scrollTop>40)
+    {
+      
+      this.scr=true;
+    }else
+    {
+      this.scr=false;
+    }
   }
   cart=new Cart(0,1,'');
   addCart(data:number)

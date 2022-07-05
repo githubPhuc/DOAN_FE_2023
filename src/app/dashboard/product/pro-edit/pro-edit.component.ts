@@ -15,18 +15,20 @@ import { ProductService } from '../product.service';
 export class ProEditComponent implements OnInit {
 
   constructor(private cateService:CategoryService,private proService:ProductService,private route: ActivatedRoute,private tradeService:TrademarkService,private router:Router) { }
-  imagePreviewSrc: string | ArrayBuffer | null | undefined = '';
-  isImageSelected: boolean = false;
+
   formData:any;
   fileToUpload:any
-  fileName:any;
-  name!:string;
+  lstImg1:any;
   category:any;
   product:any;
   brand:any;
   id!: number;
   private sub: any;
   lstImg:any=[];
+  lstImg2:any=[];
+  lstImg3:any=[];
+  imgshow:any;
+  imgshow1:any;
   pro=new ProductModel('','1',1,1,1,1,5,'1','1','1','1','1','1','','','','','');
 
   categoryForm = new FormGroup({
@@ -71,25 +73,56 @@ export class ProEditComponent implements OnInit {
         this.categoryForm.patchValue(data.pro);
         this.pro.CategoryId=data.categoryId;
         this.pro.TradeMarkId=data.tradeMarkId;
-        if(data.image!='')
-        {
-          this.imagePreviewSrc='../../../../assets/img/product/'+data.pro.image;
-          this.isImageSelected=true;
-        }
+       
        
        
         for(let i of data.img)
         {
           this.lstImg.push(i.image);
         }
+        this.lstImg1=data.pro.image;
         console.log(this.lstImg);
       })
 
 
    });
+
+   console.log(this.lstImg);
+   console.log('ímg',this.imgshow1);
   }
 
+ clear()
+ {
+    this.lstImg=[];
+    this.lstImg2=[];
+ }
  
+  uploadFileShow(files1:any,event:Event){
+    
+  
+
+    //this.formData1.append('image',this.fileToUpload);
+    this.lstImg1=null;
+   
+   
+    let selectedFile1 = (event.target as HTMLInputElement).files?.item(0);
+    if (selectedFile1) {
+      if (["image/jpeg", "image/png", "image/svg+xml"].includes(selectedFile1.type)) {
+        let fileReader = new FileReader();
+        fileReader.readAsDataURL(selectedFile1);
+
+        fileReader.addEventListener('load', (event) => {
+        
+          this.imgshow=event.target?.result;
+          this.imgshow1=<File>files1[0];
+        })
+      }
+    } else {
+     
+    }
+   
+  
+  }
 
   onSubmit(form:FormGroup)
   {
@@ -116,21 +149,33 @@ export class ProEditComponent implements OnInit {
       if(data.status==200)
       {
   
-        if(this.fileToUpload!=null)
-        {
-          this.name=this.fileToUpload.name;
-          let filename=this.name.split('.');
-          this.name=filename[1];
-          this.fileName=this.id+'.'+this.name;
+       
 
           //
           this.formData = new FormData();
 
-          this.formData.append('ImageFile', this.fileToUpload, this.fileName);
-          this.proService.uploadEdit(this.formData).subscribe(data1=>{
+          this.formData.append('ImageFile', this.imgshow1);
+          if(this.imgshow1!=null||this.imgshow1=='')
+          {
+            this.proService.uploadEdit(this.formData,this.id).subscribe(data1=>{
 
-          });
-        }
+            });
+          }
+         
+          let lstForm=new FormData();
+          for(let i of this.lstImg2)
+          {
+            lstForm.append('image',i);
+          }
+          if(this.lstImg2[0]!=null)
+          {
+            
+            this.proService.uploadEditList(lstForm,this.id).subscribe(data1=>{
+
+            });
+          }
+        
+        
         alert('Cập nhật thành công')
         this.router.navigate(['/admin/product']);
         
@@ -151,13 +196,16 @@ export class ProEditComponent implements OnInit {
         fileReader.readAsDataURL(selectedFile);
 
         fileReader.addEventListener('load', (event) => {
-          this.imagePreviewSrc = event.target?.result;
-          this.isImageSelected = true
+          this.lstImg3.push(event.target?.result);
+          this.lstImg2.push(<File>files[0]);
         })
       }
     } else {
-      this.isImageSelected = false
+ 
     }
+
+    console.log('xxxxxxxxxxx',this.lstImg2);
+    
   }
 
 }

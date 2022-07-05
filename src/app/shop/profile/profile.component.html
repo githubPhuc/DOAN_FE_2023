@@ -1,23 +1,43 @@
 
+<style>
+    main {
+        min-height: 600px;
+    }
+    .btn-sub {
+        margin-top: 15px;
+        display: flex;
+        
+    }
+    .btn-sub button {
+        border-radius: 7px;
+        width: 250px;
+        padding:3px 10px 3px 10px;
+        background-color: rgb(103, 98, 98);
+        color: white;
+    }
+    .btn-sub button:hover{
+        background-color: rgb(72, 72, 244);
+    }
+</style>
 <main id="main-container" class="main-container">
+    
     <div class="container">
         <div class="row">
             <div class="col-12">
+                <div class="acc-manage">
+                    <h3>Tài khoản cá nhân</h3>
+                </div>
                 <!-- :::::::::: Start My Account Section :::::::::: -->
                 <div class="my-account-area">
                     <div *ngIf="isLogin" class="row">
-                        <div class="col-xl-3 col-md-4">
+                        <div class="col-xl-3 col-lg-3">
                             <div class="my-account-menu">
                                 <ul class="nav account-menu-list flex-column nav-pills" id="pills-tab" role="tablist">
+                                 
                                     <li>
-                                        <a class="active link--icon-left" id="pills-dashboard-tab" data-toggle="pill"
-                                            href="#pills-dashboard" role="tab" aria-controls="pills-dashboard"
-                                            aria-selected="true"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                                    </li>
-                                    <li>
-                                        <a id="pills-order-tab" class="link--icon-left" data-toggle="pill"
+                                        <a id="pills-order-tab" class="active link--icon-left" data-toggle="pill"
                                             href="#pills-order" role="tab" aria-controls="pills-order"
-                                            aria-selected="false"><i class="fas fa-shopping-cart"></i> Order</a>
+                                            aria-selected="false"><i class="fas fa-shopping-cart"></i> Đơn hàng</a>
                                     </li>
 
 
@@ -26,46 +46,29 @@
                                         <a id="pills-account-tab" class="link--icon-left" data-toggle="pill"
                                             href="#pills-account" role="tab" aria-controls="pills-account"
                                             aria-selected="false"><i class="fas fa-user"></i>
-                                            Account Details</a>
+                                            Quản lý tài khoản</a>
                                     </li>
-                                    <li>
-                                        <a class="link--icon-left" (click)="logOut()"><i class="fas fa-sign-out-alt"></i>
-                                            Logout</a>
-                                    </li>
+                                   
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xl-8 col-md-8">
+                        <div class="col-xl-9 col-lg-9">
                             <div class="tab-content my-account-tab" id="pills-tabContent">
-                                <div class="tab-pane fade show active" id="pills-dashboard" role="tabpanel"
-                                    aria-labelledby="pills-dashboard-tab">
-                                    <div class="my-account-dashboard account-wrapper">
-                                        <h4 class="account-title">Dashboard</h4>
-                                        <div class="welcome-dashboard m-t-30">
-                                            <p>Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni !</strong>
-                                                <a href="#">Logout</a> )</p>
-                                        </div>
-                                        <p class="m-t-25">From your account dashboard. you can easily check &amp; view
-                                            your
-                                            recent orders, manage your shipping and billing addresses and edit your
-                                            password and
-                                            account details.</p>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="pills-order" role="tabpanel"
+                            
+                                <div class="tab-pane fade show active" id="pills-order" role="tabpanel"
                                     aria-labelledby="pills-order-tab">
                                     <div class="my-account-order account-wrapper">
-                                        <h4 class="account-title">Orders</h4>
+                                        <h4 class="account-title">Danh sách đơn hàng</h4>
                                         <div class="account-table text-center m-t-30 table-responsive">
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th class="no">No</th>
+                                                        <th class="no">STT</th>
                                                         <th class="name">Ngày lập </th>
                                                         <th class="date">Địa chỉ</th>
                                                         <th class="status">Tổng hoá đơn</th>
                                                         <th class="total">Trạng thái</th>
-                                                        <th class="action">Action</th>
+                                                        <th class="action">Tác vụ </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -76,7 +79,11 @@
                                                         <td>{{i.total | currency:'VND'}}</td>
                                                         <td *ngIf="!i.status">Đang chờ</td>
                                                         <td *ngIf="i.status">Hoàn thành</td>
-                                                        <td><a (click)="view(i.id)">View</a></td>
+                                                        <td style="display: flex;">
+                                                            <a (click)="view(i.id)" style="font-size: 13px;">View</a> 
+                                                          
+                                                            <a *ngIf="!i.status" (click)="cancel(i.id)" style="font-size: 13px;">|Huỷ</a>
+                                                        </td>
                                                     </tr>
 
                                                 </tbody>
@@ -87,7 +94,7 @@
                                 <div class="tab-pane fade" id="pills-account" role="tabpanel"
                                     aria-labelledby="pills-account-tab">
                                     <div class="my-account-details account-wrapper">
-                                        <h4 class="account-title">Account Details</h4>
+                                        <h4 class="account-title">Thông tin tài khoản</h4>
 
                                         <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm)">
                                             <div class="account-details">
@@ -133,30 +140,24 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-box__single-group">
-                                                            <h5 class="title">Password change</h5>
+                                                            <h5 class="title">Đổi mật khẩu</h5>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-box__single-group">
-                                                            <input type="password" placeholder="Current Password"
-                                                                formControlName="password">
-                                                        </div>
-                                                    </div>
+                                                
                                                     <div class="col-md-6">
                                                         <div class="form-box__single-group">
-                                                            <input type="password" placeholder="New Password"
+                                                            <input type="password" placeholder="Nhập mật khẩu mới"
                                                                 formControlName="newPassword">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-box__single-group">
-                                                            <input type="password" placeholder="Confirm Password"
+                                                            <input type="password" placeholder="Nhập lại mật khẩu"
                                                                 formControlName="passwordConfirm">
+                                                            <small *ngIf="check==1" style="color: red;">Mật khẩu không trùng khớp</small>
                                                         </div>
-                                                        <div class="form-box__single-group">
-                                                            <button type="submit"
-                                                                class="btn btn--box btn--small btn--uppercase btn--blue">Save
-                                                                Change</button>
+                                                        <div class="btn-sub">
+                                                            <button type="submit">Lưu thay đổi</button>
                                                         </div>
                                                     </div>
                                               

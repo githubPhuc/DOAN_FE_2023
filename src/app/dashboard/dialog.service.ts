@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { AddCommentComponent } from './dialog/add-comment/add-comment.component';
 import { AddImportComponent } from './dialog/add-import/add-import.component';
+import { ChoosePaymentComponent } from './dialog/choose-payment/choose-payment.component';
 import { ConfirmDeleteComponent } from './dialog/confirm-delete/confirm-delete.component';
 import { ConfirmComponent } from './dialog/confirm/confirm.component';
 import { EditBrandComponent } from './dialog/edit-brand/edit-brand.component';
@@ -58,6 +59,17 @@ opentImportDetail(id:number)
   data: {
     'id': id
   }
+}
+);
+}
+
+openChoosePayment()
+{
+
+ this.dialog1.open(ChoosePaymentComponent,{
+  height: '500px',
+  width: '800px',
+ 
 }
 );
 }
@@ -127,7 +139,7 @@ openDialogCreateSlide()
   {
 
    this.dialog1.open(SlideShowCreateComponent,{
-    height: '500px',
+    height: '350px',
     width: '670px',
 
   }
