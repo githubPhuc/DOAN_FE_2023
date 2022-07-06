@@ -72,10 +72,24 @@ export class TrademarkComponent implements OnInit {
  
   }
 
-  
-  uploadFileShow(files:any)
+  imgReview:any;
+  uploadFileShow(files:any,event:Event)
   {
     this.img=<File>files[0];
     console.log(this.img);
+
+    //
+    let selectedFile1 = (event.target as HTMLInputElement).files?.item(0);
+
+    if (selectedFile1) {
+      if (["image/jpeg", "image/png", "image/svg+xml"].includes(selectedFile1.type)) {
+        let fileReader = new FileReader();
+        fileReader.readAsDataURL(<File>files[0]);
+        fileReader.addEventListener('load', (event) => {
+          
+          this.imgReview=event.target?.result;
+        })
+      }
+    } 
   }
 }

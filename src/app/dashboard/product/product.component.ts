@@ -81,7 +81,7 @@ export class ProductComponent implements OnInit {
         location.reload();
       }
       this.responseProduct.searchProduct(form.value.txt).subscribe(data=>{
-        this.POSTS=data;
+        this.POSTS=data.pro;
       })
   }
 }

@@ -76,6 +76,12 @@
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
 }
+#item-search a {
+    color: black;
+}
+#item-search:hover {
+    background-color: rgb(215, 209, 209);
+}
 
             </style>
             <div class="header-menu">
@@ -94,9 +100,21 @@
                                     <div class="col-lg-9">
                                         <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">
                                             <div class="header__search-input">
-                                                <input type="search" placeholder="Nhập sản phẩm cần tìm" formControlName="txtSearch">
+                                                <input #content type="search" placeholder="Nhập sản phẩm cần tìm" formControlName="txtSearch" (keyup)="review(content.value)">
+                                                
                                                 <button class=" btn--blue btn--uppercase btn--weight yellow-bg" type="submit">Search</button>
                                             </div>
+                                            <ul *ngIf="product!=null" class="list-group list-group-flush" style="position: absolute;
+                                            left: 15px;
+                                            top: 50px;
+                                            z-index: 1;">
+                                                <!-- results of ngFor is passed to appFilter with argument searchText -->
+                                                <li class="list-group-item" id="item-search" *ngFor="let c of product.slice(0,10)" style="display: flex;">
+                                                   <div class="img"> <img src="../../../assets/img/product/{{c.image}}" alt="" width="50px"></div>
+                                                 <a class="item-search" style="border-bottom: 1px solid rgb(228, 225, 225); font-size:13px " (click)="goDetail(c.id)">{{c.name}}</a>
+                                                </li>
+                                              </ul>
+                                          
                                         </form>
                                     </div>
                           

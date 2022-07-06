@@ -155,7 +155,7 @@ export class ProEditComponent implements OnInit {
           this.formData = new FormData();
 
           this.formData.append('ImageFile', this.imgshow1);
-          if(this.imgshow1!=null||this.imgshow1=='')
+          if(this.imgshow1!=null)
           {
             this.proService.uploadEdit(this.formData,this.id).subscribe(data1=>{
 
@@ -177,7 +177,11 @@ export class ProEditComponent implements OnInit {
         
         
         alert('Cập nhật thành công')
-        this.router.navigate(['/admin/product']);
+        
+        this.router.navigate(['/admin/product']).then(()=>{
+          location.reload();
+        });
+        
         
       }
   })

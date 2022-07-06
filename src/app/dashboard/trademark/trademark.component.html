@@ -11,10 +11,10 @@
         </div>
         <div class="form-group">
             <label>Logo</label> <br>
-     
+                <img [src]="imgReview" alt="" width="100px"> <br>
                 <span class="btn-file1">
             
-                    <input type="file" #file1 placeholder="Choose file" (change)="uploadFileShow(file1.files)" style="display:none;">
+                    <input type="file" #file1 placeholder="Choose file" (change)="uploadFileShow(file1.files,$event)" style="display:none;">
                     <button type="button" class="btn btn-success" (click)="file1.click()">Upload File1</button>
                 </span>
        

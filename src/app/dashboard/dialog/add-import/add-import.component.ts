@@ -73,7 +73,7 @@ export class AddImportComponent implements OnInit {
     this.importService.addImportItem(this.gia,this.ncc,this.soluong,this.sanpham).subscribe(data=>{
       if(data.status==200)
       {
-        alert(data.msg);
+        //alert(data.msg);
         this.dialogR.closeDialog();
         
       }

@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
   }
   onSCR()
   {
-    if(document.documentElement.scrollTop>40)
+    if(document.documentElement.scrollTop>100)
     {
       
       this.scr=true;

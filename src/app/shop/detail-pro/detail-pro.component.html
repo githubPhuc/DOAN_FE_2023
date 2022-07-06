@@ -230,7 +230,7 @@
                             <img src="../../../assets/img/avtar-2.png" width="70px" alt="">
                         </div>
                         <div class="info1" style="margin-left: 10px; padding-top:5px;">
-                            <div class="name"><span style="font-weight: bold;">{{cmt.tenNguoiDung}}</span>&nbsp;<small style="background-color: rgb(239, 239, 0); color: white; padding: 1px 2px; border-radius: 5px;">{{cmt.danhGia}}&nbsp;<i class="fa fa-star" aria-hidden="true" style="color: white"></i></small></div>
+                            <div class="name"><span style="font-weight: bold;">{{cmt.tenNguoiDung}}</span>&nbsp;<small style="background-color: rgba(212, 225, 20, 0.903); color: white; padding: 1px 2px; border-radius: 5px;">{{cmt.danhGia}}&nbsp;<i class="fa fa-star" aria-hidden="true" style="color: white"></i></small></div>
                             <div class="time"><small>{{cmt.thoiGian | date:'dd/MM/yyyy hh:mm'}}</small>&nbsp; <a (click)="openRepComment(cmt.id)"><small id="lnk">Trả lời</small></a>&nbsp;&nbsp;<a *ngIf="cmt.userId==userid" (click)="removeComment(cmt.id)"><small id="lnk">Xoá</small></a> </div>
                             <div class="content" style="margin-top: 5px; border-bottom: 1px solid rgb(204, 199, 199); width: 600px;"><span style="font-size: 15px;">{{cmt.noiDung}}</span></div>
                             <ul class="lst-reply">

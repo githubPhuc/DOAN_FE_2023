@@ -11,7 +11,8 @@
             <div class="card-header card-default">
               Danh sách sản phẩm muốn nhập
             </div>
-            <div class="btn1"><a class="nav-link"  (click)="openAdd()" id="btn" class="btn btn-info box-shadow  btn-rounded "><i class="fa fa-plus"></i>&nbsp; Thêm sản phẩm</a></div>
+            
+            <div class="btn1"><a class="btn btn-info btn-rounded" (click)="clear()"><i class="fa fa-refresh"></i>&nbsp;Làm mới</a>&nbsp;<a class="nav-link"  (click)="openAdd()" id="btn" class="btn btn-info btn-rounded "><i class="fa fa-plus"></i>&nbsp; Thêm sản phẩm</a></div>
             <div class="card-body">
                 <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
@@ -25,7 +26,7 @@
                                 </thead>
     
                                 <tbody>
-                                    <tr *ngFor="let inv of item.imp">
+                                    <tr *ngFor="let inv of item.imp1">
                                         <td>{{inv.tenSanPham}}</td>
                                         <td>{{inv.nhaCungCap}}</td>
                                         <td>{{inv.soLuong}}</td>
@@ -41,7 +42,7 @@
                                 </tbody>
                             </table>
                             <div class="total" style="display: flex; justify-content: flex-end;">
-                               <div class="cnt" style="display: flex;">Tổng : <span>{{item.total}}</span></div>
+                               <div *ngIf="item.total>0" class="cnt" style="display: flex;">Tổng : <span>{{item.total}}</span></div>
                             </div>
     
             </div>
@@ -50,9 +51,7 @@
     </div>
 
     <style>
-        #btn{
-            width: 200px;
-        }
+       
         .btn1 {
             display: flex;
             justify-content: flex-end;

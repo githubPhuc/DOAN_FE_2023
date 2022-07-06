@@ -107,7 +107,7 @@ Product successfully added. </div>
                         <span class="btn-file1">
                     
                             <input type="file" #file1 placeholder="Choose file" (change)="uploadFileShow(file1.files,$event)" style="display:none;">
-                            <button type="button" class="btn btn-success" (click)="file1.click()">Upload File1</button>
+                            <button type="button" class="btn btn-info" (click)="file1.click()">Tải ảnh lên</button>
                         </span>
                
                     </div>
@@ -124,13 +124,13 @@ Product successfully added. </div>
                          
                             
                             <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files,$event)" style="display:none;">
-                            <button type="button" class="btn btn-success" (click)="file.click()">Tải ảnh lên</button>
+                            <button type="button" class="btn btn-info" (click)="file.click()">Tải ảnh lên</button>
                             <button type="button" class="btn btn-success" (click)="clear()">Clear</button>
                         </span>
                       
                     </div>
                 </div>
-                <button type="submit" class="btn btn-info btn-icon"><i class="fa fa-floppy-o "></i>Save</button>
+                <button type="submit" class="btn btn-info"><i class="fa fa-floppy-o "></i>&nbsp;Lưu</button>
                 <a [routerLink]="['/admin/product']" class="btn btn-warning btn-icon"><i class="fa fa-reply"></i>Back</a>
                 
             </form>

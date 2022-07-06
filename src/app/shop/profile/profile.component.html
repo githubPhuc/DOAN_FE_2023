@@ -63,26 +63,26 @@
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th class="no">STT</th>
-                                                        <th class="name">Ngày lập </th>
-                                                        <th class="date">Địa chỉ</th>
-                                                        <th class="status">Tổng hoá đơn</th>
-                                                        <th class="total">Trạng thái</th>
-                                                        <th class="action">Tác vụ </th>
+                                                        <th >STT</th>
+                                                        <th >Ngày lập </th>
+                                                        <th>Địa chỉ</th>
+                                                        <th >Tổng hoá đơn</th>
+                                                        <th>Trạng thái</th>
+                                                        <th >Tác vụ </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr *ngFor="let i of invoice; let stt=index">
-                                                        <td>{{stt+1}}</td>
-                                                        <td>{{i.date | date:'dd/MM/yyyy'}}</td>
-                                                        <td>{{i.shippingAddress}}</td>
-                                                        <td>{{i.total | currency:'VND'}}</td>
-                                                        <td *ngIf="!i.status">Đang chờ</td>
-                                                        <td *ngIf="i.status">Hoàn thành</td>
-                                                        <td style="display: flex;">
-                                                            <a (click)="view(i.id)" style="font-size: 13px;">View</a> 
+                                                        <td >{{stt+1}}</td>
+                                                        <td >{{i.date | date:'dd/MM/yyyy'}}</td>
+                                                        <td >{{i.shippingAddress}}</td>
+                                                        <td >{{i.total | currency:'VND'}}</td>
+                                                        <td *ngIf="!i.status" class="text-center">Đang chờ</td>
+                                                        <td *ngIf="i.status" class="text-center">Hoàn thành</td>
+                                                        <td style="display: flex;" class="text-center">
+                                                           <div class="div"> <a (click)="view(i.id)" style="font-size: 13px;">View</a> 
                                                           
-                                                            <a *ngIf="!i.status" (click)="cancel(i.id)" style="font-size: 13px;">|Huỷ</a>
+                                                            <a *ngIf="!i.status" (click)="cancel(i.id)" style="font-size: 13px;">|Huỷ</a></div>
                                                         </td>
                                                     </tr>
 

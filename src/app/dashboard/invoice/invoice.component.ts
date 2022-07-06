@@ -7,6 +7,7 @@ import { DialogService } from '../dialog.service';
 import { InvoiceService } from './invoice.service';
 
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -17,6 +18,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class InvoiceComponent implements OnInit {
   
   public invoice:any
+  searchForm=new FormGroup({
+    start: new FormControl(''),
+    end: new FormControl('')
+  });
   constructor(private dialogSer:DialogService, private responseIn:InvoiceService,private router : Router) { }
 
   ngOnInit(): void {
@@ -64,5 +69,30 @@ export class InvoiceComponent implements OnInit {
     this.responseIn.getInvoiceByStatus(this.status).subscribe(res=>{
       this.invoice=res.inv;
     })
+ }
+
+ onSubmit(form:FormGroup)
+ {
+  this.responseIn.filter(form.value.start,form.value.end).subscribe(res=>{
+    this.invoice=res.inv;
+  })
+ }
+
+ reload()
+ {
+  this.responseIn.getAllInvoice().subscribe(data=>{
+    this.invoice=data.inv;
+    console.log(data);
+    
+  });
+ }
+ filt={
+
+ }
+ filter(sts:any)
+ {
+  this.responseIn.getInvoiceByStatus(sts).subscribe(res=>{
+    this.invoice=res.inv;
+  })
  }
 }

@@ -15,6 +15,7 @@ export class ShopLayoutComponent implements OnInit {
 
   constructor(private shopservice:ShopService,private router:Router,private dialog:DialogService,private cateService:CategoryService) { }
 
+  
   txt:any;
   count=0;
   count2=0;
@@ -91,6 +92,10 @@ export class ShopLayoutComponent implements OnInit {
 
   onSubmit(form:FormGroup)
   {
+    if(form.value.txtSearch=='')
+    {
+      return;
+    }
 
     this.txt=form.value.txtSearch;
     this.router.navigate(['/search',this.txt]).then(()=>{
@@ -114,5 +119,23 @@ export class ShopLayoutComponent implements OnInit {
     });
     
   }
-
+ product:any;
+  review(txts:string)
+  {
+    
+    if(txts=='')
+    {
+    this.product=null;
+    }
+    this.shopservice.searchProduct(txts).subscribe(data=>{
+    this.product=data.pro;
+    });
+  }
+  goDetail(id:number)
+  {
+    this.product=null;
+    this.router.navigate(['/product-detail',id]).then(()=>{
+      location.reload();
+    });
+  }
 }

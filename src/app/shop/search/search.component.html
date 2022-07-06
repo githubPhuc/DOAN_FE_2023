@@ -67,11 +67,14 @@
                                       <a (click)="addToWishList(pro.id)" class="product__wishlist-icon"><i class="icon-heart"></i></a>
                                     
                                   </div>
-                                  <div class="product__price m-t-10">
-                         
-                                      <span class="product__price-reg">{{pro.price | currency:'VND'}}</span>
+                                  <div *ngIf="pro.salePrice>0" class="product__price m-t-10">
+                                    <span  class="product__price-del">{{pro.price | currency:'VND'}}</span>
+                                    <span class="product__price-reg">{{pro.salePrice | currency:'VND'}}</span>
                                   </div>
-                                  <a href="" class="product__link product__link--underline product__link--weight-light m-t-15">
+                                  <div *ngIf="pro.salePrice==0" class="product__price m-t-10">
+                                    <span class="product__price-reg">{{pro.price | currency:'VND'}}</span>
+                                  </div>
+                                  <a (click)="goToProductDetails(pro.id)" class="product__link product__link--underline product__link--weight-light m-t-15">
                                       {{pro.name}}
                                   </a>
                               </div>

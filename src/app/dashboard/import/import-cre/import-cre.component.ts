@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DialogService } from '../../dialog.service';
 import { ImportService } from '../import.service';
 
@@ -10,7 +11,8 @@ import { ImportService } from '../import.service';
 export class ImportCreComponent implements OnInit {
 
   constructor(private dialog:DialogService,
-              private importService:ImportService) { }
+              private importService:ImportService,
+              private router:Router) { }
   item:any;
   ngOnInit(): void {
     this.importService.getImportItem().subscribe(data=>{
@@ -27,12 +29,26 @@ export class ImportCreComponent implements OnInit {
     this.importService.postImport().subscribe(data=>{
       if(data.status==200)
       {
-    
-        location.reload();
+        this.router.navigate(['/admin/import']);
+        
       }
     })
   }
-
+  clear()
+  {
+    if(window.confirm('Làm mới hoá đơn ?'))
+    {
+      this.importService.clearImportItem().subscribe(res=>{
+        if(res==200)
+        {
+          this.importService.getImportItem().subscribe(data=>{
+            this.item=data;
+          })
+        }
+      });
+      
+    }
+  }
   remove(id:number)
   {
     

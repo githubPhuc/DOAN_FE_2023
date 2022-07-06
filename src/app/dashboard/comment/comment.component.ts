@@ -51,9 +51,12 @@ export class CommentComponent implements OnInit {
   goToComment(id:number)
   {
     this.router.navigate(['/product-detail',id]).then(()=>{
-      var a= document.getElementById('test');
-     
-      a?.scrollIntoView({behavior: 'smooth'});
+        location.reload();
+        document.getElementById('comment')?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+        });
     });
   }
 }

@@ -13,6 +13,9 @@ export class ChoosePaymentComponent implements OnInit {
 
   check:boolean=true;
   check1:boolean=false;
+
+  phonecheck:boolean=true;
+  phonecheck1:boolean=false;
   vnpay:boolean=true;
   money:boolean=false;
 
@@ -21,7 +24,8 @@ export class ChoosePaymentComponent implements OnInit {
   phone=localStorage.getItem('phone');
   itemForm=new FormGroup({
     address: new FormControl(''),
-    note: new FormControl('')
+    note: new FormControl(''),
+    phone:new FormControl('')
   })
   constructor(private shopSevice:ShopService, private dialog:DialogService) { }
 
@@ -32,6 +36,11 @@ export class ChoosePaymentComponent implements OnInit {
   {
     this.check=!this.check;
     this.check1=!this.check1;
+  }
+  checked1()
+  {
+    this.phonecheck=!this.phonecheck;
+    this.phonecheck1=!this.phonecheck1;
   }
   tick()
   {
@@ -44,6 +53,12 @@ export class ChoosePaymentComponent implements OnInit {
     {
       this.address=form.value.address;
       localStorage.setItem('address',form.value.address);
+    }
+    if(this.phonecheck1==true&&form.value.phone!=''&&form.value.phone!=null)
+    {
+      
+      this.phone=form.value.phone;
+      localStorage.setItem('phone',form.value.phone);
     }
     if(form.value.note==''||form.value.note==null)
     {

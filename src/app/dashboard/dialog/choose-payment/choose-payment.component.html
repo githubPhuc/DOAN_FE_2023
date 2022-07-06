@@ -21,6 +21,16 @@
         </div>
     </div>
     <div class="form-group">
+        <label>Số điện thoại</label> <br>
+
+        <input type="radio" name="phonecheck1" [checked]="phonecheck" (change)="checked1()"> Sử dụng số điện thoại mặc định <br>
+        <input type="radio" name="phonecheck1" [checked]="phonecheck1" (change)="checked1()" > Thêm số điện thoại mới
+        <div *ngIf="phonecheck1" class="sr1">
+            <input type="text" placeholder="Thêm số điên thoại mới" class="form-control form-control-rounded" id="name"
+                formControlName="phone" style="margin-top: 15px;"> <br>
+        </div>
+    </div>
+    <div class="form-group">
         <label>Ghi chú</label>
         <div class="sr1">
             <input type="text" placeholder="Thêm ghi chú" class="form-control form-control-rounded" id="name"

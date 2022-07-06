@@ -6,16 +6,41 @@
             </div>
          
             <div class="card-body">
-                <div class="head-iv">
-                    <div class="row">
-                        <div class="col-md-4"><span>Ngày lập:</span> {{data2.date | date:'dd/MM/yyyy'}}</div>
-                        <div class="col-md-4"><span>Khách:</span> {{data2.username}}</div>
-                        <div class="col-md-4"><span>Tổng tiền:</span> {{data2.total | currency:'VND'}}</div>
+                <div class="row-md" style="display: flex;">
+                    <div class="col-md-6">
+                        <div class="info" style="display: block;">
+                            <div style="display: flex;" class="if">
+                             <div class="lable">Ngày lập :</div>
+                             <div class="content">{{data2.date | date:'dd/MM/yyyy'}}</div>
+                            </div>
+                            <div style="display: flex;" class="if">
+                             <div class="lable">Khách hàng :</div>
+                             <div class="content">{{data2.username}}</div>
+                            </div>
+                            <div style="display: flex;" class="if">
+                             <div class="lable">Tổng hoá đơn :</div>
+                             <div class="content">{{data2.total | currency:'VND'}}</div>
+                            </div>
+                         </div>
+                    </div>
+                    <div class="col-md-6" >
+                        <span>*Ghi chú</span>
+                        <div class="content">
+                            <textarea name="" id="" cols="30" rows="10" [value]="data2.note" [disabled]="true"></textarea>
+                        </div>
                     </div>
                 </div>
-                <div class="note" *ngIf="data1.note!=null">
+                <!-- <div class="head-iv">
+                    <ul class="info">
+                        <li><div class="col-md-4"><span class="lable" style="width: 300px;">Ngày lập:</span> <span>{{data2.date | date:'dd/MM/yyyy'}}</span></div></li>
+                        <li><div class="col-md-4"><span class="lable">Khách:</span> <span>{{data2.username}}</span></div></li>
+                        <li><div class="col-md-4"><span class="lable">Tổng tiền:</span> <span>{{data2.total | currency:'VND'}}</span></div></li>
+                    </ul>
+                  
+                </div> -->
+                <!-- <div class="note" *ngIf="data1.note!=null">
                     <span>Ghi chú :</span> <textarea [value]="data1.note" name="" id="" cols="30" rows="10" [disabled]="true"></textarea>
-                </div>
+                </div> -->
                 <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
@@ -61,17 +86,15 @@
                             button {
                                 margin-right: 20px;
                             }
-
-                           
-                            .head-iv .row{
-                                display: flex;
-                                justify-content: space-between;
-                                padding-bottom: 10px;
+                            .info {
+                               list-style-type: none;
                             }
-
-                            .head-iv span {
-                               font-style:initial;
-                               font-weight: 800;
+                            .lable {
+                                width: 150px;
+                                font-weight: bold;
                             }
+                           .if {
+                                margin-bottom: 10px;
+                           }
                         </style> 
 
