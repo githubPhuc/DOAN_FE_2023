@@ -123,10 +123,10 @@
                         </div>
                     </div>
                   </div> 
-                <div class="container">
+                <div class="container" id="nav-head">
                     <div class="row col-12 justify-content-between">
                         <nav>
-                            <ul class="header__nav">
+                            <ul class="header__nav sticky">
                                 <li class="header__nav-item pos-relative">
                                     <a [routerLink]="['/home']" class="header__nav-link">TRANG CHỦ</a>
                                  
@@ -162,7 +162,7 @@
                             </ul>
                         </nav>
 
-                        <div class="header__wishlist-box">
+                        <div class="header__wishlist-box sticky" id="navbar">
                             <!-- Start Header Wishlist Box -->
                             <div *ngIf="islogin" class="header__wishlist pos-relative">
                                 <a  [routerLink]="['/wishlist']" class="header__wishlist-link">
@@ -189,7 +189,7 @@
                                 </a>
                             </div> <!-- End Header Add Cart Box -->
                             <div class="header-add-cart pos-relative m-l-40">
-                                <a *ngIf="islogin" [routerLink]="['/profile']" class="header__wishlist-link offcanvas-toggle">
+                                <a *ngIf="islogin" (click)="goProfile()" class="header__wishlist-link offcanvas-toggle">
                                     <i class="fa fa-user" style="color: white;" aria-hidden="true"></i>&nbsp;
                                     <span *ngIf="islogin" style="color: white;">{{username}}</span> 
                                    
@@ -223,263 +223,9 @@
 
         </div> <!-- ::::::  End Large Header Section  ::::::  -->
 
-        <!-- ::::::  Start Mobile Header Section  ::::::  -->
-        <div class="header__mobile mobile-header--1">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <!-- Start Header Mobile Top area -->
-                        <div class="header__mobile-top">
-                            <div class="mobile-header__logo">
-                                <a href="index.html" class="mobile-header__logo-link">
-                                    <img src="../../../assets/assets/img/logo/logo-color.jpg" alt="" class="mobile-header__logo-img">
-                                </a>
-                            </div>
-                            <div class="header__wishlist-box">
-                                <!-- Start Header Wishlist Box -->
-                                <div class="header__wishlist pos-relative">
-                                    <a href="wishlist.html" class="header__wishlist-link">
-                                        <i class="icon-heart"></i>
-                                        <span class="wishlist-item-count pos-absolute">3</span>
-                                    </a>
-                                </div> <!-- End Header Wishlist Box -->
+   
 
-                                <!-- Start Header Add Cart Box -->
-                                <div class="header-add-cart pos-relative m-l-20">
-                                    <a href="#offcanvas-add-cart__box" class="header__wishlist-link offcanvas--open-checkout offcanvas-toggle">
-                                        <i class="icon-shopping-cart"></i>
-                                        <span class="wishlist-item-count pos-absolute">3</span>
-                                    </a>
-                                </div> <!-- End Header Add Cart Box -->
-
-                                <a href="#offcanvas-mobile-menu" class="offcanvas-toggle m-l-20"><i class="icon-menu"></i></a>
-
-                            </div>
-                        </div> <!-- End Header Mobile Top area -->
-
-                        <!-- Start Header Mobile Middle area -->
-                       <!-- End Header Mobile Middle area -->
-
-                    </div>
-                </div>
-            </div>
-        </div> <!-- ::::::  Start Mobile Header Section  ::::::  -->
-
-        <!-- ::::::  Start Mobile-offcanvas Menu Section  ::::::  -->
-        <div id="offcanvas-mobile-menu" class="offcanvas offcanvas-mobile-menu">
-            <button class="offcanvas__close offcanvas-close">&times;</button>
-            <div class="offcanvas-inner">
-                <div class="offcanvas-userpanel m-b-30">
-                    <ul>
-                        <li class="offcanvas-userpanel__role">
-                            <a href="#">Setting</a>
-                            <ul class="user-sub-menu">
-                                <li><a href="my-account.html">My account</a></li>
-                                <li><a href="wishlist.html">My wishlist</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="login.html">Sign in</a></li>
-                            </ul>
-                        </li>
-                        <li class="offcanvas-userpanel__role">
-                            <a href="#">USD $</a>
-                            <ul class="user-sub-menu">
-                                <li><a href="#">USD $</a></li>
-                                <li><a href="#">EURO €</a></li>
-                            </ul>
-                        </li>
-                        <li class="offcanvas-userpanel__role">
-                            <a href="#"><img src="../../../assets/assets/img/icon/flag/icon_usa.png" alt="">English </a>
-                            <ul class="user-sub-menu">
-                                <li><a href="#"><img src="../../../assets/assets/img/icon/flag/icon_usa.png" alt="">English</a></li>
-                                <li><a href="#"><img src="../../../assets/assets/img/icon/flag/icon_france.png" alt=""> Français</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-     
-                <div class="offcanvas-menu m-b-30">
-                    <h4>Menu</h4>
-                    <ul>
-                        <li>
-                            <a (click)="routing('á')"><span>Home</span></a>            
-                        </li>
-                        <li>
-                            <a href="#"><span>Pages</span></a>
-                            <ul class="sub-menu">
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="cart.html">Cart</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="compare.html">Compare</a></li>
-                                <li><a href="empty-cart.html">Empty Cart</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
-                                <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="404-page.html">404 Page</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><span>Shop</span></a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="#">Shop Grid</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop-1.html">Shop Default</a></li>
-                                        <li><a href="shop-4-grid.html">Shop 4grid</a></li>
-                                        <li><a href="shop-5-grid.html">Shop 5grid</a></li>
-                                        <li><a href="shop-grid-left-sidebar.html">Shop Left Sidebar</a></li>
-                                        <li><a href="shop-grid-right-sidebar.html">Shop Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="#">Shop List</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop-list.html">Shop List</a></li>
-                                        <li><a href="shop-list-left-sidebar.html">Shop Left Sidebar</a></li>
-                                        <li><a href="shop-list-right-sidebar.html">Shop Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="#">Product Single</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="single-1.html">Single</a></li>
-                                        <li><a href="single-variable.html">Variable</a></li>
-                                        <li><a href="single-left-tab.html">Left Tab</a></li>
-                                        <li><a href="single-right-tab.html">Right Tab</a></li>
-                                        <li><a href="single-slider.html">Single Slider</a></li>
-                                        <li><a href="single-gallery-left.html">Gallery Left</a></li>
-                                        <li><a href="single-gallery-right.html">Gallery Right</a></li>
-                                        <li><a href="single-sticky-left.html">Sticky Left</a></li>
-                                        <li><a href="single-sticky-right.html">Sticky Right</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><span>Blogs</span></a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="#">Blog Grid</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-grid-left-sidebar.html"> Blog Grid Left Sidebar</a></li>
-                                        <li><a href="blog-grid-right-sidebar.html"> Blog Grid Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Blog List</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-list-left-sidebar.html"> Blog List Left Sidebar</a></li>
-                                        <li><a href="blog-list-right-sidebar.html"> Blog List Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Blog Single</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-single-left-sidebar.html"> Blog List Left Sidebar</a></li>
-                                        <li><a href="blog-single-right-sidebar.html"> Blog List Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="offcanvas-buttons m-b-30">
-                    <a href="my-account.html" class="user"><i class="icon-user"></i></a>
-                    <a href="wishlist.html"><i class="icon-heart"></i></a>
-                    <a href="cart.html"><i class="icon-shopping-cart"></i></a>
-                </div>
-                <div class="offcanvas-social">
-                    <span>Stay With Us</span>
-                    <ul>
-                        <li>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div> <!-- ::::::  End Mobile-offcanvas Menu Section  ::::::  -->
-
-        <!-- ::::::  Start Popup Add Cart ::::::  -->
-        <div  id="offcanvas-add-cart__box" class="offcanvas offcanvas-cart offcanvas-add-cart">
-            <div class="offcanvas-add-cart__top m-b-40">
-                <span class="offcanvas-add-cart__top-text"><i class="icon-shopping-cart"></i> Total Items: 4</span>
-                <button class=" offcanvas-close">&times;</button>
-            </div>
-            <!-- Start Add Cart Item Box-->
-            <ul class="offcanvas-add-cart__menu">
-                <!-- Start Single Add Cart Item-->
-                <li class="offcanvas-add-cart__list pos-relative">
-                    <div class="offcanvas-add-cart__img-box pos-relative">
-                        <a href="single-1.html" class="offcanvas-add-cart__img-link img-responsive"><img src="../../../assets/assets/img/product/size-small/product-home-1-img-1.jpg" alt="" class="add-cart__img"></a>
-                        <span class="offcanvas-add-cart__item-count pos-absolute">2x</span>
-                    </div>
-                    <div class="offcanvas-add-cart__detail">
-                        <a href="single-1.html" class="offcanvas-add-cart__link">PlayStation 4 Pro 1TB Star Wars Battlefront II Bundle</a>
-                        <span class="offcanvas-add-cart__price">$29.00</span>
-                        <span class="offcanvas-add-cart__info">Dimension: 40x60cm</span>
-
-                    </div>
-                    <button class="offcanvas-add-cart__item-dismiss pos-absolute">&times;</button>
-                </li> <!-- Start Single Add Cart Item-->
-                <!-- Start Single Add Cart Item-->
-                <li class="offcanvas-add-cart__list pos-relative">
-                    <div class="offcanvas-add-cart__img-box pos-relative">
-                        <a href="single-1.html" class="offcanvas-add-cart__img-link img-responsive"><img src="../../../assets/assets/img/product/size-small/product-home-1-img-2.jpg" alt="" class="add-cart__img"></a>
-                        <span class="offcanvas-add-cart__item-count pos-absolute">1x</span>
-                    </div>
-                    <div class="offcanvas-add-cart__detail">
-                        <a href="single-1.html" class="offcanvas-add-cart__link">PlayStation 4 Pro 1TB Star Wars Battlefront II Bundle</a>
-                        <span class="offcanvas-add-cart__price">$29.00</span>
-                        <span class="offcanvas-add-cart__info">Dimension: 40x60cm</span>
-
-                    </div>
-                    <button class="offcanvas-add-cart__item-dismiss pos-absolute">&times;</button>
-                </li> <!-- Start Single Add Cart Item-->
-            </ul> <!-- Start Add Cart Item Box-->
-            <!-- Start Add Cart Checkout Box-->
-            <div class="offcanvas-add-cart__checkout-box-bottom">
-                <!-- Start offcanvas Add Cart Checkout Info-->
-                <ul class="offcanvas-add-cart__checkout-info">
-                    <!-- Start Single Add Cart Checkout Info-->
-                    <li class="offcanvas-add-cart__checkout-list">
-                        <span class="offcanvas-add-cart__checkout-left-info">Subtotal</span>
-                        <span class="offcanvas-add-cart__checkout-right-info">$60.59</span>
-                    </li> <!-- End Single Add Cart Checkout Info-->
-                    <!-- Start Single Add Cart Checkout Info-->
-                    <li class="offcanvas-add-cart__checkout-list">
-                        <span class="offcanvas-add-cart__checkout-left-info">Shipping</span>
-                        <span class="offcanvas-add-cart__checkout-right-info">$7.00</span>
-                    </li> <!-- End Single Add Cart Checkout Info-->
-                    <!-- Start Single Add Cart Checkout Info-->
-                    <li class="offcanvas-add-cart__checkout-list">
-                        <span class="offcanvas-add-cart__checkout-left-info">Taxes</span>
-                        <span class="offcanvas-add-cart__checkout-right-info">$0.00</span>
-                    </li> <!-- End Single Add Cart Checkout Info-->
-                    <!-- Start Single Add Cart Checkout Info-->
-                    <li class="offcanvas-add-cart__checkout-list">
-                        <span class="offcanvas-add-cart__checkout-left-info">Total</span>
-                        <span class="offcanvas-add-cart__checkout-right-info">$67.59</span>
-                    </li> <!-- End Single Add Cart Checkout Info-->
-                </ul> <!-- End offcanvas Add Cart Checkout Info-->
-
-                <div class="offcanvas-add-cart__btn-checkout">
-                    <a href="checkout.html" class="btn btn--block btn--box btn--gray btn--large btn--uppercase btn--weight">Checkout</a>
-                </div>
-            </div> <!-- End Add Cart Checkout Box-->
-        </div> <!-- :::::: End Popup Add Cart :::::: -->
+    
 
         <div class="offcanvas-overlay"></div>
 
@@ -502,9 +248,9 @@
                                     <img src="../../../assets/img/text.jpg" alt="" class="footer__logo-img">
                                 </a>
                             </div>
-                            <div class="footer__text">
+                            <!-- <div class="footer__text">
                                 <p>We are a team of designers & developers that create high quality Magento, Prestashop, Opencart.</p>
-                            </div>
+                            </div> -->
                             <ul class="footer__address">
                                 <li class="footer__address-item"><span>Địa chỉ:</span> Ho Chi Minh city, Viet Nam</li>
                                 <li class="footer__address-item"><span>Liên hệ với chúng tôi: </span> <a href="tel:+(012)-800-456-789-987">+(012) 800 456 789 - 987</a> </li>
@@ -512,6 +258,29 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="col-xl-4 col-lg-6 col-12">
+                      <div class="title">
+                        <h2>User Navigation</h2>
+                      </div>
+                      <div class="lnk">
+                        <ul>
+                            <li><a [routerLink]="['/profile']">Tài khoản của tôi</a></li>
+                            <li><a [routerLink]="['/cart']">Giỏ hàng</a></li>
+                            <li><a [routerLink]="['/wishlist']">Sản phẩm yêu thích</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-12">
+                        <div class="title">
+                          <h2>Danh mục</h2>
+                        </div>
+                        <div class="lnk">
+                          <ul>
+                              <li *ngFor="let c of lstCategory.slice(0,3)"><a href="">{{c.name}}</a></li>
+                           
+                          </ul>
+                        </div>
+                      </div>
                    
               
          
@@ -520,11 +289,24 @@
          
             </div>
         </div>
-
+        <style>
+            .lnk ul li {
+                
+                border-bottom: 1px solid rgb(194, 193, 193);
+                padding: 10px;
+                margin: 10px;
+            }
+            .lnk ul li a {
+                text-decoration: none;
+                justify-content: center;
+            }
+        </style>
     </footer> <!-- ::::::  End  Footer Section  ::::::  -->
 
     <!-- material-scrolltop button -->
     <button class="material-scrolltop" type="button"></button>
+   
+   
 
     <!-- Start Modal Add cart -->
 

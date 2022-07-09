@@ -3,39 +3,42 @@
     <div class="col-md-7">
       <form [formGroup]="trademarkForm" (ngSubmit)="onSubmit(trademarkForm)" enctype="multipart/form-data">
                             
-        <div class="form-group">
+        <div class="form-group" style=" margin-right:10px;">
             <label>Tên nhãn hiệu</label>
             <div class="sr1">	
-            <input type="text" placeholder="Nhập tên nhãn hiệu" class="form-control form-control-rounded"  id="name"  formControlName="name">
-            <button class="btn btn-info" type="submit" [disabled]="!trademarkForm.valid"><i class="fa fa-floppy-o "></i>&nbsp;Create</button>
+            <input type="text" placeholder="Nhập tên nhãn hiệu" class="form-control form-control-rounded"  id="name"  formControlName="name">&nbsp;
+            <button class="btn btn-info" type="submit" [disabled]="!trademarkForm.valid"><i class="fa fa-floppy-o "></i>&nbsp;Thêm</button>
         </div>
-        <div class="form-group">
-            <label>Logo</label> <br>
-                <img [src]="imgReview" alt="" width="100px"> <br>
-                <span class="btn-file1">
-            
-                    <input type="file" #file1 placeholder="Choose file" (change)="uploadFileShow(file1.files,$event)" style="display:none;">
-                    <button type="button" class="btn btn-success" (click)="file1.click()">Upload File1</button>
-                </span>
-       
-            </div>
-    
     </div>
-        
+        <div class="form-group">
+
+               
+                <span class="btn-file1">
+                    <img *ngIf="imgReview!=null"  [src]="imgReview" alt="" width="100px"> <br>
+                    <input type="file" #file1 placeholder="Choose file" (change)="uploadFileShow(file1.files,$event)" style="display:none;">
+                    <button type="button" class="btn btn-info" (click)="file1.click()">Tải ảnh lên</button>
+                </span> &nbsp;
+                
+            </div>
+
+    
+    
+    
+           
         </form>
     </div>
-    <div class="col-md-5">
+    <!-- <div class="col-md-5">
         <form [formGroup]="searchForm" (ngSubmit)="onSubmit1(searchForm)">
         <div class="form-group">
             <label>Tìm kiếm</label>
             <div class="sr">
-            <input type="text" placeholder="Nhập tên danh mục cần tìm" class="form-control form-control-rounded"  id="txtSearch"  formControlName="txtSearch">
-            <button id="search" class="btn btn-info" ><i class="fa fa-search "></i>&nbsp;Search</button>
+            <input type="text" placeholder="Nhập tên nhãn hiệu cần tìm" class="form-control form-control-rounded"  id="txtSearch"  formControlName="txtSearch">
+            <button id="search" class="btn btn-info" ><i class="fa fa-search "></i>&nbsp;Tìm</button>
         </div>
         </div>
     </form>
         
-    </div>
+    </div> -->
     
     </div>
     

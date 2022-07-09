@@ -2,7 +2,7 @@
     <div class="col-lg-6 align-self-center ">
     </div>
     <div class="col-lg-6 align-self-center text-right">
-        <a class="nav-link" [routerLink]="['/admin/supplier/create']" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-plus"></i> Thêm nhà cung cấp</a>
+        <a class="nav-link" [routerLink]="['/admin/supplier/create']" class="btn btn-info box-shadow btn-icon btn-rounded"><i class="fa fa-plus"></i> Thêm nhà cung cấp</a>
     </div>
 </div>
 <div class="row">
@@ -20,7 +20,7 @@
                                         <th>Số điện thoại</th>
                                         <th>Email</th>
                                 
-                                        <th>Action</th>
+                                        <th>Tác vụ</th>
                                      
                                     </tr>
                                 </thead>
@@ -33,7 +33,7 @@
                                         <td>{{sup.email}}</td>
                                         
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button> &nbsp;
                                             <button (click)="remove(sup.id)" type="button" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
                                         </td>
                                    

@@ -34,12 +34,12 @@ export class AddImportComponent implements OnInit {
 
   ngOnInit(): void {
  
-    this.proService.getAllProduct().subscribe(data1=>{
-      this.product=data1.pro;
-      this.itemForm.value.sanPham.patchValue(1);
+    // this.proService.getAllProduct().subscribe(data1=>{
+    //   this.product=data1.pro;
+    //   this.itemForm.value.sanPham.patchValue(1);
       
       
-    });
+    // });
     
     this.supService.getAllSupplier().subscribe(data1=>{
       this.supplier=data1.sup;
@@ -60,11 +60,11 @@ export class AddImportComponent implements OnInit {
       this.ncc=this.supplier[0].id;
     }
     this.soluong=form.value.soLuong.toString();
-    this.sanpham=form.value.sanPham.toString();
-    if(form.value.sanPham==''||form.value.sanPham==null)
+
+    if(this.sanpham==null)
     {
      
-      this.sanpham=this.product[0].id;
+      return;
     }
  
     console.log(form.value);
@@ -79,5 +79,23 @@ export class AddImportComponent implements OnInit {
       }
       location.replace(location.href);
     })
+  }
+
+  review(txts:string)
+  {
+    if(txts=='')
+    {
+    this.product=null;
+    }
+    this.proService.searchProduct(txts).subscribe(data=>{
+    this.product=data.pro;
+    });
+  }
+  selected(name:string,id:number)
+  {
+   this.product=null;
+    let a=document.querySelector('#sp');
+    this.itemForm.patchValue({'sanPham':name});
+    this.sanpham=id;
   }
 }

@@ -32,7 +32,10 @@ export class InvoiceConfirmComponent implements OnInit {
       if(data.status=200)
       {
         alert(data.msg);
-        location.reload();
+        this.invService.getInvoiceConfirm().subscribe(data=>{
+          this.invoice=data;
+          console.log('ínv', data);
+        })
       }
 
     })

@@ -15,7 +15,7 @@ export class ShopLayoutComponent implements OnInit {
 
   constructor(private shopservice:ShopService,private router:Router,private dialog:DialogService,private cateService:CategoryService) { }
 
-  
+  scr:boolean=false;  
   txt:any;
   count=0;
   count2=0;
@@ -28,7 +28,7 @@ export class ShopLayoutComponent implements OnInit {
     txtSearch: new FormControl(''),
   });
   ngOnInit(): void {
-
+    window.onscroll=()=>this.onSCR();
     if(localStorage.getItem('role')=='')
     {
       this.router.navigate(['/admin']);
@@ -74,6 +74,14 @@ export class ShopLayoutComponent implements OnInit {
    
    
     
+  }
+  goProfile()
+  {
+    if(localStorage.getItem('role')=='Admin')
+    {
+      return;
+    }
+    this.router.navigate(['/profile'])
   }
   search(txt:string)
      {
@@ -137,5 +145,18 @@ export class ShopLayoutComponent implements OnInit {
     this.router.navigate(['/product-detail',id]).then(()=>{
       location.reload();
     });
+  }
+
+  onSCR()
+  {
+    if(document.documentElement.scrollTop>400)
+    {
+      
+      this.scr=true;
+    }else
+    {
+      this.scr=false;
+    }
+
   }
 }

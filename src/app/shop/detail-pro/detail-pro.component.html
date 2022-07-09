@@ -112,6 +112,9 @@
                                     border-top: 1px grey solid;
                                 }
                             </style>
+                            <div class="lable">
+                                <h2>Thông tin sản phẩm</h2>
+                            </div>
                             <div class="des">
                                 <span style="line-height: 30px;">{{product.description}}</span>
                             </div>
@@ -126,7 +129,7 @@
                                         <span style="color: white;"><i class="fa fa-star" aria-hidden="true"></i> <span>{{product.star}} Star</span></span>
                                     </div>&nbsp;
                                     <div class="cmt-rv" style="margin-left: 5px;">
-                                        <span (click)="viewComment()" id="lnk">{{product.comment}}  Bình luận</span>
+                                        <span (click)="viewComment()" id="lnk">({{product.comment}})  Bình luận</span>
                                     </div>
 
                                     </div>

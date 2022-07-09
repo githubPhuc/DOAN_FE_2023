@@ -3,9 +3,21 @@
 
         <div class="form-group">
             <label>Sản phẩm</label> <br>
-            <select name="" id="" formControlName="sanPham">
+            <input #txt type="text" placeholder="" class="form-control form-control-rounded" id="sp"
+            formControlName="sanPham" (keyup)="review(txt.value)">  
+            <ul *ngIf="product!=null" class="list-group list-group-flush" style="position: absolute;
+                                            left: 15px;
+                                            top: 70px;
+                                            z-index: 1;">
+                                                <!-- results of ngFor is passed to appFilter with argument searchText -->
+                                                <li class="list-group-item" id="item-search" *ngFor="let c of product.slice(0,10)" style="display: flex;">
+                                                   <div class="img"> <img src="../../../assets/img/product/{{c.image}}" alt="" width="50px"></div>
+                                                 <a class="item-search" style="border-bottom: 1px solid rgb(228, 225, 225); font-size:13px " (click)="selected(c.name,c.id)">{{c.name}}</a>
+                                                </li>
+                                              </ul>
+            <!-- <select name="" id="" formControlName="sanPham">
                 <Option *ngFor="let p of product" value="{{p.id}}">{{p.name}}</Option>
-            </select>
+            </select> -->
         </div>
         <div class="form-group">
             <label>Nhà cung cấp</label> <br>
@@ -27,9 +39,9 @@
                 <input type="number" placeholder="" class="form-control form-control-rounded" id="name"
                     formControlName="gia"> <br>
             </div>
+            <button id="btn-submit" type="submit">Thêm</button>
         </div>
-        <button class="btn btn-success btn-icon" type="submit" [disabled]="!itemForm.valid"><i
-            class="fa fa-floppy-o "></i>Save</button>
+        
 
 
 
@@ -39,4 +51,20 @@
 
 
 
-
+<style>
+    #btn-submit:hover {
+        background-color: rgb(47, 47, 255);
+        border-radius: 5px;
+        padding: 5px 10px;
+        width: 100px;
+        color: white;
+    }
+    #btn-submit{
+        background-color: white;
+        border: 1px solid rgb(47, 47, 255);
+        border-radius: 5px;
+        padding: 5px 10px;
+        width: 100px;
+        color: rgb(47, 47, 255);
+    }
+</style>

@@ -36,6 +36,7 @@ export class ForgetPassComponent implements OnInit {
     this.loginService.sendMail(form.value.email).subscribe(data=>{
       if(data.status==200)
       {
+        alert('Mã xác minh đã gửi đến mail của bạn .')
         this.mail=form.value.email;
         this.isMail=0;
         this.otp=data.otp;

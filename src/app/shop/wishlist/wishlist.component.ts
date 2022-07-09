@@ -17,7 +17,11 @@ export class WishlistComponent implements OnInit {
   isempty!:boolean;
   wishlist:any;
   ngOnInit(): void {
-
+    document.documentElement.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest"
+      });
     this.shopService.getWishList(localStorage.getItem('userid')!).subscribe(data=>{
       console.log('cart',data);
       if(data[0]!=null)

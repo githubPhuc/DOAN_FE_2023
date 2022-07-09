@@ -1,46 +1,97 @@
-<form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm)">
-
-
-
-    <div class="form-group">
-        <label>Chọn phương thức thanh toán :</label>
-        <div class="choose">
-            <input type="radio" name="check" [checked]="vnpay" (change)="tick()"> Thanh toán qua VnPAY <br>
-            <input type="radio" name="check" [checked]="money"(change)="tick()"> Thanh toán bằng tiền mặt
+<div class="contaier">
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Thông tin đơn hàng</h3>
+            <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline align-self-center" width="100%">
+                <thead>
+                    <tr>
+                        <th>
+                            <strong>STT</strong>
+                        </th>
+                        <th><strong>HÌnh</strong></th>
+                        <th>
+                            <strong>Sản phẩm</strong>
+                        </th>
+                        <th><strong>Giá</strong></th>
+                        <th style="width: 60px;">
+                            <strong>Số lượng</strong>
+                        </th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cate of cart.cart; let i=index">
+                        <td>{{i+1}}</td>
+                        <td><a><img class="img-fluid"
+                            src="../../../assets/img/product/{{cate.image}}" width="50px" alt=""></a></td>
+                        <td>
+                            {{cate.tenSanPham}}
+                        </td>
+                        <td>{{cate.giaSanPham}}</td>
+                        <td>{{cate.soLuong}}</td>
+                    
+                    </tr>
+                
+                  
+                </tbody>
+            </table>
+            <div class="total" style="display: flex;">
+                <div class="lab">
+                    Tổng hoá đơn :&nbsp;
+                </div>
+                <div class="cont">
+                    {{cart.total | currency:'VND'}}
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="col-md-4">
+            <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm)">
+               
 
-    <div class="form-group">
-        <label>Địa chỉ giao hàng</label> <br>
 
-        <input type="radio" name="check1" [checked]="check" (change)="checked()"> Sử dụng địa chỉ mặc định <br>
-        <input type="radio" name="check1" [checked]="check1" (change)="checked()" > Thêm địa chỉ mới
-        <div *ngIf="check1" class="sr1">
-            <input type="text" placeholder="Thêm địa chỉ mới" class="form-control form-control-rounded" id="name"
-                formControlName="address" style="margin-top: 15px;"> <br>
+                <div class="form-group">
+                    <label>Chọn phương thức thanh toán :</label>
+                    <div class="choose">
+                        <input type="radio" name="check" [checked]="vnpay" (change)="tick()"> Thanh toán qua VnPAY <br>
+                        <input type="radio" name="check" [checked]="money"(change)="tick()"> Thanh toán bằng tiền mặt
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label>Địa chỉ giao hàng</label> <br>
+            
+                    <input type="radio" name="check1" [checked]="check" (change)="checked()"> Sử dụng địa chỉ mặc định <br>
+                    <input type="radio" name="check1" [checked]="check1" (change)="checked()" > Thêm địa chỉ mới
+                    <div *ngIf="check1" class="sr1">
+                        <input type="text" placeholder="Thêm địa chỉ mới" class="form-control form-control-rounded" id="name"
+                            formControlName="address" style="margin-top: 15px;"> <br>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại</label> <br>
+            
+                    <input type="radio" name="phonecheck1" [checked]="phonecheck" (change)="checked1()"> Sử dụng số điện thoại mặc định <br>
+                    <input type="radio" name="phonecheck1" [checked]="phonecheck1" (change)="checked1()" > Thêm số điện thoại mới
+                    <div *ngIf="phonecheck1" class="sr1">
+                        <input type="text" placeholder="Thêm số điên thoại mới" class="form-control form-control-rounded" id="name"
+                            formControlName="phone" style="margin-top: 15px;"> <br>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú</label>
+                    <div class="sr1">
+                        <textarea name="" id="" cols="30" rows="10" formControlName="note"></textarea>
+                      
+                    </div>
+                </div>
+                <button class="btn btn-info btn-icon" type="submit" [disabled]="!itemForm.valid"><i
+                        class="fa fa-floppy-o "></i>Đặt hàng</button>
+            
+            
+            
+            
+            </form>
         </div>
+       
     </div>
-    <div class="form-group">
-        <label>Số điện thoại</label> <br>
-
-        <input type="radio" name="phonecheck1" [checked]="phonecheck" (change)="checked1()"> Sử dụng số điện thoại mặc định <br>
-        <input type="radio" name="phonecheck1" [checked]="phonecheck1" (change)="checked1()" > Thêm số điện thoại mới
-        <div *ngIf="phonecheck1" class="sr1">
-            <input type="text" placeholder="Thêm số điên thoại mới" class="form-control form-control-rounded" id="name"
-                formControlName="phone" style="margin-top: 15px;"> <br>
-        </div>
-    </div>
-    <div class="form-group">
-        <label>Ghi chú</label>
-        <div class="sr1">
-            <input type="text" placeholder="Thêm ghi chú" class="form-control form-control-rounded" id="name"
-                formControlName="note"> <br>
-        </div>
-    </div>
-    <button class="btn btn-success btn-icon" type="submit" [disabled]="!itemForm.valid"><i
-            class="fa fa-floppy-o "></i>Đặt hàng</button>
-
-
-
-
-</form>
+</div>

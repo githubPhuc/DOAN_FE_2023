@@ -22,9 +22,13 @@ export class CommentComponent implements OnInit {
 
   deleteComment(id:number)
   {
-    this.commentService.removeComment(id).subscribe(data=>{
-      location.reload();
-    });
+    if(window.confirm('Bạn có muốn xoá bình luận này ?'))
+    {
+      this.commentService.removeComment(id).subscribe(data=>{
+        location.reload();
+      });
+    }
+    
   }
 
   onTableDataChange(event: any) {

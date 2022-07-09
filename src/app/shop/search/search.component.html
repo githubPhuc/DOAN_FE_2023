@@ -27,33 +27,22 @@
               <div class="col-lg-12">
                 
   
-                  <!-- ::::::  Start Sort Box Section  ::::::  -->
-                  <div class="sort-box m-tb-30">
-                      <!-- Start Sort Left Side -->
-                   <!-- Start Sort Left Side -->
-  
-                      <div class="sort-box__right">
-                          <span>Sort By:</span>
-                          <div class="sort-box__option">
-                              <label class="select-sort__arrow">
-                                  <select name="select-sort" class="select-sort">
-                                      <option value="1">Relevance</option>
-                                      <option value="2">Name, A to Z</option>
-                                      <option value="3"> Name, Z to A </option>
-                                      <option value="4"> Price, low to high</option>
-                                      <option value="5">Price, high to low</option>
-                                  </select>
-                              </label>
-                          </div>
-                      </div>
-                  </div> <!-- ::::::  Start Sort Box Section  ::::::  -->
+                <div class="sort-box m-tb-30">
+                    <!-- Start Sort Left Side -->
+                 <!-- Start Sort Left Side -->
+
+                    <div class="sort-box__right">
+                        <span>Có {{product.count}} sản phẩm</span>
+                      
+                    </div>
+                </div> <!-- ::::::  Start Sort Box Section  ::::::  -->
   
                   <div class="product-tab-area">
                       <div class="tab-content ">
                           <div class="tab-pane show active clearfix" id="sort-grid">
                               <!-- Start Single Default Product -->
                            
-                              <div *ngFor="let pro of product.pro | orderBy: 'price'" class="product__box product__box--default product__box--border-hover text-center float-left float-3" >
+                              <div *ngFor="let pro of product.pro | orderBy: 'price'" class="product__box product__box--default product__box--border-hover text-center float-left float-4" >
                                   <div class="product__img-box">
                                       <a *ngIf="pro.image" (click)="goToProductDetails(pro.id)" class="product__img--link">
                                           <img class="product__img" src="../../assets/img/product/{{pro.image}}" alt="">

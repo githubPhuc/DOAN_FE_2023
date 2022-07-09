@@ -10,6 +10,7 @@ import { InvoiceService } from '../invoice.service';
 })
 export class StatisticalComponent implements OnInit {
 
+  re:any;
   invoice:any;
   saleTotal:any;
   importTotal:any;
@@ -32,6 +33,7 @@ export class StatisticalComponent implements OnInit {
   onSubmit(form:FormGroup)
   {
     this.invoiceService.thongKe(form.value.start,form.value.end).subscribe(data=>{
+      this.re=data.tksp;
       if(data.inv[0]!=null)
       {
         this.isSta=true;

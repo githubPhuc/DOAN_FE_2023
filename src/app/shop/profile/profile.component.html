@@ -72,13 +72,14 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr *ngFor="let i of invoice; let stt=index">
+                                                    <tr *ngFor="let i of invoice | orderBy:'-date' ; let stt=index">
                                                         <td >{{stt+1}}</td>
                                                         <td >{{i.date | date:'dd/MM/yyyy'}}</td>
                                                         <td >{{i.shippingAddress}}</td>
                                                         <td >{{i.total | currency:'VND'}}</td>
                                                         <td *ngIf="!i.status" class="text-center">Đang chờ</td>
-                                                        <td *ngIf="i.status" class="text-center">Hoàn thành</td>
+                                                        <td *ngIf="i.status&&!i.complete" class="text-center">Đang giao</td>
+                                                        <td *ngIf="i.status&&i.complete" class="text-center">Hoàn thành</td>
                                                         <td style="display: flex;" class="text-center">
                                                            <div class="div"> <a (click)="view(i.id)" style="font-size: 13px;">View</a> 
                                                           
@@ -140,7 +141,7 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-box__single-group">
-                                                            <h5 class="title">Đổi mật khẩu</h5>
+                                                            <h5 class="title" style="color: rgba(0, 0, 255, 0.822);">Đổi mật khẩu</h5>
                                                         </div>
                                                     </div>
                                                 
@@ -157,7 +158,7 @@
                                                             <small *ngIf="check==1" style="color: red;">Mật khẩu không trùng khớp</small>
                                                         </div>
                                                         <div class="btn-sub">
-                                                            <button type="submit">Lưu thay đổi</button>
+                                                            <button type="submit"  style="background-color: rgba(0, 0, 255, 0.822);">Lưu thay đổi</button>
                                                         </div>
                                                     </div>
                                               

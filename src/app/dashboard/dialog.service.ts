@@ -54,8 +54,8 @@ opentImportDetail(id:number)
 {
 
  this.dialog1.open(ImportDetailComponent,{
-  height: '500px',
-  width: '800px',
+  height: '600px',
+  width: '1000px',
   data: {
     'id': id
   }
@@ -67,8 +67,8 @@ openChoosePayment()
 {
 
  this.dialog1.open(ChoosePaymentComponent,{
-  height: '500px',
-  width: '800px',
+  height: '600px',
+  width: '1200px',
  
 }
 );
@@ -163,7 +163,7 @@ openDialogAddItem()
   {
 
    this.dialog1.open(AddImportComponent,{
-    height: '420px',
+    height: '450px',
     width: '700px',
   }
   );
@@ -172,7 +172,7 @@ openDialogAddItem()
 openDialogRepComment(id:number,cmt:number)
   {
    this.dialog1.open(RepCommentComponent,{
-    height: '400px',
+    height: '500px',
     width: '800px',
     data: {
       'id': id,

@@ -27,7 +27,13 @@ export class HomeComponent implements OnInit {
   count: number = 0;
   tableSize: number = 12;
   scr:boolean=false;
+  scr1:boolean=false;
   lstBr:any=[];
+  htvp:any;
+  gaming:any;
+  dhkt:any;
+  mac:any;
+  category:any;
   productForm=new FormGroup({
     txtSearch: new FormControl(''),
   });
@@ -47,19 +53,27 @@ export class HomeComponent implements OnInit {
     this.shopservice.loadBrand().subscribe(data=>{
       this.brand=data;
     });
+    this.shopservice.getAllCategory().subscribe(data=>{
+      this.category=data;
+      for(let d of data)
+      {
+        this.shopservice.getProductByCategory(d.id).subscribe(data1=>{
+          
+          this.lstBr.push(data1.pro);  
+        });
+      }
+
+    });
+   
+   
    this.fetchPosts();
 
    this.slideService.getAllSlide().subscribe(data=>{
     this.slideshow=data;
-   });
-   for(let b of this.brand)
-   {
-    this.shopservice.getProductByBrand(b.id).subscribe(res=>{
-      this.lstBr.push(res);
-    });
-   }
+   });  
+ 
 
-   console.log(this.lstBr);
+   
   }
 
   scrollTop()
@@ -82,10 +96,22 @@ export class HomeComponent implements OnInit {
     {
       this.scr=false;
     }
+    if(document.documentElement.scrollTop>600)
+    {
+      
+      this.scr1=true;
+    }else
+    {
+      this.scr1=false;
+    }
   }
   cart=new Cart(0,1,'');
   addCart(data:number)
   {
+    if(localStorage.getItem('role')=='Admin')
+    {
+      return;
+    }
     this.cart.sanpham=data;
     this.cart.userid=localStorage.getItem('userid')!;
     console.log(this.cart);
@@ -104,6 +130,10 @@ export class HomeComponent implements OnInit {
   }
   addToWishList(id:number)
   {
+    if(localStorage.getItem('role')=='Admin')
+    {
+      return;
+    }
     this.shopservice.addWishList({productid:id,appuserid:localStorage.getItem('userid')}).subscribe(data=>{
     
     });
@@ -133,7 +163,19 @@ export class HomeComponent implements OnInit {
       
     );
   }
+  toph!:number;
+  scrollToCate(id:string)
+  {
+    
+    let a=document.getElementById(id);
+    a?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest"
+      });
 
+  
+  }
 
 }
  

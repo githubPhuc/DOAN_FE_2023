@@ -127,6 +127,16 @@ export class ShopService {
 		
   }
 
+  public getAllCategory()
+  {
+    return this.httpClient
+			.get<any>('https://localhost:7043/api/category/getcategory',{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+     })});
+		
+  }
+
   public addWishList(data:any)
   {
    
@@ -227,9 +237,9 @@ export class ShopService {
   }
 
 
-  public payment(total:number,id:string,address:string,phone:string,note:string)
+  public payment(total:number)
   {
-    return this.httpClient.post<any>('https://localhost:7043/api/pay/pay?total='+total+'&id='+id+'&address='+address+'&phone='+phone+'&note='+note,{headers: new HttpHeaders({ 
+    return this.httpClient.post<any>('https://localhost:7043/api/pay/pay?total='+total,{headers: new HttpHeaders({ 
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.token
    })});

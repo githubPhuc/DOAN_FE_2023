@@ -18,28 +18,23 @@
                                 <th>Đơn giá</th>
                                 <th>Số lượng</th>
                                 <th>Tổng phụ</th>
-                                <th>Action</th>
+                                <th>Tác vụ</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            <tr *ngFor="let c of POSTS | paginate
-                            : {
-                                itemsPerPage: tableSize,
-                                currentPage: page,
-                                totalItems: count
-                              };
-                        let i = index">
+                            <tr *ngFor="let c of POSTS">
                                 <td class="product-thumbnail">
                                     <a (click)="goToProductDetails(c.idSanPham)"><img class="img-fluid"
                                             src="../../../assets/img/product/{{c.image}}" alt=""></a>
                                 </td>
-                                <td class="product-name"><a
+                                <td class="product-name "><a
                                         (click)="goToProductDetails(c.idSanPham)">{{c.tenSanPham}}</a></td>
-                                <td class="product-price-cart"><span class="amount">{{c.giaSanPham |
+                                <td class="product-price-cart text-center"><span class="amount">{{c.giaSanPham |
                                         currency:'VND'}}</span></td>
-                                <td class="product-quantities">
+                                <td class="product-quantities text-center">
                                     <div class="quantity d-inline-block">
-                                        <input id="sl" #sl type="number" min="1" step="1" value="{{c.soLuong}}">
+                                      
+                                        <input id="sl" #sl type="number" min="1" step="1" value="{{c.soLuong}}" disabled>
 
                                         <i class="fa fa-caret-up" aria-hidden="true" (click)="plus(c.id)"></i> <br>
                                         <i class="fa fa-caret-down" aria-hidden="true" (click)="remove(c.id)"></i>
@@ -47,15 +42,15 @@
                                     </div>
                                 </td>
 
-                                <td class="product-subtotal">{{c.gia | currency:'VND'}}</td>
-                                <td class="product-remove">
+                                <td class="product-subtotal text-center">{{c.gia | currency:'VND'}}</td>
+                                <td class="product-remove text-center">
                                     <a (click)="removeCart(c.id)"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
 
                         </tbody>
                     </table>
-                    <div *ngIf="!isempty" class="total" style="display: flex; justify-content:flex-end">
+                    <div *ngIf="!isempty" class="total" style="display: flex; justify-content:flex-end; margin-top: 15px;">
                         <span style="font-weight: bold;">Tổng : </span>&nbsp;<h3>{{total | currency:'VND'}}</h3>
                     </div>
                 </div>
@@ -93,12 +88,7 @@
     </div>
 
 </main>
-<footer>
-    <div class="d-flex justify-content-center">
-        <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
-        </pagination-controls>
-    </div>
-</footer>
+
 
 <style>
     #cart-content-text {

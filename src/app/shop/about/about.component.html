@@ -1,55 +1,67 @@
 <main id="main-container" class="main-container">
-    <div class="container" style="display: block; justify-items: center;">
-       
-         
-              <div class="title">
-                <span>TTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-              </div>
-              <div class="content">
-                <span>
-                    {{dataAb.content}}
-                </span>
-              </div>
-    
-  
-
-    <div class="arrow-r">
-        <i class="fa fa-chevron-right fa-4x" aria-hidden="true" (click)="next()"></i>
-    </div>
-    <div *ngIf="about>0" class="arrow-l">
-        <i class="fa fa-chevron-left fa-4x" aria-hidden="true" (click)="prev()"></i>
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="about-top m-b-30">
+                    <div class="row" style="margin-top: 5px;">
+                        <div class="col-lg-6">
+                            <div class="about-img m-b-30">
+                                <div class="img-responsive m-b-40">
+                                    <img src="../../../assets/img/code2.gif" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="about-content">
+                                <h1 class="title title--large title--thin" style="font-size: 45px;">Welcome To 2P SHOP</h1>
+                                <div class="para__content">
+                                    <p class="para__text">Với xu hướng phát triển của nền kinh tế, hình thức thương mại điện tử đã trở nên ngày càng phổ biến. Cửa hàng của chúng tôi là một trang web phân phối laptop uy tin, chất lượng và quan tâm đến trải nghiệm của khách hàng. Chính vì thế chúng tôi cam kết mang lại cho khách hàng những trãi nghiệm và dịch vụ tốt nhất khi đến với cửa hàng của chúng tôi.</p>
+                                    <p class="para__text">2P Shop phân phối tất cả các loại laptop với đủ mọi loại giá, đủ mọi cấu hình cho các bạn lựa chọn. Thanh toán đa dạng với 2 hình thức là thanh toán trực tuyến hoặc có thể thanh toán trực tiếp khi nhận hàng. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="about-single m-t-30">
+                            <h3 class="title title--small title--regular">Our Company</h3>
+                            <div class="para__content">
+                                <p class="para__text">Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet conse .</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="about-single m-t-30">
+                            <h3 class="title title--small title--regular">Our Team</h3>
+                            <div class="para__content">
+                                <p class="para__text">Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet conse .</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="about-single m-t-30">
+                            <h3 class="title title--small title--regular">Testimonial</h3>
+                            <div class="para__content">
+                                <p class="para__text">Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet conse .</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 
 <style>
-    #content {
-        white-space: pre;
-        width: 200px;
+    main {
+        min-height: 700px;
     }
 
-    .arrow-r {
-        position: fixed;
-        bottom: 300px;
-        right: 20px;
 
-        color: grey;
-        
-    }
-    .arrow-r:hover {
-        color: rgb(51, 51, 255);
-    }
-    .arrow-l {
-        position: fixed;
-        bottom: 300px;
-        left: 20px;
-
-        color: grey;
-        
-    }
-    .arrow-l:hover {
-        color: rgb(51, 51, 255);
-    }
+   
     .title {
         
         display: flex;

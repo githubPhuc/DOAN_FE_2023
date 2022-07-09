@@ -11,94 +11,102 @@
             <div class="card-body">
 
                 <form [formGroup]="categoryForm" (ngSubmit)="onSubmit(categoryForm)" enctype="multipart/form-data">
-
-                    <div class="form-group">
-                        <label>Tên sản phẩm</label>
-                        <input type="text" placeholder="Nhập tên sản phẩm" class="form-control form-control-rounded"
-                            formControlName="name">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Loại sản phẩm</label>
-
-                        <select class="form-control m-b" formControlName="categoryId">
-                            <Option *ngFor="let p of category" value="{{p.id}}">{{p.name}}</Option>
-                        </select>
-
-                    </div>
-                    <div class="form-group">
-                        <label>Giá</label>
-                        <div class="input-group col-md-4">
-                            <span class="input-group-addon">VNĐ</span>
-                            <input type="text" class="form-control" formControlName="price">
-
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Tên sản phẩm</label>
+                                <input type="text" placeholder="Nhập tên sản phẩm" class="form-control form-control-rounded"
+                                    formControlName="name">
+                            </div>
+        
+                            <div class="form-group">
+                                <label>Loại sản phẩm</label>
+        
+                                <select class="form-control m-b" formControlName="categoryId">
+                                    <Option *ngFor="let p of category" value="{{p.id}}">{{p.name}}</Option>
+                                </select>
+        
+                            </div>
+                            <div class="form-group">
+                                <label>Giá</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">VNĐ</span>
+                                    <input type="number" class="form-control" formControlName="price">
+        
+                                </div>
+                            </div>
+        
+        
+                            <div class="form-group">
+                                <label>Mô tả</label>
+                                <textarea formControlName="description">
+        
+                                </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Thương hiệu</label>
+                                <select class="form-control m-b" formControlName="tradeMark">
+                                    <Option *ngFor="let p of brand" value="{{p.id}}">{{p.name}}</Option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>CPU</label>
+        
+                                <textarea name="" id="" cols="30" rows="10" formControlName="cpu"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>RAM</label>
+        
+                                <textarea name="" id="" cols="30" rows="10" formControlName="ram"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Ổ cứng</label>
+        
+                                <textarea name="" id="" cols="30" rows="10" formControlName="hardDisk"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Kiểu thiết kế</label>
+        
+                                <textarea name="" id="" cols="30" rows="10" formControlName="designStyle"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Màn hình</label>
+        
+                                <textarea name="" id="" cols="30" rows="10" formControlName="monitor"></textarea>
+                            </div>
+                           
+                            <div class="form-group">
+                                <label>Hệ điều hành</label>
+        
+                                <textarea name="" id="" cols="30" rows="10" formControlName="os"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Cổng kết nối</label>
+        
+                                <textarea name="" id="" cols="30" rows="10" formControlName="port"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Ngày ra mắt</label>
+                                <textarea name="" id="" cols="30" rows="10" formControlName="releaseTime"></textarea>
+        
+                            </div>
+                            <div class="form-group">
+                                <label>Kích thước - cân nặng</label>
+        
+                                <textarea name="" id="" cols="30" rows="10" formControlName="sizeWeight"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Card đồ hoạ (VGA)</label>
+        
+        
+                                <textarea name="" id="" cols="30" rows="10" formControlName="vga"></textarea>
+                            </div>
                         </div>
                     </div>
-
-
-                    <div class="form-group">
-                        <label>Mô tả</label>
-                        <textarea formControlName="description">
-
-                        </textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Thương hiệu</label>
-                        <select class="form-control m-b" formControlName="tradeMark">
-                            <Option *ngFor="let p of brand" value="{{p.id}}">{{p.name}}</Option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>CPU</label>
-
-                        <textarea name="" id="" cols="30" rows="10" formControlName="cpu"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Ổ cứng</label>
-
-                        <textarea name="" id="" cols="30" rows="10" formControlName="hardDisk"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Kiểu thiết kế</label>
-
-                        <textarea name="" id="" cols="30" rows="10" formControlName="designStyle"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Màn hình</label>
-
-                        <textarea name="" id="" cols="30" rows="10" formControlName="monitor"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>RAM</label>
-
-                        <textarea name="" id="" cols="30" rows="10" formControlName="ram"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Hệ điều hành</label>
-
-                        <textarea name="" id="" cols="30" rows="10" formControlName="os"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Cổng kết nối</label>
-
-                        <textarea name="" id="" cols="30" rows="10" formControlName="port"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Ngày ra mắt</label>
-                        <input type="text" class="form-control form-control-rounded col-md-4"
-                            formControlName="releaseTime">
-                    </div>
-                    <div class="form-group">
-                        <label>Kích thước - cân nặng</label>
-
-                        <textarea name="" id="" cols="30" rows="10" formControlName="sizeWeight"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Card đồ hoạ (VGA)</label>
-
-
-                        <textarea name="" id="" cols="30" rows="10" formControlName="vga"></textarea>
-                    </div>
+                 
+                    
                     <div class="form-group">
                         <label>Ảnh sản phẩm</label> <br>
                         <div class="rev">
@@ -108,7 +116,7 @@
 
                             <input type="file" #file1 placeholder="Choose file"
                                 (change)="uploadFileShow(file1.files,$event)" style="display:none;">
-                            <button type="button" class="btn btn-success" (click)="file1.click()">Upload File1</button>
+                            <button type="button" class="btn btn-info" (click)="file1.click()">Tải ảnh lên</button>
                         </span>
 
                     </div>
@@ -140,9 +148,10 @@
 
 
 
-                    <button type="submit" class="btn btn-success btn-icon"><i class="fa fa-floppy-o "></i>Thêm
+                    <button type="submit" class="btn btn-info"><i class="fa fa-floppy-o "></i>&nbsp;Thêm
                         mới</button>
-                    <a [routerLink]="['/admin/product']" class="btn btn-warning btn-icon"><i class="fa fa-reply"></i>trở
+                        &nbsp;
+                    <a [routerLink]="['/admin/product']" ><i class="fa fa-reply"></i>&nbsp;Trở
                         về</a>
 
                 </form>

@@ -99,6 +99,10 @@ window.scrollTo(0,0);
   cart=new Cart(0,1,'');
   addCart(data:number)
   {
+    if(localStorage.getItem('role')=='Admin')
+    {
+      return;
+    }
     this.cart.sanpham=data;
     this.cart.userid=localStorage.getItem('userid')!;
     console.log(this.cart);
@@ -112,11 +116,21 @@ window.scrollTo(0,0);
   }
 
   goToProductDetails(id:number){
-    this.router.navigate(['/product-detail',id])
+    this.router.navigate(['/product-detail',id]).then(()=>{
+      document.documentElement.scrollIntoView({
+        behavior: "auto",
+        block: "start",
+        inline: "nearest"
+        });
+    });
   }
 
   addToWishList(id:number)
   {
+    if(localStorage.getItem('role')=='Admin')
+    {
+      return;
+    }
     this.shopService.addWishList(id).subscribe(data=>{
 
     })

@@ -16,7 +16,12 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./invoice.component.scss']
 })
 export class InvoiceComponent implements OnInit {
-  
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 10;
+  tableSizes: any = [3, 6, 9, 12];
+  status:any=0;
   public invoice:any
   searchForm=new FormGroup({
     start: new FormControl(''),
@@ -30,8 +35,28 @@ export class InvoiceComponent implements OnInit {
       console.log(data);
       
     });
+    this.fetchPosts();
   }
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.fetchPosts();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchPosts();
+  }
+  fetchPosts(): void {
+    this.responseIn.getAllInvoice().subscribe(
+      data => {
+        this.POSTS = data.inv;
+        console.log(data);
 
+   
+      }
+      
+    );
+  }
   openDialog(id:any)
   {
 
@@ -54,27 +79,13 @@ export class InvoiceComponent implements OnInit {
     
   })
  }
- status:any;
- filter1(sts:number)
- {
-    console.log('1');
-    if(sts==1)
-    {
-      this.status=false;
-    }else
-    {
-      this.status=true;
-    }
 
-    this.responseIn.getInvoiceByStatus(this.status).subscribe(res=>{
-      this.invoice=res.inv;
-    })
- }
+ 
 
  onSubmit(form:FormGroup)
  {
   this.responseIn.filter(form.value.start,form.value.end).subscribe(res=>{
-    this.invoice=res.inv;
+    this.POSTS=res.inv;
   })
  }
 
@@ -91,8 +102,18 @@ export class InvoiceComponent implements OnInit {
  }
  filter(sts:any)
  {
-  this.responseIn.getInvoiceByStatus(sts).subscribe(res=>{
-    this.invoice=res.inv;
+  this.status=sts;
+  if(sts==0)
+  {
+    this.responseIn.getAllInvoice().subscribe(data=>{
+      this.POSTS=data.inv;
+      console.log(data);
+      
+    });
+    return;
+  }
+  this.responseIn.getInvoiceByStatus(this.status).subscribe(res=>{
+    this.POSTS=res.inv;
   })
  }
 }

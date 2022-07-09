@@ -6,21 +6,23 @@
                 
             </div>
             &nbsp;
-            <span>To</span>
+            <span>Đến</span>
             &nbsp;
             <div class="header__search-input">
                 <input type="datetime-local"  formControlName="end">
                 
             </div>
             &nbsp;
-            <button class="btn btn-info" type="submit" style="height: 30px;">Lọc</button>
+            <button type="submit" style="height: 30px; align-content: center; background-color: rgb(99, 141, 255); color: white; border: none;">Lọc</button>
         </form>
     </div>
     <div class="col-md-6" style="margin-top: 15px;">
         <span>Trạng thái :</span> &nbsp;
         <select #fil name="" id="" (change)="filter(fil.value)">
+            <option value="0">Tất cả</option>
             <option  value="1">Đang giao</option>
             <option value="2">Hoàn thành</option>
+            <option value="4">Chờ duyệt</option>
             <option value="3">Đã huỷ</option>
         </select>
     </div>
@@ -35,19 +37,27 @@
             <table id="datatable" class="table table-striped dt-responsive nowrap">
                             <thead>
                                 <tr>
-                                    <th>Username</th>
+                                    <th>STT</th>
+                                    <th>Sản phâm</th>
                                     <th>Địa chỉ </th>
                                     <th>Số điện thoại</th>
                                     <th>Ngày lập</th>
                                     <th>Tổng tiền</th>
                                     <th>Trạng thái</th>
-                                    <th>Action</th>
+                                    <th>Tác vụ</th>
                                  
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr *ngFor="let inv of invoice">
+                                <tr *ngFor="let inv of POSTS| orderBy:'-date' | paginate
+                                : {
+                                    itemsPerPage: tableSize,
+                                    currentPage: page,
+                                    totalItems: count
+                                  };
+                            let i = index" >
+                                    <td>{{i+1}}</td>
                                     <td>{{inv.username}}</td>
                                     <td>{{inv.shippingAddress}}</td>
                                     <td>{{inv.phone}}</td>
@@ -56,8 +66,9 @@
                                     <td *ngIf="inv.cancel">Đã huỷ</td>
                                     <td *ngIf="inv.complete&&!inv.cancel">Hoàn thành</td>
                                     <td *ngIf="!inv.complete&&inv.status&&!inv.cancel">Đang giao</td>
+                                    <td *ngIf="!inv.status&&!inv.cancel">Chờ duyệt</td>
                                     
-                                    <td class="text-center">
+                                    <td>
                                         <button type="button" class="btn btn-sm btn-info" (click)="openDialog(inv.id)"><i class="fa fa-eye"></i></button>&nbsp;
                                         <button *ngIf="!inv.complete&&inv.status" type="button" class="btn btn-sm btn-info" (click)="complete(inv.id)"><i class="fa fa-check"></i></button>
                                     </td>
@@ -67,6 +78,14 @@
            
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            <pagination-controls
+                              previousLabel="Prev"
+                              nextLabel="Next"
+                              (pageChange)="onTableDataChange($event)"
+                            >
+                            </pagination-controls>
+                          </div>
 
         </div>
     </div>

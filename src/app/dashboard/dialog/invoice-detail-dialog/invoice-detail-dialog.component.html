@@ -44,13 +44,15 @@
                 <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
+                                        <th>STT</th>
                                         <th>Sản phẩm</th>
                                         <th>Số lượng </th>
                                         <th>Thành tiền</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let inv of data1">
+                                    <tr *ngFor="let inv of data1; let i=index">
+                                        <td>{{i+1}}</td>
                                         <td>{{inv.sanPham}}</td>
                                         <td>{{inv.soluong}}</td>
                                         <td>{{inv.donGia | currency:'VND'}}</td>

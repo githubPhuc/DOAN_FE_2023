@@ -18,7 +18,7 @@ export class ChoosePaymentComponent implements OnInit {
   phonecheck1:boolean=false;
   vnpay:boolean=true;
   money:boolean=false;
-
+  cart:any;
   userid=localStorage.getItem('userid');
   address=localStorage.getItem('address');
   phone=localStorage.getItem('phone');
@@ -30,6 +30,9 @@ export class ChoosePaymentComponent implements OnInit {
   constructor(private shopSevice:ShopService, private dialog:DialogService) { }
 
   ngOnInit(): void {
+    this.shopSevice.getCart(localStorage.getItem('userid')!).subscribe(res=>{
+      this.cart=res;
+    })
   }
 
   checked()
@@ -67,7 +70,7 @@ export class ChoosePaymentComponent implements OnInit {
     if(this.vnpay==true)
     {
       localStorage.setItem('note',form.value.note)
-      this.shopSevice.payment(1,this.userid!,this.address!,this.phone!,form.value.note).subscribe(data=>{
+      this.shopSevice.payment(Number.parseFloat(localStorage.getItem('total')!)*100).subscribe(data=>{
         window.location.href=data.url;
       });
     }else

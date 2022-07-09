@@ -8,25 +8,27 @@
                 <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
+                                        <th>STT</th>
                                         <th>Username</th>
                                         <th>Địa chỉ </th>
                                         <th>Số điện thoại</th>
                                         <th>Ngày lập</th>
                                         <th>Tổng tiền</th>
-                                        <th>Action</th>
+                                        <th>Tác vụ</th>
                                      
                                     </tr>
                                 </thead>
     
                                 <tbody>
-                                    <tr *ngFor="let inv of invoice">
+                                    <tr *ngFor="let inv of invoice; let i=index">
+                                        <td>{{i+1}}</td>
                                         <td>{{inv.username}}</td>
                                         <td>{{inv.shippingAddress}}</td>
                                         <td>{{inv.phone}}</td>
                                         <td>{{inv.date | date:'dd/MM/yyyy'}}</td>
                                         <td>{{inv.total | currency:'VND'}}</td>
-                                        <td class="text-center">
-                                            <button (click)="openDialog(inv.id)" type="button" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>
+                                        <td >
+                                            <button (click)="openDialog(inv.id)" type="button" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>&nbsp;
                                             <button (click)="confirm(inv.id)" type="button" class="btn btn-sm btn-info"><i class="fa fa-check"></i></button>
                                         </td>
                                    

@@ -39,13 +39,26 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem('token')=='')
+    document.documentElement.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest"
+      });
+    if(localStorage.getItem('token')==null)
     {
       this.isLogin=false;
+      this.router.navigate(['/auth/login'])
+   
     }else
     {
       this.isLogin=true;
     }
+    if(localStorage.getItem('role')=='Admin')
+    {
+      this.router.navigate(['/admin'])
+      return;
+    }
+    
     this.shopService.getAccount(localStorage.getItem('userid')!).subscribe(data=>{
       this.profileForm.patchValue(data);
       console.log('pro',data);
