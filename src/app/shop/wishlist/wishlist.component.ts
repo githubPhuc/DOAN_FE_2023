@@ -44,7 +44,7 @@ export class WishlistComponent implements OnInit {
     this.shopService.addCart(this.cart).subscribe(data1=>{
       if(data1.status==200)
       {
-        this.dialog.openDialogSuccess(data1.msg);
+        alert('Đã thêm vào giỏ hàng');
 
       }
       

@@ -39,6 +39,25 @@ export class ShopService {
      })});
 		
   }
+  public FilPriceCate(id:string, cate:number)
+  {
+    return this.httpClient
+			.get<any>('https://localhost:7043/api/product/filterpricecate?id='+id+'&cate='+cate.toString(),{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+     })});
+		
+  }
+  public FilPriceBrand(id:string,cate:number)
+  {
+    return this.httpClient
+			.get<any>('https://localhost:7043/api/product/filterpricebrand?id='+id+'&cate='+cate.toString(),{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+     })});
+		
+  }
+
   public loadBrand()
   {
     return this.httpClient

@@ -30,6 +30,10 @@ export class TrademarkService {
       'Authorization': 'Bearer ' + this.token
    })});
   }
+  EditTrademarkImg(data:FormData,id:number)
+  {
+    return this.httpClient.post<any>('https://localhost:7043/api/trademark/upload1?id='+id.toString(),data,{reportProgress: true, observe: 'events'});
+  }
   DeleteTrademark(id:number)
   {
     return this.httpClient.post<any>('https://localhost:7043/api/trademark/removetrademark?id='+id.toString(),{headers: new HttpHeaders({ 
@@ -41,6 +45,14 @@ export class TrademarkService {
   getAllTrademark()
   {
     return this.httpClient.get<any>('https://localhost:7043/api/trademark/getalltrademark',{headers: new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.token
+   })});
+  }
+
+  search(txt:string)
+  {
+    return this.httpClient.get<any>('https://localhost:7043/api/trademark/search?txtSearch='+txt,{headers: new HttpHeaders({ 
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.token
    })});

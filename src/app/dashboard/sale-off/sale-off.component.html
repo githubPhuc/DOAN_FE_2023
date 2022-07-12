@@ -1,123 +1,189 @@
-<div class="container" style="display: flex;">
-<div class="check" style="display: block; margin-top: 5px;">
-    <input type="radio" name="check" [checked]="checkCate" (change)="tick()">&nbsp;Giảm theo danh mục <br> <br>
-    <input type="radio" name="check" [checked]="checkBrand" (change)="tick()">&nbsp;Giảm theo thương hiệu
-</div>
-
-  
-    <form *ngIf="type" [formGroup]="saleForm" (ngSubmit)="onSubmit(saleForm)" style="display: flex; margin-left: 15px; margin-top: 7px;">
-    
-        <div class="form-group" style="margin-left:30px;width: 200px;" >
+<div class="row page-header">
+    <div class="col-6 align-self-center ">
+      <h2>Quản lý khuyến mãi</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']" style="font-size: 15px;">Trang chủ</a></li>
          
-            <select name="" id="" formControlName="idCate">
-                <option *ngFor="let c of category" value="{{c.id}}">{{c.name}}</option>
-            </select>
-        </div>
-    
-        <div class="check" style="display: block; margin-left: 50px;">
-            <input type="radio" name="check" [checked]="checkPer" (change)="tick1()"> %<br> <br>
-            <input type="radio" name="check" [checked]="checkPri" (change)="tick1()"> VND
-        </div>
-    <div class="form-group" style="width: 200px;">
-        <input *ngIf="!checkPer" type="number"  formControlName="price" value="0" style="margin-left: 10px;" >&nbsp;
-        <input *ngIf="checkPer" type="number"  [max]="100"  formControlName="percent" value="0">&nbsp;
+            <li class="breadcrumb-item active" style="font-size: 15px;">Quản lý khuyến mãi</li>		
+        </ol>
     </div>
-
-   
-       <div class="btn">
-        <button class="btn btn-info" type="submit">Lưu</button>
-       </div>
-    </form>
-    <form *ngIf="!type" [formGroup]="saleForm" (ngSubmit)="onSubmit(saleForm)" style="display: flex; margin-left: 15px; margin-top: 7px;">
-    
-        <div class="form-group" style="margin-left:30px;width: 200px;">
-         
-            <select name="" id="" formControlName="idBrand">
-                <option *ngFor="let c of brand" value="{{c.id}}">{{c.name}}</option>
-            </select>
-        </div>
-    
-        <div class="check" style="display: block; margin-left: 50px;">
-            <input type="radio" name="check" [checked]="checkPer" (change)="tick1()"> %<br> <br>
-            <input type="radio" name="check" [checked]="checkPri" (change)="tick1()"> VND
-        </div>
-    <div class="form-group" style="width: 200px;">
-        <input *ngIf="!checkPer" type="number"  formControlName="price" value="0" style="margin-left: 10px;" >&nbsp;
-        <input *ngIf="checkPer" type="number"   formControlName="percent" value="0">&nbsp;
-    </div>
-
-   
-       <div class="btn">
-        <button class="btn btn-info" type="submit">Lưu</button>
-       </div>
-    </form>
-    
-    
-    
-   
 </div>
+<style>
+    ol li {
+        display: flex;
+        align-items: center;
+        color: #868e96;
+        
+    }
+</style>
+
 <div class="row">
-    <div class="col-lg-6 ">
-  
-            <form [formGroup]="searchForm" (ngSubmit)="onSearch(searchForm)">
-            <div class="form-group">
-                <label>Tìm kiếm</label>
-                <div class="sr">
-                <input type="text" placeholder="Nhập tên sản phẩm cần tìm" class="form-control form-control-rounded"  id="txt"  formControlName="txt">
-                <button id="search" class="btn btn-info" ><i class="fa fa-search "></i>&nbsp;Tìm kiếm</button>
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="container" style="display: flex; margin: 0px;">
+                            <div class="check" style="display: block; margin-top: 5px;">
+                                <input type="checkbox" name="checkAll" [checked]="checkAll" (change)="tick2()">&nbsp;Tất cả <br>
+                                <input type="checkbox" name="check" [checked]="checkCate" (change)="tickC()">&nbsp;Giảm theo danh mục <br>
+                                <input type="checkbox" name="check" [checked]="checkBrand" (change)="tickB()">&nbsp;Giảm theo thương hiệu <br>
+                                
+                            </div>
+                            
+                              
+                                <form *ngIf="type" [formGroup]="saleForm" (ngSubmit)="onSubmit(saleForm)" style="display: flex; margin-left: 15px; margin-top: 7px;">
+                                
+                                    <div  class="form-group" style="margin-left:30px;width: 200px;" >
+                                      
+                                        <select *ngIf="!all" name="" id="" formControlName="idCate" style="width: 150px;">
+                                            <option *ngFor="let c of category" value="{{c.id}}">{{c.name}}</option>
+                                        </select>
+                                    </div>
+                                
+                                    <div class="check" style="display: block; margin-left: 50px;">
+                                        <input type="radio" name="check" [checked]="checkPer" (change)="tick1()"> %<br> 
+                                        <input type="radio" name="check" [checked]="checkPri" (change)="tick1()"> VND
+                                    </div>
+                                <div class="form-group" style="width: 200px;">
+                                    <input *ngIf="!checkPer" type="number"  formControlName="price" value="0" style="margin-left: 10px;" >&nbsp;
+                                    <input *ngIf="checkPer" type="number"  [max]="100"  formControlName="percent" value="0">&nbsp;
+                                </div>
+                            
+                               
+                                   <div class="btn">
+                                    <button class="btn btn-info" type="submit">Lưu</button>
+                                   </div>
+                                </form>
+                                <form *ngIf="!type" [formGroup]="saleForm" (ngSubmit)="onSubmit(saleForm)" style="display: flex; margin-left: 15px; margin-top: 7px;">
+                                
+                                    <div class="form-group" style="margin-left:30px;width: 200px;">
+                                     
+                                        <select  *ngIf="!all" name="" id="" formControlName="idBrand" style="width: 150px;">
+                                            <option *ngFor="let c of brand" value="{{c.id}}">{{c.name}}</option>
+                                        </select>
+                                    </div>
+                                
+                                    <div class="check" style="display: block; margin-left: 50px;">
+                                        <input type="radio" name="check" [checked]="checkPer" (change)="tick1()"> %<br>
+                                        <input type="radio" name="check" [checked]="checkPri" (change)="tick1()"> VND
+                                    </div>
+                                <div class="form-group" style="width: 200px;">
+                                    <input *ngIf="!checkPer" type="number"  formControlName="price" value="0" style="margin-left: 10px;" >&nbsp;
+                                    <input *ngIf="checkPer" type="number"   formControlName="percent" value="0">&nbsp;
+                                </div>
+                            
+                               
+                                   <div class="btn">
+                                    <button class="btn btn-info" type="submit">Lưu</button>
+                                   </div>
+                                </form>
+                                
+                                
+                                
+                               
+                            </div>
+                    </div>
+                    <div class="col-lg-6 ">
+                  
+                            <form [formGroup]="searchForm" (ngSubmit)="onSearch(searchForm)">
+                            <div class="form-group">
+                                <label>Tìm kiếm</label>
+                                <div class="sr">
+                                <input type="text" placeholder="Nhập tên sản phẩm cần tìm" class="form-control form-control-rounded"  id="txt"  formControlName="txt">
+                                <button id="search" class="btn btn-info" ><i class="fa fa-search "></i>&nbsp;Tìm kiếm</button>
+                            </div>
+                            </div>
+                        </form>
+                            
+                
+                    </div>
+                    <div class="col-lg-6" style="display: flex;" >
+                        <div class="fil" style="display: block;">
+                            <label>Trạng thái :</label>&nbsp;
+                            <select #fil name="" id="" (change)="filter(fil.value)" class="form-control">
+                                <option value="1">Tất cả</option>
+                                <option value="2">Đang giảm giá</option>
+                            </select>
+                        </div>
+                        <div class="fil" style="display: block; margin-left: 50px;">
+                            <label>Đặt lại giá:</label>&nbsp;
+                            <select #cho name="" id="" (change)="choose1(cho.value)" class="form-control">
+                                <option value="0">Tất cả</option>
+                                <option value="1">Danh mục</option>
+                                <option value="2">Thương hiệu</option>
+                          
+                            </select>
+                        </div>
+                        <div *ngIf="choose==1" class="fil" style="display: block; margin-left: 20px;">
+                            <label>Danh mục:</label>&nbsp;
+                            <select #fil1 name="" id="" (change)="choose2(fil1.value)" class="form-control">
+                                <option *ngFor="let c of category" value="{{c.id}}">{{c.name}}</option>
+                          
+                            </select>
+                        </div>
+                        <div *ngIf="choose==2" class="fil" style="display: block; margin-left: 20px;">
+                            <label>Thương hiệu:</label>&nbsp;
+                            <select #fil2 name="" id="" (change)="choose3(fil2.value)" class="form-control">
+                                <option *ngFor="let c of brand" value="{{c.id}}">{{c.name}}</option>
+                          
+                            </select>
+                        </div>
+                        <div  class="fil" style="display: block; margin-left: 20px; margin-top: 32px;">
+                            <label for=""></label>
+                            <a (click)="resetPrice()" class="btn btn-info">Đặt lại</a>
+                        </div>
+                       
+                    </div>
+                    
+                </div>
+                <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                <strong>Hình ảnh</strong>
+                            </th>
+                            <th>
+                                <strong >Tên sản phẩm</strong>
+                            </th>
+                            <th>
+                                <strong>Giá</strong>
+                            </th>
+                            <th>
+                                <strong>Giá khuyến mãi</strong>
+                            </th>
+                            <th>
+                                <strong>Tác vụ</strong>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let pro of POSTS ">
+                            <td *ngIf="pro.image!=null"><img src="../../../assets/img/product/{{pro.image}}" style="width: 150px"
+                                    alt=""></td>
+                            <td *ngIf="pro.image==null"><img src="../../../assets/img/product/noimage.png" style="width: 150px" alt="">
+                            </td>
+                            <td style="white-space: normal;">
+                                {{pro.name}}
+                            </td>
+                            <td>{{pro.price | currency:'VND'}}</td>
+                            <td>{{pro.salePrice | currency:'VND'}}</td>
+                
+                
+                            <td class="">
+                                <button [routerLink]="['/admin/product/pro-detail',pro.id]" type="button" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>&nbsp;
+                                <button (click)="openSale(pro.id)"  type="button" class="btn btn-sm btn-info"><i class="fa fa-percent"></i></button>&nbsp;
+                                <button (click)="resetp(0,0,pro.id)"  type="button" class="btn btn-sm btn-info"><i class="fa fa-refresh"></i></button>&nbsp;
+                            </td>
+                        </tr>
+                
+                    </tbody>
+                
+                </table>
             </div>
-            </div>
-        </form>
-            
-
-    </div>
-    <div class="col-lg-6 align-self-center text-right">
-        <a class="nav-link"  (click)="refresh()" class="btn btn-info box-shadow  btn-rounded"><i class="fa fa-refresh"></i></a>
+        </div>
     </div>
 </div>
-<table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline" width="100%">
-    <thead>
-        <tr>
-            <th>
-                <strong>Hình ảnh</strong>
-            </th>
-            <th>
-                <strong >Tên sản phẩm</strong>
-            </th>
-            <th>
-                <strong>Giá</strong>
-            </th>
-            <th>
-                <strong>Giá khuyến mãi</strong>
-            </th>
-            <th>
-                <strong>Action</strong>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let pro of POSTS ">
-            <td *ngIf="pro.image!=null"><img src="../../../assets/img/product/{{pro.image}}" style="width: 150px"
-                    alt=""></td>
-            <td *ngIf="pro.image==null"><img src="../../../assets/img/product/noimage.png" style="width: 150px" alt="">
-            </td>
-            <td style="white-space: normal;">
-                {{pro.name}}
-            </td>
-            <td>{{pro.price | currency:'VND'}}</td>
-            <td>{{pro.salePrice | currency:'VND'}}</td>
-
-
-            <td class="">
-                <button (click)="goToProductDetails(pro.id)"  type="button" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>&nbsp;
-                <button (click)="openSale(pro.id)"  type="button" class="btn btn-sm btn-info"><i class="fa fa-percent"></i></button>&nbsp;
-                <button (click)="resetp(0,0,pro.id)"  type="button" class="btn btn-sm btn-info"><i class="fa fa-refresh"></i></button>&nbsp;
-            </td>
-        </tr>
-
-    </tbody>
-
-</table>
 <!-- <div class="d-flex justify-content-center">
     <pagination-controls
       previousLabel="Prev"

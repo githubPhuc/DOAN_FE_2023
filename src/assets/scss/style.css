@@ -2767,12 +2767,12 @@ iframe.wysihtml5-sandbox {
     transform: rotate(360deg); } }
 .page-header {
   margin: 0px;
-  padding: 15px 15px;
+  padding: 15px;
   margin-bottom: 30px;
   background: #fff;
   -webkit-box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08);
   box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08);
-  margin-left: 240px; }
+ }
   .page-header h2 {
     margin: 2px 0;
     font-size: 18px; }

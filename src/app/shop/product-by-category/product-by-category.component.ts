@@ -30,7 +30,18 @@ export class ProductByCategoryComponent implements OnInit {
   })
 }
 
-
+  filter(id:string)
+  {
+    if(id=='0')
+    {
+      this.shopservice.getProductByCategory(this.txt).subscribe(data=>{
+        this.product=data;
+      })
+    }
+    this.shopservice.FilPriceCate(id,this.txt).subscribe(res=>{
+      this.product=res;
+    })
+  }
   addToWishList(id:number)
   {
     this.shopservice.addWishList({productid:id,appuserid:localStorage.getItem('userid')}).subscribe(data=>{

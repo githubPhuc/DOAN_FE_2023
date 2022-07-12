@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AboutCreComponent } from './about-cre.component';
+import { EditSlideshowComponent } from './edit-slideshow.component';
 
-describe('AboutCreComponent', () => {
-  let component: AboutCreComponent;
-  let fixture: ComponentFixture<AboutCreComponent>;
+describe('EditSlideshowComponent', () => {
+  let component: EditSlideshowComponent;
+  let fixture: ComponentFixture<EditSlideshowComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AboutCreComponent ]
+      declarations: [ EditSlideshowComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AboutCreComponent);
+    fixture = TestBed.createComponent(EditSlideshowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -10,6 +10,12 @@ import { InvoiceService } from '../invoice.service';
 })
 export class StatisticalComponent implements OnInit {
 
+  POSTS:any
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 9;
+  tableSizes: any = [3, 6, 9, 12];
+  tkThang:boolean=false;
   re:any;
   invoice:any;
   saleTotal:any;
@@ -32,18 +38,68 @@ export class StatisticalComponent implements OnInit {
   }
   onSubmit(form:FormGroup)
   {
-    this.invoiceService.thongKe(form.value.start,form.value.end).subscribe(data=>{
-      this.re=data.tksp;
-      if(data.inv[0]!=null)
-      {
-        this.isSta=true;
-      }
-      this.invoice=data.inv;
-      this.importTotal=data.importTotal;
-      this.saleTotal=data.saleTotal;
-      this.importQuantily=data.importQuantily;
-      this.saleQuantily=data.saleQuantily;
+    this.invoiceService.thongKeKhoang(form.value.start,form.value.end).subscribe(data=>{
+    
+      this.invoice=data;
+      // this.importTotal=data.importTotal;
+      // this.saleTotal=data.saleTotal;
+      // this.importQuantily=data.importQuantily;
+      // this.saleQuantily=data.saleQuantily;
+      this.fetchPosts();
+    });
+  }
+  reset()
+  {
+    this.POSTS.lst=[];
+    this.POSTS.nhap=0;
+    this.POSTS.ban=0;
+    this.POSTS.totaln=0;
+    this.POSTS.totalb=0;
+ 
+  }
+  thongKe(id:string)
+  {
+    if(id=='0')
+    {
+        return;
+    }
+    if(id=='1')
+    {
+
+   this.tkThang=false;
+    this.invoiceService.thongKeTuan().subscribe(res=>{
+      
+      this.invoice=res;
+
+      this.fetchPosts();
+    })
+
+  }
+  if(id=='2')
+  {
+    this.tkThang=true;
+  }
+  }
+  thongKeThang(id:string)
+  {
+    this.isSta=false;
+    this.invoiceService.thongKeThang(id).subscribe(res=>{
+      this.invoice=res;
+
+      this.fetchPosts();
     });
   }
 
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.fetchPosts();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchPosts();
+  }
+  fetchPosts(): void {
+    this.POSTS=this.invoice;
+  }
 }

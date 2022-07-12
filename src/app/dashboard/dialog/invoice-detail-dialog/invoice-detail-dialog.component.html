@@ -2,32 +2,59 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-default">
-              Chi tiết hoá đơn
+                Chi tiết hoá đơn
             </div>
-         
+
             <div class="card-body">
                 <div class="row-md" style="display: flex;">
                     <div class="col-md-6">
                         <div class="info" style="display: block;">
                             <div style="display: flex;" class="if">
-                             <div class="lable">Ngày lập :</div>
-                             <div class="content">{{data2.date | date:'dd/MM/yyyy'}}</div>
+                                <div class="lable">Ngày lập :</div>
+                                <div class="content">{{data2.date | date:'dd/MM/yyyy'}}</div>
                             </div>
                             <div style="display: flex;" class="if">
-                             <div class="lable">Khách hàng :</div>
-                             <div class="content">{{data2.username}}</div>
+                                <div class="lable">Khách hàng :</div>
+                                <div class="content">{{data2.username}}</div>
                             </div>
                             <div style="display: flex;" class="if">
-                             <div class="lable">Tổng hoá đơn :</div>
-                             <div class="content">{{data2.total | currency:'VND'}}</div>
+                                <div class="lable">Địa chỉ :</div>
+                                <div class="content">{{data2.shippingAddress}}</div>
                             </div>
-                         </div>
+                            <div style="display: flex;" class="if">
+                                <div class="lable">Tổng hoá đơn :</div>
+                                <div class="content">{{data2.total | currency:'VND'}}</div>
+                            </div>
+                            <div style="display: flex;" class="if">
+                                <div class="lable">Trạng thái :</div>
+                                <div class="content"><select #fil name="" id="" class="form-control m-b" (change)="choose(fil.value)">
+                                        <option value="0">
+                                            <span
+                                                *ngIf="data2.status==true&&data2.complete==true&&data2.cancel!=true">Hoàn
+                                                thành</span>
+                                            <span
+                                                *ngIf="data2.status==true&&data2.complete==false&&data2.cancel!=true">Đang
+                                                giao</span>
+                                            <span *ngIf="data2.cancel==true">Đã huỷ</span>
+                                            <span
+                                    *ngIf="data2.status==false&&data2.complete==false&&data2.cancel!=true">Chờ xác nhận</span>
+                                            
+                                        </option>
+                                        <option value="1">Đang giao</option>
+                                        <option value="2">Đã huỷ</option>
+                                        <option value="3">Hoàn thành</option>
+                                    </select></div>
+                                    
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6" >
+                    <div class="col-md-6">
                         <span>*Ghi chú</span>
                         <div class="content">
-                            <textarea name="" id="" cols="30" rows="10" [value]="data2.note" [disabled]="true"></textarea>
+                            <textarea name="" id="" cols="30" rows="30" [value]="data2.note"
+                                [disabled]="true" style="height: 110px;"></textarea>
                         </div>
+
                     </div>
                 </div>
                 <!-- <div class="head-iv">
@@ -42,61 +69,71 @@
                     <span>Ghi chú :</span> <textarea [value]="data1.note" name="" id="" cols="30" rows="10" [disabled]="true"></textarea>
                 </div> -->
                 <table id="datatable" class="table table-striped dt-responsive nowrap">
-                                <thead>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>Sản phẩm</th>
-                                        <th>Số lượng </th>
-                                        <th>Thành tiền</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let inv of data1; let i=index">
-                                        <td>{{i+1}}</td>
-                                        <td>{{inv.sanPham}}</td>
-                                        <td>{{inv.soluong}}</td>
-                                        <td>{{inv.donGia | currency:'VND'}}</td>
-                                    </tr>
-                                </tbody>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng </th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let inv of data1; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{inv.sanPham}}</td>
+                            <td>{{inv.soluong}}</td>
+                            <td>{{inv.donGia | currency:'VND'}}</td>
+                        </tr>
+                    </tbody>
                 </table>
                 
-                
+
+
             </div>
+            
+        </div>
+        <div class="btn">
+            <a (click)="save()" class="btn btn-info">Lưu</a>
         </div>
     </div>
-    <div class="col-md-12" id="btn">
-        <div>
-            <button (click)="closeDialog()" type="button" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
-        </div>
-    </div>
-  
+
 </div>
-
-
-
-                        <style>
-                            #btn {
+<div class="col-md-12" id="btn">
+    <div>
+        <a (click)="closeDialog()"><span style="font-weight: bold; font-size:20px;">x</span></a>
+    </div>
+</div>
+<style>
+    #btn {
                                
                               
-                                display: flex;
-                                justify-content: flex-end;
-                                position: fixed;
-                                width: 50%;
-                                top: 130px;
+                               display: flex;
+                               justify-content: flex-end;
+                               position: fixed;
+                               width: 50%;
+                               top: 120px;
+                               right: 360px;
 
-                            }
-                            button {
-                                margin-right: 20px;
-                            }
-                            .info {
-                               list-style-type: none;
-                            }
-                            .lable {
-                                width: 150px;
-                                font-weight: bold;
-                            }
-                           .if {
-                                margin-bottom: 10px;
                            }
-                        </style> 
+    </style>
 
+<style>
+ 
+
+    button {
+        margin-right: 20px;
+    }
+
+    .info {
+        list-style-type: none;
+    }
+
+    .lable {
+        width: 150px;
+        font-weight: bold;
+    }
+
+    .if {
+        margin-bottom: 10px;
+    }
+</style>

@@ -19,7 +19,7 @@ export class InvoiceComponent implements OnInit {
   POSTS: any;
   page: number = 1;
   count: number = 0;
-  tableSize: number = 10;
+  tableSize: number = 6;
   tableSizes: any = [3, 6, 9, 12];
   status:any=0;
   public invoice:any
@@ -76,7 +76,10 @@ export class InvoiceComponent implements OnInit {
  complete(id:number)
  {
   this.responseIn.hoanThanh(id).subscribe(data=>{
-    
+    if(data.status==200)
+    {
+      this.fetchPosts();
+    }
   })
  }
 
@@ -92,7 +95,7 @@ export class InvoiceComponent implements OnInit {
  reload()
  {
   this.responseIn.getAllInvoice().subscribe(data=>{
-    this.invoice=data.inv;
+    this.POSTS=data.inv;
     console.log(data);
     
   });

@@ -23,13 +23,13 @@
 
                     <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files,$event)"
                         style="display:none;">
-                    <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+                    <button type="button" class="btn btn-info" (click)="file.click()">Tải ảnh lên</button>
                 </span>
 
             </div>
         </div> <br>
-        <button class="btn btn-success btn-icon" type="submit" [disabled]="!slideForm.valid"><i
-                class="fa fa-floppy-o "></i>Save</button>
+        <button class="btn btn-info btn-icon" type="submit" [disabled]="!slideForm.valid"><i
+                class="fa fa-floppy-o "></i>Lưu</button>
 
 
 

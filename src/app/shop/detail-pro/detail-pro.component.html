@@ -145,17 +145,24 @@
                                     </div>
 
 
-                                    <button (click)="addCart(product.id)"><i id="icon" class="fa fa-cart-plus"></i>
-                                        Thêm vào giỏ hàng </button>
+                                    <div>
+                                        <button (click)="addToWishList(product.id)"><i id="icon" class="fa fa-heart"></i>
+                                        </button>&nbsp;
+                                  <button (click)="addCart(product.id)"><i id="icon" class="fa fa-cart-plus"></i>
+                                      Thêm vào giỏ hàng </button>
+                                    </div>
                                 </div>
                                 <div *ngIf="product.salePrice==0" class="product__price">
 
                                     <span class="product__price-reg" style="font-size: 30px;">{{product.price |
                                         currency:'VND'}}</span>
 
-
-                                    <button (click)="addCart(product.id)"><i id="icon" class="fa fa-cart-plus"></i>
-                                        Thêm vào giỏ hàng </button>
+                                        <div>
+                                            <button (click)="addToWishList(product.id)"><i id="icon" class="fa fa-heart"></i>
+                                            </button>&nbsp;
+                                      <button (click)="addCart(product.id)"><i id="icon" class="fa fa-cart-plus"></i>
+                                          Thêm vào giỏ hàng </button>
+                                        </div>
                                 </div>
                                 <div class="info" style="margin-top: 5px;">
                                     <table>
@@ -222,9 +229,9 @@
 
             <!-- Start Product Details Tab -->
             <div class="lable-cmt">
-                <h2 style="color: rgb(152, 150, 150);">Bình luận ({{product.comment}}) </h2>
+                <h2 style="color: rgb(152, 150, 150);" id="comment">Bình luận ({{product.comment}}) </h2>
             </div>
-            <div class="col-md-12" style="border: 1px solid rgb(201, 200, 200); padding: 20px; border-radius: 5px;" id="comment">
+            <div class="col-md-12" style="border: 1px solid rgb(201, 200, 200); padding: 20px; border-radius: 5px; min-height: 150px;" >
               <div class="review-box">
                 <div *ngFor="let cmt of comment" class="single-review" style="margin-bottom: 15px; display: block;" >
                    <div *ngIf="cmt.repId==0">

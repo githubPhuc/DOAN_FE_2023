@@ -131,9 +131,12 @@ window.scrollTo(0,0);
     {
       return;
     }
-    this.shopService.addWishList(id).subscribe(data=>{
-
-    })
+    this.shopService.addWishList({productid:id,appuserid:localStorage.getItem('userid')}).subscribe(data=>{
+      if(data.status==200)
+      {
+        alert(data.msg);
+      }
+    });
   }
   viewAnother(id:number)
   {

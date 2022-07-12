@@ -109,9 +109,17 @@
                                             top: 50px;
                                             z-index: 1;">
                                                 <!-- results of ngFor is passed to appFilter with argument searchText -->
-                                                <li class="list-group-item" id="item-search" *ngFor="let c of product.slice(0,10)" style="display: flex;">
+                                                <li class="list-group-item" id="item-search" *ngFor="let c of product.slice(0,7)" style="display: flex;">
                                                    <div class="img"> <img src="../../../assets/img/product/{{c.image}}" alt="" width="50px"></div>
-                                                 <a class="item-search" style="border-bottom: 1px solid rgb(228, 225, 225); font-size:13px " (click)="goDetail(c.id)">{{c.name}}</a>
+                                                    <div style="margin-left: 10px;">
+                                                        <a class="item-search" style="border-bottom: 1px solid rgb(228, 225, 225); font-size:15px; " (click)="goDetail(c.id)">{{c.name}}</a>
+                                                        <div *ngIf="c.salePrice==0" class="pri" style="width: 438px;">
+                                                            <span style="font-size: 13px;">{{c.price | currency:'VND'}}</span>
+                                                        </div>
+                                                        <div *ngIf="c.salePrice>0" class="pri" style="width: 438px;">
+                                                           <del><span style="font-size: 11px; opacity: 70%;">{{c.price | currency:'VND'}}</span></del> &nbsp; <span style="font-size: 13px;">{{c.salePrice | currency:'VND'}}</span>
+                                                        </div>
+                                                    </div>
                                                 </li>
                                               </ul>
                                           

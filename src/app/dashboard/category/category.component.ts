@@ -91,12 +91,20 @@ export class CategoryComponent implements OnInit {
     console.log(this.cate);
     this.responseCate.postCategory(this.cate)
       .subscribe(data => {
+        if(data.status==500)
+        {
+          alert(data.msg);
+        }
+        if(data.status==200)
+        {
+         location.reload();
+        }
         console.log(data);
        
       }); 
      
 
-      window.location.reload();
+      
   }
 
   onSubmit1(form:FormGroup)

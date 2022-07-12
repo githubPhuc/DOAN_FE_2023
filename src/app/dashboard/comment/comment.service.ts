@@ -30,6 +30,15 @@ export class CommentService {
      })});
 		
   }
+  public search(id:string)
+  {
+    return this.httpClient
+			.get<any>('https://localhost:7043/api/comment/search?txtSearch='+id,{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': this.strToken
+     })});
+		
+  }
 
   public addComment(data:any)
   {

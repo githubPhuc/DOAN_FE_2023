@@ -1,9 +1,25 @@
+<div class="row page-header">
+    <div class="col-6 align-self-center ">
+      <h2>Hoá đơn chờ duyệt</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']" style="font-size: 15px;">Trang chủ</a></li>
+         
+            <li class="breadcrumb-item active" style="font-size: 15px;">Hoá đơn chờ duyệt</li>		
+        </ol>
+    </div>
+</div>
+<style>
+    ol li {
+        display: flex;
+        align-items: center;
+        color: #868e96;
+        
+    }
+</style>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header card-default">
-              Danh sách hoá đơn chờ duyệt
-            </div>
+
             <div class="card-body">
                 <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>

@@ -1,3 +1,6 @@
+<div class="title">
+    <span style="display:flex;justify-content:center; margin-bottom:20px; font-size:20px; font-weight:500;">Cập nhật danh mục</span>
+</div>
 <div class="col-md-12">
     <form [formGroup]="categoryForm" (ngSubmit)="onSubmit(categoryForm)">
                           
@@ -5,7 +8,7 @@
           <label>Tên danh mục</label>
           <div class="sr1">	
           <input type="text" placeholder="" class="form-control form-control-rounded"  id="name"  formControlName="name">
-          <button class="btn btn-info" type="submit" [disabled]="!categoryForm.valid"><i class="fa fa-floppy-o "></i>&nbsp;Save</button>
+          <button class="btn btn-info" type="submit" [disabled]="!categoryForm.valid"><i class="fa fa-floppy-o "></i>&nbsp;Lưu</button>
       </div>
   
   </div>

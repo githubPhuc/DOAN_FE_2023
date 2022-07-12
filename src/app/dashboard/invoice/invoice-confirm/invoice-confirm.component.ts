@@ -21,7 +21,7 @@ export class InvoiceConfirmComponent implements OnInit {
   openDialog(id:any)
   {
 
-      this.dialogSer.opentDialog(id);
+      this.dialogSer.opentDialog1(id);
     
     
   }

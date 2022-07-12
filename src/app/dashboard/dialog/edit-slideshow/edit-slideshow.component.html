@@ -1,0 +1,50 @@
+
+<div class="title">
+    <span style="display:flex;justify-content:center; margin-bottom:20px; font-size:20px; font-weight:500;">Cập nhật slideshow</span>
+</div>
+<div class="col-md-12">
+    <form [formGroup]="slideForm" (ngSubmit)="onSubmit(slideForm)">
+
+
+       
+        <div class="form-group">
+            <label>URL</label>
+            <div class="sr1">
+                <input type="text" placeholder="" class="form-control form-control-rounded" id="Link"
+                    formControlName="link"> <br>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Hình ảnh</label>
+            <div *ngIf="img==null" class="review" >
+                <img src="../../../../assets/img/slide/{{slide1.image}}"  alt="..." style="width: 150px;">
+            </div>
+            <div *ngIf="img!=null" class="review" >
+                <img [src]="img"  alt="..." style="width: 150px;">
+            </div>
+            <div class="fileinput-new" data-provides="fileinput">
+
+
+                <span class="btn-file">
+
+                    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files,$event)"
+                        style="display:none;">
+                    <button type="button" class="btn btn-info" (click)="file.click()">Tải ảnh lên</button>
+                </span>
+
+            </div>
+        </div> <br>
+        <button class="btn btn-info btn-icon" type="submit" [disabled]="!slideForm.valid"><i
+                class="fa fa-floppy-o "></i>Lưu</button>
+
+
+
+
+    </form>
+</div>
+<style>
+    .sr1 {
+        width: 600px;
+    }
+</style>

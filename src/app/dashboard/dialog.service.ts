@@ -9,8 +9,11 @@ import { ConfirmDeleteComponent } from './dialog/confirm-delete/confirm-delete.c
 import { ConfirmComponent } from './dialog/confirm/confirm.component';
 import { EditBrandComponent } from './dialog/edit-brand/edit-brand.component';
 import { EditCategoryComponent } from './dialog/edit-category/edit-category.component';
+import { EditSlideshowComponent } from './dialog/edit-slideshow/edit-slideshow.component';
+import { EditSuppComponent } from './dialog/edit-supp/edit-supp.component';
 import { ImportDetailComponent } from './dialog/import-detail/import-detail.component';
 import { InvoiceDetailDialogComponent } from './dialog/invoice-detail-dialog/invoice-detail-dialog.component';
+import { InvoiceDetailUserComponent } from './dialog/invoice-detail-user/invoice-detail-user.component';
 import { RepCommentComponent } from './dialog/rep-comment/rep-comment.component';
 import { SaleComponent } from './dialog/sale/sale.component';
 import { ShowSuccessComponent } from './dialog/show-success/show-success.component';
@@ -30,13 +33,28 @@ export class DialogService {
   {
 
    this.dialog1.open(InvoiceDetailDialogComponent,{
-    height: '500px',
-    width: '800px',
+    height: '600px',
+    width: '1000px',
     data: {
       'id': id
     }
   }
   );
+  
+}
+
+opentDialog1(id:number)
+{
+
+ this.dialog1.open(InvoiceDetailUserComponent,{
+  height: '500px',
+  width: '800px',
+  data: {
+    'id': id
+  }
+}
+);
+
 }
 openSale(id:number)
 {
@@ -127,8 +145,20 @@ openDialogEditBrand(id:number)
   {
 
    this.dialog1.open(EditBrandComponent,{
-    height: '150px',
+    height: '300px',
     width: '400px',
+    data: {
+      'id': id
+    }
+  }
+  );
+}
+openDialogEditSup(id:number)
+  {
+
+   this.dialog1.open(EditSuppComponent,{
+    height: '450px',
+    width: '600px',
     data: {
       'id': id
     }
@@ -142,6 +172,19 @@ openDialogCreateSlide()
     height: '350px',
     width: '670px',
 
+  }
+  );
+}
+
+openDialogEditSlide(id:number)
+  {
+
+   this.dialog1.open(EditSlideshowComponent,{
+    height: '350px',
+    width: '670px',
+    data: {
+      'id': id
+    }
   }
   );
 }

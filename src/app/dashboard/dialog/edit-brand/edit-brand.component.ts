@@ -10,7 +10,9 @@ import { TrademarkService } from '../../trademark/trademark.service';
   styleUrls: ['./edit-brand.component.scss']
 })
 export class EditBrandComponent implements OnInit {
-
+  img:any;
+  img1:any;
+  imgshow:any;
   categoryForm = new FormGroup({
   
     name: new FormControl(''),
@@ -22,24 +24,53 @@ export class EditBrandComponent implements OnInit {
   data1:any;
   ngOnInit(): void {
       this.tradeService.getTrademark(this.data.id).subscribe(res=>{
+        this.imgshow=res.image;
        this.categoryForm.patchValue(res);
       
       })
   }
 
 
+  uploadFileShow(file: any, event:Event)
+  {
+    this.img=<File>file[0];
+    let selectedFile1 = (event.target as HTMLInputElement).files?.item(0);
+    if (selectedFile1) {
+      if (["image/jpeg", "image/png", "image/svg+xml"].includes(selectedFile1.type)) {
+        let fileReader = new FileReader();
+        fileReader.readAsDataURL(selectedFile1);
 
+        fileReader.addEventListener('load', (event) => {
+        
+          this.img1=event.target?.result;
+  
+        })
+      }
+    } 
+  }
   onSubmit(form:FormGroup)
   {
+  let  formData=new FormData();
+  formData.append('image',this.img);
+  this.tradeService.EditTrademarkImg(formData,this.data.id).subscribe(res=>{
+    
+  })
     let bra= {
   
       Name: form.value.name
     }
     this.tradeService.EditTrademark(this.data.id,bra).subscribe(res=>{
-    
+      if(res.status==500)
+      {
+        alert(res.msg);
+      }
+      if(res.status==200)
+      {
+        this.closeDialog();
+        location.reload();
+      }
     });
-    this.closeDialog();
-    location.reload();
+   
   }
 
   closeDialog()

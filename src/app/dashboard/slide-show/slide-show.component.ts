@@ -37,12 +37,33 @@ export class SlideShowComponent implements OnInit {
   }
   delete(id:number)
   {
-    this.slideService.deleteSlide(id).subscribe(data=>{
-      if(data.status==200)
+    if(window.confirm('Bạn có muốn xoá ?'))
+    {
+      this.slideService.deleteSlide(id).subscribe(data=>{
+        if(data.status==200)
+        {
+          alert("Xoá thành công");
+          this.loadSlide().subscribe(data=>{
+            this.POSTS=data;
+          })
+          
+        }
+      })
+    }
+  }
+  openEdit(id:number)
+  {
+    this.dialog.openDialogEditSlide(id);
+
+  }
+  active(id:number)
+  {
+    this.slideService.active(id).subscribe(res=>{
+      if(res.status==200)
       {
-        alert("Xoá thành công");
-        location.reload();
-        
+        this.loadSlide().subscribe(data=>{
+          this.POSTS=data;
+        })
       }
     })
   }

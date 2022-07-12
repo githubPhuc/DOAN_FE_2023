@@ -29,8 +29,17 @@
                                 </td>
                                 <td class="product-name "><a
                                         (click)="goToProductDetails(c.idSanPham)">{{c.tenSanPham}}</a></td>
-                                <td class="product-price-cart text-center"><span class="amount">{{c.giaSanPham |
-                                        currency:'VND'}}</span></td>
+                                <td *ngIf="c.giaGiam<=0" class="product-price-cart text-center">
+                                    <span class="amount">{{c.giaSanPham |
+                                        currency:'VND'}}
+                                    </span></td>
+
+                                <td *ngIf="c.giaGiam>0">
+                                    <span class="product__price-del">{{c.giaSanPham | currency:'VND'}}</span>
+                                    <span class="amount">{{c.giaGiam |
+                                        currency:'VND'}}
+                                    </span>
+                                </td>
                                 <td class="product-quantities text-center">
                                     <div class="quantity d-inline-block">
                                       
@@ -57,8 +66,7 @@
                 <div *ngIf="!isempty" class="cart-table-button m-t-10">
                     <div class="cart-table-button--left">
                         <a [routerLink]="['/shop/home']"
-                            class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">CONTINUE
-                            SHOPPING</a>
+                            class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">Tiếp tục mua sắm</a>
                     </div>
                     <div class="cart-table-button--right">
 

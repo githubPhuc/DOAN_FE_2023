@@ -1,7 +1,25 @@
 <div class="row page-header">
-    <div class="col-lg-6 align-self-center ">
+    <div class="col-6 align-self-center ">
+      <h2>Quản lý nhập hàng</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']" style="font-size: 15px;">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']" style="font-size: 15px;">Hoá Đơn nhập hàng</a></li>
+            <li class="breadcrumb-item active" style="font-size: 15px;">Thêm hoá đơn nhập hàng</li>		
+        </ol>
     </div>
-    <div class="col-lg-6 align-self-center text-right">
+</div>
+<style>
+    ol li {
+        display: flex;
+        align-items: center;
+        color: #868e96;
+        
+    }
+</style>
+<div class="row " style="margin: 5px 0px;">
+    <div class="col-lg-6  ">
+    </div>
+    <div class="col-6 text-right">
         <a class="nav-link"  (click)="postImport()" class="btn btn-info box-shadow  btn-rounded"><i class="fa fa-plus"></i> Nhập hàng</a>
     </div>
 </div>
@@ -14,9 +32,22 @@
             
             <div class="btn1"><a class="btn btn-info btn-rounded" (click)="clear()"><i class="fa fa-refresh"></i>&nbsp;Làm mới</a>&nbsp;<a class="nav-link"  (click)="openAdd()" id="btn" class="btn btn-info btn-rounded "><i class="fa fa-plus"></i>&nbsp; Thêm sản phẩm</a></div>
             <div class="card-body">
+                <div class="row">
+                    <!-- <div class="col-md-6">
+                        <div style="display: flex;" class="if">
+                            <div class="lable">Ngày lập :</div>
+                            <div class="content">{{inv.date | date:'dd/MM/yyyy'}}</div>
+                        </div>
+                        <div style="display: flex;" class="if">
+                            <div class="lable">Khách hàng :</div>
+                            <div class="content">{{data2.username}}</div>
+                        </div>
+                    </div> -->
+                </div>
                 <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
+                                        <th>STT</th>
                                         <th>Tên sản phẩm</th>
                                         <th>Nhà cung cấp</th>
                                         <th>Số lượng</th>
@@ -27,7 +58,8 @@
                                 </thead>
     
                                 <tbody>
-                                    <tr *ngFor="let inv of item.imp1">
+                                    <tr *ngFor="let inv of item.imp1; let i=index">
+                                        <td>{{i+1}}</td>
                                         <td>{{inv.tenSanPham}}</td>
                                         <td>{{inv.nhaCungCap}}</td>
                                         <td>{{inv.soLuong}}</td>
@@ -43,7 +75,7 @@
                                 </tbody>
                             </table>
                             <div class="total" style="display: flex; justify-content: flex-end;">
-                               <div *ngIf="item.total>0" class="cnt" style="display: flex;">Tổng : <span>{{item.total}}</span></div>
+                               <div *ngIf="item.total>0" class="cnt" style="display: flex;"><span style="font-weight: bold;">Tổng : </span><span style="font-size: 17px;">{{item.total |currency:'VND'}}</span></div>
                             </div>
     
             </div>

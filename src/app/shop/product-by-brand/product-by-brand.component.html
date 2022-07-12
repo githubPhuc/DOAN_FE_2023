@@ -42,8 +42,16 @@
                      <!-- Start Sort Left Side -->
     
                         <div class="sort-box__right">
-                            <span>Có {{product.count}} sản phẩm.</span>
-                          
+                            <span style="width: 200px;">Có {{product.count}} sản phẩm.</span>
+                            <select #filgia name="" id="" (change)="filter(filgia.value)" class="form-control">
+                                <option value="0">Giá (Tất cả)</option>
+                                <option value="1">Dưới 15 triệu</option>
+                                <option value="2">15 - 20 triệu</option>
+                                <option value="3">20 - 25 triệu</option>
+                                <option value="4">25 - 30 triệu</option>
+                                <option value="5">Trên 30 triệu</option>
+                            </select>
+
                         </div>
                     </div> 
                       <div class="product-tab-area">

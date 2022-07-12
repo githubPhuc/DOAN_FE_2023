@@ -18,7 +18,7 @@ export class TrademarkComponent implements OnInit {
 
   });
   searchForm = new FormGroup({
-    name: new FormControl(''),
+    txtSearch: new FormControl(''),
 
   });
 
@@ -34,6 +34,10 @@ export class TrademarkComponent implements OnInit {
   onSubmit(form:FormGroup)
   {
     this.tradeService.PostTrademark(form.value.name).subscribe(data=>{
+      if(data.status==500)
+      {
+        alert(data.msg);
+      }
       if(data.status==200)
       {
         alert(data.msg);
@@ -49,7 +53,9 @@ export class TrademarkComponent implements OnInit {
   }
   onSubmit1(form:FormGroup)
   {
-
+    this.tradeService.search(form.value.txtSearch).subscribe(res=>{
+      this.tradeMark=res;
+    })
   }
 
   edit(id:number)

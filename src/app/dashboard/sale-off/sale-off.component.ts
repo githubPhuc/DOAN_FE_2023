@@ -13,15 +13,16 @@ import { TrademarkService } from '../trademark/trademark.service';
 export class SaleOffComponent implements OnInit {
   checkPer:boolean=true;
   checkPri:boolean=false;
-
-  checkCate:boolean=true;
+  all:boolean=true;
+  checkCate:boolean=false;
   checkBrand:boolean=false;
+  checkAll:boolean=true;
   disPri:boolean=false;
   disPer:boolean=true;
   type:boolean=true;
- 
+  choose:number=0;
   POSTS:any;
-
+  backup:any;
   category:any;
   brand:any;
   searchForm=new FormGroup({
@@ -60,21 +61,38 @@ export class SaleOffComponent implements OnInit {
     })
     this.productService.getAllProduct().subscribe(data=>{
       this.POSTS=data.pro;
+      this.backup=data.pro;
     })
   }
 
 
-  tick()
+  tick2()
   {
-    this.checkCate=!this.checkCate;
-    this.checkBrand=!this.checkBrand;
-    if(this.checkCate==true)
-    {
-      this.type=true;
-    }else
-    {
+    this.checkAll=true;
+    this.checkBrand=false;
+    this.checkCate=false;
+    this.all=true;
+    
+  }
+  tickB()
+  {
+    this.checkCate=false;
+    this.checkBrand=true;
+    this.checkAll=false;
+    this.all=false;
+    
       this.type=false;
-    }
+    
+  }
+  tickC()
+  {
+    this.checkCate=true;
+    this.checkBrand=false;
+    this.checkAll=false;
+    this.all=false;
+   
+      this.type=true;
+  
   }
   tick1()
   {
@@ -87,6 +105,7 @@ export class SaleOffComponent implements OnInit {
   {
     this.productService.searchProduct(form.value.txt).subscribe(data=>{
       this.POSTS=data.pro;
+      this.backup=data.pro;
     });
   }
 
@@ -108,14 +127,20 @@ export class SaleOffComponent implements OnInit {
     }
     
     this.sale.Price=form.value.price;
-    if(form.value.price=='')
+    if(form.value.price==''||this.checkPri==false)
     {
       this.sale.Price=0;
     }
     this.sale.Percent=form.value.percent;
-    if(form.value.percent=='')
+    if(form.value.percent==''|| this.checkPer==false)
     {
       this.sale.Percent=0;
+    }
+    if(this.checkAll==true)
+    {
+      this.sale.Brand=0;
+      this.sale.Cate=0;
+    
     }
     console.log(form.value);
     console.log(this.sale);
@@ -131,7 +156,7 @@ export class SaleOffComponent implements OnInit {
 
   goToProductDetails(id:number)
   {
-
+    
   }
 
   openSale(id:number)
@@ -154,6 +179,72 @@ export class SaleOffComponent implements OnInit {
       if(data.status==200)
       {
         alert(data.msg);
+        this.productService.getAllProduct().subscribe(data=>{
+          this.POSTS=data.pro;
+        })
+      }
+    })
+  }
+  filter(id:string)
+  {
+    if(id=='1')
+    {
+      this.productService.getAllProduct().subscribe(data=>{
+        this.POSTS=data.pro;
+        this.backup=data.pro;
+      })
+    }else {
+      this.productService.getSaleProduct().subscribe(res=>{
+        this.POSTS=res.pro;
+        this.backup=res.pro;
+      })
+    }
+  }
+  choose1(id:string)
+  {
+    if(id=='0')
+    {
+      this.choose=0;
+    }
+    if(id=='1')
+    {
+      this.choose=1;
+    }
+    if(id=='2')
+    {
+      this.choose=2;
+    }
+  }
+
+  choose2(id:string)
+  {
+    this.reset.proId=0;
+    this.reset.brandId=0;
+    this.reset.cateId=Number.parseInt(id);
+    
+  }
+  choose3(id:string)
+  {
+    this.reset.proId=0;
+    this.reset.cateId=0;
+    this.reset.brandId=Number.parseInt(id);
+  }
+  resetPrice()
+  {
+    if(this.choose==0)
+    {
+      this.reset.brandId=0;
+      this.reset.cateId=0;
+      this.reset.proId=0;
+    }
+    this.productService.resetPromotion(this.reset).subscribe(res=>{
+      if(res.status==200)
+      {
+        alert(res.msg);
+        this.productService.getAllProduct().subscribe(data=>{
+          this.POSTS=data.pro;
+          this.backup=data.pro;
+        })
       }
     })
   }

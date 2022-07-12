@@ -12,6 +12,7 @@ import { RegisterModel } from '../register-model';
 })
 export class RegisterUserComponent implements OnInit {
 
+  sdt:boolean=false;
   checkPass:boolean=true;
   constructor(private loginservice:LoginService,private router:Router) { }
 
@@ -33,6 +34,11 @@ export class RegisterUserComponent implements OnInit {
   regis=new RegisterModel("","","","","","");
   onSubmit(form:FormGroup)
   {
+    if(form.value.phone.toString().length!=10)
+    {
+      this.sdt=true;
+      return;
+    }
     if(form.value.password!=form.value.rePassword)
     {
       this.checkPass=false;
@@ -43,7 +49,7 @@ export class RegisterUserComponent implements OnInit {
     this.regis.username=form.value.username;
     this.regis.password=form.value.password;
     this.regis.email=form.value.email;
-    this.regis.phone=form.value.phone;
+    this.regis.phone=form.value.phone.toString();
     this.regis.fullName=form.value.fullName;
     this.regis.shippingAddress=form.value.address;
     console.log(this.regis);

@@ -2,6 +2,7 @@
     <div class="row">
         <div class="col-md-8">
             <h3>Thông tin đơn hàng</h3>
+            
             <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline align-self-center" width="100%">
                 <thead>
                     <tr>
@@ -27,7 +28,7 @@
                         <td>
                             {{cate.tenSanPham}}
                         </td>
-                        <td>{{cate.giaSanPham}}</td>
+                        <td>{{cate.giaSanPham | currency:'VND'}}</td>
                         <td>{{cate.soLuong}}</td>
                     
                     </tr>
@@ -36,10 +37,10 @@
                 </tbody>
             </table>
             <div class="total" style="display: flex;">
-                <div class="lab">
+                <div class="lab" >
                     Tổng hoá đơn :&nbsp;
                 </div>
-                <div class="cont">
+                <div class="cont" style="font-size: 20px; font-weight: 400;" >
                     {{cart.total | currency:'VND'}}
                 </div>
             </div>
@@ -73,8 +74,9 @@
                     <input type="radio" name="phonecheck1" [checked]="phonecheck" (change)="checked1()"> Sử dụng số điện thoại mặc định <br>
                     <input type="radio" name="phonecheck1" [checked]="phonecheck1" (change)="checked1()" > Thêm số điện thoại mới
                     <div *ngIf="phonecheck1" class="sr1">
-                        <input type="text" placeholder="Thêm số điên thoại mới" class="form-control form-control-rounded" id="name"
+                        <input type="number" placeholder="Thêm số điên thoại mới" class="form-control" id="name"
                             formControlName="phone" style="margin-top: 15px;"> <br>
+                            <small *ngIf="phoneCheck" style="color: red;">Số điện thoại phải đủ 10 ký tự</small>
                     </div>
                 </div>
                 <div class="form-group">

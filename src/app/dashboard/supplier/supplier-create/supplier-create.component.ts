@@ -32,11 +32,20 @@ export class SupplierCreateComponent implements OnInit {
     this.data={
       supplierName:form.value.supplierName,
       email:form.value.email,
-      phone:form.value.phone,
+      phone:form.value.phone.toString(),
       address:form.value.address
     }
+    if(this.data.supplierName==''||this.data.email==''||this.data.address==''||this.data.phone=='')
+      {
+        return;
+      }
 
     this.supService.postSupplier(this.data).subscribe(data1=>{
+      
+      if(data1.status==500)
+      {
+        alert(data1.msg)
+      }
       if(data1.status==200)
       {
         alert(data1.msg);

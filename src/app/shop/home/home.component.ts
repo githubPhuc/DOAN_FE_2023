@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
    
    this.fetchPosts();
 
-   this.slideService.getAllSlide().subscribe(data=>{
+   this.slideService.getAllSlideActive().subscribe(data=>{
     this.slideshow=data;
    });  
  

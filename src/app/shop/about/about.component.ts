@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AboutService } from 'src/app/dashboard/about/about.service';
+
 
 @Component({
   selector: 'app-about',
@@ -8,17 +8,13 @@ import { AboutService } from 'src/app/dashboard/about/about.service';
 })
 export class AboutComponent implements OnInit {
 
-  constructor(private aboutService:AboutService) { }
+  constructor() { }
   about:number=0;
   ab:any;
   dataAb:any
   ngOnInit(): void {
 
-    this.aboutService.getAllAbount().subscribe(data=>{
-      this.dataAb=data[this.about];
-      this.ab=data;
-      
-    })
+ 
   }
   next()
   {

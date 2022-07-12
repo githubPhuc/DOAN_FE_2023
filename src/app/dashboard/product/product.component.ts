@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ShopService } from 'src/app/shop/shop.service';
+import { CategoryService } from '../category.service';
+import { TrademarkService } from '../trademark/trademark.service';
 import { ProductService } from './product.service';
 
 @Component({
@@ -12,18 +15,38 @@ export class ProductComponent implements OnInit {
   POSTS: any;
   page: number = 1;
   count: number = 0;
-  tableSize: number = 10;
+  tableSize: number = 9;
   tableSizes: any = [3, 6, 9, 12];
-
+  category:any;
+  brand:any;
+  product:any;
   searchForm=new FormGroup({
     txt: new FormControl('')
   })
 
-  constructor(private responseProduct:ProductService,private router:Router) { }
+  constructor(private responseProduct:ProductService,private router:Router,private shopService:ShopService,private cateSer:CategoryService,private brandSer:TrademarkService) { }
 
-  product:any;
+  
   ngOnInit(): void {
-    this.fetchPosts();
+    this.cateSer.getAllCategory().subscribe(res=>{
+      this.category=res;
+    });
+    this.brandSer.getAllTrademark().subscribe(res=>{
+      this.brand=res;
+    })
+    this.responseProduct.getAllProduct().subscribe(
+      data => {
+        this.product = data.pro;
+        this.POSTS=this.product;
+        console.log(data);
+
+   
+      }
+      
+    );
+
+    
+
   }
 
   goToProductDetails(id:number) {
@@ -65,7 +88,8 @@ export class ProductComponent implements OnInit {
   fetchPosts(): void {
     this.responseProduct.getAllProduct().subscribe(
       data => {
-        this.POSTS = data.pro;
+        this.product = data.pro;
+        this.POSTS=this.product;
         console.log(data);
 
    
@@ -74,14 +98,59 @@ export class ProductComponent implements OnInit {
     );
   }
 
+  filCate(id:string)
+  {
+    if(id=='0')
+    {
+      this.responseProduct.getAllProduct().subscribe(
+        data => {
+          this.product = data.pro;
+          this.POSTS=this.product;
+          console.log(data);
+          this.fetchPosts();
+     
+        }
+        
+      );
+      return;
+    }
+    let id1=Number.parseInt(id);
+    this.shopService.getProductByCategory(id1).subscribe(res=>{
+      this.product=res.pro;
+
+    })
+  }
+  filBrand(id:string)
+  {
+    if(id=='0')
+    {
+      this.responseProduct.getAllProduct().subscribe(
+        data => {
+          this.product = data.pro;
+          //this.POSTS=this.product;
+          console.log(data);
+  
+     
+        }
+        
+      );
+      return;
+    }
+    let id1=Number.parseInt(id);
+    this.shopService.getProductByBrand(id1).subscribe(res=>{
+      this.product=res.pro;
+
+    })
+  }
   onSubmit(form:FormGroup)
   {
       if(form.value.txt=='')
       {
-        location.reload();
+        return;
       }
       this.responseProduct.searchProduct(form.value.txt).subscribe(data=>{
-        this.POSTS=data.pro;
+        this.product=data.pro;
+        console.log(this.POSTS);
       })
   }
 }

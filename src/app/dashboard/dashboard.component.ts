@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   account:any;
   invoice:any;
   sup:any;
+  sta:any;
   constructor(private router:Router,
               private productService:ProductService,
               private accountService:AccountService,
@@ -40,7 +41,9 @@ export class DashboardComponent implements OnInit {
     this.supService.getAllSupplier().subscribe(data=>{
       this.sup=data.count;
     });
-    
+    this.invoiceService.getDash().subscribe(res=>{
+      this.sta=res;
+    });
   }
 
 }

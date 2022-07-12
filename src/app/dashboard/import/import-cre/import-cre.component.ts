@@ -14,6 +14,7 @@ export class ImportCreComponent implements OnInit {
               private importService:ImportService,
               private router:Router) { }
   item:any;
+  invoice:any;
   ngOnInit(): void {
     this.importService.getImportItem().subscribe(data=>{
       this.item=data;
@@ -55,7 +56,9 @@ export class ImportCreComponent implements OnInit {
     this.importService.removeImportItem(id).subscribe(data=>{
       if(data.status==200)
       {
-        location.reload();
+        this.importService.getImportItem().subscribe(data=>{
+          this.item=data;
+        })
       }
     })
   }

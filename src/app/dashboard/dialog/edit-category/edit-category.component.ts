@@ -32,10 +32,17 @@ catedata=new CategoryModel(0,"",0,true);
   onSubmit(form:FormGroup)
   {
     this.cateService.putCategory(this.data.id,form.value.name,true).subscribe(data=>{
- 
+      if(data.status==500)
+      {
+        alert(data.msg);
+      }
+      if(data.status==200)
+      {
+        this.closeDialog();
+        location.reload();
+      }
     });
-    this.closeDialog();
-    location.reload();
+   
   }
 
   closeDialog()

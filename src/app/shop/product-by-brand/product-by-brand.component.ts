@@ -32,6 +32,18 @@ export class ProductByBrandComponent implements OnInit {
   })
 }
 
+filter(id:string)
+{
+  if(id=='0')
+  {
+    this.shopservice.getProductByBrand(this.txt).subscribe(data=>{
+      this.product=data;
+    })
+  }
+  this.shopservice.FilPriceBrand(id,this.txt).subscribe(res=>{
+    this.product=res;
+  })
+}
 
   addToWishList(id:number)
   {

@@ -12,7 +12,12 @@ import { ShopService } from '../shop.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 7;
+  tableSizes: any = [3, 6, 9, 12];
+  user:any;
   check:number=0;
   constructor(private shopService:ShopService,
               private invoiceService:InvoiceService,
@@ -39,6 +44,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fetchPosts();
     document.documentElement.scrollIntoView({
       behavior: "smooth",
       block: "start",
@@ -60,6 +66,7 @@ export class ProfileComponent implements OnInit {
     }
     
     this.shopService.getAccount(localStorage.getItem('userid')!).subscribe(data=>{
+      this.user=data;
       this.profileForm.patchValue(data);
       console.log('pro',data);
     })
@@ -71,7 +78,7 @@ export class ProfileComponent implements OnInit {
   }
   view(id:number)
   {
-    this.dialog.opentDialog(id);
+    this.dialog.opentDialog1(id);
   }
 
   logOut()
@@ -122,6 +129,38 @@ export class ProfileComponent implements OnInit {
           this.invoice=data;
         });
       }
+    })
+  }
+
+  filter(sts:any)
+  {
+   let status=sts;
+   if(sts==0)
+   {
+     this.invoiceService.getAllInvoice().subscribe(data=>{
+       this.invoice=data.inv;
+       this.POSTS=data.inv;
+       console.log(data);
+       
+     });
+     return;
+   }
+   this.invoiceService.getInvoiceByStatus(status).subscribe(res=>{
+     this.invoice=res.inv;
+   })
+  }
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.fetchPosts();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchPosts();
+  }
+  fetchPosts(): void {
+    this.invoiceService.getAllInvoiceUser(localStorage.getItem('userid')!).subscribe(data=>{
+      this.POSTS=data;
     })
   }
 }

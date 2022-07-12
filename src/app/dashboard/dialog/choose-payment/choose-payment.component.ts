@@ -10,7 +10,7 @@ import { DialogService } from '../../dialog.service';
   styleUrls: ['./choose-payment.component.scss']
 })
 export class ChoosePaymentComponent implements OnInit {
-
+  phoneCheck:boolean=false;
   check:boolean=true;
   check1:boolean=false;
 
@@ -52,14 +52,22 @@ export class ChoosePaymentComponent implements OnInit {
   }
   onSubmit(form:FormGroup)
   {
+   
     if(this.check1==true&&form.value.address!=''&&form.value.address!=null)
     {
+      form.value.phone='';
       this.address=form.value.address;
       localStorage.setItem('address',form.value.address);
     }
     if(this.phonecheck1==true&&form.value.phone!=''&&form.value.phone!=null)
     {
-      
+      if(form.value.phone.toString().length!=10)
+      {
+    
+        this.phoneCheck=true;
+        return;
+      }
+      //
       this.phone=form.value.phone;
       localStorage.setItem('phone',form.value.phone);
     }

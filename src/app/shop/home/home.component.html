@@ -32,10 +32,8 @@
             <div id="home-slideshow" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
                 <li data-target="#home-slideshow" data-slide-to="0" class="active"></li>
-                <li data-target="#home-slideshow" data-slide-to="1"></li>
-                <li data-target="#home-slideshow" data-slide-to="2"></li>
-                <li data-target="#home-slideshow" data-slide-to="3"></li>
-                <li data-target="#home-slideshow" data-slide-to="4"></li>
+                <li *ngFor="slide of slideshow;let i=index" data-target="#home-slideshow" data-slide-to="1"></li>
+                
       
               </ol>
               <div class="carousel-inner">
@@ -289,7 +287,7 @@
           
               <div class="show-all">
                 <div class="btn">
-                  <a [routerLink]="['/product/category',i[0].category]">Xem tất cả sản phẩm <i class="fa fa-caret-right"></i></a>
+                  <a [routerLink]="['/product/category',i[0].categoryId]">Xem tất cả sản phẩm <i class="fa fa-caret-right"></i></a>
                 </div>
               </div>
   

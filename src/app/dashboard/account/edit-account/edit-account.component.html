@@ -10,19 +10,19 @@
 
                     <div class="form-group">
                         <label>Tên đầy đủ</label>
-                        <input type="text" placeholder="Nhập tên đầy đủ" class="form-control form-control-rounded"
-                            formControlName="fullName">
+                        <input type="text" placeholder="Nhập tên đầy đủ"
+                            [value]="acc.fullName" [disabled]="true">
                     </div>
                     <div class="form-group">
                         <label>Tên tài khoản</label>
                         <input type="text" placeholder="Nhập tên tài khoản"
-                            formControlName="username" [disabled]="true">
+                            [value]="acc.username" [disabled]="true">
                     </div>
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" placeholder="Nhập email" class="form-control form-control-rounded"
-                            formControlName="email">
+                        <input type="email" placeholder="Nhập email"
+                           [value]="acc.email" [disabled]="true">
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ</label>
@@ -46,8 +46,8 @@
 
 
 
-                    <button type="submit" class="btn btn-success btn-icon"><i class="fa fa-floppy-o "></i>Save</button>
-                    <a [routerLink]="['/admin']" class="btn btn-warning btn-icon"><i class="fa fa-reply"></i>Back</a>
+                    <button type="submit" class="btn btn-info"><i class="fa fa-floppy-o "></i>&nbsp;Lưu thay đổi</button>&nbsp;
+                    <a [routerLink]="['/admin']"><i class="fa fa-reply"></i>Trở về</a>
                 </form>
             </div>
         </div>

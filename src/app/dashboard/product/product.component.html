@@ -1,77 +1,121 @@
-<div class="row">
-    <div class="col-lg-6 ">
-  
-            <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
-            <div class="form-group">
-                <label>Tìm kiếm</label>
-                <div class="sr">
-                <input type="text" placeholder="Nhập tên sản phẩm cần tìm" class="form-control form-control-rounded"  id="txt"  formControlName="txt">
-                <button id="search" class="btn btn-info" ><i class="fa fa-search "></i>&nbsp;Tìm kiếm</button>
-            </div>
-            </div>
-        </form>
-            
-
-    </div>
-    <div class="col-lg-6 align-self-center text-right">
-        <a class="nav-link"  [routerLink]="['/admin/product/create']" class="btn btn-info box-shadow  btn-rounded"><i class="fa fa-plus"></i> Thêm</a>
+<div class="row page-header">
+    <div class="col-6 align-self-center ">
+      <h2>Quản lý sản phẩm</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#" style="font-size: 15px;">Trang chủ</a></li>
+         
+            <li class="breadcrumb-item active" style="font-size: 15px;">Quản lý sản phẩm</li>		
+        </ol>
     </div>
 </div>
-
-<table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline" width="100%">
-    <thead>
-        <tr>
-            <th>
-                <strong>Hình ảnh</strong>
-            </th>
-            <th>
-                <strong>Tên sản phẩm</strong>
-            </th>
-            <th>
-                <strong>Tồn kho</strong>
-            </th>
-            <th>
-                <strong>Loại sản phẩm</strong>
-            </th>
-            <th>
-                <strong>Action</strong>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let pro of POSTS | orderBy:'-id' | paginate
-        : {
-            itemsPerPage: tableSize,
-            currentPage: page,
-            totalItems: count
-          };
-    let i = index">
-            <td *ngIf="pro.image!=null"><img src="../../../assets/img/product/{{pro.image}}" style="width: 150px" alt=""></td>
-            <td *ngIf="pro.image==null"><img src="../../../assets/img/product/noimage.png" style="width: 150px" alt=""></td>
-            <td style="white-space: normal;">
-                {{pro.name}}
-            </td>
-            <td>{{pro.stock}}</td>
-            <td>{{pro.category}}</td>
-           
-            <td class="text-center">
-                <button (click)="goToProductDetails(pro.id)"  type="button" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>&nbsp;
-                <button (click)="goToProductEdit(pro.id)" type="button" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>&nbsp;
-                <button (click)="removeProduct(pro.id)" type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-            </td>
-        </tr>
-      
-    </tbody>
-    
-</table>
-<div class="d-flex justify-content-center">
-    <pagination-controls
-      previousLabel="Prev"
-      nextLabel="Next"
-      (pageChange)="onTableDataChange($event)"
-    >
-    </pagination-controls>
-  </div>
+<style>
+    ol li {
+        display: flex;
+        align-items: center;
+        color: #868e96;
+        
+    }
+</style>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-6 ">
+                  
+                            <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
+                            <div class="form-group">
+                                <label>Tìm kiếm</label>
+                                <div class="sr">
+                                <input type="text" placeholder="Nhập tên sản phẩm cần tìm" class="form-control form-control-rounded"  id="txt"  formControlName="txt">
+                                <button id="search" class="btn btn-info" ><i class="fa fa-search "></i>&nbsp;Tìm kiếm</button>
+                            </div>
+                            </div>
+                        </form>
+                            
+                
+                    </div>
+                    <div class="col-lg-2">
+                        <label for="">Lọc theo danh mục</label>
+                       <select #cate name="" id=""  class="form-control" style="width: 200px;" (change)="filCate(cate.value)">
+                        <option value="0">-- --</option>
+                        <option *ngFor="let c of category" value="{{c.id}}">{{c.name}}</option>
+                       </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <label for="">Lọc theo nhãn hiệu</label>
+                       <select #bra name="" id=""  class="form-control" style="width: 200px;" (change)="filBrand(bra.value)">
+                        <option value="0">-- --</option>
+                        <option *ngFor="let c of brand" value="{{c.id}}">{{c.name}}</option>
+                       </select>
+                    </div>
+                    <div class="col-lg-2 align-self-center text-right">
+                        <a class="nav-link"  [routerLink]="['/admin/product/create']" class="btn btn-info box-shadow  btn-rounded"><i class="fa fa-plus"></i> Thêm</a>
+                    </div>
+                </div>
+                
+                <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                <strong>Hình ảnh</strong>
+                            </th>
+                            <th>
+                                <strong>Tên sản phẩm</strong>
+                            </th>
+                            <th>
+                                <strong>Nhãn hiệu</strong>
+                            </th>
+                            <th>
+                                <strong>Tồn kho</strong>
+                            </th>
+                            <th>
+                                <strong>Loại sản phẩm</strong>
+                            </th>
+                            <th>
+                                <strong>Tác vụ</strong>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let pro of product| orderBy:'-id' | paginate
+                        : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index">
+                            <td *ngIf="pro.image!=null"><img src="../../../assets/img/product/{{pro.image}}" style="width: 150px" alt=""></td>
+                            <td *ngIf="pro.image==null"><img src="../../../assets/img/product/noimage.png" style="width: 150px" alt=""></td>
+                            <td style="white-space: normal;">
+                                {{pro.name}}
+                            </td>
+                            <td>{{pro.tradeMark}}</td>
+                            <td>{{pro.stock}}</td>
+                            <td>{{pro.category}}</td>
+                           
+                            <td class="text-center">
+                                <button (click)="goToProductDetails(pro.id)"  type="button" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>&nbsp;
+                                <button (click)="goToProductEdit(pro.id)" type="button" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>&nbsp;
+                                <button (click)="removeProduct(pro.id)" type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                      
+                    </tbody>
+                    
+                </table>
+                <div *ngIf="POSTS[10].id!=null" class="d-flex justify-content-center">
+                    <pagination-controls
+                      previousLabel="Prev"
+                      nextLabel="Next"
+                      (pageChange)="onTableDataChange($event)"
+                    >
+                    </pagination-controls>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
 
   <style>
     .sr {

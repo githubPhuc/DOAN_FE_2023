@@ -1,12 +1,25 @@
+
+<div class="title">
+    <span style="display:flex;justify-content:center; margin-bottom:20px; font-size:20px; font-weight:500;">Chi tiết hoá đơn</span>
+</div>
 <div class="container">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header card-default">
-              Chi tiết hoá đơn
-            </div>
+         
          
             <div class="card-body">
-             
+                <div class="row">
+                    <div class="col-md-6">
+                        <div style="display: flex; margin-bottom: 10px;" class="if">
+                            <div class="lable" style="width: 100px;">Ngày lập :</div>
+                            <div class="content" >{{data1[0].ngayNhap |date:'dd/MM/yyyy'}}</div>
+                        </div>
+                        <div style="display: flex; margin-bottom: 10px;" class="if">
+                            <div class="lable" style="width: 100px;">Tổng hoá đơn :</div>
+                            <div class="content">{{total | currency:'VND'}}</div>
+                        </div>
+                    </div>
+                </div>
                 <table id="datatable" class="table table-striped dt-responsive ">
                                 <thead>
                                     <tr>
@@ -14,6 +27,7 @@
                                         <th>Sản phẩm</th>
                                         <th style="width: 100px;">Số lượng </th>
                                         <th>Giá nhập</th>
+                                        <th>Tổng cộng</th>
                                         <th>Nhà cung cấp</th>
                                     </tr>
                                 </thead>
@@ -22,43 +36,24 @@
                                         <td>{{i+1}}</td>
                                         <td>{{inv.tenSanPham}}</td>
                                         <td>{{inv.soLuong}}</td>
-                                        <td>{{inv.gia}}</td>
+                                        <td>{{inv.giaNhap|currency:'VND'}}</td>
+                                        <td>{{inv.gia|currency:'VND'}}</td>
                                         <td>{{inv.nhaCungCap}}</td>
                                     </tr>
                                 </tbody>
                 </table>
-                
-                <div class="head-iv">
-                    <div class="row">
-                       
-                        <div class="col-md-4"><span>Tổng tiền:</span> {{total | currency:'VND'}}</div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
     <div class="col-md-12" id="btn">
         <div>
-            <button (click)="closeDialog()" type="button" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
+            <a (click)="closeDialog()"><span style="font-weight: bold; font-size:20px;">x</span></a>
         </div>
     </div>
-  
+   
 </div>
-
-
-
                         <style>
-                            #btn {
-                               
-                              
-                                display: flex;
-                                justify-content: flex-end;
-                                position: fixed;
-                                width: 50%;
-                                top: 70px;
-                                right: 255px;
-
-                            }
+                           
                             button {
                                 margin-right: 20px;
                             }

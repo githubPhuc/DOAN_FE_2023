@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../auth/login/login.component';
-import { AboutCreComponent } from './about/about-cre/about-cre.component';
-import { AboutComponent } from './about/about.component';
+
 import { AccountComponent } from './account/account.component';
 import { AdminCreateComponent } from './account/admin-create/admin-create.component';
 import { EditAccountComponent } from './account/edit-account/edit-account.component';
@@ -67,7 +66,7 @@ const routes: Routes = [
     component: InvoiceConfirmComponent
   },
   {
-    path: 'invoice/statistical',
+    path: 'statistical',
     component: StatisticalComponent
   },
   //account
@@ -115,15 +114,6 @@ const routes: Routes = [
   {
     path: 'slideshow',
     component: SlideShowComponent
-  },
-  //about
-  {
-    path: 'about',
-    component: AboutComponent
-  },
-  {
-    path: 'about/create',
-    component: AboutCreComponent
   },
   //saleoff
   {

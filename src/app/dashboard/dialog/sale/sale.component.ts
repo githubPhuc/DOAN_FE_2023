@@ -62,7 +62,11 @@ export class SaleComponent implements OnInit {
     }
 
     this.saleService.Promotion(this.sale).subscribe(data1=>{
-
+        if(data1.status==200)
+        {
+          this.dialogR.closeDialog();
+          location.reload();
+        }
     })
   }
 }

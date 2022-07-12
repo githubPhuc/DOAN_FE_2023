@@ -20,6 +20,25 @@ export class AccountService {
      })});
 		
   }
+  public filAccount(id:string)
+  {
+    return this.httpClient
+			.get<any>('https://localhost:7043/api/authenticate/filaccount?id='+id,{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': this.strToken
+     })});
+		
+  }
+
+   public searchAccount(txt:string)
+  {
+    return this.httpClient
+			.get<any>('https://localhost:7043/api/authenticate/searchaccount?txt='+txt,{headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': this.strToken
+     })});
+		
+  }
 
   public lockAccount(id:string)
   {

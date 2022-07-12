@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { DialogService } from '../../dialog.service';
 import { ImportService } from '../../import/import.service';
 import { InvoiceService } from '../../invoice/invoice.service';
@@ -30,7 +31,8 @@ export class AddImportComponent implements OnInit {
                                         private dialogR:DialogService,
                                         private proService:ProductService,
                                         private supService:SupplierService,
-                                        private importService:ImportService) { }
+                                        private importService:ImportService,
+                                        private router:Router) { }
 
   ngOnInit(): void {
  
@@ -74,7 +76,8 @@ export class AddImportComponent implements OnInit {
       if(data.status==200)
       {
         //alert(data.msg);
-        this.dialogR.closeDialog();
+       this.dialogR.closeDialog();
+        
         
       }
       location.replace(location.href);

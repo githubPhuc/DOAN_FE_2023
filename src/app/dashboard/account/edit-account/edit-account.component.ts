@@ -8,7 +8,7 @@ import { ShopService } from 'src/app/shop/shop.service';
   styleUrls: ['./edit-account.component.scss']
 })
 export class EditAccountComponent implements OnInit {
-
+  acc:any;
   check:number=0;
   editForm=new FormGroup({
     fullName: new FormControl(''),
@@ -23,6 +23,7 @@ export class EditAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.shopService.getAccount(localStorage.getItem('userid')!).subscribe(res=>{
+      this.acc=res;
       this.editForm.patchValue(res);
     })
   }

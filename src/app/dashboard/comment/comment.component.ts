@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommentService } from './comment.service';
 
@@ -13,7 +14,9 @@ export class CommentComponent implements OnInit {
   count: number = 0;
   tableSize: number = 10;
   tableSizes: any = [3, 6, 9, 12];
-
+  searchForm=new FormGroup({
+    txt: new FormControl('')
+  });
   constructor(private commentService:CommentService,private router:Router) { }
   comment:any;
   ngOnInit(): void {
@@ -25,12 +28,22 @@ export class CommentComponent implements OnInit {
     if(window.confirm('Bạn có muốn xoá bình luận này ?'))
     {
       this.commentService.removeComment(id).subscribe(data=>{
-        location.reload();
+        if(data.status==200)
+        {
+          alert('Đã xoá bình luận')
+          location.reload();
+        }
+        
       });
     }
     
   }
-
+  onSubmit(form:FormGroup)
+  {
+    this.commentService.search(form.value.txt).subscribe(res=>{
+      this.POSTS=res;
+    })
+  }
   onTableDataChange(event: any) {
     this.page = event;
     this.fetchPosts();

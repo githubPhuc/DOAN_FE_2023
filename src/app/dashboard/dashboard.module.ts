@@ -36,13 +36,15 @@ import { ConfirmDeleteComponent } from './dialog/confirm-delete/confirm-delete.c
 import { SlideShowComponent } from './slide-show/slide-show.component';
 import { SlideShowCreateComponent } from './dialog/slide-show-create/slide-show-create.component';
 import { StatisticalComponent } from './invoice/statistical/statistical.component';
-import { AboutComponent } from './about/about.component';
-import { AboutCreComponent } from './about/about-cre/about-cre.component';
+
 import { SaleOffComponent } from './sale-off/sale-off.component';
 import { SaleComponent } from './dialog/sale/sale.component';
 import { ChoosePaymentComponent } from './dialog/choose-payment/choose-payment.component';
 import {NgPipesModule} from 'ngx-pipes';
 import { EditAccountComponent } from './account/edit-account/edit-account.component';
+import { InvoiceDetailUserComponent } from './dialog/invoice-detail-user/invoice-detail-user.component';
+import { EditSlideshowComponent } from './dialog/edit-slideshow/edit-slideshow.component';
+import { EditSuppComponent } from './dialog/edit-supp/edit-supp.component';
 
 @NgModule({
   declarations: [
@@ -75,12 +77,13 @@ import { EditAccountComponent } from './account/edit-account/edit-account.compon
     SlideShowComponent,
     SlideShowCreateComponent,
     StatisticalComponent,
-    AboutComponent,
-    AboutCreComponent,
     SaleOffComponent,
     SaleComponent,
     ChoosePaymentComponent,
     EditAccountComponent,
+    InvoiceDetailUserComponent,
+    EditSlideshowComponent,
+    EditSuppComponent,
 
 
   ],

@@ -1,64 +1,151 @@
+<div class="row page-header">
+    <div class="col-6 align-self-center ">
+      <h2>Thống kê doanh thu</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']" style="font-size: 15px;">Trang chủ</a></li>
+         
+            <li class="breadcrumb-item active" style="font-size: 15px;">Thống kê doanh thu</li>		
+        </ol>
+    </div>
+</div>
+<style>
+    ol li {
+        display: flex;
+        align-items: center;
+        color: #868e96;
+        
+    }
+</style>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header card-default">
-                Danh sách hoá đơn
-            </div>
-            <div class="tk" style="display: flex; justify-content:space-between;">
+            <div class="card-body">
+            <div class="tk" style="display: flex;">
                 <form [formGroup]="staForm" (ngSubmit)="onSubmit(staForm)">
+                    <div style="align-items: center; display: flex; padding-bottom: 7px;">Từ:</div>
                     <div class="header__search-input">
-                        <input type="datetime-local" formControlName="start">
+                        <input type="datetime-local" formControlName="start" class="form-control m-b">
 
                     </div>
                     &nbsp;
-                    <span>To</span>
+                    
                     &nbsp;
+                    <div style="align-items: center; display: flex; padding-bottom: 7px; margin-left: 10px;">Đến:</div>
                     <div class="header__search-input">
-                        <input type="datetime-local" formControlName="end">
+                        <input type="datetime-local" formControlName="end" class="form-control m-b">
 
                     </div>
                     &nbsp;
-                    <button class="btn btn-info" type="submit" style="height: 30px;">Thống kê</button>
-                </form>
+                    <button class="btn btn-info" style="height: 80%;" type="submit">Thống kê</button>
+                </form>&nbsp;&nbsp;
 
-                <div class="tk1">
-                    <span>Trạng thái :</span> &nbsp;
-                    <select #fil name="" id="">
-                        <option value="0">Tất cả</option>
-                        <option value="1">Đang giao</option>
-                        <option value="2">Hoàn thành</option>
-                        <option value="4">Chờ duyệt</option>
-                        <option value="3">Đã huỷ</option>
+                <div class="tk1" style="width: 580px; display: flex; margin-left: 40px;">
+                    <span>Thống kê theo :</span> &nbsp;
+                    <select #fil name="" class="form-control m-b" id="" (change)="thongKe(fil.value)" style="width: 150px;">
+                        <option value="0">-- --</option>
+                        <option value="1">Tuần vừa qua</option>
+                        <option value="2">Tháng</option>
+                    </select> &nbsp;
+                    <select #fil1 *ngIf="tkThang" class="form-control m-b" name="" id="" (change)="thongKeThang(fil1.value)" style="width: 130px;">
+                        <option value="1">Tháng 1</option>
+                        <option value="2">Tháng 2</option>
+                        <option value="3">Tháng 3</option>
+                        <option value="4">Tháng 4</option>
+                        <option value="5">Tháng 5</option>
+                        <option value="6">Tháng 6</option>
+                        <option value="7">Tháng 7</option>
+                        <option value="8">Tháng 8</option>
+                        <option value="9">Tháng 9</option>
+                        <option value="10">Tháng 10</option>
+                        <option value="11">Tháng 11</option>
+                        <option value="12">Tháng 12</option>
+                      
                     </select>
                 </div>
+                <div class="tk1">
+                   <a (click)="reset()" class="btn btn-info btn-rounded" style=" display: flex; justify-content: flex-end;"><i class="fa fa-refresh"></i></a>
+                </div>
             </div>
-
-            <div class="card-body">
+            <table class="table table-striped dt-responsive nowrap">
+                <thead>
+                    <tr>
+                        <td>
+                            Số lượng nhập vào 
+                        </td>
+                        <td>
+                            Số lượng bán ra 
+                        </td>
+                        <td>
+                            Tổng tiền nhập hàng 
+                        </td>
+                        <td>Tiền bán ban đầu</td>
+                            <td>Khuyến mãi</td>
+                        <td>
+                            Tổng tiền bán ra 
+                        </td>
+                        <td>
+                            Doanh thu
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                           <span>{{POSTS.nhap}}</span>
+                        </td>
+                        <td>
+                           <span>{{POSTS.ban}}</span>
+                        </td>
+                        <td>
+                             <span>{{POSTS.totaln| currency:'VND'}}</span>
+                        </td>
+                        <td>
+                            <span>
+                                {{POSTS.totalban | currency:'VND'}}
+                            </span>
+                        </td>
+                        <td><span>{{POSTS.totalban-POSTS.totalb | currency:'VND'}}</span></td>
+                        <td>
+                            <span>{{POSTS.totalb| currency:'VND'}}</span>
+                        </td>
+                        <td>
+                          <span>{{POSTS.totalb -POSTS.totaln | currency:'VND'}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+           
                 <table id="datatable" class="table table-striped dt-responsive nowrap">
                     <thead>
                         <tr>
-                            <th>Username</th>
-                            <th>Địa chỉ </th>
-                            <th>Số điện thoại</th>
-                            <th>Ngày lập</th>
-                            <th>Tổng tiền</th>
-                            <th>Action</th>
+                            <th>STT</th>
+                            <th>Sản phẩm</th>
+                            <th>Giá nhập vào </th>
+                            <th>Giá bán ra</th>
+                            <th>Số lượng nhập vào</th>
+                            <th>Số lượng bán ra</th>
+                            <th>Tiền bán ra</th>
+                           
 
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr *ngFor="let inv of invoice">
-                            <td>{{inv.username}}</td>
-                            <td>{{inv.shippingAddress}}</td>
-                            <td>{{inv.phone}}</td>
-                            <td>{{inv.date | date:'dd/MM/yyyy'}}</td>
-                            <td>{{inv.total | currency:'VND'}}</td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-sm btn-info" (click)="openDialog(inv.id)"><i
-                                        class="fa fa-eye"></i></button>
-
-                            </td>
+                        <tr *ngFor="let inv of POSTS.lst | orderBy:'-soLuongBan' | paginate
+                        : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index">
+                    <td>{{i+1}}</td>
+                            <td>{{inv.sanPham}}</td>
+                            <td>{{inv.giaNhap| currency:'VND'}}</td>
+                            <td>{{inv.giaBan| currency:'VND'}}</td>
+                            <td>{{inv.soLuongNhap}}</td>
+                            <td>{{inv.soLuongBan}}</td>
+                            <td>{{inv.soLuongBan*inv.giaBan| currency:'VND'}}</td>
+                            
 
                         </tr>
 
@@ -75,27 +162,15 @@
                                 </ul>
                             </div> -->
                 <div class="result" *ngIf="isSta">
-                    <table class="table table-striped dt-responsive nowrap">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Số lượng nhập vào : <span>{{importQuantily}}</span>
-                                </td>
-                                <td>
-                                    Số lượng bán ra : <span>{{saleQuantily}}</span>
-                                </td>
-                                <td>
-                                    Tổng tiền nhập hàng : <span>{{importTotal | currency:'VND'}}</span>
-                                </td>
-                                <td>
-                                    Tổng tiền bán ra : <span>{{saleTotal | currency:'VND'}}</span>
-                                </td>
-                                <td>
-                                    Doanh thu : <span>{{saleTotal-importTotal | currency:'VND'}}</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                   
+                    <div *ngIf="POSTS[10].total!=null" class="d-flex justify-content-center">
+                        <pagination-controls
+                          previousLabel="Prev"
+                          nextLabel="Next"
+                          (pageChange)="onTableDataChange($event)"
+                        >
+                        </pagination-controls>
+                      </div>
                 </div>
 
             </div>
@@ -124,5 +199,8 @@
         border: 1px solid grey;
         border-radius: 5px;
 
+    }
+    table thead td {
+        font-weight: bold;
     }
 </style>
