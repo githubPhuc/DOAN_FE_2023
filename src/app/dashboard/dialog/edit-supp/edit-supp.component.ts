@@ -61,5 +61,8 @@ if(data1.status==200)
 }
 })
 }
-
+cancle()
+{
+  this.dialog.closeDialog();
+}
 }

@@ -88,8 +88,8 @@ export class ProductComponent implements OnInit {
   fetchPosts(): void {
     this.responseProduct.getAllProduct().subscribe(
       data => {
-        this.product = data.pro;
-        this.POSTS=this.product;
+       
+        this.POSTS=data.pro;
         console.log(data);
 
    
@@ -105,7 +105,7 @@ export class ProductComponent implements OnInit {
       this.responseProduct.getAllProduct().subscribe(
         data => {
           this.product = data.pro;
-          this.POSTS=this.product;
+          this.POSTS=data.pro;
           console.log(data);
           this.fetchPosts();
      
@@ -117,7 +117,8 @@ export class ProductComponent implements OnInit {
     let id1=Number.parseInt(id);
     this.shopService.getProductByCategory(id1).subscribe(res=>{
       this.product=res.pro;
-
+      //this.POSTS=res.pro;
+      this.page=1;
     })
   }
   filBrand(id:string)
@@ -127,7 +128,7 @@ export class ProductComponent implements OnInit {
       this.responseProduct.getAllProduct().subscribe(
         data => {
           this.product = data.pro;
-          //this.POSTS=this.product;
+          this.POSTS=data.pro;
           console.log(data);
   
      
@@ -139,7 +140,7 @@ export class ProductComponent implements OnInit {
     let id1=Number.parseInt(id);
     this.shopService.getProductByBrand(id1).subscribe(res=>{
       this.product=res.pro;
-
+      this.page=1;
     })
   }
   onSubmit(form:FormGroup)
@@ -151,6 +152,7 @@ export class ProductComponent implements OnInit {
       this.responseProduct.searchProduct(form.value.txt).subscribe(data=>{
         this.product=data.pro;
         console.log(this.POSTS);
+        this.page=1;
       })
   }
 }

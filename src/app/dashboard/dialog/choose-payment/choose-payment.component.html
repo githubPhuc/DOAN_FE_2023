@@ -1,49 +1,78 @@
 <div class="contaier">
     <div class="row">
         <div class="col-md-8">
-            <h3>Thông tin đơn hàng</h3>
-            
-            <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline align-self-center" width="100%">
-                <thead>
-                    <tr>
-                        <th>
-                            <strong>STT</strong>
-                        </th>
-                        <th><strong>HÌnh</strong></th>
-                        <th>
-                            <strong>Sản phẩm</strong>
-                        </th>
-                        <th><strong>Giá</strong></th>
-                        <th style="width: 60px;">
-                            <strong>Số lượng</strong>
-                        </th>
-                      
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let cate of cart.cart; let i=index">
-                        <td>{{i+1}}</td>
-                        <td><a><img class="img-fluid"
-                            src="../../../assets/img/product/{{cate.image}}" width="50px" alt=""></a></td>
-                        <td>
-                            {{cate.tenSanPham}}
-                        </td>
-                        <td>{{cate.giaSanPham | currency:'VND'}}</td>
-                        <td>{{cate.soLuong}}</td>
-                    
-                    </tr>
-                
+            <div class="card">
+                <div class="card-header card-default" style="display: flex; justify-content:space-between">
+                    <span>Thông tin đơn hàng</span>
                   
-                </tbody>
-            </table>
-            <div class="total" style="display: flex;">
-                <div class="lab" >
-                    Tổng hoá đơn :&nbsp;
                 </div>
-                <div class="cont" style="font-size: 20px; font-weight: 400;" >
-                    {{cart.total | currency:'VND'}}
+                <div class="card-body">
+                    <div class="row-md" style="display: flex;">
+                        <div class="col-md-7">
+                            <div class="info" style="display: block;">
+                                <div style="display: flex;" class="if">
+                                    <div class="lable">Ngày lập :</div>
+                                    <div class="content">{{time | date:'dd/MM/yyyy'}}</div>
+                                </div>
+                                <div style="display: flex;" class="if">
+                                    <div class="lable">Khách hàng :</div>
+                                    <div class="content">{{name}}</div>
+                                </div>
+                                <div style="display: flex;" class="if">
+                                    <div class="lable">Tổng hoá đơn :</div>
+                                    <div class="content">{{cart.total | currency:'VND'}}</div>
+                                </div>
+                    
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-5">
+                            <span>*Ghi chú</span>
+                            <div class="content">
+                                <textarea name="" id="" cols="30" rows="30" [value]="data2.note"
+                                    [disabled]="true" style="height: 120px;"></textarea>
+                            </div>
+    
+                        </div> -->
+                    </div>
+                    <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline align-self-center" width="100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <strong>STT</strong>
+                                </th>
+                                <th><strong>Hình</strong></th>
+                                <th>
+                                    <strong>Sản phẩm</strong>
+                                </th>
+                                <th><strong>Giá</strong></th>
+                                <th style="width: 60px;">
+                                    <strong>Số lượng</strong>
+                                </th>
+                              
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cate of cart.cart; let i=index">
+                                <td>{{i+1}}</td>
+                                <td><a><img class="img-fluid"
+                                    src="../../../assets/img/product/{{cate.image}}" width="50px" alt=""></a></td>
+                                <td>
+                                    {{cate.tenSanPham}}
+                                </td>
+                                <td>{{cate.giaSanPham | currency:'VND'}}</td>
+                                <td>{{cate.soLuong}}</td>
+                            
+                            </tr>
+                        
+                          
+                        </tbody>
+                    </table>
+                
                 </div>
             </div>
+
+            
+            
         </div>
         <div class="col-md-4">
             <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm)">
@@ -74,7 +103,7 @@
                     <input type="radio" name="phonecheck1" [checked]="phonecheck" (change)="checked1()"> Sử dụng số điện thoại mặc định <br>
                     <input type="radio" name="phonecheck1" [checked]="phonecheck1" (change)="checked1()" > Thêm số điện thoại mới
                     <div *ngIf="phonecheck1" class="sr1">
-                        <input type="number" placeholder="Thêm số điên thoại mới" class="form-control" id="name"
+                        <input type="text" placeholder="Thêm số điên thoại mới" class="form-control" id="name"
                             formControlName="phone" style="margin-top: 15px;"> <br>
                             <small *ngIf="phoneCheck" style="color: red;">Số điện thoại phải đủ 10 ký tự</small>
                     </div>
@@ -87,7 +116,8 @@
                     </div>
                 </div>
                 <button class="btn btn-info btn-icon" type="submit" [disabled]="!itemForm.valid"><i
-                        class="fa fa-floppy-o "></i>Đặt hàng</button>
+                        class="fa fa-floppy-o "></i>Đặt hàng</button> &nbsp;
+                    <a (click)="cancle()">Huỷ</a>
             
             
             
@@ -97,3 +127,23 @@
        
     </div>
 </div>
+<style>
+ 
+
+    button {
+        margin-right: 20px;
+    }
+
+    .info {
+        list-style-type: none;
+    }
+
+    .lable {
+        width: 150px;
+        font-weight: bold;
+    }
+
+    .if {
+        margin-bottom: 10px;
+    }
+</style>

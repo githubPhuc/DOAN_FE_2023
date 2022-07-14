@@ -12,27 +12,32 @@
                         <label>Tên đầy đủ</label>
                         <input type="text" placeholder="Nhập tên đầy đủ" class="form-control form-control-rounded"
                             formControlName="fullName">
+                            <small *ngIf="msgName!=null" style="color: red;">{{msgName}}</small>
                     </div>
                     <div class="form-group">
                         <label>Tên tài khoản</label>
                         <input type="text" placeholder="Nhập tên tài khoản" class="form-control form-control-rounded"
                             formControlName="username">
+                            <small *ngIf="msgUser!=null" style="color: red;">{{msgUser}}</small>
                     </div>
 
                     <div class="form-group">
                         <label>Mật khẩu</label>
                         <input type="password" placeholder="Nhập mật khẩu" class="form-control form-control-rounded"
                             formControlName="password">
+                            <small *ngIf="msgPass!=null" style="color: red;">{{msgPass}}</small>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
                         <input type="text" placeholder="Nhập email" class="form-control form-control-rounded"
                             formControlName="email">
+                            <small *ngIf="msgMail!=null" style="color: red;">{{msgMail}}</small>
                     </div>
                     <div class="form-group">
                         <label>Số điện thoại</label>
                         <input type="text" placeholder="Nhập số điện thoại" class="form-control form-control-rounded"
                             formControlName="phone">
+                            <small *ngIf="msgPhone!=null" style="color: red;">{{msgPhone}}</small>
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ</label>

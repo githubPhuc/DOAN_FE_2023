@@ -28,13 +28,14 @@
                             
                 
                     </div>
-                    <div class="col-lg-6 align-self-center text-right">
-                        <a class="nav-link" [routerLink]="['/admin/supplier/create']" class="btn btn-info box-shadow btn-rounded"><i class="fa fa-plus"></i>&nbsp; Thêm mới</a>
+                    <div class="col-lg-6 align-self-center text-right" style="margin-bottom: 5px;">
+                        <a class="nav-link" (click)="openCreate()" class="btn btn-info box-shadow btn-rounded"><i class="fa fa-plus"></i>&nbsp; Thêm mới</a>
                     </div>
                 </div>
                 <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
-                                    <tr>
+                                    <tr  class="bg-chart" style="color: white;">
+                                        <th>STT</th>
                                         <th>Tên nhà cung cấp</th>
                                         <th>Địa chỉ </th>
                                         <th>Số điện thoại</th>
@@ -46,7 +47,8 @@
                                 </thead>
     
                                 <tbody>
-                                    <tr *ngFor="let sup of supplier">
+                                    <tr *ngFor="let sup of supplier; let i=index">
+                                        <td>{{i+1}}</td>
                                         <td>{{sup.tenNhaCungCap}}</td>
                                         <td>{{sup.address}}</td>
                                         <td>{{sup.phone}}</td>

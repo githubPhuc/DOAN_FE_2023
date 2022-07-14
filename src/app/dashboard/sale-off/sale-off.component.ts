@@ -11,6 +11,7 @@ import { TrademarkService } from '../trademark/trademark.service';
   styleUrls: ['./sale-off.component.scss']
 })
 export class SaleOffComponent implements OnInit {
+  
   checkPer:boolean=true;
   checkPri:boolean=false;
   all:boolean=true;
@@ -25,6 +26,11 @@ export class SaleOffComponent implements OnInit {
   backup:any;
   category:any;
   brand:any;
+
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 9;
+  tableSizes: any = [3, 6, 9, 12];
   searchForm=new FormGroup({
     txt: new FormControl('')
   });
@@ -108,9 +114,32 @@ export class SaleOffComponent implements OnInit {
       this.backup=data.pro;
     });
   }
-
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.fetchPosts();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchPosts();
+  }
+  fetchPosts(): void {
+    this.productService.getAllProduct().subscribe(data=>{
+      this.POSTS=data.pro;
+      this.backup=data.pro;
+    })
+  }
   onSubmit(form: FormGroup)
   {
+    if(!window.confirm('Lưu khuyến mãi này ?'))
+    {
+      return;
+    }
+    if(form.value.percent>100)
+    {
+      alert('Giảm giá không vượt quá 100%')
+      return;
+    }
     if(form.value.idCate==''&&form.value.idBrand==''&&form.value.percent==''&&form.value.price=='')
     {
       return;
@@ -147,6 +176,7 @@ export class SaleOffComponent implements OnInit {
     this.productService.Promotion(this.sale).subscribe(data=>{
       if(data.status==200)
       {
+        alert('Đã lưu khuyến mãi')
         this.productService.getAllProduct().subscribe(data=>{
           this.POSTS=data.pro;
         });
@@ -192,11 +222,13 @@ export class SaleOffComponent implements OnInit {
       this.productService.getAllProduct().subscribe(data=>{
         this.POSTS=data.pro;
         this.backup=data.pro;
+        this.page=1;
       })
     }else {
       this.productService.getSaleProduct().subscribe(res=>{
         this.POSTS=res.pro;
         this.backup=res.pro;
+        this.page=1;
       })
     }
   }
@@ -231,6 +263,10 @@ export class SaleOffComponent implements OnInit {
   }
   resetPrice()
   {
+    if(!window.confirm('Đặt lại giá cho sản phẩm ?'))
+    {
+      return;
+    }
     if(this.choose==0)
     {
       this.reset.brandId=0;

@@ -1,24 +1,30 @@
 
-<div class="title">
-    <span style="display:flex;justify-content:center; margin-bottom:20px; font-size:20px; font-weight:500;">Chi tiết hoá đơn</span>
-</div>
+
 <div class="container">
     <div class="col-md-12">
         <div class="card">
          
-         
+            <div class="card-header card-default" style="display: flex; justify-content:space-between">
+                <span>Chi tiết hoá đơn</span>
+                <span (click)="closeDialog()" style="font-weight: bold;">x</span>
+            </div>
             <div class="card-body">
-                <div class="row">
+                <div class="row-md" style="display: flex;">
                     <div class="col-md-6">
-                        <div style="display: flex; margin-bottom: 10px;" class="if">
-                            <div class="lable" style="width: 100px;">Ngày lập :</div>
-                            <div class="content" >{{data1[0].ngayNhap |date:'dd/MM/yyyy'}}</div>
-                        </div>
-                        <div style="display: flex; margin-bottom: 10px;" class="if">
-                            <div class="lable" style="width: 100px;">Tổng hoá đơn :</div>
-                            <div class="content">{{total | currency:'VND'}}</div>
+                        <div class="info" style="display: block;">
+                            <div style="display: flex;" class="if">
+                                <div class="lable">Ngày lập :</div>
+                                <div class="content">{{data1[0].ngayNhap | date:'dd/MM/yyyy'}}</div>
+                            </div>
+                    
+                            <div style="display: flex;" class="if">
+                                <div class="lable">Tổng hoá đơn :</div>
+                                <div class="content">{{total | currency:'VND'}}</div>
+                            </div>
+                         
                         </div>
                     </div>
+                   
                 </div>
                 <table id="datatable" class="table table-striped dt-responsive ">
                                 <thead>
@@ -37,7 +43,7 @@
                                         <td>{{inv.tenSanPham}}</td>
                                         <td>{{inv.soLuong}}</td>
                                         <td>{{inv.giaNhap|currency:'VND'}}</td>
-                                        <td>{{inv.gia|currency:'VND'}}</td>
+                                        <td>{{inv.giaNhap*inv.soLuong|currency:'VND'}}</td>
                                         <td>{{inv.nhaCungCap}}</td>
                                     </tr>
                                 </tbody>
@@ -45,27 +51,26 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12" id="btn">
-        <div>
-            <a (click)="closeDialog()"><span style="font-weight: bold; font-size:20px;">x</span></a>
-        </div>
-    </div>
-   
+ 
 </div>
-                        <style>
-                           
-                            button {
-                                margin-right: 20px;
-                            }
 
-                            .head-iv {
-                                justify-content: center;
-                                padding-bottom: 10px;
-                            }
+<style>
+ 
 
-                            .head-iv span {
-                               font-style:initial;
-                               font-weight: 800;
-                            }
-                        </style> 
+    button {
+        margin-right: 20px;
+    }
 
+    .info {
+        list-style-type: none;
+    }
+
+    .lable {
+        width: 150px;
+        font-weight: bold;
+    }
+
+    .if {
+        margin-bottom: 10px;
+    }
+</style>

@@ -19,147 +19,284 @@
     .link:hover a {
         color: rgb(86, 86, 249);
     }
+    p .text-muted {
+        color: white;
+    }
 </style>
 <main>
-    <div class="data">
-        <div class="title">
-            <span>Dữ liệu</span>
+    <div class="row page-header">
+        <div class="col-6 align-self-center ">
+          <h2>Tổng quan</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#" style="font-size: 15px;">Trang chủ</a></li>
+             
+                <li class="breadcrumb-item active" style="font-size: 15px;">Tổng quan</li>		
+            </ol>
         </div>
-        <div class="row w-no-padding margin-b-30">
-
-            <div class="col-md-3">
-                <div class="widget  bg-light"  style="height: 250px;">
-                    <div class="row row-table " id="row">
-                        <div style="height: 200px;">
-                            <h2 class="margin-b-5">Sản phẩm</h2>
-                            <p class="text-muted">Tổng số lượng sản phẩm</p>
-                            <span class="float-right text-primary widget-r-m">{{product}}</span>
-                        </div>
-                        <div class="link" style="height: 30px;">
-                            <a [routerLink]="['/admin/product']"><span>Xem chi tiết</span>&nbsp;<i
-                                    class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="widget  bg-light">
-                    <div class="row row-table " id="row">
-                        <div style="height: 100px;">
-                            <h2 class="margin-b-5">Tài khoản</h2>
-                            <p class="text-muted">Tổng số lượng tài khoản</p>
-                            <span class="float-right text-primary widget-r-m">{{account}}</span>
-                        </div>
-                        <div class="link" style="height: 30px;">
-                            <a [routerLink]="['/admin/account']"><span>Xem chi tiết</span>&nbsp;<i
-                                    class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="widget  bg-light">
-                    <div class="row row-table " id="row">
-                        <div style="height: 100px;">
-                            <h2 class="margin-b-5">Hoá đơn</h2>
-                            <p class="text-muted">Tổng số lượng hoá đơn</p>
-                            <span class="float-right text-primary widget-r-m">{{invoice}}</span>
-                        </div>
-                        <div class="link" style="height: 30px;">
-                            <a [routerLink]="['/admin/invoice']"><span>Xem chi tiết</span>&nbsp;<i
-                                    class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="widget  bg-light">
-                    <div class="row row-table " id="row">
-                        <div style="height: 100px;">
-                            <h2 class="margin-b-5">Nhà cung cấp</h2>
-                            <p class="text-muted">Số lượng nhà cung cấp</p>
-                            <span class="float-right text-primary widget-r-m">{{sup}}</span>
-                        </div>
-                        <div class="link" style="height: 30px;">
-                            <a [routerLink]="['/admin/supplier']"><span>Xem chi tiết</span>&nbsp;<i
-                                    class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-
-
-        </div>
-        <!-- <div class="row w-no-padding margin-b-30">
-
-            <div class="col-md-4">
-                <div class="widget  bg-light">
-                    <div class="row row-table " id="row">
-                        <div style="height: 150px;">
-                            <h2 class="margin-b-5">Doanh thu</h2>
-                            <div style="margin-top: 25px;">
-                                <p class="text-muted">Doanh thu tháng trước</p>
-                            <span class="float-right text-primary widget-r-m">{{sta.pMonth}}</span>
-                            </div>
-                            <div>
-                                <p class="text-muted">Doanh thu tháng này</p>
-                            <span class="float-right text-primary widget-r-m">{{sta.cMonth | currency:'VND'}}</span>
-                            </div>
-                        </div>
-                     
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="widget  bg-light">
-                    <div class="row row-table " id="row">
-                        <div style="height: 150px;">
-                            <h2 class="margin-b-5">Doanh thu</h2>
-                            <div style="margin-top: 25px;">
-                                <p class="text-muted">Doanh thu tháng trước</p>
-                            <span class="float-right text-primary widget-r-m">{{product}}</span>
-                            </div>
-                            <div>
-                                <p class="text-muted">Doanh thu tháng này</p>
-                            <span class="float-right text-primary widget-r-m">{{product}}</span>
-                            </div>
-                        </div>
-                     
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="widget  bg-light">
-                    <div class="row row-table " id="row">
-                        <div style="height: 150px;">
-                            <h2 class="margin-b-5">Doanh thu</h2>
-                            <div style="margin-top: 25px;">
-                                <p class="text-muted">Doanh thu tháng trước</p>
-                            <span class="float-right text-primary widget-r-m">{{sta.pMonth}}</span>
-                            </div>
-                            <div>
-                                <p class="text-muted">Doanh thu tháng này</p>
-                            <span class="float-right text-primary widget-r-m">{{sta.cMonth | currency:'VND'}}</span>
-                            </div>
-                        </div>
-                     
-
-                    </div>
-                </div>
-            </div>
-     
-
-
-
-
-        </div> -->
     </div>
+    <style>
+        ol li {
+            display: flex;
+            align-items: center;
+            color: #868e96;
+            
+        }
+    </style>
+
+                <div class="data">
+                  
+                    <div class="row w-no-padding margin-b-30">
+            
+                        <div class="col-md-3">
+                            <div class="widget  bg-light">
+                                <div class="row row-table " id="row">
+                                    <div style="height: 100px;">
+                                        <h2 class="margin-b-5">Sản phẩm</h2>
+                                        <p class="text-muted">Tổng số lượng sản phẩm</p>
+                                        <span class="float-right text-primary widget-r-m">{{product}}</span>
+                                    </div>
+                                    <div class="progress margin-b-10  progress-mini">
+                                        <div style="width:90%;" class="progress-bar bg-primary"></div>
+                                    </div>
+                                    <div class="link" style="height: 30px;">
+                                        <a [routerLink]="['/admin/product']"><span>Xem chi tiết</span>&nbsp;<i
+                                                class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                                    </div>
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="widget  bg-light">
+                                <div class="row row-table " id="row">
+                                    <div style="height: 100px;">
+                                        <h2 class="margin-b-5">Tài khoản</h2>
+                                        <p class="text-muted">Tổng số lượng tài khoản</p>
+                                        <span class="float-right text-primary widget-r-m">{{account}}</span>
+                                    </div>
+                                    <div class="link" style="height: 30px;">
+                                        <a [routerLink]="['/admin/account']"><span>Xem chi tiết</span>&nbsp;<i
+                                                class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                                    </div>
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="widget  bg-light">
+                                <div class="row row-table " id="row">
+                                    <div style="height: 100px;">
+                                        <h2 class="margin-b-5">Hoá đơn</h2>
+                                        <p class="text-muted">Tổng số lượng hoá đơn</p>
+                                        <span class="float-right text-primary widget-r-m">{{invoice}}</span>
+                                    </div>
+                                    <div class="link" style="height: 30px;">
+                                        <a [routerLink]="['/admin/invoice']"><span>Xem chi tiết</span>&nbsp;<i
+                                                class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                                    </div>
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="widget  bg-light">
+                                <div class="row row-table " id="row">
+                                    <div style="height: 100px;">
+                                        <h2 class="margin-b-5">Nhà cung cấp</h2>
+                                        <p class="text-muted">Số lượng nhà cung cấp</p>
+                                        <span class="float-right text-primary widget-r-m">{{sup}}</span>
+                                    </div>
+                                    <div class="link" style="height: 30px;">
+                                        <a [routerLink]="['/admin/supplier']"><span>Xem chi tiết</span>&nbsp;<i
+                                                class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                                    </div>
+            
+                                </div>
+                            </div>
+                        </div>
+            
+            
+            
+            
+                    </div>
+                    <div class="row w-no-padding margin-b-30">
+            
+                        <div class="col-md-4">
+                            <div class="widget  bg-chart">
+                                <div class="row row-table " id="row">
+                                    <div style="height: 150px;">
+                                        <h2 class="margin-b-5" style="color: white;font-weight: bold; font-size: 20px;">Kho hàng</h2>
+                                        <div style="margin-top: 25px;">
+                                            <p  style="color: white;">Số lượng sản phẩm nhập vào</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.soNhap}}</span>
+                                        </div>
+                                        <div>
+                                            <p  style="color: white;">Số lượng sản phẩm bán ra</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.soBan}}</span>
+                                        </div>
+                                        <div>
+                                            <p style="color: white;">Tồn kho</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.soNhap-sta.soBan}}</span>
+                                        </div>
+                                    </div>
+                                 
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="widget  bg-chart">
+                                <div class="row row-table " id="row">
+                                    <div style="height: 150px;">
+                                        <h2 class="margin-b-5" style="color: white;font-weight: bold; font-size: 20px;">Hoá đơn</h2>
+                                        <div style="margin-top: 25px;">
+                                            <p  style="color: white;">Tổng số lượng hoá đơn</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{invoice}}</span>
+                                        </div>
+                                        <div>
+                                            <p  style="color: white;">Số hoá đơn đã hoàn thành</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.hdHt}}</span>
+                                        </div>
+                                        <div>
+                                            <p style="color: white;">Số hoá đơn đã huỷ</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.hdHuy}}</span>
+                                        </div>
+                                    </div>
+                                 
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="widget  bg-chart">
+                                <div class="row row-table " id="row">
+                                    <div style="height: 150px;">
+                                        <h2 class="margin-b-5" style="color: white;font-weight: bold; font-size: 20px;">Doanh thu</h2>
+                                        <div style="margin-top: 25px;">
+                                            <p  style="color: white;">Số tiền nhập hàng</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.mNhap|currency:'VND'}}</span>
+                                        </div>
+                                        <div>
+                                            <p  style="color: white;">Doanh thu bán ra</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.mBan|currency:'VND'}}</span>
+                                        </div>
+                                        <div>
+                                            <p style="color: white;">Lợi nhuận</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.mBan-sta.mNhap|currency:'VND'}}</span>
+                                        </div>
+                                    </div>
+                                 
+            
+                                </div>
+                            </div>
+                        </div>
+                 
+            
+            
+            
+            
+                    </div>
+                    <!-- <div class="row w-no-padding margin-b-30">
+            
+                        <div class="col-md-3">
+                            <div class="widget  bg-chart">
+                                <div class="row row-table " id="row">
+                                    <div style="height: 150px;">
+                                        <h2 class="margin-b-5" style="color: white;font-weight: bold; font-size: 20px;">Kho hàng</h2>
+                                        <div style="margin-top: 25px;">
+                                            <p  style="color: white;">Số lượng sản phẩm nhập vào</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.soNhap}}</span>
+                                        </div>
+                                        <div>
+                                            <p  style="color: white;">Số lượng sản phẩm bán ra</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.soBan}}</span>
+                                        </div>
+                                        <div>
+                                            <p style="color: white;">Tồn kho</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.soNhap-sta.soBan}}</span>
+                                        </div>
+                                    </div>
+                                 
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="widget  bg-chart">
+                                <div class="row row-table " id="row">
+                                    <div style="height: 150px;">
+                                        <h2 class="margin-b-5" style="color: white;font-weight: bold; font-size: 20px;">Hoá đơn</h2>
+                                        <div style="margin-top: 25px;">
+                                            <p  style="color: white;">Tổng số lượng hoá đơn</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{invoice}}</span>
+                                        </div>
+                                        <div>
+                                            <p  style="color: white;">Số hoá đơn đã hoàn thành</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.hdHt}}</span>
+                                        </div>
+                                        <div>
+                                            <p style="color: white;">Số hoá đơn đã huỷ</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.hdHuy}}</span>
+                                        </div>
+                                    </div>
+                                 
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="widget  bg-chart">
+                                <div class="row row-table " id="row">
+                                    <div style="height: 150px;">
+                                        <h2 class="margin-b-5" style="color: white;font-weight: bold; font-size: 20px;">Doanh thu</h2>
+                                        <div style="margin-top: 25px;">
+                                            <p  style="color: white;">Số tiền nhập hàng</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.soNhap}}</span>
+                                        </div>
+                                        <div>
+                                            <p  style="color: white;">Doanh thu bán ra</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.soBan}}</span>
+                                        </div>
+                                        <div>
+                                            <p style="color: white;">Lợi nhuận</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.soNhap-sta.soBan}}</span>
+                                        </div>
+                                    </div>
+                                 
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="widget  bg-chart">
+                                <div class="row row-table " id="row">
+                                    <div style="height: 150px;">
+                                        <h2 class="margin-b-5" style="color: white;font-weight: bold; font-size: 20px;">Doanh thu</h2>
+                                        <div style="margin-top: 25px;">
+                                            <p  style="color: white;">Số tiền nhập hàng</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.soNhap}}</span>
+                                        </div>
+                                        <div>
+                                            <p  style="color: white;">Doanh thu bán ra</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.soBan}}</span>
+                                        </div>
+                                        <div>
+                                            <p style="color: white;">Lợi nhuận</p>
+                                        <span class="float-right widget-r-m" style="color: white; font-size:20px;">{{sta.soNhap-sta.soBan}}</span>
+                                        </div>
+                                    </div>
+                                 
+            
+                                </div>
+                            </div>
+                        </div>
+                 
+            
+            
+            
+            
+                    </div> -->
+                </div>
+            
+
 </main>

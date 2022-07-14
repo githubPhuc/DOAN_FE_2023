@@ -28,9 +28,56 @@ export class AdminCreateComponent implements OnInit {
 
   });
 
+  msgName:any;
+  msgPass:any;
+  msgUser:any;
+  msgPhone:any;
+  msgMail:any;
   regis=new RegisterModel("","","","","","");
   onSubmit(form:FormGroup)
   {
+    if(form.value.email.length<1)
+    {
+      this.msgMail='Email không được bỏ trống'
+    }else
+    {
+      this.msgMail=null;
+    }
+    if(form.value.username.length<6||form.value.username.length>30)
+    {
+      this.msgUser='Tài khoản phải từ 6 đến 30 ký tự';
+     
+    }else
+    {
+      this.msgUser=null;
+    }
+    if(form.value.password.length<6||form.value.password.length>30)
+    {
+      this.msgPass='Mật khẩu phải từ 6 đến 30 ký tự';
+  
+    }else
+    {
+      this.msgPass=null;
+    }
+    if(form.value.phone.length>10||form.value.phone.length<10)
+    {
+      this.msgPhone='Số điện thoại phải đủ 10 ký tự';
+    }else
+    {
+      this.msgPhone=null;
+    }
+    if(form.value.fullName.length<1)
+    {
+      this.msgName='Tên không được bỏ trống';
+    }else
+    {
+      this.msgName=null;
+    }
+
+    if(this.msgPass!=null||this.msgPhone!=null||this.msgUser!=null||this.msgMail!=null)
+    {
+      return;
+    }
     console.log('data',form.value);
 
     this.regis.username=form.value.username;
@@ -44,6 +91,7 @@ export class AdminCreateComponent implements OnInit {
       if(data.status=='Success')
       {
         alert("Tạo tài khoản thành công");
+        this.router.navigate(['/admin/account']);
       }
     })
   }

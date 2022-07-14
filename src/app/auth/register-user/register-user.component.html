@@ -14,18 +14,18 @@
             }
         </style>
     </head>
-    <body class="bg-light">
+    <body class="bg-chart">
 
-        <div class="misc-wrapper">
+        <div class="misc-wrapper bg-chart">
             <div class="misc-content">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-4">
-                              <div class="misc-header text-center">
-								
-								<img alt="" src="../../../assets/img/text.jpg" class="toggle-none hidden-xs">
-                            </div>
-                            <div class="misc-box">   
+                <div class="container" >
+                    <div class="row justify-content-center" >
+                        <div class="col-5">
+                            
+                            <div class="misc-box" style="border-radius: 5px;">   
+                                <div class="tt" style="margin-bottom: 20px; font-size: 20px; font-weight: bold; color: rgb(82, 169, 246);">
+                                    <span>Đăng Ký</span>
+                                </div>  
                                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
                                     <div class="form-group">                                      
                                         <label  for="exampleuser1">Tên đầy đủ</label>
@@ -33,9 +33,7 @@
                                         <input id="txtUsername" class="form-control" type="text" name="" id="username"  formControlName="fullName">
                                         <span class="text-muted icon-input"><i class="fa fa-user" aria-hidden="true"></i></span>
                                         </div>
-                                        <div *ngIf="!registerForm.value.fullName"style="color: red;">
-                                            <small> Full name is required.</small>
-                                           </div>
+                                        <small *ngIf="msgName!=null" style="color: red;">{{msgName}}</small>
                                     </div>
                                     <div class="form-group">                                      
                                         <label  for="exampleuser1">Tên tài khoản</label>
@@ -43,9 +41,7 @@
                                         <input id="txtUsername" class="form-control" type="text" name="" id="username"  formControlName="username">
                                         <span class="text-muted icon-input"><i class="fa fa-user" aria-hidden="true"></i></span>
                                         </div>
-                                        <div *ngIf="!registerForm.value.username" style="color: red;">
-                                            <small> Username is required.</small>
-                                           </div>
+                                        <small *ngIf="msgUser!=null" style="color: red;">{{msgUser}}</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Mật khẩu</label>
@@ -53,9 +49,7 @@
                                         <input id="txtPassword" class="form-control" type="password" name="" id="password"  formControlName="password">
                                         <span (click)="showPass()" class="text-muted icon-input"><i id="icon-pass" class="fa fa-eye"></i></span>
                                         </div>
-                                        <div *ngIf="!registerForm.value.password" style="color: red;">
-                                            <small> Password is required.</small>
-                                           </div>
+                                        <small *ngIf="msgPass!=null" style="color: red;">{{msgPass}}</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
@@ -63,35 +57,23 @@
                                         <input id="txtPassword" class="form-control" type="password" name="" id="rePassword"  formControlName="rePassword">
                                         <span (click)="showRePass()" class=" text-muted icon-input"><i id="icon-repass" class="fa fa-eye"></i></span>
                                         </div>
-                                        <div *ngIf="!registerForm.value.password" style="color: red;">
-                                            <small> Password is required.</small>
-                                           </div>
-                                           <div *ngIf="!checkPass" style="color: red;">
-                                            <small> Mật khẩu không trùng khớp.</small>
-                                           </div>
+                                        <small *ngIf="msgPass!=null" style="color: red;">{{msgPass}}</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Email</label>
                                         <div class="group-icon">
-                                        <input id="txtPassword" class="form-control" type="text" name="" id="email"  formControlName="email">
+                                        <input id="txtPassword" class="form-control" type="text" name="" id="email"  formControlName="email" email>
                                         <span class="text-muted icon-input"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                                         </div>
-                                        <div *ngIf="!registerForm.value.email" style="color: red;">
-                                            <small> Email is required.</small>
-                                           </div>
+                                        <small *ngIf="msgMail!=null" style="color: red;">{{msgMail}}</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Số điện thoại</label>
                                         <div class="group-icon">
-                                        <input id="txtPassword" class="form-control" type="number"[maxLength]="10"  name="" id="phone"  formControlName="phone">
+                                        <input id="txtPassword" class="form-control" type="text" [maxLength]="10"  name="" id="phone"  formControlName="phone">
                                         <span class=" text-muted icon-input"><i class="fa fa-mobile" aria-hidden="true"></i></span>
                                         </div>
-                                        <div *ngIf="!registerForm.value.phone" style="color: red;">
-                                            <small> Phone is required.</small>
-                                           </div>
-                                           <div *ngIf="sdt" style="color: red;">
-                                            <small>Phải đủ 10 ký tự</small>
-                                           </div>
+                                        <small *ngIf="msgPhone!=null" style="color: red;">{{msgPhone}}</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Địa chỉ</label>
@@ -99,14 +81,13 @@
                                         <input id="txtPassword" class="form-control" type="text" name="" id="phone"  formControlName="address">
                                         <span class=" text-muted icon-input"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
                                         </div>
-                                        <div *ngIf="!registerForm.value.address" style="color: red;">
-                                            <small> Address is required.</small>
-                                           </div>
+                                        <small *ngIf="msgAddress!=null" style="color: red;">{{msgAddress}}</small>
+                                        
                                     </div>
                                     <div class="clearfix">
-                                        <div class="float-center">
-                                            <button class="btn btn-primary" type="submit" [disabled]="!registerForm.valid">Đăng ký</button> &nbsp;
-                                            <button [routerLink]="['/auth/login']" class="btn btn-primary">Quay lại đăng nhập</button>
+                                        <div class="float-right">
+                                            <button [routerLink]="['/auth/login']" class="btn btn-primary">Quay lại đăng nhập</button> &nbsp;
+                                            <button   type="submit" class="btn btn-primary"  >Đăng Ký</button>
                                         </div>
                                     
                                         

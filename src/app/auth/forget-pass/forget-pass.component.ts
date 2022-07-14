@@ -26,7 +26,8 @@ export class ForgetPassComponent implements OnInit {
   })
 
   changeForm=new FormGroup({
-    newPass: new FormControl('')
+    newPass: new FormControl(''),
+    rePass: new FormControl('')
   })
   ngOnInit(): void {
   }
@@ -60,9 +61,22 @@ export class ForgetPassComponent implements OnInit {
     }
   
   }
-
+check:boolean=false;
+msg:any;
   onSubmitChange(form:FormGroup)
   {
+    if(form.value.newPass==''||form.value.rePass=='')
+    {
+      this.check=true;
+      this.msg='Mật khẩu không được để trống';
+      return;
+    }
+    if(form.value.newPass!=form.value.rePass)
+    {
+      this.check=true;
+      this.msg='Mật khẩu không trùng khớp';
+      return;
+    }
     this.loginService.changePassword(this.mail,form.value.newPass).subscribe(data=>{
       if(data.status==200)
       {

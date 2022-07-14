@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { AddCommentComponent } from './dialog/add-comment/add-comment.component';
 import { AddImportComponent } from './dialog/add-import/add-import.component';
+import { AddSupplierComponent } from './dialog/add-supplier/add-supplier.component';
 import { ChoosePaymentComponent } from './dialog/choose-payment/choose-payment.component';
 import { ConfirmDeleteComponent } from './dialog/confirm-delete/confirm-delete.component';
 import { ConfirmComponent } from './dialog/confirm/confirm.component';
@@ -33,7 +34,7 @@ export class DialogService {
   {
 
    this.dialog1.open(InvoiceDetailDialogComponent,{
-    height: '600px',
+    minHeight: '600px',
     width: '1000px',
     data: {
       'id': id
@@ -47,7 +48,7 @@ opentDialog1(id:number)
 {
 
  this.dialog1.open(InvoiceDetailUserComponent,{
-  height: '500px',
+  minHeight: '500px',
   width: '800px',
   data: {
     'id': id
@@ -72,7 +73,7 @@ opentImportDetail(id:number)
 {
 
  this.dialog1.open(ImportDetailComponent,{
-  height: '600px',
+  minHeight: '600px',
   width: '1000px',
   data: {
     'id': id
@@ -85,7 +86,7 @@ openChoosePayment()
 {
 
  this.dialog1.open(ChoosePaymentComponent,{
-  height: '600px',
+  minHeight: '400px',
   width: '1200px',
  
 }
@@ -133,7 +134,7 @@ openDialogEditCate(id:number)
   {
 
    this.dialog1.open(EditCategoryComponent,{
-    height: '150px',
+    minHeight: '150px',
     width: '400px',
     data: {
       'id': id
@@ -145,7 +146,7 @@ openDialogEditBrand(id:number)
   {
 
    this.dialog1.open(EditBrandComponent,{
-    height: '300px',
+    minHeight: '300px',
     width: '400px',
     data: {
       'id': id
@@ -157,8 +158,8 @@ openDialogEditSup(id:number)
   {
 
    this.dialog1.open(EditSuppComponent,{
-    height: '450px',
-    width: '600px',
+    minHeight: '450px',
+    minWidth: '500px',
     data: {
       'id': id
     }
@@ -169,8 +170,18 @@ openDialogCreateSlide()
   {
 
    this.dialog1.open(SlideShowCreateComponent,{
-    height: '350px',
+    minHeight: '350px',
     width: '670px',
+
+  }
+  );
+}
+openDialogCreateSupplier()
+  {
+
+   this.dialog1.open(AddSupplierComponent,{
+    minHeight: '450px',
+    minWidth: '500px',
 
   }
   );
@@ -180,7 +191,7 @@ openDialogEditSlide(id:number)
   {
 
    this.dialog1.open(EditSlideshowComponent,{
-    height: '350px',
+    minHeight: '350px',
     width: '670px',
     data: {
       'id': id
@@ -215,7 +226,7 @@ openDialogAddItem()
 openDialogRepComment(id:number,cmt:number)
   {
    this.dialog1.open(RepCommentComponent,{
-    height: '500px',
+    minHeight: '300px',
     width: '800px',
     data: {
       'id': id,

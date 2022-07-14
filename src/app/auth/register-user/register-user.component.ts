@@ -19,6 +19,11 @@ export class RegisterUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  name:any;
+  pass:any;
+  phone:any;
+  mail:any;
+  address:any;
   registerForm = new FormGroup({
     fullName: new FormControl('',[Validators.required]),
     username: new FormControl(''),
@@ -30,26 +35,79 @@ export class RegisterUserComponent implements OnInit {
 
 
   });
-
+  msgName:any;
+  msgPass:any;
+  msgUser:any;
+  msgPhone:any;
+  msgMail:any;
+  msgAddress:any;
   regis=new RegisterModel("","","","","","");
   onSubmit(form:FormGroup)
   {
-    if(form.value.phone.toString().length!=10)
+    if(form.value.address.length<1)
     {
-      this.sdt=true;
+      this.msgAddress='Địa chỉ không được bỏ trống'
+    }else
+    {
+      this.msgAddress=null;
+    }
+    if(form.value.email.length<1)
+    {
+      this.msgMail='Email không được bỏ trống'
+    }else
+    {
+      this.msgMail=null;
+    }
+    if(form.value.username.length<6||form.value.username.length>30)
+    {
+      this.msgUser='Tài khoản phải từ 6 đến 30 ký tự';
+     
+    }else
+    {
+      this.msgUser=null;
+    }
+    if(form.value.password.length<6||form.value.password.length>30)
+    {
+      this.msgPass='Mật khẩu phải từ 6 đến 30 ký tự';
+   
+  
+    }else
+    {
+      this.msgPass=null;
+      if(form.value.password!=form.value.rePassword)
+      {
+        this.msgPass='Mật khẩu không trùng khớp'
+      }else
+      {
+        this.msgPass=null;
+      }
+    }
+    if(form.value.phone.length>10||form.value.phone.length<10)
+    {
+      this.msgPhone='Số điện thoại phải đủ 10 ký tự';
+    }else
+    {
+      this.msgPhone=null;
+    }
+    if(form.value.fullName.length<1)
+    {
+      this.msgName='Tên không được bỏ trống';
+    }else
+    {
+      this.msgName=null;
+    }
+
+    if(this.msgPass!=null||this.msgPhone!=null||this.msgUser!=null||this.msgMail!=null||this.msgAddress!=null)
+    {
       return;
     }
-    if(form.value.password!=form.value.rePassword)
-    {
-      this.checkPass=false;
-      return;
-    }
+  
     console.log('data',form.value);
 
     this.regis.username=form.value.username;
     this.regis.password=form.value.password;
     this.regis.email=form.value.email;
-    this.regis.phone=form.value.phone.toString();
+    this.regis.phone=form.value.phone;
     this.regis.fullName=form.value.fullName;
     this.regis.shippingAddress=form.value.address;
     console.log(this.regis);

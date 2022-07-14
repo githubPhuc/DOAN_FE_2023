@@ -45,6 +45,7 @@ import { EditAccountComponent } from './account/edit-account/edit-account.compon
 import { InvoiceDetailUserComponent } from './dialog/invoice-detail-user/invoice-detail-user.component';
 import { EditSlideshowComponent } from './dialog/edit-slideshow/edit-slideshow.component';
 import { EditSuppComponent } from './dialog/edit-supp/edit-supp.component';
+import { AddSupplierComponent } from './dialog/add-supplier/add-supplier.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { EditSuppComponent } from './dialog/edit-supp/edit-supp.component';
     InvoiceDetailUserComponent,
     EditSlideshowComponent,
     EditSuppComponent,
+    AddSupplierComponent,
 
 
   ],
@@ -94,7 +96,8 @@ import { EditSuppComponent } from './dialog/edit-supp/edit-supp.component';
     ReactiveFormsModule,
     NgxPaginationModule,
     NgxStarRatingModule,
-    NgPipesModule
+    NgPipesModule,
+
   ]
 })
 export class DashboardModule { }

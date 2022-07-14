@@ -51,9 +51,9 @@
                                 </div>
                             
                                
-                                   <div class="btn">
-                                    <button class="btn btn-info" type="submit">Lưu</button>
-                                   </div>
+                                <div class="form-group" style="width: 200px; ">
+                                    <button class="btn btn-info" type="submit" style="margin-bottom: 30px; margin-left: 20px;">Lưu</button>
+                                </div>
                                 </form>
                                 <form *ngIf="!type" [formGroup]="saleForm" (ngSubmit)="onSubmit(saleForm)" style="display: flex; margin-left: 15px; margin-top: 7px;">
                                 
@@ -72,11 +72,10 @@
                                     <input *ngIf="!checkPer" type="number"  formControlName="price" value="0" style="margin-left: 10px;" >&nbsp;
                                     <input *ngIf="checkPer" type="number"   formControlName="percent" value="0">&nbsp;
                                 </div>
-                            
+                                <div class="form-group" style="width: 200px; ">
+                                    <button class="btn btn-info" type="submit" style="margin-bottom: 30px;  margin-left: 20px;">Lưu</button>
+                                </div>
                                
-                                   <div class="btn">
-                                    <button class="btn btn-info" type="submit">Lưu</button>
-                                   </div>
                                 </form>
                                 
                                 
@@ -139,7 +138,7 @@
                 </div>
                 <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline" width="100%">
                     <thead>
-                        <tr>
+                        <tr  class="bg-chart" style="color: white;">
                             <th>
                                 <strong>Hình ảnh</strong>
                             </th>
@@ -158,7 +157,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let pro of POSTS ">
+                        <tr *ngFor="let pro of POSTS | paginate
+                        : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index">
                             <td *ngIf="pro.image!=null"><img src="../../../assets/img/product/{{pro.image}}" style="width: 150px"
                                     alt=""></td>
                             <td *ngIf="pro.image==null"><img src="../../../assets/img/product/noimage.png" style="width: 150px" alt="">
@@ -184,14 +189,14 @@
         </div>
     </div>
 </div>
-<!-- <div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center">
     <pagination-controls
       previousLabel="Prev"
       nextLabel="Next"
       (pageChange)="onTableDataChange($event)"
     >
     </pagination-controls>
-  </div> -->
+  </div>
 
 <style>
     .sr {

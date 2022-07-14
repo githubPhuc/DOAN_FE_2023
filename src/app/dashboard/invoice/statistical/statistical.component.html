@@ -117,7 +117,7 @@
            
                 <table id="datatable" class="table table-striped dt-responsive nowrap">
                     <thead>
-                        <tr>
+                        <tr  class="bg-chart" style="color: white;">
                             <th>STT</th>
                             <th>Sản phẩm</th>
                             <th>Giá nhập vào </th>
@@ -161,9 +161,9 @@
                                     <li>Doanh thu : <span>{{saleTotal-importTotal | currency:'VND'}}</span></li>
                                 </ul>
                             </div> -->
-                <div class="result" *ngIf="isSta">
+    
                    
-                    <div *ngIf="POSTS[10].total!=null" class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center">
                         <pagination-controls
                           previousLabel="Prev"
                           nextLabel="Next"
@@ -171,7 +171,7 @@
                         >
                         </pagination-controls>
                       </div>
-                </div>
+               
 
             </div>
         </div>

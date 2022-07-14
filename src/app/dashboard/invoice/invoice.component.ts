@@ -20,6 +20,7 @@ export class InvoiceComponent implements OnInit {
   page: number = 1;
   count: number = 0;
   tableSize: number = 6;
+  inv:any;
   tableSizes: any = [3, 6, 9, 12];
   status:any=0;
   public invoice:any
@@ -89,6 +90,7 @@ export class InvoiceComponent implements OnInit {
  {
   this.responseIn.filter(form.value.start,form.value.end).subscribe(res=>{
     this.POSTS=res.inv;
+    this.invoice=res.inv;
   })
  }
 
@@ -109,6 +111,7 @@ export class InvoiceComponent implements OnInit {
   if(sts==0)
   {
     this.responseIn.getAllInvoice().subscribe(data=>{
+      this.invoice=data.inv;
       this.POSTS=data.inv;
       console.log(data);
       
@@ -117,6 +120,8 @@ export class InvoiceComponent implements OnInit {
   }
   this.responseIn.getInvoiceByStatus(this.status).subscribe(res=>{
     this.POSTS=res.inv;
+    this.invoice=res.inv;
+    this.page=1;
   })
  }
 }

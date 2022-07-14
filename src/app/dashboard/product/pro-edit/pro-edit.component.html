@@ -53,15 +53,16 @@
     
                         <div class="form-group">
                             <label>Mô tả</label>
-                            <textarea formControlName="description">
+                            <textarea formControlName="description" style="height: 150px;">
     
                             </textarea>
                         </div>
                         <div class="form-group">
                             <label>Thương hiệu</label>
-                            <select class="form-control m-b" formControlName="tradeMark">
+                            <select class="form-control m-b" formControlName="tradeMarkId">
                                 <Option *ngFor="let p of brand" value="{{p.id}}">{{p.name}}</Option>
                             </select>
+                           
                         </div>
                         <div class="form-group">
                             <label>CPU</label>
@@ -99,7 +100,7 @@
                         <div class="form-group">
                             <label>Cổng kết nối</label>
     
-                            <textarea name="" id="" cols="30" rows="10" formControlName="port"></textarea>
+                            <textarea name="" id="" cols="30" rows="10" formControlName="port" style="height: 60px;"></textarea>
                         </div>
                         <div class="form-group">
                             <label>Ngày ra mắt</label>

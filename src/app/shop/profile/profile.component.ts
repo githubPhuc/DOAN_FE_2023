@@ -121,15 +121,18 @@ export class ProfileComponent implements OnInit {
 
   cancel(id:number)
   {
-    this.shopService.Cancel(id).subscribe(res=>{
-      if(res.status==200)
-      {
-        alert(res.msg);
-        this.invoiceService.getAllInvoiceUser(localStorage.getItem('userid')!).subscribe(data=>{
-          this.invoice=data;
-        });
-      }
-    })
+    if(window.confirm('Bạn có muốn huỷ đơn hàng này ?'))
+    {
+      this.shopService.Cancel(id).subscribe(res=>{
+        if(res.status==200)
+        {
+          alert(res.msg);
+          this.invoiceService.getAllInvoiceUser(localStorage.getItem('userid')!).subscribe(data=>{
+            this.invoice=data;
+          });
+        }
+      })
+    }
   }
 
   filter(sts:any)

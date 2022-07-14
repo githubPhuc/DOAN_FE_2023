@@ -5,8 +5,8 @@
                 <div class="section-content">
                     <h5 class="section-content__title">Giỏ hàng của bạn</h5>
                     <a *ngIf="!isempty" (click)="removeAllCart()"
-                        class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20"
-                        style="color: white;">XOÁ TOÀN BỘ GIỎ HÀNG</a>
+                        class="btn btn--box btn--large btn--blue btn--uppercase  m-t-20"
+                        style="color: white; font-weight: bold;"><span>XOÁ TOÀN BỘ GIỎ HÀNG</span></a>
                 </div>
 
                 <div class="table-content table-responsive cart-table-content m-t-30">
@@ -59,20 +59,21 @@
 
                         </tbody>
                     </table>
-                    <div *ngIf="!isempty" class="total" style="display: flex; justify-content:flex-end; margin-top: 15px;">
-                        <span style="font-weight: bold;">Tổng : </span>&nbsp;<h3>{{total | currency:'VND'}}</h3>
+                    <div *ngIf="!isempty" class="total" style="display: flex; justify-content:flex-end; margin-top: 15px; ">
+          
+                        <div style="border: 1px solid rgb(212, 212, 212); border-radius: 5px; display:flex; padding:5px"><span style="font-weight: bold; width: 50px; opacity: 60%;">Tổng : </span>&nbsp;<h3 style="color: rgb(68, 68, 243);">{{total | currency:'VND'}}</h3></div>
                     </div>
                 </div>
                 <div *ngIf="!isempty" class="cart-table-button m-t-10">
                     <div class="cart-table-button--left">
                         <a [routerLink]="['/shop/home']"
-                            class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">Tiếp tục mua sắm</a>
+                            class="btn btn--box btn--large btn--gray btn--weight m-t-20" style="font-weight:500; font-size:16px; margin-bottom: 5px;">Tiếp tục mua sắm</a>
                     </div>
                     <div class="cart-table-button--right">
 
 
                         <a (click)="openPay()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20"
-                            style="color: white;">ĐẶT HÀNG</a>
+                            style="color: white;margin-bottom: 5px;">ĐẶT HÀNG</a>
 
                     </div>
                 </div>
@@ -86,7 +87,7 @@
                     </div>
                     <div class="cart-table-button--left">
                         <a [routerLink]="['/home']"
-                            class="btn btn--box btn--large btn--gray btn--uppercase btn--weight m-t-20">Tiếp tục mua sắm</a>
+                            class="btn btn--box btn--large btn--gray btn--weight m-t-20" style="font-weight:500; font-size:16px;margin-bottom: 5px;">Tiếp tục mua sắm</a>
                     </div>
                 </div>
             </div>

@@ -38,4 +38,8 @@ export class SupplierComponent implements OnInit {
   {
     this.dialog.openDialogEditSup(id);
   }
+  openCreate()
+  {
+    this.dialog.openDialogCreateSupplier();
+  }
 }

@@ -126,12 +126,13 @@ export class ProEditComponent implements OnInit {
 
   onSubmit(form:FormGroup)
   {
+ 
     this.pro.Name=form.value.name;
     this.pro.Description=form.value.description;
     this.pro.Price=form.value.price;
     this.pro.Quantily=form.value.stock;
     this.pro.CategoryId=form.value.categoryId;
-    this.pro.TradeMarkId=form.value.tradeMark;
+    this.pro.TradeMarkId=form.value.tradeMarkId;
     this.pro.Star=5;
     this.pro.CPU=form.value.cpu;
     this.pro.DesignStyle=form.value.designStyle;

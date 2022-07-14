@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
       window.localStorage.setItem('role',data1.role);
       window.localStorage.setItem('username',data1.username);
       window.localStorage.setItem('address',data1.address);
+      window.localStorage.setItem('name',data1.name);
       if(data1.role=='Admin')
       {
       this.router.navigate(['/'+'admin']);

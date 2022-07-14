@@ -1,8 +1,9 @@
 <div class="container">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header card-default">
-                Chi tiết hoá đơn
+            <div class="card-header card-default" style="display: flex; justify-content:space-between">
+                <span>Chi tiết hoá đơn</span>
+                <span (click)="closeDialog()" style="font-weight: bold;">x</span>
             </div>
 
             <div class="card-body">
@@ -34,7 +35,7 @@
                                                 thành</span>
                                             <span
                                                 *ngIf="data2.status==true&&data2.complete==false&&data2.cancel!=true">Đang
-                                                giao</span>
+                                                giao (đã xác nhận)</span>
                                             <span *ngIf="data2.cancel==true">Đã huỷ</span>
                                             <span
                                     *ngIf="data2.status==false&&data2.complete==false&&data2.cancel!=true">Chờ xác nhận</span>
@@ -98,24 +99,8 @@
     </div>
 
 </div>
-<div class="col-md-12" id="btn">
-    <div>
-        <a (click)="closeDialog()"><span style="font-weight: bold; font-size:20px;">x</span></a>
-    </div>
-</div>
-<style>
-    #btn {
-                               
-                              
-                               display: flex;
-                               justify-content: flex-end;
-                               position: fixed;
-                               width: 50%;
-                               top: 120px;
-                               right: 360px;
 
-                           }
-    </style>
+
 
 <style>
  

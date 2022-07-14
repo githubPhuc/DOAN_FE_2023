@@ -1,13 +1,13 @@
 <div class="container">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header card-default">
-                Chi tiết hoá đơn
+            <div class="card-header card-default" style="display: flex; justify-content:space-between">
+                <span>Chi tiết hoá đơn</span>
+                <span (click)="closeDialog()" style="font-weight: bold;">x</span>
             </div>
-
             <div class="card-body">
                 <div class="row-md" style="display: flex;">
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="info" style="display: block;">
                             <div style="display: flex;" class="if">
                                 <div class="lable">Ngày lập :</div>
@@ -16,6 +16,10 @@
                             <div style="display: flex;" class="if">
                                 <div class="lable">Khách hàng :</div>
                                 <div class="content">{{data2.username}}</div>
+                            </div>
+                            <div style="display: flex;" class="if">
+                                <div class="lable">Địa chỉ :</div>
+                                <div class="content">{{data2.shippingAddress}}</div>
                             </div>
                             <div style="display: flex;" class="if">
                                 <div class="lable">Tổng hoá đơn :</div>
@@ -38,11 +42,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <span>*Ghi chú</span>
                         <div class="content">
                             <textarea name="" id="" cols="30" rows="30" [value]="data2.note"
-                                [disabled]="true" style="height: 100px;"></textarea>
+                                [disabled]="true" style="height: 120px;"></textarea>
                         </div>
 
                     </div>
@@ -83,12 +87,7 @@
             
         </div>   
     </div>
-    <div class="col-md-12" id="btn">
-        <div>
-            <button (click)="closeDialog()" type="button" class="btn btn-sm btn-danger"><i
-                    class="fa fa-times"></i></button>
-        </div>
-    </div>
+  
 
 </div>
 

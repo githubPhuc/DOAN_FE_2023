@@ -14,18 +14,18 @@
             }
         </style>
     </head>
-    <body class="bg-light">
+    <body class="bg-chart">
 
-        <div class="misc-wrapper">
+        <div class="misc-wrapper bg-chart">
             <div class="misc-content">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-4">
-                              <div class="misc-header text-center">
-							
-								<img alt="" src="../../../assets/img/text.jpg" class="toggle-none hidden-xs">
-                            </div>
-                            <div class="misc-box" ng-app="myApp" ng-controller="loginCtrl" style="border: 1px solid rgb(238, 234, 234); border-radius: 5px;">   
+                        <div class="col-5">
+                            
+                            <div class="misc-box" ng-app="myApp" ng-controller="loginCtrl" style="border: 1px solid rgb(238, 234, 234); border-radius: 5px;"> 
+                                <div class="tt" style="margin-bottom: 20px; font-size: 20px; font-weight: bold; color: rgb(82, 169, 246);">
+                                    <span>Đăng Nhập</span>
+                                </div>  
                                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
                                     <div class="form-group">                                      
                                         <label  for="exampleuser1">Tên tài khoản</label>
@@ -47,10 +47,12 @@
                                     <div class="clearfix">
                                        
                                         <div class="float-right">
+                                            <a [routerLink]="['/home']" id="back">Trở lại</a> &nbsp;
                                             <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Đăng nhập</button>
                                         </div>
+                                      
                                     </div>
-                                    <hr>
+                                    <br>
                                     <a [routerLink]="['/auth/forgot']" class="text-center">Quên mật khẩu?</a>
                                     <button (click)="register()" class="btn btn-block btn-success btn-rounded box-shadow">Đăng ký</button>
                                 </form>
@@ -60,6 +62,13 @@
                     </div>
                 </div>
             </div>
+            <style>
+                #back:hover {
+                    color: rgb(64, 140, 255);
+                    text-decoration: none;
+
+                }
+            </style>
         </div>
 
         <!-- Common Plugins -->
