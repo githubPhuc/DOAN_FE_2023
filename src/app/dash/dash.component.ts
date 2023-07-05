@@ -106,6 +106,20 @@ export class DashComponent  implements OnInit{
       b?.setAttribute('class','fa fa-angle-down')
     }
   }
+  dropInvoice()
+  {
+    var a= document.getElementById('Invoice');
+    var b =document.getElementById('downInvoice');
+    if(a?.getAttribute('style')=='display: none;')
+    {
+      a.setAttribute('style','display: block;');
+      b?.setAttribute('class','fa fa-angle-up')
+    }else
+    {
+      a?.setAttribute('style','display: none;');
+      b?.setAttribute('class','fa fa-angle-down')
+    }
+  }
   dropLogout()
   {
     var a= document.getElementById('log');

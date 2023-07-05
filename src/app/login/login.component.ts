@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit{
   });
   data=new Login("","");
   loginSus=true;
-  onSubmit(form:FormGroup) {
+  onSubmit(form:FormGroup) {  
     if(form.value.username=='')
     {
         this.isEMPTY=true;

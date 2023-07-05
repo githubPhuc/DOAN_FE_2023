@@ -141,7 +141,7 @@
                             </ul>
                         </li>
                         <li class="nav-item " id="nav-item ">
-                            <a class="nav-link" (click)="dropDirectory()" aria-expanded="false" id="dropdownDirectory">
+                            <a class="nav-link" (click)="dropDirectory()" aria-expanded="false" id="downDirectory">
                                 <i class="fa fa-envelope-open"></i> 
                                 <p class="toggle-none">Directory
                                     <i id="downDirectory" class="fa fa-angle-down" aria-hidden="true"></i> 
@@ -296,6 +296,43 @@
                                         <i class="far fa-circle nav-icon"> </i> 
                                         <p>
                                             Import Depot
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" [routerLink]="['/admin/ProductDepot']">
+                                        <i class="far fa-circle nav-icon"> </i> 
+                                        <p>
+                                            Product Depot
+                                        </p>
+                                    </a>
+                                </li>
+                               
+							
+      
+                            </ul>
+                        </li>
+                        <li class="nav-item " id="nav-item ">
+                            <a class="nav-link" (click)="dropInvoice()" aria-expanded="false" id="dropdownInvoice">
+                                <i class="fa fa-envelope-open"></i> 
+                                <p class="toggle-none">Invoice
+                                    <i id="downDepot" class="fa fa-angle-down" aria-hidden="true"></i> 
+                                </p>
+                            </a>
+                            <ul class="nav-second-level nav sub-menu" style="display: none;" aria-expanded="false" id="Invoice">
+                                <li class="nav-item active">
+                                    <a class="nav-link" [routerLink]="['/admin/ImportDepot']">
+                                        <i class="far fa-circle nav-icon"> </i> 
+                                        <p>
+                                            Import Depot
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" [routerLink]="['/admin/ProductDepot']">
+                                        <i class="far fa-circle nav-icon"> </i> 
+                                        <p>
+                                            Product Depot
                                         </p>
                                     </a>
                                 </li>
