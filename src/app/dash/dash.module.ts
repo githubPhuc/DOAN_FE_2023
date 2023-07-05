@@ -109,6 +109,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       positionClass:"toast-top-right",
       preventDuplicates:true,

@@ -1,0 +1,115 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Section search -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <b>Search</b>
+                            </h3>
+                        </div>
+                        <div class="card-body pad">
+                            <form [formGroup]="searchForm" >
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>codeBill: </label>
+                                            <input type="text" id="codeBill" formControlName="codeBill" (input)="Search(searchForm)" class="form-control form-control-xs" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>nameDepot: </label>
+                                            <input type="text" id="nameDepot" formControlName="nameDepot" (input)="Search(searchForm)" class="form-control form-control-xs" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+            
+        </div>
+        <!--Section data table-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary card-outline">
+                    <div class="card-body pad">
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col-md-4">
+                                <div class="col-lg-3 align-self-center text-right">
+                                    <button id="btInsert" (click)="_InsertView()" type="button" class="btn bg-gradient-success"><i class="fa fa-plus"></i>&nbsp;Add record</button>&nbsp;
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 table-body table-responsive">
+                                <fieldset class="scheduler-border">
+                                    <legend class="scheduler-border">List record bill import depot</legend>
+                                    <div class="control-group">
+                                        <table id="myTable" class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th width="250px"></th>
+                                                    <th >STT</th>
+                                                    <th>id</th>
+                                                    <th>codeBill  </th>
+                                                    <th>nameDepot </th>
+                                                    <th>sum price </th>
+                                                    <th>Sum quantity </th>
+                                                    <th>userCreate </th>
+                                                    <th>createdDate </th>
+                                                    <th>userUpdate </th>
+                                                    <th>updatedDate </th>
+                                                    <th>isAcceptance </th>
+                                                    <th>status </th>
+                                                </tr>
+                                            </thead>
+                                
+                                            <tbody>
+                                              
+                                                <tr *ngFor="let item of Data; let i=index">
+                                                    <td align="center">
+                                                        <a (click)="acceptance(item.id)" class="btn">
+                                                            <i class="bi bi-eye"></i> acceptance
+                                                        </a>
+                                                        <a (click)="detail(item.id)" class="btn">
+                                                            <i class="far  fa-list-alt"></i> detail
+                                                        </a>
+                                                        <a (click)="delete(item.id)" class="btn">
+                                                            <i class="far fa-trash-alt"></i> Delete
+                                                        </a>
+                                                    </td>
+                                                    <td>{{i+1}}</td>
+                                                    <td>{{item.id}}</td>
+                                                    <td>{{item.codeBill}}</td>
+                                                    <td>{{item.nameDepot}}</td>
+                                                    <td>{{item.price}}</td>
+                                                    <td>{{item.quantity}}</td>
+                                                    <td>{{item.userCreate}}</td>
+                                                    <td>{{item.createdDate}}</td>
+                                                    <td>{{item.userUpdate}}</td>
+                                                    <td>{{item.updatedDate}}</td>
+                                                    <td>{{(item.isAcceptance==true)?"Đã phê duyệt":"Chưa phê duyệt"}}</td>
+                                                    <td>{{item.status}}</td>
+                                                    
+                                                </tr>
+                                                  
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!--End section data table-->
+    </div>
+</section>
+
+
