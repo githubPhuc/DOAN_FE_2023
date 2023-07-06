@@ -16,14 +16,16 @@
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
             <div class="card">
                 <div class="col-lg-9">
-                    <div class="input-group" style="margin: 30px;margin-left: 55px;margin-bottom: none;">
-                        <span class="input-group-text">
-                            <span class="bi-person"></span>
-                        </span>
-                        <input type="text" class="form-control" placeholder="Username" name="" id="username"
-                            formControlName="username">
+                    
+                    <div class="form-group">
+                        <div class="input-group" style="margin: 30px;margin-left: 55px;margin-bottom: none;">
+                            <span class="input-group-text">
+                                <span class="bi-person"></span>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Username" name="" id="username"
+                                formControlName="username">
+                        </div>
                     </div>
-
                     <div class="col-lg-9" style="width: 100%;">
                         <div class="input-group" style="margin: 30px;margin-left: 55px;margin-top: 5px;">
                             <span class="input-group-text">

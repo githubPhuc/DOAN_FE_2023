@@ -14,7 +14,7 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['../dash.component.scss']
+  styleUrls: ['./product.component.scss']
 })
 export class ProductComponent  implements OnInit {
   closeResult = '';

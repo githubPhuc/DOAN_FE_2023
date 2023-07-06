@@ -30,7 +30,7 @@ export class WardsComponent implements OnInit {
       this.Data=res.acc;
       console.log(this.Data);
     })
-      this.title="Directory District"
+      this.title="Directory Ward"
   }
 
   // go to view insert
@@ -40,7 +40,7 @@ export class WardsComponent implements OnInit {
         enterAnimationDuration: '1000ms',
         exitAnimationDuration: '600ms',
         witch:2000,
-        name : 'Insert District'
+        name : 'Insert Ward'
       }
     });
   }

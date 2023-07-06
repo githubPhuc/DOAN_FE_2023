@@ -58,10 +58,12 @@ export class LoginComponent implements OnInit{
       
       if(data1.role =='Admin')
       {
+        console.log("asas");
         this.router.navigate(['/'+'admin/Home']);
       }
       else{
         this.toastr.ShowError('Login fail!','Login fail. User not is admin! ');
+        return;
       }
     });
     

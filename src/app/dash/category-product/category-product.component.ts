@@ -29,7 +29,7 @@ export class CategoryProductComponent implements OnInit {
     this.categoryService.GetList("").subscribe(res=>{
       this.Data=res.acc;
     })
-      this.title="Directory City"
+      this.title="Directory Category"
   }
 
   // go to view insert
@@ -59,7 +59,7 @@ export class CategoryProductComponent implements OnInit {
 
   public delete(id:number)
   {
-    if(window.confirm('Do you want to clear this cpu ?'))
+    if(window.confirm('Do you want to clear this Category ?'))
     {
       console.log(id);
       this.categoryService.Delete(id).subscribe((dataT: { status: any; message: any; }) => {

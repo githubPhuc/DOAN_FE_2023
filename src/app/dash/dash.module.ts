@@ -105,18 +105,12 @@ import { ProductDepotComponent } from './product-depot/product-depot.component';
     ProductDepotComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
+    CommonModule,
+    DashRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
-    ToastrModule.forRoot({
-      positionClass:"toast-top-right",
-      preventDuplicates:true,
-      
-    }),
+    ToastrModule.forRoot(),
   ],
   bootstrap: [DashComponent]
   

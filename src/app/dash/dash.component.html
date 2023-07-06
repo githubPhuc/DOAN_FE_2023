@@ -83,16 +83,16 @@
        
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar" style="overflow:inherit">
                 <!-- Sidebar Menu -->
-                <nav class="mt-2" >
+                <nav class="mt-2" style="overflow:inherit">
                     <ul class="nav nav-pills nav-sidebar flex-column" style="overflow:inherit" data-widget="treeview" role="menu" data-accordion="false">
-                        <li  class="nav-link ">
+                        <!-- <li  class="nav-link ">
                             <a [routerLink]="['/admin/Home']" class="nav-item" style=" padding-left:30px ;">  
                                <img src="../../assets/img/PT STORE_Ver1.png"[height]="170"[width]="190" />
                             </a>
                             
-                        </li>
+                        </li> -->
                         <li class="nav-link">
                             
                             <a [routerLink]="['/admin/Home']" class="nav-item">  
@@ -141,7 +141,7 @@
                             </ul>
                         </li>
                         <li class="nav-item " id="nav-item ">
-                            <a class="nav-link" (click)="dropDirectory()" aria-expanded="false" id="downDirectory">
+                            <a class="nav-link" (click)="dropDirectory()" aria-expanded="false" id="dropdownDirectory">
                                 <i class="fa fa-envelope-open"></i> 
                                 <p class="toggle-none">Directory
                                     <i id="downDirectory" class="fa fa-angle-down" aria-hidden="true"></i> 
@@ -316,7 +316,7 @@
                             <a class="nav-link" (click)="dropInvoice()" aria-expanded="false" id="dropdownInvoice">
                                 <i class="fa fa-envelope-open"></i> 
                                 <p class="toggle-none">Invoice
-                                    <i id="downDepot" class="fa fa-angle-down" aria-hidden="true"></i> 
+                                    <i id="downInvoice" class="fa fa-angle-down" aria-hidden="true"></i> 
                                 </p>
                             </a>
                             <ul class="nav-second-level nav sub-menu" style="display: none;" aria-expanded="false" id="Invoice">
