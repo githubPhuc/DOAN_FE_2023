@@ -53,9 +53,9 @@ export class InsertSaleComponent  implements OnInit {
     this.dataSale.Unit=form.value.Unit;
     this.dataSale.status=true;
     console.log(this.dataSale);
-    this.productSaleService.Insert(this.dataSale,0).subscribe((dataT: { status: any; message: any; }) => {
+    this.productSaleService.Insert(this.dataSale).subscribe((dataT: { status: any; message: any; }) => {
       if(dataT.status=="Success")
-      {
+      { 
           this.toastr.ShowSuccess('Success!',dataT.message);
           location.reload(); 
       }

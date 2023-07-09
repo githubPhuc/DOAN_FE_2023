@@ -29,7 +29,7 @@ export class DepartmentComponent  implements OnInit {
     this.departmentService.GetList("").subscribe(res=>{
       this.Data=res.data;
     })
-      this.title="Directory District"
+      this.title="Directory Department"
   }
 
   // go to view insert

@@ -60,15 +60,15 @@ export class RamProductComponent implements OnInit {
     this.data.unit=form.value.unit;
     console.log(this.data);
     this.ramService.PostRamProducts(this.data).subscribe((dataT: { status: any; message: any; }) => {
-        if(dataT.status=="Success")
-        {
-          this.toastr.ShowSuccess('Success!',dataT.message);
-          this.ngOnInit();
-        }
-        else{
-          this.toastr.ShowError('Error!',dataT.message);
-          return;
-        }
+      if(dataT.status=="Success")
+      {
+        this.toastr.ShowSuccess('Success!',dataT.message);
+        return location.reload(); 
+        
+      }
+      else{
+        return  this.toastr.ShowError('Error!',dataT.message);
+      }
        
       });       
   }
@@ -81,11 +81,11 @@ export class RamProductComponent implements OnInit {
         if(dataT.status=="Success")
         {
           this.toastr.ShowSuccess('Success!',dataT.message);
-          this.ngOnInit();
+          return location.reload(); 
+          
         }
         else{
-          this.toastr.ShowError('Error!',dataT.message);
-          return;
+          return  this.toastr.ShowError('Error!',dataT.message);
         }
        
       });    

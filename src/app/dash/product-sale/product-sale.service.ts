@@ -35,10 +35,16 @@ export class ProductSaleService {
      })});
   }
 
-  public Insert(sale:Sale,id:number){
+  public Insert(sale:Sale){
  
-    console.log(sale);
-    return this.httpClient.post<any>('https://localhost:7109/api/ProductSales/Insert?idproduct='+id,sale,{headers: new HttpHeaders({ 
+    return this.httpClient.post<any>('https://localhost:7109/api/ProductSales/Insert',sale,{headers: new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.token
+   })});
+  }
+  public AddSaleProduct(idSale:Sale,idProduct:number){  
+ 
+    return this.httpClient.post<any>('https://localhost:7109/api/ProductSales/AddSaleProduct?idSale='+idSale+'&idProduct='+idProduct,{headers: new HttpHeaders({ 
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.token
    })});

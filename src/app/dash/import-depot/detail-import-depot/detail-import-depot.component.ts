@@ -9,7 +9,7 @@ import { ImportBillDepotDetail } from '../ImportDepotDetail';
 @Component({
   selector: 'app-detail-import-depot',
   templateUrl: './detail-import-depot.component.html',
-  styleUrls: ['../../dash.component.scss']
+  styleUrls: ['./../import-depot.component.scss']
 })
 export class DetailImportDepotComponent implements OnInit {
 

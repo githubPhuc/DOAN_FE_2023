@@ -54,6 +54,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductDepotComponent } from './product-depot/product-depot.component';
+import { RouterModule } from '@angular/router';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { DetailInvoiceComponent } from './invoice/detail-invoice/detail-invoice.component';
+import { SalesReportComponent } from './sales-report/sales-report.component';
 
 
 @NgModule({
@@ -102,7 +106,10 @@ import { ProductDepotComponent } from './product-depot/product-depot.component';
     InsertImportDepotComponent,
     DetailImportDepotComponent,
     AccountUserComponent,
-    ProductDepotComponent
+    ProductDepotComponent,
+    InvoiceComponent,
+    DetailInvoiceComponent,
+    SalesReportComponent
   ],
   imports: [
     CommonModule,
@@ -110,6 +117,7 @@ import { ProductDepotComponent } from './product-depot/product-depot.component';
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
+    RouterModule,
     ToastrModule.forRoot(),
   ],
   bootstrap: [DashComponent]

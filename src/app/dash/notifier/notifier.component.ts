@@ -7,7 +7,7 @@ import{ToastrService} from 'ngx-toastr'
   styleUrls: ['./notifier.component.scss']
 })
 export class NotifierComponent implements OnInit {
-constructor(private toastr:ToastrService){
+constructor(private toastr: ToastrService){
 
 }
 

@@ -110,63 +110,58 @@ export class InsertProductComponent implements OnInit {
     this.isSuccess=false;
     if(form.value.nameProduct.length<1)
     {
-      this.toastr.ShowError('name Produce is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('name Produce is null!',' Please check again!');
+    
     }
     if(form.value.idCategory.length<1)
     {
-      this.toastr.ShowError('Category is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Category is null!',' Please check again!');
+     
     }
     if(form.value.idProducer.length<1)
     {
-      this.toastr.ShowError('Producer is null!',' Please check again!');
-      return;
-    }
-    if(form.value.price.length<1)
-    {
-      this.toastr.ShowError('price is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Producer is null!',' Please check again!');
+     
     }
     if(form.value.RamProduct.length<1)
     {
-      this.toastr.ShowError('RamProduct is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('RamProduct is null!',' Please check again!');
+     
     }
     if(form.value.SSDProduct.length<1)
     {
-      this.toastr.ShowError('SSDProduct is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('SSDProduct is null!',' Please check again!');
+      
     }
     if(form.value.CPUProduct.length<1)
     {
-      this.toastr.ShowError('CPUProduct is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('CPUProduct is null!',' Please check again!');
+     
     }
     if(form.value.DisplayProduct.length<1)
     {
-      this.toastr.ShowError('Display Product is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Display Product is null!',' Please check again!');
+     
     }
     if(form.value.CardDisplay.length<1)
     {
-      this.toastr.ShowError('Card Display is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Card Display is null!',' Please check again!');
+      
     }
     if(form.value.ColorProduct.length<1)
     {
-      this.toastr.ShowError('Color Product is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Color Product is null!',' Please check again!');
+     
     }
     if(form.value.portConnection.length<1)
     {
-      this.toastr.ShowError('portConnection is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('portConnection is null!',' Please check again!');
+      
     }
     if(form.value.MainProduct.length<1)
     {
-      this.toastr.ShowError('MainProduct is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('MainProduct is null!',' Please check again!');
+     
     }
     this.dataInsert.nameProduct=form.value.nameProduct;
     this.dataInsert.RamProduct=form.value.RamProduct;
@@ -184,11 +179,12 @@ export class InsertProductComponent implements OnInit {
     this.productService.Insert(this.dataInsert).subscribe((dataT: { status: any; message: any; }) => {
       if(dataT.status=="Success")
       {
-          location.reload();
-          return this.toastr.ShowSuccess('Success!',dataT.message);
+        this.toastr.ShowSuccess('Success!',dataT.message);
+        return location.reload(); 
+        
       }
       else{
-        return this.toastr.ShowError('Error!',dataT.message);
+        return  this.toastr.ShowError('Error!',dataT.message);
       }
     });
   };

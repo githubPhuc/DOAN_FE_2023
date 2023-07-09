@@ -28,7 +28,7 @@ export class ProductDepotComponent implements OnInit {
     this.productDepotService.GetList("","").subscribe(res=>{
       this.Data=res.acc;
     })
-      this.title="Product Depot"     
+      this.title="Inventory report"     
   }
   searchForm = new FormGroup({
     nameDepot: new FormControl(''),

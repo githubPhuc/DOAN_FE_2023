@@ -57,11 +57,11 @@ export class ProductSaleComponent implements OnInit ,OnDestroy {
         if(dataT.status=="Success")
         {
           this.toastr.ShowSuccess('Success!',dataT.message);
-          location.reload(); 
+          return location.reload(); 
+          
         }
         else{
-          this.toastr.ShowError('Error!',dataT.message);
-          return;
+          return  this.toastr.ShowError('Error!',dataT.message);
         }
        
       });    

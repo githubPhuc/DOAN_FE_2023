@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-12 table-body table-responsive">
+        <fieldset class="scheduler-border">
+            <legend class="scheduler-border">List record detail Invoice</legend>
+            <div class="control-group">
+                <table id="myTable" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th >STT</th>
+                            <th>id</th>
+                            <th>nameProduct  </th>
+                            <th>price</th>
+                            <th>quantity </th>
+                            <th>status </th>
+                        </tr>
+                    </thead>
+        
+                    <tbody>
+                      
+                        <tr *ngFor="let item of dataDetail; let i=index">
+                           
+                            <td>{{i+1}}</td>
+                            <td>{{item.id}}</td>
+                            <td>{{item.nameProduct}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.status}}</td>
+                            
+                        </tr>
+                          
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+    </div>
+</div>

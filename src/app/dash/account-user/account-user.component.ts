@@ -33,7 +33,7 @@ export class AccountUserComponent implements OnInit {
       this.accountData=res.acc;
       console.log(this.accountData);
     })
-      this.title="Administrator Account Admin"
+      this.title="Administrator Account User"
 
      
   }

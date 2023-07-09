@@ -112,68 +112,64 @@ export class UpdateProductComponent implements OnInit {
   
   onSubmitUpdate(form:FormGroup)
   {
-    this.isSuccess=false;
-    console.warn(form.value);
     if(form.value.nameProduct.length<1)
     {
-      this.toastr.ShowError('name Produce is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('name Produce is null!',' Please check again!');
+    
   
     }
     if(form.value.idCategory.length<1)
     {
-      this.toastr.ShowError('Category is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Category is null!',' Please check again!');
+      
     }
     if(form.value.idProducer.length<1)
     {
-      this.toastr.ShowError('Producer is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Producer is null!',' Please check again!');
     }
     if(form.value.price.length<1)
     {
-      this.toastr.ShowError('price is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('price is null!',' Please check again!');
     }
     if(form.value.ramProduct.length<1)
     {
-      this.toastr.ShowError('RamProduct is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('RamProduct is null!',' Please check again!');
+    
     }
     if(form.value.ssdProduct.length<1)
     {
-      this.toastr.ShowError('SSDProduct is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('SSDProduct is null!',' Please check again!');
+      
     }
     if(form.value.cpuProduct.length<1)
     {
-      this.toastr.ShowError('CPUProduct is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('CPUProduct is null!',' Please check again!');
+      
     }
     if(form.value.displayProduct.length<1)
     {
-      this.toastr.ShowError('Display Product is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Display Product is null!',' Please check again!');
+   
     }
     if(form.value.cardDisplay.length<1)
     {
-      this.toastr.ShowError('Card Display is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Card Display is null!',' Please check again!');
+   
     }
     if(form.value.colorProduct.length<1)
     {
-      this.toastr.ShowError('Color Product is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Color Product is null!',' Please check again!');
+     
     }
     if(form.value.portConnection.length<1)
     {
-      this.toastr.ShowError('portConnection is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('portConnection is null!',' Please check again!');
+     
     }
     if(form.value.mainProduct.length<1)
     {
-      this.toastr.ShowError('MainProduct is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('MainProduct is null!',' Please check again!');
+     
     }
     this.dataUpdate.nameProduct=form.value.nameProduct;
     this.dataUpdate.RamProduct=form.value.ramProduct;
@@ -191,14 +187,12 @@ export class UpdateProductComponent implements OnInit {
     this.productService.Update(this.dataUpdate,this.id).subscribe((dataT: { status: any; message: any; }) => {
       if(dataT.status=="Success")
       {
-          this.toastr.ShowSuccess('Success!',dataT.message);
-          location.reload();
-          return;
+        this.toastr.ShowSuccess('Success!',dataT.message);
+        return location.reload(); 
+        
       }
       else{
-        this.isSuccess==false;
-        this.toastr.ShowError('Error!',dataT.message);
-        return;
+        return  this.toastr.ShowError('Error!',dataT.message);
       }
     });
    

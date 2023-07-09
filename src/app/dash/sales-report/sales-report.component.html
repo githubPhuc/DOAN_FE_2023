@@ -14,14 +14,8 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label>Name Depot: </label>
-                                            <input type="text" id="nameDepot" formControlName="nameDepot" (input)="Search(searchForm)" class="form-control form-control-xs" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>Name product: </label>
-                                            <input type="text" id="nameProduct" formControlName="nameProduct" (input)="Search(searchForm)" class="form-control form-control-xs" />
+                                            <label>code: </label>
+                                            <input type="text" id="code" formControlName="code" (input)="Search(searchForm)" class="form-control form-control-xs" />
                                         </div>
                                     </div>
                                 </div>
@@ -35,36 +29,39 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-primary card-outline">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            <b>{{this.title}}</b>
-                        </h3>
-                    </div>
                     <div class="card-body pad">
                         <div class="row">
                             <div class="col-md-12 table-body table-responsive">
                                 <fieldset class="scheduler-border">
-                                    <legend class="scheduler-border">Inventory report</legend>
+                                    <legend class="scheduler-border">List record Invoice</legend>
                                     <div class="control-group">
-                                        <!-- <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger" id="myTable" class="table table-bordered "> -->
-                                        <table id="myTable" class="table table-bordered ">
+                                        <table id="myTable" class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th >Id</th>
-                                                    <th>Name Product</th>
-                                                    <th>Name Depot</th>
-                                                    <th>Quantity Product</th>
+                                                    <th width="250px"></th>
+                                                    <th >STT</th>
+                                                    <th>id</th>
+                                                    <th>codeBill  </th>
+                                                    <th>sum price </th>
+                                                    <th>Sum quantity </th>
+                                                    <th>userCreate </th>
+                                                    <th>createdDate </th>
+                                                    <th>statusBill </th>
                                                 </tr>
                                             </thead>
                                 
                                             <tbody>
                                               
                                                 <tr *ngFor="let item of Data; let i=index">
-                                                   
+                                                    
+                                                    <td>{{i+1}}</td>
                                                     <td>{{item.id}}</td>
-                                                    <td>{{item.nameProduct}}</td>
-                                                    <td>{{item.nameDepot}}</td>
-                                                    <td>{{item.quantityProduct}}</td>
+                                                    <td>{{item.code}}</td>
+                                                    <td>{{item.sumPrice}}</td>
+                                                    <td>{{item.sumQuantity}}</td>
+                                                    <td>{{item.usernameCreate}}</td>
+                                                    <td>{{item.createDate}}</td>
+                                                    <td>{{item.statusBill}}</td>
                                                     
                                                 </tr>
                                                   

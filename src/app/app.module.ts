@@ -11,8 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 import {ToastrModule} from 'ngx-toastr';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +23,6 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
       positionClass:"toast-top-right",

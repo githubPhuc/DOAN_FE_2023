@@ -25,6 +25,8 @@ import { ProductSaleComponent } from './product-sale/product-sale.component';
 import { ImportDepotComponent } from './import-depot/import-depot.component';
 import { AccountUserComponent } from './account-user/account-user.component';
 import { ProductDepotComponent } from './product-depot/product-depot.component';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { SalesReportComponent } from './sales-report/sales-report.component';
 
 const routes: Routes = [
   {
@@ -62,6 +64,8 @@ const routes: Routes = [
   { path: 'ImportDepot', component: ImportDepotComponent },
   { path: 'AccountUser', component: AccountUserComponent },
   { path: 'ProductDepot', component: ProductDepotComponent },
+  { path: 'Invoice', component: InvoiceComponent },
+  { path: 'SalesReport', component: SalesReportComponent },
 ];
 
 @NgModule({

@@ -80,7 +80,7 @@ public delete(id:number)
       if(dataT.status=="Success")
       {
         this.toastr.ShowSuccess('Success!',dataT.message);
-       this.ngOnInit();
+        return this.ngOnInit();
       }
       else{
         this.toastr.ShowError('Error!',dataT.message);
@@ -100,11 +100,30 @@ public acceptance(id:number)
       if(dataT.status=="Success")
       {
         this.toastr.ShowSuccess('Success!',dataT.message);
-        location.reload(); 
+        return this.ngOnInit();
       }
       else{
-        this.toastr.ShowError('Error!',dataT.message);
-        return;
+        return this.toastr.ShowError('Error!',dataT.message);
+      }
+     
+    });    
+  }
+  
+}
+
+public discouragement(id:number)
+{
+  if(window.confirm('Do you want to discouragement this bill ?'))
+  {
+    this.importDepotService.discouragement(id,this.username).subscribe((dataT: { status: any; message: any; }) => {
+      if(dataT.status=="Success")
+      {
+        this.toastr.ShowSuccess('Success!',dataT.message);
+        return this.ngOnInit();
+        
+      }
+      else{
+        return  this.toastr.ShowError('Error!',dataT.message);
       }
      
     });    

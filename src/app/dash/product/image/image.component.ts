@@ -51,12 +51,11 @@ export class ImageComponent implements OnInit {
         if(dataT.status=="Success")
         {
           this.toastr.ShowSuccess('Success!',dataT.message);
-          this.ngOnInit();
-          return;
+          return location.reload(); 
+          
         }
         else{
-          this.toastr.ShowError('Error!',dataT.message);
-          return;
+          return  this.toastr.ShowError('Error!',dataT.message);
         }
        
       });    
