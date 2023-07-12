@@ -21,4 +21,13 @@ export class ProductDepotService {
       });
 
   }
+  public SetPriceOnProduct(id: number) {
+    return this.httpClient
+      .post<any>('https://localhost:7109/api/productDepots/SetPriceOnProduct?id='+id,  {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': this.strToken
+        })
+      });
+  }
 }

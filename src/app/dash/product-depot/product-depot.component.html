@@ -50,20 +50,27 @@
                                         <table id="myTable" class="table table-bordered ">
                                             <thead>
                                                 <tr>
+                                                    <th width="250px"></th>
                                                     <th >Id</th>
                                                     <th>Name Product</th>
                                                     <th>Name Depot</th>
-                                                    <th>Quantity Product</th>
+                                                    <th>price</th>
+                                                    <th>Inventory product</th>
                                                 </tr>
                                             </thead>
                                 
                                             <tbody>
                                               
                                                 <tr *ngFor="let item of Data; let i=index">
-                                                   
+                                                    <td>
+                                                        <a (click)="SetPriceOnProduct(item.id)" class="btn">
+                                                            <i class="fa fa-plus"></i> Update price product
+                                                        </a>
+                                                    </td>
                                                     <td>{{item.id}}</td>
                                                     <td>{{item.nameProduct}}</td>
                                                     <td>{{item.nameDepot}}</td>
+                                                    <td>{{item.price}}</td>
                                                     <td>{{item.quantityProduct}}</td>
                                                     
                                                 </tr>

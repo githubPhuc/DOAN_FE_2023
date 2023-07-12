@@ -24,7 +24,7 @@ export class SalesReportComponent   implements OnInit {
       this.router.navigate(['/Login']);
     }
     this.username = localStorage.getItem('username')!;
-    this.invoiceService.SalesReport("").subscribe(res=>{
+    this.invoiceService.SalesReport("","").subscribe(res=>{
       this.Data=res.data;
       console.log(this.Data);
     })
@@ -32,15 +32,15 @@ export class SalesReportComponent   implements OnInit {
 
      
   }
-
  
   
 //----------Search from-------------//
   searchForm = new FormGroup({
-    code: new FormControl(''),
+    start: new FormControl(''),
+    End: new FormControl(''),
   });
   public Search(form:FormGroup) {
-    this.invoiceService.SalesReport(form.value.codeBill).subscribe(res=>{
+    this.invoiceService.SalesReport(form.value.start,form.value.End).subscribe(res=>{
       return this.Data=res.data;
     })
   }

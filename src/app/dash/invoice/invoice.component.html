@@ -18,6 +18,21 @@
                                             <input type="text" id="code" formControlName="code" (input)="Search(searchForm)" class="form-control form-control-xs" />
                                         </div>
                                     </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>status Bill: </label>
+                                            <select class="form-control" id="Status" formControlName="Status" (change)="Search(searchForm)" class="form-control form-control-xs"> 
+                                                <option value="wait for confirmation">wait for confirmation</option>
+                                                <option value="Confirmed">Confirmed</option>
+                                                <option value="Packing goods">Packing goods</option>
+                                                <option value="Switch to a dedicated transport unit">Switch to a dedicated transport unit</option>
+                                                <option value="Delivery In Progress">Delivery In Progress</option>
+                                                <option value="Delivery Successful">Delivery Successful</option>
+                                                <option value=" "></option>
+                                      
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -54,7 +69,9 @@
                                                     <th>Sum quantity </th>
                                                     <th>userCreate </th>
                                                     <th>createdDate </th>
-                                                    <th>statusBill </th>
+                                                    <th>status Bill </th>
+                                                    <th>Status Code </th>
+                                                    <th>Status </th>
                                                 </tr>
                                             </thead>
                                 
@@ -80,6 +97,8 @@
                                                     <td>{{item.usernameCreate}}</td>
                                                     <td>{{item.createDate}}</td>
                                                     <td>{{item.statusBill}}</td>
+                                                    <td>{{(item.statusCode==false?"Chưa thanh toán":"Đã thanh toán")}}</td>
+                                                    <td>{{(item.Status==false?"Hoàn thành":"Chưa hoàn thành")}}</td>
                                                     
                                                 </tr>
                                                   

@@ -169,7 +169,6 @@ export class InsertProductComponent implements OnInit {
     this.dataInsert.SSDProduct=form.value.SSDProduct;
     this.dataInsert.idCategory=form.value.idCategory;
     this.dataInsert.idProducer=form.value.idProducer;
-    this.dataInsert.price=form.value.price;
     this.dataInsert.ColorProduct=form.value.ColorProduct;
     this.dataInsert.CardDisplay=form.value.CardDisplay;
     this.dataInsert.DisplayProduct=form.value.DisplayProduct;

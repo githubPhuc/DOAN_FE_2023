@@ -11,9 +11,9 @@ export class InvoiceService {
 
   token = localStorage.getItem('token');
   strToken = 'Bearer ' + this.token;
-  public GetList(code: string) {
+  public GetList(code: string, Status:string) {
     return this.httpClient
-      .get<any>('https://localhost:7109/api/BillOfSales/GetList?code=' + code , {
+      .get<any>('https://localhost:7109/api/BillOfSales/GetList?code=' + code + '&Status=' + Status , {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': this.strToken
@@ -21,9 +21,9 @@ export class InvoiceService {
       });
 
   }
-  public SalesReport(code: string) {
+  public SalesReport(start: string,End: string) {
     return this.httpClient
-      .get<any>('https://localhost:7109/api/BillOfSales/SalesReport?code=' + code , {
+      .get<any>('https://localhost:7109/api/BillOfSales/SalesReport?start=' + start +'?End=' + End , {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': this.strToken
@@ -51,9 +51,9 @@ export class InvoiceService {
       });
 
   }
-  public acceptance(id: number,Username:string) {
+  public acceptance(id: number,Username:string,Status:string) {
     return this.httpClient
-      .post<any>('https://localhost:7109/api/BillOfSales/acceptance?id='+id+'&Username='+Username,  {
+      .post<any>('https://localhost:7109/api/BillOfSales/acceptance?id='+id+'&Username='+Username+'&Status='+Status,  {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': this.strToken

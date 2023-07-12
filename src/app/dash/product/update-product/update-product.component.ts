@@ -127,10 +127,6 @@ export class UpdateProductComponent implements OnInit {
     {
       return this.toastr.ShowError('Producer is null!',' Please check again!');
     }
-    if(form.value.price.length<1)
-    {
-      return this.toastr.ShowError('price is null!',' Please check again!');
-    }
     if(form.value.ramProduct.length<1)
     {
       return this.toastr.ShowError('RamProduct is null!',' Please check again!');
@@ -164,12 +160,10 @@ export class UpdateProductComponent implements OnInit {
     if(form.value.portConnection.length<1)
     {
       return this.toastr.ShowError('portConnection is null!',' Please check again!');
-     
     }
     if(form.value.mainProduct.length<1)
     {
       return this.toastr.ShowError('MainProduct is null!',' Please check again!');
-     
     }
     this.dataUpdate.nameProduct=form.value.nameProduct;
     this.dataUpdate.RamProduct=form.value.ramProduct;
@@ -177,7 +171,6 @@ export class UpdateProductComponent implements OnInit {
     this.dataUpdate.SSDProduct=form.value.ssdProduct;
     this.dataUpdate.idCategory=form.value.idCategory;
     this.dataUpdate.idProducer=form.value.idProducer;
-    this.dataUpdate.price=form.value.price;
     this.dataUpdate.ColorProduct=form.value.colorProduct;
     this.dataUpdate.CardDisplay=form.value.cardDisplay;
     this.dataUpdate.DisplayProduct=form.value.displayProduct;

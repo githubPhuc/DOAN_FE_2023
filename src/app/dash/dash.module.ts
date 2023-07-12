@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ToastrModule } from 'ngx-toastr';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { DashRoutingModule } from './dash-routing.module';
 import { DashComponent } from './dash.component';
@@ -58,6 +59,7 @@ import { RouterModule } from '@angular/router';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { DetailInvoiceComponent } from './invoice/detail-invoice/detail-invoice.component';
 import { SalesReportComponent } from './sales-report/sales-report.component';
+import { AcceptanceInvComponent } from './invoice/acceptance-inv/acceptance-inv.component';
 
 
 @NgModule({
@@ -109,7 +111,8 @@ import { SalesReportComponent } from './sales-report/sales-report.component';
     ProductDepotComponent,
     InvoiceComponent,
     DetailInvoiceComponent,
-    SalesReportComponent
+    SalesReportComponent,
+    AcceptanceInvComponent
   ],
   imports: [
     CommonModule,
@@ -118,6 +121,7 @@ import { SalesReportComponent } from './sales-report/sales-report.component';
     ReactiveFormsModule,
     MatDialogModule,
     RouterModule,
+    MatDatepickerModule,
     ToastrModule.forRoot(),
   ],
   bootstrap: [DashComponent]

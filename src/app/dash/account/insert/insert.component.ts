@@ -86,49 +86,49 @@ export class InsertAccountComponent implements OnInit {
     this.isSuccess=false;
     if(form.value.email.length<1)
     {
-      this.toastr.ShowError('email is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('email is null!',' Please check again!');
+      
     }
     if(form.value.Password.length<3)
     {
-      this.toastr.ShowError('Passwords longer than 3 characters!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Passwords longer than 3 characters!',' Please check again!');
+
   
     }
     if(form.value.Department.length<1)
     {
-      this.toastr.ShowError('Department is null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Department is null!',' Please check again!');
+
     }
     if(form.value.phoneNumber.length>10||form.value.phoneNumber.length<10)
     {
-      this.toastr.ShowError('Phone number must be 10 characters!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Phone number must be 10 characters!',' Please check again!');
+ 
     }
     if(form.value.fullname.length<1)
     {
-      this.toastr.ShowError('Name cannot be blank!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Name cannot be blank!',' Please check again!');
+ 
     }
     if(form.value.city==""||form.value.city=="undefined"||form.value.city==null)
     {
-      this.toastr.ShowError('City cannot be blank!',' Please check again!');
-      return;
+      return this.toastr.ShowError('City cannot be blank!',' Please check again!');
+    
     }
     if(form.value.wards==""||form.value.wards=="undefined"||form.value.wards==null)
     {
-      this.toastr.ShowError('Wards cannot be blank!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Wards cannot be blank!',' Please check again!');
+
     }
     if(form.value.district==""||form.value.district=="undefined"||form.value.district==null)
     {
-      this.toastr.ShowError('District cannot be blank!',' Please check again!');
-      return;
+      return this.toastr.ShowError('District cannot be blank!',' Please check again!');
+
     }
     if(this.file==null)
     {
-      this.toastr.ShowError('Image not null!',' Please check again!');
-      return;
+      return this.toastr.ShowError('Image not null!',' Please check again!');
+    
     }
     this.dataAcc.username=this.username;
     this.dataAcc.Password=form.value.Password;
@@ -145,17 +145,18 @@ export class InsertAccountComponent implements OnInit {
     formdata.append("file", this.file, this.username)
     this.accountService.registerAdmin(this.dataAcc).subscribe((dataT: { status: any; message: any; }) => {
       if(dataT.status=="Success")
-      {console.log(this.file);
+      {
+        console.log(this.file);
         this.accountService.UploadImage(this.username,formdata).subscribe(result => {
-          this.toastr.ShowSuccess('Success!',dataT.message);
-          location.reload(); 
+         
+           this.toastr.ShowSuccess('Success!',dataT.message);
         });
       }
       else{
-        this.isSuccess==false;
         this.toastr.ShowError('Error!',dataT.message);
         return;
       }
+      
     });
    
   }

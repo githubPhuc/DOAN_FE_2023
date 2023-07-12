@@ -14,8 +14,17 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label>code: </label>
-                                            <input type="text" id="code" formControlName="code" (input)="Search(searchForm)" class="form-control form-control-xs" />
+                                            <label>start: </label>
+                                            <input type="datetime" id="start" formControlName="start" (input)="Search(searchForm)" class="form-control form-control-xs" />
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>End: </label>
+                                            <input type="datetime" id="End" formControlName="End" (input)="Search(searchForm)" class="form-control form-control-xs" />
                                         </div>
                                     </div>
                                 </div>

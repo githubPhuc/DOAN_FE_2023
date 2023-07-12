@@ -40,5 +40,24 @@ export class ProductDepotComponent implements OnInit {
       this.Data=res.acc;
     })
   }
+  public SetPriceOnProduct(id:number)
+  {
+    if(window.confirm('Do you want to Update price product with id equal to '+id+' ?'))
+    {
+      this.productDepotService.SetPriceOnProduct(id).subscribe((dataT: { status: any; message: any; }) => {
+        if(dataT.status=="Success")
+        {
+          this.toastr.ShowSuccess('Success!',dataT.message);
+          this.ngOnInit();
+        }
+        else{
+          this.toastr.ShowError('Error!',dataT.message);
+          return;
+        }
+       
+      });    
+    }
+    
+  }
 
 }

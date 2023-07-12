@@ -5,6 +5,7 @@ import { InvoiceService } from './invoice.service';
 import { NotifierService } from 'src/app/service/notifier.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { AcceptanceInvComponent } from './acceptance-inv/acceptance-inv.component';
 
 @Component({
   selector: 'app-invoice',
@@ -26,8 +27,7 @@ export class InvoiceComponent   implements OnInit {
     {
       this.router.navigate(['/Login']);
     }
-    this.username = localStorage.getItem('username')!;
-    this.invoiceService.GetList("").subscribe(res=>{
+    this.invoiceService.GetList("","").subscribe(res=>{
       this.Data=res.data;
       console.log(this.Data);
     })
@@ -41,9 +41,11 @@ export class InvoiceComponent   implements OnInit {
 //----------Search from-------------//
   searchForm = new FormGroup({
     code: new FormControl(''),
+    Status: new FormControl(''),
   });
   public Search(form:FormGroup) {
-    this.invoiceService.GetList(form.value.codeBill).subscribe(res=>{
+    
+    this.invoiceService.GetList(form.value.codeBill,form.value.Status).subscribe(res=>{
       return this.Data=res.data;
     })
   }
@@ -63,22 +65,17 @@ public detail(id:number)
 }
 public acceptance(id:number)
 {
-  if(window.confirm('Agree to confirm the order ?'))
-  {
-    this.invoiceService.acceptance(id,this.username).subscribe((dataT: { status: any; message: any; }) => {
-      if(dataT.status=="Success")
-      {
-        this.toastr.ShowSuccess('Success!',dataT.message);
-        return this.ngOnInit();
-      }
-      else{
-        return this.toastr.ShowError('Error!',dataT.message);
-      
-      }
-     
-    });    
-  }
+  console.log(id)
+  this.dialog.open(AcceptanceInvComponent,{
+    data : {
+      enterAnimationDuration: '1000ms',
+      exitAnimationDuration: '600ms',
+      name : 'Detail Invoice',
+      id:id,
+    }
+  });
   
 }
+
 
 }
