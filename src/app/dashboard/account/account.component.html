@@ -1,0 +1,109 @@
+<div class="row page-header">
+    <div class="col-6 align-self-center ">
+      <h2>Quản lý tài khoản</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']" style="font-size: 15px;">Trang chủ</a></li>
+         
+            <li class="breadcrumb-item active" style="font-size: 15px;">Quản lý tài khoản</li>		
+        </ol>
+    </div>
+</div>
+<style>
+    ol li {
+        display: flex;
+        align-items: center;
+        color: #868e96;
+        
+    }
+</style>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8 " style="display: flex;">
+                  
+                            <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
+                            <div class="form-group">
+                                <label>Tìm kiếm</label>
+                                <div class="sr" style="display: flex;">
+                                <input type="text" placeholder="Nhập tên tài khoản cần tìm" class="form-control form-control-rounded"  id="txt"  formControlName="txtSearch" style="width: 300px;">
+                                <button id="search" class="btn btn-info" ><i class="fa fa-search "></i>&nbsp;Tìm kiếm</button>
+                            </div>
+                            </div>
+                        </form>
+                        
+                           <div class="fil" style="margin-left: 20px;">
+                            <label for="">Lọc theo</label>
+                            <select #fil name="" id="fil" class="form-control" (change)="filter(fil.value)">
+                                <option value="0">-- --</option>
+                                <option value="1">Admin</option>
+                                <option value="2">User</option>
+                            </select>
+                           </div> 
+                
+                    </div>
+                    <div class="col-lg-4 align-self-center text-right">
+                        <a class="nav-link"  [routerLink]="['/admin/account/admin-create']" class="btn btn-info box-shadow  btn-rounded"><i class="fa fa-plus"></i> Thêm</a>
+                    </div>
+                </div>
+                <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline" width="100%">
+                    <thead>
+                        <tr  class="bg-chart" style="color: white;">
+                        
+                            <th>
+                                <strong>STT</strong>
+                            </th>
+                            <th>
+                                <strong>Tên tài khoản</strong>
+                            </th>
+                            <th>
+                                <strong>Email</strong>
+                            </th>
+                            <th>
+                                <strong>Số điện thoại</strong>
+                            </th>
+                            <th>
+                                <strong>Loại tài khoản</strong>
+                            </th>
+                            <th>
+                                <strong>Địa chỉ</strong>
+                            </th>
+                            <th>
+                                <strong>Trạng thái</strong>
+                            </th>
+                            <th>
+                                <strong>Tác vụ</strong>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let acc of account; let i=index">
+                            <!-- <td *ngIf="acc.avatar;"><img src="../../../assets/img/product/{{acc.avatar}}" style="width: 150px" alt=""></td>
+                            <td *ngIf="!acc.avatar;"><img src="../../../assets/img/noAvatar.png" style="width: 150px" alt=""></td> -->
+                            <td>
+                                {{i+1}}
+                            </td>
+                            <td>
+                                {{acc.username}}
+                            </td>
+                            <td>{{acc.email}}</td>
+                            <td>{{acc.phone}}</td>
+                            <td>{{acc.accoutType}}</td>
+                            <td>{{acc.address}}</td>
+                            <td *ngIf="acc.isLocked">Đã khoá</td>
+                            <td *ngIf="!acc.isLocked">Hoạt động</td>
+                            <td class="text-center">
+                                <button *ngIf="!acc.isLocked&&acc.id!=userid" (click)="lockAccount(acc.id)" type="button" class="btn btn-sm btn-warning"><i  class="fa fa-lock"></i></button>
+                                <button *ngIf="acc.isLocked&&acc.id!=userid" (click)="lockAccount(acc.id)" type="button" class="btn btn-sm btn-success"><i  class="fa fa-unlock-alt" aria-hidden="true"></i></button>&nbsp;
+                                <!-- <button *ngIf="acc.id!=userid" type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button> -->
+                                <span *ngIf="acc.id==userid">Đang dùng</span>
+                            </td>
+                        </tr>
+                      
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

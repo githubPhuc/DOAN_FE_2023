@@ -1,0 +1,60 @@
+<div class="row page-header">
+    <div class="col-6 align-self-center ">
+      <h2>Hoá đơn chờ duyệt</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']" style="font-size: 15px;">Trang chủ</a></li>
+         
+            <li class="breadcrumb-item active" style="font-size: 15px;">Hoá đơn chờ duyệt</li>		
+        </ol>
+    </div>
+</div>
+<style>
+    ol li {
+        display: flex;
+        align-items: center;
+        color: #868e96;
+        
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+
+            <div class="card-body">
+                <table id="datatable" class="table table-striped dt-responsive nowrap">
+                                <thead>
+                                    <tr class="bg-chart" style="color: white;">
+                                        <th>STT</th>
+                                        <th>Username</th>
+                                        <th>Địa chỉ </th>
+                                        <th>Số điện thoại</th>
+                                        <th>Ngày lập</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Tác vụ</th>
+                                     
+                                    </tr>
+                                </thead>
+    
+                                <tbody>
+                                    <tr *ngFor="let inv of invoice; let i=index">
+                                        <td>{{i+1}}</td>
+                                        <td>{{inv.username}}</td>
+                                        <td>{{inv.shippingAddress}}</td>
+                                        <td>{{inv.phone}}</td>
+                                        <td>{{inv.date | date:'dd/MM/yyyy'}}</td>
+                                        <td>{{inv.total | currency:'VND'}}</td>
+                                        <td >
+                                            <button (click)="openDialog(inv.id)" type="button" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>&nbsp;
+                                            <button (click)="confirm(inv.id)" type="button" class="btn btn-sm btn-info"><i class="fa fa-check"></i></button>
+                                        </td>
+                                   
+                                    </tr>
+                                    
+               
+                                </tbody>
+                            </table>
+    
+            </div>
+        </div>
+    </div>
+    </div>

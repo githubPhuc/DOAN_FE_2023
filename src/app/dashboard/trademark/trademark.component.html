@@ -1,0 +1,122 @@
+
+<div class="row page-header">
+    <div class="col-6 align-self-center ">
+      <h2>Quản lý nhãn hiệu</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']" style="font-size: 15px;">Trang chủ</a></li>
+         
+            <li class="breadcrumb-item active" style="font-size: 15px;">Quản lý nhãn hiệu</li>		
+        </ol>
+    </div>
+</div>
+<style>
+    ol li {
+        display: flex;
+        align-items: center;
+        color: #868e96;
+        
+    }
+</style>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-7">
+                      <form [formGroup]="trademarkForm" (ngSubmit)="onSubmit(trademarkForm)" enctype="multipart/form-data">
+                                            
+                        <div class="form-group" style=" margin-right:10px;">
+                            <label>Thêm nhãn hiệu</label>
+                            <div class="sr1">	
+                            <input type="text" placeholder="Nhập tên nhãn hiệu" class="form-control form-control-rounded"  id="name"  formControlName="name">&nbsp;
+                            <button class="btn btn-info" type="submit" [disabled]="!trademarkForm.valid"><i class="fa fa-floppy-o "></i>&nbsp;Thêm</button>
+                        </div>
+                    </div>
+                        <div class="form-group" style="height: 100px;">
+                
+                               <div class="review" style="margin-bottom: 10px;">
+                                <img *ngIf="imgReview!=null"  [src]="imgReview" alt="" width="100px"> <br>
+                               </div>
+                                <span class="btn-file1">
+                                   
+                                    <input type="file" #file1 placeholder="Choose file" (change)="uploadFileShow(file1.files,$event)" style="display:none;">
+                                    <button type="button" class="btn btn-info" (click)="file1.click()">Tải ảnh lên</button>
+                                </span> &nbsp;
+                                
+                            </div>
+                
+                    
+                    
+                    
+                           
+                        </form>
+                    </div>
+                    <div class="col-md-5">
+                        <form [formGroup]="searchForm" (ngSubmit)="onSubmit1(searchForm)">
+                        <div class="form-group">
+                            <label>Tìm kiếm</label>
+                            <div class="sr">
+                            <input type="text" placeholder="Nhập tên nhãn hiệu cần tìm" class="form-control form-control-rounded"  id="txtSearch"  formControlName="txtSearch">
+                            <button id="search" class="btn btn-info" ><i class="fa fa-search "></i>&nbsp;Tìm</button>
+                        </div>
+                        </div>
+                    </form>
+                        
+                    </div>
+                    
+                    </div>
+                    
+                    <style> 
+                    .sr {
+                            display: flex;
+                        }
+                        .sr1 {
+                            display: flex;
+                        }
+                    </style>
+                    <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline align-self-center" width="100%">
+                        <thead>
+                            <tr  class="bg-chart" style="color: white;">
+                                <th>
+                                    <strong>STT</strong>
+                                </th>
+                                <th>
+                                    <strong>Logo</strong>
+                                </th>
+                                <th>
+                                    <strong>Tên thương hiệu</strong>
+                                </th>
+                                <th><strong>Số lượng sản phẩm</strong></th>
+                       
+                                <th class="text-center">
+                                    <strong >Tác vụ</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cate of tradeMark ; let i=index">
+                                <td>{{i+1}}</td>
+                                <td><img src="../../../assets/img/brand/{{cate.image}}" alt=""></td>
+                                <td>
+                                    {{cate.name}}
+                                </td>
+                                <td>{{cate.count}}</td>
+                              
+                               
+                                <td class="text-center">
+                                   
+                                    <button (click)="edit(cate.id)" type="button" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>&nbsp;
+                                    <button (click)="deleteTrademark(cate.id)" type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        
+                          
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+    

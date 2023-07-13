@@ -1,0 +1,41 @@
+<div class="title">
+    <span style="display:flex;justify-content:center; margin-bottom:20px; font-size:20px; font-weight:500;">Cập nhật nhãn hiệu</span>
+</div>
+<div class="col-md-12">
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit(categoryForm)">
+                          
+      <div class="form-group">
+          <label>Tên nhãn hiệu</label>
+          <div class="sr1">	
+          <input type="text" placeholder="" class="form-control form-control-rounded"  id="Name"  formControlName="name">
+          <button class="btn btn-info" type="submit" [disabled]="!categoryForm.valid"><i class="fa fa-floppy-o "></i>&nbsp;Lưu</button>
+      </div>
+      <br>
+      <div class="form-group" >
+        <label>Logo</label> <br>
+        <div class="review">
+       
+        </div>
+            <span class="btn-file1">
+                <div class="review" style="height: 70px;">
+                    <img *ngIf="img1==null" src="../../../../assets/img/brand/{{imgshow}}" width="100px" alt="">
+                    <img *ngIf="img1!=null" [src]="img1" width="100px" alt="">
+                </div>
+                <input type="file" #file1 placeholder="Choose file" (change)="uploadFileShow(file1.files,$event)" style="display:none;">
+                <button type="button" class="btn btn-info" (click)="file1.click()">Tải ảnh lên</button>
+            </span>
+   
+        </div>
+  
+  </div>
+      
+      </form>
+  </div>
+
+
+<style>
+   .sr1 {
+    display: flex;
+
+   }
+</style>

@@ -1,0 +1,91 @@
+<div class="row page-header">
+    <div class="col-6 align-self-center ">
+      <h2>Quản lý nhập hàng</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']" style="font-size: 15px;">Trang chủ</a></li>
+         
+            <li class="breadcrumb-item active" style="font-size: 15px;">Hoá đơn nhập hàng</li>		
+        </ol>
+    </div>
+</div>
+<style>
+    ol li {
+        display: flex;
+        align-items: center;
+        color: #868e96;
+        
+    }
+</style>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row" style="display: flex; justify-content:space-between; margin-bottom: 10px;">
+                    <div class="col-10" style="display: flex;">
+                        <form [formGroup]="staForm" (ngSubmit)="onSubmit(staForm)" style="display: flex;">
+                            <div style="align-items: center; display: flex; padding-bottom: 7px;">Từ:</div>
+                            <div class="header__search-input">
+                                <input type="datetime-local" formControlName="start" class="form-control m-b">
+                    
+                            </div>
+                            &nbsp;
+                            
+                            &nbsp;
+                            <div style="align-items: center; display: flex; padding-bottom: 7px; margin-left: 10px;">Đến:</div>
+                            <div class="header__search-input">
+                                <input type="datetime-local" formControlName="end" class="form-control m-b">
+                    
+                            </div>
+                            &nbsp;
+                            <button class="btn btn-info" style="height: 90%;" type="submit">Lọc</button>
+                        </form>
+                    
+                       
+                            
+                            
+                    </div>
+                    <div class="col-2">
+                        <a [routerLink]="['/admin/import/create']" class="btn btn-info box-shadow  btn-rounded"><i class="fa fa-plus"></i> Tạo hoá đơn nhập</a>
+                    </div>
+                </div>
+                <div class="row">
+                
+                    <div class="col-12">
+                        <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline" width="100%">
+                            <thead>
+                                <tr  class="bg-chart" style="color: white;">
+                                    <th>STT</th>
+                                    <th>
+                                        <strong>Ngày lập</strong>
+                                    </th>
+                                    <th>
+                                        <strong>Tổng tiền</strong>
+                                    </th>
+                                   
+                                    <th>
+                                        <strong>Tác vụ</strong>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let acc of invoice | orderBy:'-thoiGian';let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{acc.thoiGian | date:'dd/MM/yyyy'}}</td>
+                                    <td>{{acc.total | currency:'VND'}}</td>
+                             
+                                
+                                    <td class="">
+                                        <button (click)="view(acc.id)" type="button" class="btn btn-sm btn-info"><i  class="fa fa-eye"></i></button>
+                                       
+                                    </td>
+                                </tr>
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="title" style="margin-bottom: 20px">
+    <span>Chọn phương thức giảm giá</span>
+</div>
+<div class="container">
+    <form [formGroup]="saleForm" (ngSubmit)="onSubmit(saleForm)">
+
+        
+           <div class="inp" style="display: flex;">
+            <div class="check" style="display: block; margin-left: 50px;">
+                <input type="radio" name="check" [checked]="checkPer" (change)="tick1()"> %<br> <br>
+                <input type="radio" name="check" [checked]="checkPri" (change)="tick1()"> VND
+            </div>
+            <div class="form-group" style="width: 200px;">
+                <input  type="number" formControlName="percent" value="0" style="margin-left: 9px;" id="inp">&nbsp;
+              
+            </div>
+           </div>
+           <br>
+            <div class="btn" style="display: block;">
+                <button class="btn btn-info">Lưu</button>
+            </div>
+    
+        
+    
+        
+    </form>
+</div>

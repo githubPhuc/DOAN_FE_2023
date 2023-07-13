@@ -1,0 +1,143 @@
+<main id="main-container" class="main-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-content">
+                    <h5 class="section-content__title">Giỏ hàng của bạn</h5>
+                    <a *ngIf="!isempty" (click)="removeAllCart()"
+                        class="btn btn--box btn--large btn--blue btn--uppercase  m-t-20"
+                        style="color: white; font-weight: bold;"><span>XOÁ TOÀN BỘ GIỎ HÀNG</span></a>
+                </div>
+
+                <div class="table-content table-responsive cart-table-content m-t-30">
+                    <table>
+                        <thead class="gray-bg">
+                            <tr>
+                                <th>Hình ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Đơn giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng phụ</th>
+                                <th>Tác vụ</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr *ngFor="let c of POSTS">
+                                <td class="product-thumbnail">
+                                    <a (click)="goToProductDetails(c.idSanPham)"><img class="img-fluid"
+                                            src="../../../assets/img/product/{{c.image}}" alt=""></a>
+                                </td>
+                                <td class="product-name "><a
+                                        (click)="goToProductDetails(c.idSanPham)">{{c.tenSanPham}}</a></td>
+                                <td *ngIf="c.giaGiam<=0" class="product-price-cart text-center">
+                                    <span class="amount">{{c.giaSanPham |
+                                        currency:'VND'}}
+                                    </span></td>
+
+                                <td *ngIf="c.giaGiam>0">
+                                    <span class="product__price-del">{{c.giaSanPham | currency:'VND'}}</span>
+                                    <span class="amount">{{c.giaGiam |
+                                        currency:'VND'}}
+                                    </span>
+                                </td>
+                                <td class="product-quantities text-center">
+                                    <div class="quantity d-inline-block">
+                                      
+                                        <input id="sl" #sl type="number" min="1" step="1" value="{{c.soLuong}}" disabled>
+
+                                        <i class="fa fa-caret-up" aria-hidden="true" (click)="plus(c.id)"></i> <br>
+                                        <i class="fa fa-caret-down" aria-hidden="true" (click)="remove(c.id)"></i>
+
+                                    </div>
+                                </td>
+
+                                <td class="product-subtotal text-center">{{c.gia | currency:'VND'}}</td>
+                                <td class="product-remove text-center">
+                                    <a (click)="removeCart(c.id)"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <div *ngIf="!isempty" class="total" style="display: flex; justify-content:flex-end; margin-top: 15px; ">
+          
+                        <div style="border: 1px solid rgb(212, 212, 212); border-radius: 5px; display:flex; padding:5px"><span style="font-weight: bold; width: 50px; opacity: 60%;">Tổng : </span>&nbsp;<h3 style="color: rgb(68, 68, 243);">{{total | currency:'VND'}}</h3></div>
+                    </div>
+                </div>
+                <div *ngIf="!isempty" class="cart-table-button m-t-10">
+                    <div class="cart-table-button--left">
+                        <a [routerLink]="['/shop/home']"
+                            class="btn btn--box btn--large btn--gray btn--weight m-t-20" style="font-weight:500; font-size:16px; margin-bottom: 5px;">Tiếp tục mua sắm</a>
+                    </div>
+                    <div class="cart-table-button--right">
+
+
+                        <a (click)="openPay()" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight m-t-20"
+                            style="color: white;margin-bottom: 5px;">ĐẶT HÀNG</a>
+
+                    </div>
+                </div>
+                <div *ngIf="isempty" class="content">
+                    <div class="row" id="cart-content-text">
+                        <h1>Không có gì trong giỏ hàng</h1>
+
+                    </div>
+                    <div class="row" id="cart-content">
+                        <div><i class="fa fa-ban fa-10x" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="cart-table-button--left">
+                        <a [routerLink]="['/home']"
+                            class="btn btn--box btn--large btn--gray btn--weight m-t-20" style="font-weight:500; font-size:16px;margin-bottom: 5px;">Tiếp tục mua sắm</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<style>
+    #cart-content-text {
+        opacity: 50%;
+        padding-top: 30px;
+        font-size: large;
+        color: grey;
+        justify-content: center;
+    }
+
+    #cart-content {
+        opacity: 50%;
+        padding-top: 30px;
+        font-size: large;
+        height: 300px;
+        color: grey;
+        justify-content: center;
+    }
+
+    input[type=number]::-webkit-inner-spin-button {
+        opacity: 1
+    }
+
+    main {
+        min-height: 500px;
+    }
+
+    .section-content__title {
+        margin-top: 20px;
+    }
+
+    .header__search-input button {
+        padding-left: 3px;
+        padding-right: 3px;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .section-content {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>

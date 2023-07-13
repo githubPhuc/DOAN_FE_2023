@@ -1,0 +1,127 @@
+<div class="row page-header">
+    <div class="col-6 align-self-center ">
+      <h2>Quản lý hoá đơn</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']" style="font-size: 15px;">Trang chủ</a></li>
+         
+            <li class="breadcrumb-item active" style="font-size: 15px;">Quản lý hoá đơn</li>		
+        </ol>
+    </div>
+</div>
+<style>
+    ol li {
+        display: flex;
+        align-items: center;
+        color: #868e96;
+        
+    }
+</style>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row" style="align-items: center;">
+                    <div class="col-md-6">
+                        <form  [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)" style="display: flex;">
+                            <div class="header__search-input">
+                                <input type="datetime-local"   formControlName="start" class="form-control m-b">
+                                
+                            </div>
+                            &nbsp;
+                            <span>Đến</span>
+                            &nbsp;
+                            <div class="header__search-input">
+                                <input type="datetime-local"  formControlName="end" class="form-control m-b">
+                                
+                            </div>
+                            &nbsp;
+                            <button type="submit" style="align-content: center; background-color: rgb(99, 141, 255); color: white; border: none;">Lọc</button>
+                        </form>
+                    </div>
+                    <div class="col-md-4" style="margin-top: 15px; display: flex; margin-bottom: 5px;" >
+                        
+                                <label>Trạng thái :</label> &nbsp;
+                        <select #fil name="" id="" class="form-control m-b" (change)="filter(fil.value)" style="width: 150px; margin-right: 30px;">
+                            <option value="0">Tất cả</option>
+                            <option  value="1">Đang giao</option>
+                            <option value="2">Hoàn thành</option>
+                            <option value="4">Chờ duyệt</option>
+                            <option value="3">Đã huỷ</option>
+                        </select>
+                       
+                
+                      
+                          
+                       
+                    </div>
+                    <div class="col-md-2" style="margin-top: 15px; display: flex; justify-content: flex-end;">
+                     
+                            <a (click)="reload()" class="btn btn-info btn-rounded"> <i class="fa fa-refresh"></i> </a>
+                        
+                    </div>
+                <div class="col-md-12">
+                    <div class="card">
+                       
+                       
+                        <div class="card-body">
+                            <table id="datatable" class="table table-striped dt-responsive nowrap">
+                                            <thead>
+                                                <tr  class="bg-chart" style="color: white;">
+                                                    <th>STT</th>
+                                                    <th>Khách hàng</th>
+                                                    <th>Địa chỉ </th>
+                                                    <th>Số điện thoại</th>
+                                                    <th>Ngày lập</th>
+                                                    <th>Tổng tiền</th>
+                                                    <th>Trạng thái</th>
+                                                    <th>Tác vụ</th>
+                                                 
+                                                </tr>
+                                            </thead>
+                
+                                            <tbody>
+                                                <tr *ngFor="let inv of invoice| orderBy:'-date' | paginate
+                                                : {
+                                                    itemsPerPage: tableSize,
+                                                    currentPage: page,
+                                                    totalItems: count
+                                                  };
+                                            let i = index" >
+                                                    <td>{{i+1}}</td>
+                                                    <td>{{inv.username}}</td>
+                                                    <td>{{inv.shippingAddress}}</td>
+                                                    <td>{{inv.phone}}</td>
+                                                    <td>{{inv.date | date:'dd/MM/yyyy'}}</td>
+                                                    <td>{{inv.total | currency:'VND'}}</td>
+                                                    <td *ngIf="inv.cancel">Đã huỷ</td>
+                                                    <td *ngIf="inv.complete&&!inv.cancel">Hoàn thành</td>
+                                                    <td *ngIf="!inv.complete&&inv.status&&!inv.cancel">Đang giao</td>
+                                                    <td *ngIf="!inv.status&&!inv.cancel">Chờ duyệt</td>
+                                                    
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-info" (click)="openDialog(inv.id)"><i class="fa fa-pencil-square-o"></i></button>&nbsp;
+                                                        <!-- <button *ngIf="!inv.complete&&inv.status" type="button" class="btn btn-sm btn-info" (click)="complete(inv.id)"><i class="fa fa-check"></i></button> -->
+                                                    </td>
+                                               
+                                                </tr>
+                                                
+                           
+                                            </tbody>
+                                        </table>
+                                        <div class="d-flex justify-content-center">
+                                            <pagination-controls
+                                              previousLabel="Prev"
+                                              nextLabel="Next"
+                                              (pageChange)="onTableDataChange($event)"
+                                            >
+                                            </pagination-controls>
+                                          </div>
+                
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

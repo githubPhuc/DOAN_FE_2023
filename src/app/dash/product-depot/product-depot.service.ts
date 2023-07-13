@@ -21,9 +21,18 @@ export class ProductDepotService {
       });
 
   }
-  public SetPriceOnProduct(id: number) {
+  public SetPriceSale(id: number,priceSale:number) {
     return this.httpClient
-      .post<any>('https://localhost:7109/api/productDepots/SetPriceOnProduct?id='+id,  {
+      .post<any>('https://localhost:7109/api/productDepots/SetPriceSale?id='+id+'&priceSale='+priceSale,  {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': this.strToken
+        })
+      });
+  }
+  public SetStatus(id: number,idProduct:number) {
+    return this.httpClient
+      .post<any>('https://localhost:7109/api/productDepots/SetStatus?id='+id+'&idProduct='+idProduct,  {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': this.strToken

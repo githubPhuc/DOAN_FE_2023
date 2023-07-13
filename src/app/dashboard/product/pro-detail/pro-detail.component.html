@@ -1,0 +1,231 @@
+<div class="container" id="ctn">
+    <main id="main-container" class="main-container">
+        <div class="container">
+            <div class="row">
+                <!-- Start Product Details Gallery -->
+                <div class="col-12">
+                    <div class="name" style="padding:10px 0px; display: flex; justify-content: space-between;">
+                        <span style="font-weight: bold;font-size:20px;">{{product.pro.name}}</span>
+                        <div class="btn-edit">
+                            <a [routerLink]="['/admin/product/pro-edit',product.pro.id]"><i class="fa fa-pencil-square-o" aria-hidden="true" style="text-decoration: none;"></i> Chỉnh sửa</a>
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <div class="row">
+                           
+                            <div class="col-md-6">
+                                <div class="table">
+                                    <table class="product-dis__list table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td class="product-dis__title">Nhà sản xuất
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.tradeMark}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Loại sản phẩm
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.category}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Giá
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.price | currency:'VND'}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">CPU
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.cpu}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">RAM
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.ram}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Ổ cứng
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.hardDisk}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Hệ điều hành
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.os}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Cổng kết nối
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.port}}</td>
+                                            </tr>
+                                         
+                                            <tr>
+                                                <td class="product-dis__title">Màn hình
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.monitor}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Card đồ hoạ
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.vga}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Kiểu thiết kế
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.designStyle}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Kích thước -
+                                                    cân nặng
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.sizeWeight}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-dis__title">Thời điểm ra mắt
+                                                </td>
+                                                <td class="product-dis__text">
+                                                    {{product.pro.releaseTime}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                               
+                            </div>
+                                <!-- <div class="product-details-box">
+                                    <h5 class="section-content__title">{{product.pro.name}}</h5>
+
+                                
+    
+                                    <div class="review-box">
+                                       <span style="color: Yellow;font-weight: 1000;"> {{product.pro.star}} <i class="fa fa-star" style="color: Yellow;"></i></span>
+
+                                    </div>
+                                    <div class="product__price">
+    
+                                        <span class="product__price-reg">{{product.pro.price | currency:'VND'}}</span>
+                                    </div>
+                                    <div class="info">
+                                        <div class="product__desc m-t-25 m-b-30">
+                                            <p>{{product.description}} </p>
+                                        </div>
+                                        <div class="product-var p-t-30">
+                                            <p>RAM:&nbsp; {{product.pro.ram}} </p>
+                                        </div>
+                                        <div class="product-var p-t-30">
+                                            <p>CPU:&nbsp; {{product.pro.cpu}} </p>
+                                        </div>
+                                        <div class="product-var p-t-30">
+                                            <p>Ổ cứng:&nbsp; {{product.pro.hardDisk}} </p>
+                                        </div>
+                                        <div class="product-var p-t-30">
+                                            <p>Cổng kết nối:&nbsp; {{product.pro.port}} </p>
+                                        </div>
+                                        <div class="product-var p-t-30">
+                                            <p>Hệ điều hành:&nbsp; {{product.pro.os}} </p>
+                                        </div>
+                                        <div class="product-var p-t-30">
+                                            <p>Màn hình:&nbsp; {{product.pro.monitor}} </p>
+                                        </div>
+                                        <div class="product-var p-t-30">
+                                            <p>Card đồ hoạ:&nbsp; {{product.pro.vga}} </p>
+                                        </div>
+                                        <div class="product-var p-t-30">
+                                            <p>Kiểu thiết kế:&nbsp; {{product.pro.designStyle}} </p>
+                                        </div>
+                                        <div class="product-var p-t-30">
+                                            <p>Kích thước - cân nặng:&nbsp; {{product.pro.sizeWeight}} </p>
+                                        </div>
+                                        <div class="product-var p-t-30">
+                                            <p>Nhãn hiệu:&nbsp; {{product.pro.tradeMark}} </p>
+                                        </div>
+                                        <div class="product-var p-t-30">
+                                            <p>Thời điểm ra mắt:&nbsp; {{product.pro.releaseTime}} </p>
+                                        </div>
+                                        <div class="product-var p-t-30">
+                                            <p>Phù hợp cho :&nbsp; <a href="">{{product.pro.category}}</a> </p>
+                                        </div>
+
+                                    </div>
+    
+                                </div> -->
+                            </div>
+                            <div class="col-md-6">
+                                <div id="home-slideshow" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#home-slideshow" data-slide-to="0" class="active"></li>
+                                        <li data-target="#home-slideshow" data-slide-to="1"></li>
+                                        <li data-target="#home-slideshow" data-slide-to="2"></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active" style="height: 400px;">
+                                            <img src="../../../assets/img/product/{{product.pro.image}}" class="d-block w-100" alt="...">
+                                        
+                                        </div>
+                                        <div *ngFor="let i of product.img" class="carousel-item" style="height: 400px;">
+                                            <img src="../../../assets/img/product/{{i.image}}" class="d-block w-100" alt="...">
+                                        
+                                        </div>
+                                    
+                                    </div>
+                                    <a class="carousel-control-prev" href="#home-slideshow" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#home-slideshow" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+    
+                                <style>
+                                    .carousel-item {
+                                        height: 500px;
+                                    }
+    
+                                    .item img {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        min-height: 300px;
+                                    }
+    
+                                    #btn-slideshow {
+                                        width: 200px;
+                                    }
+
+                                    #ctn {
+                                        padding-top: 10px;
+                                    }
+                                </style>
+
+                                <div class="lable">
+                                        <div class="title">
+                                            <h2>Mô tả</h2>
+
+                                        </div>
+                                        <div class="content">
+                                            <span>
+                                                {{product.pro.description}}
+                                            </span>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End Product Details Gallery -->
+   
+    
+            </div>
+        </div>
+    </main>
+</div>
