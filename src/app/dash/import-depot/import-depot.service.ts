@@ -13,9 +13,9 @@ export class ImportDepotService {
 
   token = localStorage.getItem('token');
   strToken = 'Bearer ' + this.token;
-  public GetList(codeBill: string, nameDepot: string) {
+  public GetList(codeBill: string, nameDepot: string,start: string,End: string) {
     return this.httpClient
-      .get<any>('https://localhost:7109/api/ImportBillDepots/GetList?codeBill=' + codeBill + '&nameDepot=' + nameDepot, {
+      .get<any>('https://localhost:7109/api/ImportBillDepots/GetList?codeBill=' + codeBill + '&nameDepot=' + nameDepot+'&start='  + start+'&End='  + End, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': this.strToken

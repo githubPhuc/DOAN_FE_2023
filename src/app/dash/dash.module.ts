@@ -61,6 +61,7 @@ import { DetailInvoiceComponent } from './invoice/detail-invoice/detail-invoice.
 import { SalesReportComponent } from './sales-report/sales-report.component';
 import { AcceptanceInvComponent } from './invoice/acceptance-inv/acceptance-inv.component';
 import { PriceSaleComponent } from './product-depot/price-sale/price-sale.component';
+import { InventoryDepotComponent } from './inventory-depot/inventory-depot.component';
 
 
 @NgModule({
@@ -114,7 +115,8 @@ import { PriceSaleComponent } from './product-depot/price-sale/price-sale.compon
     DetailInvoiceComponent,
     SalesReportComponent,
     AcceptanceInvComponent,
-    PriceSaleComponent
+    PriceSaleComponent,
+    InventoryDepotComponent
   ],
   imports: [
     CommonModule,

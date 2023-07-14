@@ -11,9 +11,19 @@ export class ProductDepotService {
 
   token = localStorage.getItem('token');
   strToken = 'Bearer ' + this.token;
-  public GetList(nameDepot: string, nameProduct: string) {
+  public GetList(nameDepot: string, nameProduct: string,start: string,End: string) {
     return this.httpClient
-      .get<any>('https://localhost:7109/api/productDepots/GetList?nameDepot='+nameDepot+'&nameProduct='  + nameProduct, {
+      .get<any>('https://localhost:7109/api/productDepots/GetList?nameDepot='+nameDepot+'&nameProduct='  + nameProduct+'&start='  + start+'&End='  + End, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': this.strToken
+        })
+      });
+
+  }
+  public inventoryDepot() {
+    return this.httpClient
+      .get<any>('https://localhost:7109/api/productDepots/inventoryDepot', {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': this.strToken

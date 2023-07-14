@@ -21,25 +21,31 @@ export class ProductDepotComponent implements OnInit {
       ) { }
     Data:any;
     title:any;
+    valueDateStart!: Date;
+    valueDateEnd!: Date;
   
   ngOnInit(): void {
     if(localStorage.getItem('role')!='Admin')
     {
       this.router.navigate(['/Login']);
     }
-    this.productDepotService.GetList("","").subscribe(res=>{
+    this.productDepotService.GetList("","","","").subscribe(res=>{
       this.Data=res.acc;
       console.log(this.Data);
     })
-      this.title="Depot Storage"     
+      this.title="Depot Storage"  ;
+      this.valueDateStart=new Date(1900, 0, 1);   
+      this.valueDateEnd=new Date(1900, 0, 1);   
   }
   searchForm = new FormGroup({
     nameDepot: new FormControl(''),
     nameProduct: new FormControl(''),//0901554061
+    valueDateStart: new FormControl(''),//0901554061
+    valueDateEnd: new FormControl(''),//0901554061
    
   });
   public Search(form:FormGroup) {
-    this.productDepotService.GetList(form.value.nameDepot,form.value.nameProduct).subscribe(res=>{
+    this.productDepotService.GetList(form.value.nameDepot,form.value.nameProduct,form.value.valueDateStart,form.value.valueDateEnd).subscribe(res=>{
       this.Data=res.acc;
     })
   }
