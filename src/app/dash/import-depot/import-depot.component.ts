@@ -28,12 +28,11 @@ export class ImportDepotComponent  implements OnInit {
       this.router.navigate(['/Login']);
     }
     this.username = localStorage.getItem('username')!;
-    this.importDepotService.GetList("","").subscribe(res=>{
+    this.importDepotService.GetList("","","","").subscribe(res=>{
       this.Data=res.acc;
       console.log(this.Data);
     })
-      this.title="Import bill depot"
-
+      this.title="Import bill depot";
      
   }
 
@@ -43,9 +42,11 @@ export class ImportDepotComponent  implements OnInit {
   searchForm = new FormGroup({
     codeBill: new FormControl(''),
     nameDepot: new FormControl(''),
+    valueDateStart: new FormControl(''),//0901554061
+    valueDateEnd: new FormControl(''),//0901554061
   });
   public Search(form:FormGroup) {
-    this.importDepotService.GetList(form.value.codeBill,form.value.nameDepot).subscribe(res=>{
+    this.importDepotService.GetList(form.value.codeBill,form.value.nameDepot,form.value.valueDateStart,form.value.valueDateEnd).subscribe(res=>{
       this.Data=res.acc;
     })
   }
