@@ -11,9 +11,9 @@ export class InvoiceService {
 
   token = localStorage.getItem('token');
   strToken = 'Bearer ' + this.token;
-  public GetList(code: string, Status:string) {
+  public GetList(code: string, Status:string,start: string,End: string) {
     return this.httpClient
-      .get<any>('https://localhost:7109/api/BillOfSales/GetList?code=' + code + '&Status=' + Status , {
+      .get<any>('https://localhost:7109/api/BillOfSales/GetList?code=' + code + '&Status=' + Status+'&start='  + start+'&End='  + End , {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': this.strToken

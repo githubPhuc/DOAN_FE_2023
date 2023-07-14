@@ -91,7 +91,8 @@ export class ImportDepotService {
    })});
   }
   public discouragement(id:number,user:string){
-    return this.httpClient.post<any>('https://localhost:7109/api/ImportBillDepots/discouragement?id'+id+'&user='+user, {headers: new HttpHeaders({ 
+    console.log(id);
+    return this.httpClient.post<any>('https://localhost:7109/api/ImportBillDepots/discouragement?id='+id+'&user='+user, {headers: new HttpHeaders({ 
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.token
    })});

@@ -22,12 +22,13 @@ export class InvoiceComponent   implements OnInit {
     Data:any;
     title:any;
     username:any;
+
   ngOnInit(): void {
     if(localStorage.getItem('role')!='Admin')
     {
       this.router.navigate(['/Login']);
     }
-    this.invoiceService.GetList("","").subscribe(res=>{
+    this.invoiceService.GetList("","","","").subscribe(res=>{
       this.Data=res.data;
       console.log(this.Data);
     })
@@ -42,17 +43,18 @@ export class InvoiceComponent   implements OnInit {
   searchForm = new FormGroup({
     code: new FormControl(''),
     Status: new FormControl(''),
+    valueDateStart: new FormControl(''),//0901554061
+    valueDateEnd: new FormControl(''),//0901554061
   });
   public Search(form:FormGroup) {
     
-    this.invoiceService.GetList(form.value.codeBill,form.value.Status).subscribe(res=>{
+    this.invoiceService.GetList(form.value.code,form.value.Status,form.value.valueDateStart,form.value.valueDateEnd).subscribe(res=>{
       return this.Data=res.data;
     })
   }
 
 public detail(id:number)
 {
-  console.log(id)
   this.dialog.open(DetailInvoiceComponent,{
     data : {
       enterAnimationDuration: '1000ms',

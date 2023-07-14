@@ -119,6 +119,7 @@ import { InventoryDepotComponent } from './inventory-depot/inventory-depot.compo
     InventoryDepotComponent
   ],
   imports: [
+    
     CommonModule,
     DashRoutingModule,
     FormsModule,
